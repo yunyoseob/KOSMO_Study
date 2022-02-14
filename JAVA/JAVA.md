@@ -1,4 +1,4 @@
-JAVA Methods 모음
+# JAVA Methods 모음
 
 ## java.lang
 
@@ -10,6 +10,8 @@ JAVA Methods 모음
 |String : Integer.toBinaryString (2진수)|public static String toBinaryString(int i)|
 |String : Integer.toOctalString (8진수)|public static String toOctalString(int i)|
 |String : Integer.toString()|public String toString()|
+|int|public static int parseInt(String s)|
+
 
 ### String Class
 |JAVA Methods|Describe|
