@@ -24,3 +24,4 @@
 |''|public static String valueOf(double d)|
 |char : String.charAt()|public char charAt(int index)|
 |boolean : String.equals()|public boolean equals(Object anObject)|
+|String : concat(String str)|public String concat(String str)|
