@@ -67,12 +67,11 @@
 |''|public static String valueOf(float f)|
 |''|public static String valueOf(double d)|
 |char : String.charAt()|public char charAt(int index)|
-|boolean : String.equals()|public boolean equals(Object anObject)|
-|String : concat(String str)|public String concat(String str)|
 
 |Modifier and Type|Method|Description|Detail|
 |---|---|---|---|
 boolean|equals(Object anObject)|public boolean equals(Object anObject)|a String object that represents **the same sequence of characters** as this object.|
+|String|concat(String str)|public String concat(String str)|a String object is returned that represents a character sequence that is the concatenation of the character sequence represented by this String object and the character sequence represented by the argument string.|
 
 ### ✔️ Object Class(java 상속클래스의 시조)
 
