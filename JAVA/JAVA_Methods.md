@@ -40,6 +40,17 @@
 |int|hashCode()|public int hashCode()|Returns a hash code for this Character; equal to the result of invoking charValue().|
 |static int|hashCode(char value)|public static int hashCode(char value)|Returns a hash code for a char value; compatible with Character.hashCode().(since 1.8)|
 |static boolean|isLowerCase(char ch)|public static boolean isLowerCase(char ch)|Determines if the specified character is a lowercase character.|
+|static int|compare(char x, char y)|public static int compare(char x, char y)|Compares two char values numerically.|
+|int|compareTo(Character anotherCharacter)|public int compareTo(Character anotherCharacter)|Compares two Character objects numerically.|
+|static int|getNumericValue(char ch)|public static int getNumericValue(char ch)|Returns the int value that the specified Unicode character represents.|
+|int|hashcode()|public int hashCode()|Returns a hash code for this Character; equal to the result of invoking charValue().|
+|static int|hashCode(char value)|public static int hashCode(char value)|Returns a hash code for a char value; compatible with Character.hashCode().(since 1.8)|
+|static boolean|isUpperCase(char ch)|public static boolean isUpperCase(char ch)|Determines if the specified character is an uppercase character.|
+|String|toString()|public String toString()|Returns a String object representing this Character's value.|
+|static String|toString(char c)|public static String toString(char c)|Returns a String object representing the specified char.|
+
+
+
 
 
 ### ✔️ Integer Class
