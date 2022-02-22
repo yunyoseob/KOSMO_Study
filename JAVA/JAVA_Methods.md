@@ -48,24 +48,24 @@
 |static boolean|isUpperCase(char ch)|public static boolean isUpperCase(char ch)|Determines if the specified character is an uppercase character.|
 |String|toString()|public String toString()|Returns a String object representing this Character's value.|
 |static String|toString(char c)|public static String toString(char c)|Returns a String object representing the specified char.|
-
-
-
+|static Character|valueOf(char c)|public static Character valueOf(char c)|Returns a Character instance representing the specified char value.|
 
 
 ### ✔️ Integer Class
 
-|JAVA Methods|Describe|
-|---|---|
-|String : Integer.toHexString (16진수)|public static String toHexString(int i)|
-|String : Integer.toBinaryString (2진수)|public static String toBinaryString(int i)|
-|String : Integer.toOctalString (8진수)|public static String toOctalString(int i)|
-|String : Integer.toString()|public String toString()|
-|int|public static int parseInt(String s)|
-
 |Modifier and Type|Method|Description|Detail|
 |---|---|---|---|
 |boolean|equals(Object obj)|public boolean equals(Object obj)|an Integer object that contains **the same int value** as this object.|
+|short|shortValue()|public short shortValue()|Returns the value of this Integer as a short after a narrowing primitive conversion.|
+|int|sum(int a, int b)|public static int sum(int a, int b)|Adds two integers together as per the + operator.|
+|static String|toBinaryString(int i)|public static String toBinaryString(int i)|Returns a string representation of the integer argument as an unsigned integer in base 2.|
+|static String|toHexString(int i)|public static String toHexString(int i)|Returns a string representation of the integer argument as an unsigned integer in base 16.|
+|static String|toOctalString(int i)|public static String toOctalString(int i)|Returns a string representation of the integer argument as an unsigned integer in base 8.|
+|String|toString()|public String toString()|Returns a String object representing this Integer's value. |
+|static String|toString(int i)|public static String toString(int i)|Returns a String object representing the specified integer.|
+|static Integer|valueOf(String s)|public static Integer valueOf(String s) throws NumberFormatException|Returns an Integer object holding the value of the specified String.|
+
+
 
 
 ### ✔️ Long Class
