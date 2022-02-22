@@ -7,10 +7,23 @@
 |---|---|---|---|
 |boolean|equals(Object obj)|public boolean equals(Object obj)|a Boolean object that represents **the same boolean value** as this object.|
 
+
+
+
 ### ✔️ Byte Class
 |Modifier and Type|Method|Description|Detail|
 |---|---|---|---|
 |boolean|equals(Object obj)|public boolean equals(Object obj)|Byte object that contains **the same byte value** as this object.|
+|double|doubleValue()|public double doubleValue()|Returns the value of this Byte as a double after a widening primitive conversion.|
+|float|floatValue()|public float floatValue()|Returns the value of this Byte as a float after a widening primitive conversion.|
+|int|hashCode()|public int hashCode()|Returns a hash code for this Byte; equal to the result of invoking intValue().|
+|static int|hashCode(byte value)|public static int hashCode(byte value)|Returns a hash code for a byte value; compatible with Byte.hashCode().|
+|int|intValue()|public int intValue()|Returns the value of this Byte as an int after a widening primitive conversion.|
+|long|longValue()|public long longValue()|Returns the value of this Byte as a long after a widening primitive conversion.|
+|short|shortValue()|public short shortValue()|Returns the value of this Byte as a short after a widening primitive conversion.|
+|String|toString()|public String toString()|The value is converted to signed decimal representation and returned as a string, exactly as if the byte value were given as an argument to the toString(byte) method.|
+|static String|toString(byte b)|public static String toString(byte b)|Returns a new String object representing the specified byte. The radix is assumed to be 10.|
+|static Byte|valueOf(byte b)|public static Byte valueOf(byte b)|Returns a Byte instance representing the specified byte value.|
 
 ### ✔️ Short Class
 
