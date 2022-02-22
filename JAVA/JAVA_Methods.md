@@ -36,6 +36,11 @@
 |Modifier and Type|Method|Description|Detail|
 |---|---|---|---|
 |boolean|equals(Object obj)|public boolean equals(Object obj)|a Character object that represents **the same char value** as this object.|
+|char|charValue()|public char charValue()|Returns the value of this Character object.|
+|int|hashCode()|public int hashCode()|Returns a hash code for this Character; equal to the result of invoking charValue().|
+|static int|hashCode(char value)|public static int hashCode(char value)|Returns a hash code for a char value; compatible with Character.hashCode().(since 1.8)|
+|static boolean|isLowerCase(char ch)|public static boolean isLowerCase(char ch)|Determines if the specified character is a lowercase character.|
+
 
 ### ✔️ Integer Class
 
