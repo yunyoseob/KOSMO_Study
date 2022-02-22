@@ -104,9 +104,12 @@ boolean|equals(Object anObject)|public boolean equals(Object anObject)|a String 
 
 ### ✔️ Object Class(java 상속클래스의 시조)
 
-|Modifier and Type|Method|Description|
-|---|---|---|
-|boolean|equals(Object obj)|public boolean equals(Object obj)|
+|Modifier and Type|Method|Description|Detail|
+|---|---|---|--|
+|boolean|equals(Object obj)|public boolean equals(Object obj)|아래 사진 첨부|
+|Class<?>|getClass()|public final Class<?> getClass()|Returns the runtime class of this Object. The returned Class object is the object that is locked by static synchronized methods of the represented class.|
+|int|hashCode()|public int hashCode()|Returns a hash code value for the object.|
+|String|toString()|public String toString()|Returns a string representation of the object. +getClass().getName() + '@' + Integer.toHexString(hashCode())|
 
 ![](https://images.velog.io/images/yunyoseob/post/7fef7850-600f-4cbc-9f4e-eca9a0ffaa14/image.png)
 
@@ -116,6 +119,10 @@ boolean|equals(Object anObject)|public boolean equals(Object anObject)|a String 
 
 ### ✔️ Class Class
 
+|Modifier and Type|Method|Description|Detail|
+|---|---|---|---|
+|T|newInstance()|public T newInstance() throws InstantiationException, IllegalAccessException|Creates a new instance of the class represented by this Class object.|
+|Method[]|getDeclaredMethods()|public Method[] getDeclaredMethods() throws SecurityException|Returns an array containing Method objects reflecting all the declared methods of the class or interface represented by this Class object, including public, protected, default (package) access, and private methods, but excluding inherited methods.|
 
 ## Exceptions (java.lang)
 
