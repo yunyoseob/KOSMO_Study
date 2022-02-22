@@ -110,3 +110,17 @@ boolean|equals(Object anObject)|public boolean equals(Object anObject)|a String 
 
 ![](https://images.velog.io/images/yunyoseob/post/7fef7850-600f-4cbc-9f4e-eca9a0ffaa14/image.png)
 
+### ✔️ StringBuffer
+
+### ✔️ System Class
+
+### ✔️ Class Class
+
+
+## Exceptions (java.lang)
+
+### ✔️ Throwable class
+
+### ✔️ Exception class
+
+
