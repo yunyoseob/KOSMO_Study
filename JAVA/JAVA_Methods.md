@@ -64,6 +64,7 @@
 |String|toString()|public String toString()|Returns a String object representing this Integer's value. |
 |static String|toString(int i)|public static String toString(int i)|Returns a String object representing the specified integer.|
 |static Integer|valueOf(String s)|public static Integer valueOf(String s) throws NumberFormatException|Returns an Integer object holding the value of the specified String.|
+|static int|parseInt(String s)|public static int parseInt(String s) throws NumberFormatException|Parses the string argument as a signed decimal integer. |
 
 
 
