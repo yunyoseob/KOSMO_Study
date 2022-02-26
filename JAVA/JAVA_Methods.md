@@ -5,25 +5,40 @@
 ### ✔️ Boolean Class
 |Modifier and Type|Method|Description|Detail|
 |---|---|---|---|
-|boolean|equals(Object obj)|public boolean equals(Object obj)|a Boolean object that represents **the same boolean value** as this object.|
-
-
+|boolean|equals(Object obj)|a Boolean object that represents **the same boolean value** as this object.|X|
+|int|hashCode()|Returns a hash code for this Boolean object.|X|
+|static int|hashCode(boolean value)|Returns a hash code for a boolean value; compatible with Boolean.hashCode().|Since: 1.8|
+|String|toString()|Returns a String object representing this Boolean's value.|X|
+|static String|toString(boolean b)|Returns a String object representing the specified boolean.|Since 1.4|
+|static Boolean|valueOf(boolean b)|Returns a Boolean instance representing the specified boolean value.|Since 1.4|
+|static Boolean|valueOf(String s)|Returns a Boolean with a value represented by the specified string.|Since 1.4|
 
 
 ### ✔️ Byte Class
+
+- **Field Summary**
+
+|Modifier and Type|Field|Description|Detail|
+|---|---|---|---|
+|static int|BYTES|The number of bytes used to represent a byte value in two's complement binary form.|Since 1.8, Constant Field Values|
+|static byte|MAX_VALUE|A constant holding the maximum value a byte can have, 2^7-1.|Constant Field Values|
+|static byte|MIN_VALUE|A constant holding the minimum value a byte can have, -2^7.|Constant Field Values|
+|static int|SIZE|The number of bits used to represent a byte value in two's complement binary form.|Since 1.5. Constant Field Values|
+
+- **Method Summary**
+
 |Modifier and Type|Method|Description|Detail|
 |---|---|---|---|
-|boolean|equals(Object obj)|public boolean equals(Object obj)|Byte object that contains **the same byte value** as this object.|
-|double|doubleValue()|public double doubleValue()|Returns the value of this Byte as a double after a widening primitive conversion.|
-|float|floatValue()|public float floatValue()|Returns the value of this Byte as a float after a widening primitive conversion.|
-|int|hashCode()|public int hashCode()|Returns a hash code for this Byte; equal to the result of invoking intValue().|
-|static int|hashCode(byte value)|public static int hashCode(byte value)|Returns a hash code for a byte value; compatible with Byte.hashCode().|
-|int|intValue()|public int intValue()|Returns the value of this Byte as an int after a widening primitive conversion.|
-|long|longValue()|public long longValue()|Returns the value of this Byte as a long after a widening primitive conversion.|
-|short|shortValue()|public short shortValue()|Returns the value of this Byte as a short after a widening primitive conversion.|
-|String|toString()|public String toString()|The value is converted to signed decimal representation and returned as a string, exactly as if the byte value were given as an argument to the toString(byte) method.|
-|static String|toString(byte b)|public static String toString(byte b)|Returns a new String object representing the specified byte. The radix is assumed to be 10.|
-|static Byte|valueOf(byte b)|public static Byte valueOf(byte b)|Returns a Byte instance representing the specified byte value.|
+|boolean|equals(Object obj)|Compares this object to the specified object.|Byte object that contains **the same byte value** as this object.|
+|int|hashCode()|Returns a hash code for this Byte; equal to the result of invoking intValue().|X|
+|static int|hashCode(byte value)|Returns a hash code for a byte value; compatible with Byte.hashCode().|Since 1.8|
+|int|intValue()|Returns the value of this Byte as an int after a widening primitive conversion.|intValue in class Number|
+|long|longValue()|Returns the value of this Byte as a long after a widening primitive conversion.|longValue in class Number|
+|short|shortValue()|Returns the value of this Byte as a short after a widening primitive conversion.|shortValue in class Number|
+|String|toString()|Returns a String object representing this Byte's value.|toString in class Object|
+|static String|toString(byte b)|Returns a new String object representing the specified byte.|X|
+|static Byte|valueOf(byte b)|Returns a Byte instance representing the specified byte value.|Since 1.5|
+|static Byte|valueOf(String s)|Returns a Byte object holding the value given by the specified String.|throws NumberFormatException, arguments were given to the parseByte(java.lang.String) method|
 
 ### ✔️ Short Class
 
