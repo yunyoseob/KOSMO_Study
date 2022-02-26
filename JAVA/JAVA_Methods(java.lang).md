@@ -1,22 +1,19 @@
-# JAVA Methods 모음
+# JAVA Methods(java.lang) 모음
 
-## java.lang
-
-### ✔️ Boolean Class
+## ✔️ Boolean Class
 |Modifier and Type|Method|Description|Detail|
 |---|---|---|---|
 |boolean|equals(Object obj)|a Boolean object that represents **the same boolean value** as this object.|X|
 |int|hashCode()|Returns a hash code for this Boolean object.|X|
 |static int|hashCode(boolean value)|Returns a hash code for a boolean value; compatible with Boolean.hashCode().|Since: 1.8|
-|String|toString()|Returns a String object representing this Boolean's value.|X|
 |static String|toString(boolean b)|Returns a String object representing the specified boolean.|Since 1.4|
 |static Boolean|valueOf(boolean b)|Returns a Boolean instance representing the specified boolean value.|Since 1.4|
 |static Boolean|valueOf(String s)|Returns a Boolean with a value represented by the specified string.|Since 1.4|
 
 
-### ✔️ Byte Class
+## ✔️ Byte Class
 
-- **Field Summary**
+### Field Summary
 
 |Modifier and Type|Field|Description|Detail|
 |---|---|---|---|
@@ -25,7 +22,7 @@
 |static byte|MIN_VALUE|A constant holding the minimum value a byte can have, -2^7.|Constant Field Values|
 |static int|SIZE|The number of bits used to represent a byte value in two's complement binary form.|Since 1.5. Constant Field Values|
 
-- **Method Summary**
+### Method Summary
 
 |Modifier and Type|Method|Description|Detail|
 |---|---|---|---|
@@ -35,54 +32,80 @@
 |int|intValue()|Returns the value of this Byte as an int after a widening primitive conversion.|intValue in class Number|
 |long|longValue()|Returns the value of this Byte as a long after a widening primitive conversion.|longValue in class Number|
 |short|shortValue()|Returns the value of this Byte as a short after a widening primitive conversion.|shortValue in class Number|
-|String|toString()|Returns a String object representing this Byte's value.|toString in class Object|
 |static String|toString(byte b)|Returns a new String object representing the specified byte.|X|
 |static Byte|valueOf(byte b)|Returns a Byte instance representing the specified byte value.|Since 1.5|
 |static Byte|valueOf(String s)|Returns a Byte object holding the value given by the specified String.|throws NumberFormatException, arguments were given to the parseByte(java.lang.String) method|
 
-### ✔️ Short Class
+## ✔️ Short Class
+
+### Field Summary
 
 |Modifier and Type|Method|Description|Detail|
 |---|---|---|---|
-|boolean|equals(Object obj)|public boolean equals(Object obj)|a Short object that contains **the same short value** as this object.|
+|static int|BYTES|The number of bytes used to represent a short value in two's complement binary form.|Since 1.8, Constant Field Values|
+|static short|MAX_VALUE|A constant holding the maximum value a short can have, 2^15-1.|X|
+|static short|MIN_VALUE|A constant holding the minimum value a short can have, -2^15.|X|
+|static int|SIZE|The number of bits used to represent a short value in two's complement binary form.|Since 1.5, Constant Field Values|
 
-### ✔️ Character Class
-
-|Modifier and Type|Method|Description|Detail|
-|---|---|---|---|
-|boolean|equals(Object obj)|public boolean equals(Object obj)|a Character object that represents **the same char value** as this object.|
-|char|charValue()|public char charValue()|Returns the value of this Character object.|
-|int|hashCode()|public int hashCode()|Returns a hash code for this Character; equal to the result of invoking charValue().|
-|static int|hashCode(char value)|public static int hashCode(char value)|Returns a hash code for a char value; compatible with Character.hashCode().(since 1.8)|
-|static boolean|isLowerCase(char ch)|public static boolean isLowerCase(char ch)|Determines if the specified character is a lowercase character.|
-|static int|compare(char x, char y)|public static int compare(char x, char y)|Compares two char values numerically.|
-|int|compareTo(Character anotherCharacter)|public int compareTo(Character anotherCharacter)|Compares two Character objects numerically.|
-|static int|getNumericValue(char ch)|public static int getNumericValue(char ch)|Returns the int value that the specified Unicode character represents.|
-|int|hashcode()|public int hashCode()|Returns a hash code for this Character; equal to the result of invoking charValue().|
-|static int|hashCode(char value)|public static int hashCode(char value)|Returns a hash code for a char value; compatible with Character.hashCode().(since 1.8)|
-|static boolean|isUpperCase(char ch)|public static boolean isUpperCase(char ch)|Determines if the specified character is an uppercase character.|
-|String|toString()|public String toString()|Returns a String object representing this Character's value.|
-|static String|toString(char c)|public static String toString(char c)|Returns a String object representing the specified char.|
-|static Character|valueOf(char c)|public static Character valueOf(char c)|Returns a Character instance representing the specified char value.|
-
-
-### ✔️ Integer Class
+### Method Summary
 
 |Modifier and Type|Method|Description|Detail|
 |---|---|---|---|
-|boolean|equals(Object obj)|public boolean equals(Object obj)|an Integer object that contains **the same int value** as this object.|
-|short|shortValue()|public short shortValue()|Returns the value of this Integer as a short after a narrowing primitive conversion.|
-|int|sum(int a, int b)|public static int sum(int a, int b)|Adds two integers together as per the + operator.|
-|static String|toBinaryString(int i)|public static String toBinaryString(int i)|Returns a string representation of the integer argument as an unsigned integer in base 2.|
-|static String|toHexString(int i)|public static String toHexString(int i)|Returns a string representation of the integer argument as an unsigned integer in base 16.|
-|static String|toOctalString(int i)|public static String toOctalString(int i)|Returns a string representation of the integer argument as an unsigned integer in base 8.|
-|String|toString()|public String toString()|Returns a String object representing this Integer's value. |
-|static String|toString(int i)|public static String toString(int i)|Returns a String object representing the specified integer.|
-|static Integer|valueOf(String s)|public static Integer valueOf(String s) throws NumberFormatException|Returns an Integer object holding the value of the specified String.|
-|static int|parseInt(String s)|public static int parseInt(String s) throws NumberFormatException|Parses the string argument as a signed decimal integer. |
+|boolean|equals(Object obj)|Compares this object to the specified object.|a Short object that contains **the same short value** as this object.|
+|int|hashCode()|Returns a hash code for this Short; equal to the result of invoking intValue().|X|
+|static int|hashCode(short value)|Returns a hash code for a short value; compatible with Short.hashCode().|Since 1.8|
+|static String|toString(short s)|Returns a new String object representing the specified short.|X|
+|static Short|valueOf(String s)|Returns a Short object holding the value given by the specified String.|throws NumberFormatException, argument were given to the parseShort(java.lang.String)|
 
 
 
+## ✔️ Character Class
+
+|Modifier and Type|Method|Description|Detail|
+|---|---|---|---|
+|boolean|equals(Object obj)|Compares this object against the specified object.|argument is not null and is a Character object that represents **the same char value** as this object.|
+|static int|hashCode(char value)|Returns a hash code for a char value; compatible with Character.hashCode().|Since 1.8|
+|static boolean|isLowerCase(char ch)|Determines if the specified character is a lowercase character.|look at examples of lowercase characters|
+|static boolean|isUpperCase(char ch)|Determines if the specified character is an uppercase character.|look at examples of uppercase characters.|
+|static int|compare(char x, char y)|Compares two char values numerically.|Since 1.7|
+|static int|getNumericValue(char ch)|Returns the int value that the specified Unicode character represents.|Since 1.1|
+|static int|hashCode(char value)|Returns a hash code for a char value; compatible with Character.hashCode().|Since 1.8|
+|static String|toString(char c)|Returns a String object representing the specified char.|Since 1.4|
+|static Character|valueOf(char c)|Returns a Character instance representing the specified char value.|Since 1.5|
+
+### examples lowercase characters
+
+![image](https://user-images.githubusercontent.com/81727895/155846759-01acec0b-6f6a-412c-bf2b-2f952362ccfa.png)
+
+### examples of uppercase characters
+
+![image](https://user-images.githubusercontent.com/81727895/155846920-9f4f0151-a5fd-4bab-a8ef-b2c6684d830c.png)
+
+
+## ✔️ Integer Class
+
+### Field Summary
+
+|Modifier and Type|Method|Description|Detail|
+|---|---|---|---|
+|static int|BYTES|The number of bytes used to represent a int value in two's complement binary form.|Since 1.8|
+|static int|MAX_VALUE|A constant holding the maximum value an int can have, 2^31-1.|Constant Field Values|
+|static int|MIN_VALUE|A constant holding the minimum value an int can have, -2^31.|Constant Field Values|
+|static int|SIZE|The number of bits used to represent an int value in two's complement binary form.|Since 1.5, Constant Field Values|
+
+### Method Summary
+
+|Modifier and Type|Method|Description|Detail|
+|---|---|---|---|
+|boolean|equals(Object obj)|Compares this object to the specified object.|argument is not null and is an Integer object that contains **the same int value** as this object.|
+|static int|sum(int a, int b)|Adds two integers together as per the + operator.|Since 1.8|
+|static String|toBinaryString(int i)|Returns a string representation of the integer argument as an unsigned integer in base 2.|Since JDK1.0.2|
+|static String|toHexString(int i)|Returns a string representation of the integer argument as an unsigned integer in base 16.|Since JDK1.0.2, This value is converted to a string of **ASCII digits** in hexadecimal (base 16) with no extra leading 0s.|
+|static String|toOctalString(int i)|Returns a string representation of the integer argument as an unsigned integer in base 8.|Since JDK1.0.2|
+|String|toString()|Returns a String object representing this Integer's value.|X|
+|static String|toString(int i)|Returns a String object representing the specified integer.|X|
+|static Integer|valueOf(String s)|Returns an Integer object holding the value of the specified String.|throws NumberFormatException|
+|static int|parseInt(String s)|Parses the string argument as a signed decimal integer.|throws NumverFormatException|
 
 ### ✔️ Long Class
 
