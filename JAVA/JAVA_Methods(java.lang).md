@@ -109,23 +109,87 @@
 
 ### ✔️ Long Class
 
-|Modifier and Type|Method|Description|Detail|
-|---|---|---|---|
-|boolean|equals(Object obj)|public boolean equals(Object obj)|a Long object that contains **the same long value** as this object.|
-
-### ✔️ Float Class
+### Field Summary
 
 |Modifier and Type|Method|Description|Detail|
 |---|---|---|---|
-|boolean|equals(Object obj)|public boolean equals(Object obj)| Float object that represents **a float with the same value as the float represented by this object.**|
+|static int|BYTES|The number of bytes used to represent a long value in two's complement binary form.|Since 1.8, Constant Field Values|
+|static long|MAX_VALUES|A constant holding the maximum value a long can have, 2^63-1.|X|
+|static long|MIN_VALUE|A constant holding the minimum value a long can have, -2^63.|X|
+|static int|SIZE|The number of bits used to represent a long value in two's complement binary form.|Since 1.5, Constant Field Values|
 
-### ✔️ Double Class
+
+# ============= 다음시간에 작성하기================
+
+### Method Summary
 
 |Modifier and Type|Method|Description|Detail|
 |---|---|---|---|
-|boolean|equals(Object obj)|public boolean equals(Object obj)| a Double object that represents a double that has **the same value as the double represented by this object.**|
+|boolean|equals(Object obj)|Compares this object to the specified object.|the argument is not null and is a Long object that contains **the same long value** as this object.|
+|int|hashCode()|Returns a hash code for a long value; compatible with Long.hashCode().||
+|static long|max(long a, long b)|Returns the smaller of two long values as if by calling Math.min.||
+|static long|parseLong|Parses the string argument as a signed decimal long.|throws NumberFormatException|
+|static String|toBinaryString(long i)|Returns a string representation of the long argument as an unsigned integer in base 2.||
+|static String|toHexString(long i)|Returns a string representation of the long argument as an unsigned integer in base 16.||
+|static String|toOctalString(long i)|Returns a string representation of the long argument as an unsigned integer in base 8.||
+|static String|toString(long i)|Returns a String object representing the specified long.||
+|static Long|valueOf(String s)|Returns a Long object holding the value of the specified String.||
 
-### ✔️ String Class
+## ✔️ Float Class
+
+### Field Summary
+
+|Modifier and Type|Method|Description|Detail|
+|---|---|---|---|
+|static int|BYTES|The number of bytes used to represent a float value.||
+|static float|MAX_VALUE|A constant holding the largest positive finite value of type float, (2-2^-23)·2127.||
+|static float|MIN_VALUE|A constant holding the smallest positive nonzero value of type float, 2-^149.||
+|static float|NaN|A constant holding a Not-a-Number (NaN) value of type float.||
+|static int|SIZE|The number of bits used to represent a float value.||
+
+### Method Summary
+
+|Modifier and Type|Method|Description|Detail|
+|---|---|---|---|
+|boolean|equals(Object obj)|Compares this object against the specified object.| the argument is not null and is a Float object that represents **a float with the same value as the float** represented by this object.|
+|static int|compare(float f1, float f2)|Compares the two specified float values.||
+|static int|hashCode(float value)|Returns a hash code for a float value; compatible with Float.hashCode().||
+|static float|parseFloat(String s)|Returns a new float initialized to the value represented by the specified String, as performed by the valueOf method of class Float.||
+|static String|toString(float f)|Returns a string representation of the float argument.||
+|static Float|valueOf(String s)|Returns a Float object holding the float value represented by the argument string s.||
+
+## ✔️ Double Class
+
+### Field Summary
+
+|Modifier and Type|Method|Description|Detail|
+|---|---|---|---|
+|static int|BYTES|The number of bytes used to represent a double value.||
+|static double|MAX_VALUE|A constant holding the largest positive finite value of type double, (2-2^-52)·2^1023.||
+|static double|MIN_VALUE|A constant holding the smallest positive nonzero value of type double, 2^-1074.||
+|static double|NaN|A constant holding a Not-a-Number (NaN) value of type double.||
+|static double|NEGATIVE_INFINITY|A constant holding the negative infinity of type double.||
+|static double|POSITIVE_INFINITY|A constant holding the positive infinity of type double.||
+|static int|SIZE|The number of bits used to represent a double value.||
+
+
+### Method Summary
+
+|Modifier and Type|Method|Description|Detail|
+|---|---|---|---|
+|boolean|equals(Object obj)|Compares this object against the specified object.|the argument is not null and is a Double object that **represents a double that has the same value as the double represented** by this object. |
+|static int|hashCode(double value)|Returns a hash code for a double value; compatible with Double.hashCode().||
+|static double|parseDouble(String s)|Returns a new double initialized to the value represented by the specified String, as performed by the valueOf method of class Double.||
+|static String|toHexString(double d)|Returns a hexadecimal string representation of the double argument.||
+|static String|toString(double d)|Returns a string representation of the double argument.||
+|static Double|valueOf(String s)|Returns a Double object holding the double value represented by the argument string s.||
+
+
+## ✔️ String Class
+
+- implements CharSequence
+- equals vs contains boolean contains(CharSequence s)
+
 |JAVA Methods|Describe|
 |---|---|
 |String : String.valueOf()|public static String valueOf(boolean b)|
@@ -141,7 +205,32 @@
 boolean|equals(Object anObject)|public boolean equals(Object anObject)|a String object that represents **the same sequence of characters** as this object.|
 |String|concat(String str)|public String concat(String str)|a String object is returned that represents a character sequence that is the concatenation of the character sequence represented by this String object and the character sequence represented by the argument string.|
 
-### ✔️ Object Class(java 상속클래스의 시조)
+## ✔️ StringBuffer Class
+
+|Modifier and Type|Method|Description|Detail|
+|---|---|---|---|
+|StringBuffer|append(boolean b), append(char c), append(char[] str), append(char[] str, int offset, int len), append(CharSequence s), append(CharSequence s, int start, int end), append(double d), 	append(float f), append(int i), append(long lng), append(Object obj), append(String str), append(StringBuffer sb)|||
+|StringBuffer|delete(int start, int end)|Removes the characters in a substring of this sequence.||
+|StringBuffer|	deleteCharAt(int index)|Removes the char at the specified position in this sequence.||
+|int|indexOf(String str)|Returns the index within this string of the first occurrence of the specified substring.||
+|String|substring(int start)|Returns a new String that contains a subsequence of characters currently contained in this character sequence.||
+
+## ✔️ Math Class
+
+
+## ✔️ System Class
+
+## ✔️ Throwable Class
+
+## ✔️ Class Class
+
+|Modifier and Type|Method|Description|Detail|
+|---|---|---|---|
+|T|newInstance()|public T newInstance() throws InstantiationException, IllegalAccessException|Creates a new instance of the class represented by this Class object.|
+|Method[]|getDeclaredMethods()|public Method[] getDeclaredMethods() throws SecurityException|Returns an array containing Method objects reflecting all the declared methods of the class or interface represented by this Class object, including public, protected, default (package) access, and private methods, but excluding inherited methods.|
+
+
+## ✔️ Object Class(java 상속클래스의 시조)
 
 |Modifier and Type|Method|Description|Detail|
 |---|---|---|--|
@@ -151,22 +240,4 @@ boolean|equals(Object anObject)|public boolean equals(Object anObject)|a String 
 |String|toString()|public String toString()|Returns a string representation of the object. +getClass().getName() + '@' + Integer.toHexString(hashCode())|
 
 ![](https://images.velog.io/images/yunyoseob/post/7fef7850-600f-4cbc-9f4e-eca9a0ffaa14/image.png)
-
-### ✔️ StringBuffer
-
-### ✔️ System Class
-
-### ✔️ Class Class
-
-|Modifier and Type|Method|Description|Detail|
-|---|---|---|---|
-|T|newInstance()|public T newInstance() throws InstantiationException, IllegalAccessException|Creates a new instance of the class represented by this Class object.|
-|Method[]|getDeclaredMethods()|public Method[] getDeclaredMethods() throws SecurityException|Returns an array containing Method objects reflecting all the declared methods of the class or interface represented by this Class object, including public, protected, default (package) access, and private methods, but excluding inherited methods.|
-
-## Exceptions (java.lang)
-
-### ✔️ Throwable class
-
-### ✔️ Exception class
-
 
