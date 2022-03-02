@@ -117,6 +117,7 @@
 |Modifier and Type|Method|Description|Detail|
 |---|---|---|---|
 |boolean|exists()|Tests whether the file or directory denoted by this abstract pathname exists.|throws SecurityException, SecurityManager.checkRead(java.lang.String)|
+|boolean|createNewFile()|Atomically creates a new, empty file named by this abstract pathname if and only if a file with this name does not yet exist.|Since 1.2|
 
 ## ✔️ FileInputStream
 
