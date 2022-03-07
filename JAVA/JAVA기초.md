@@ -58,6 +58,7 @@ rt.jar, src.jar에 jdk 1.8 자바소스(클래스)가 8천 여개가 있다.
 
 ### Q7. 빌트인 클래스의 종류
 
+```
 java.lang.String
   public char charAt(int index)
 java.lang.System
@@ -72,6 +73,7 @@ java.lang.Integer
 java.lang.Long
 java.lang.Float
 java.lang.Double
+```
 
 ### 변수의 종류(JAVA 데이터 타입)
 
