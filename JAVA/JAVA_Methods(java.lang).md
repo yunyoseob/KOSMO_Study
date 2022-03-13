@@ -1,6 +1,7 @@
 # JAVA Methods(java.lang) 모음
 
 ## ✔️ Boolean Class
+
 |Modifier and Type|Method|Description|Detail|
 |---|---|---|---|
 |boolean|equals(Object obj)|a Boolean object that represents **the same boolean value** as this object.|X|
@@ -218,15 +219,68 @@
 |Modifier and Type|Method|Description|Detail|
 |---|---|---|---|
 |StringBuffer|append(boolean b), append(char c), append(char[] str), append(char[] str, int offset, int len), append(CharSequence s), append(CharSequence s, int start, int end), append(double d), 	append(float f), append(int i), append(long lng), append(Object obj), append(String str), append(StringBuffer sb)|Appends to sequence|X|
-|StringBuffer|delete(int start, int end)|Removes the characters in a substring of this sequence.||
-|StringBuffer|	deleteCharAt(int index)|Removes the char at the specified position in this sequence.||
+|StringBuffer|delete(int start, int end)|Removes the characters in a substring of this sequence.|X|
+|StringBuffer|	deleteCharAt(int index)|Removes the char at the specified position in this sequence.|X|
 
 ## ✔️ Math Class
 
+|Modifier and Type|Method|Description|Detail|
+|---|---|---|---|
+|static doublie, float, int, long, doublie|abs(double a), abs(float a) abs(int a), abs(long a), abs(double a)|Returns the absloute value of a data value.|X|
+|static double|ceil(double a)|Returns the smallest (closest to negative infinity) double value that is greater than or equal to the argument and is equal to a mathematical integer.(올림)|X|
+|static double|exp(double a)|Returns Euler's number e raised to the power of a double value.|X|
+|static double|round(double a)|Returns the closest long to the argument, with ties rounding to positive infinity.(반올림)|X|
+|static int|round(float a)|eturns the closest int to the argument, with ties rounding to positive infinity.(반올림)|X|
+|static double|floor(double a)|Returns the largest (closest to positive infinity) double value that is less than or equal to the argument and is equal to a mathematical integer.(내림)|
+|static double|pow(double a, double b)|Returns the value of the first argument raised to the power of the second argument.(제곱연산)|a^b|
+|static double, float, int, long|max(double a, double b), max(float a, float b), max(int a, int b), max(long a, long b)|Returns the greater of two values|X|
+|static double|random()|Returns a double value with a positive sign, greater than or equal to 0.0 and less than 1.0.(난수 발생)|
 
 ## ✔️ System Class
 
+### Field Summary
+
+|Modifier and Type|Method|Description|Detail|
+|---|---|---|---|
+|static PrintStream|err|The "standard" error output stream.|This stream is already open and ready to accept output data.|
+|static InputStream|in|The "standard" input stream.|This stream is already open and ready to accept output data.|
+|static PrintStream|out|The "standard" output stream.|This stream is already open and ready to accept output data.|
+
+![image](https://user-images.githubusercontent.com/81727895/158065964-6b88943e-6e07-4e9e-8c97-577c215bc011.png)
+
+|Modifier and Type|Method|Description|Detail|
+|---|---|---|--|
+|static long|currentTimeMillis()|Returns the current time in milliseconds.|See the description of the class Date for a discussion of slight discrepancies that may arise between "computer time" and coordinated universal time (UTC).|
+|static void|exit(int status)|Terminates the currently running Java Virtual Machine|This method calls the exit method in class Runtime. This method never returns normally.|
+|static Properties|getProperties()|Determines the current system properties.|X|
+|static String|getProperty(String key)|Gets the system property indicated by the specified key.|Return the string value of the system property, or null if there is no property with that key.|
+|static String|getProperty(String key, String def)|Gets the system property indicated by the specified key.|Returns the string value of the system property, or the default value if there is no property with that key.|
+|static int|identityHashCode(Object x)|Returns the same hash code for the given object as would be returned by the default method hashCode(), whether or not the given object's class overrides hashCode().|X|
+|static String|	lineSeparator()|Returns the system-dependent line separator string.|On UNIX systems, it returns "\n"; on Microsoft Windows systems it returns "\r\n". (Since 1.7)|
+|static void|load(String filename)|Loads the native library specified by the filename argument.|The filename argument must be an absolute path name.|X|
+|static void|setProperties(Properties props)|Sets the system properties to the Properties argument.|
+|static String|setProperty(String key, String value)|Sets the system property indicated by the specified key.|Returns the previous value of the system property, or null if it did not have one.(Since 1.2)|
+
 ## ✔️ Throwable Class
+
+![image](https://user-images.githubusercontent.com/81727895/158066427-b8fef159-3de7-48ec-951b-92cee26082b0.png)
+
+|Modifier and Type|Method|Description|Detail|
+|---|---|---|---|
+|String|getMessage()|Returns the detail message string of this throwable.|X|
+|void|printStackTrace()|Prints this throwable and its backtrace to the standard error stream.|사용을 지양한다.|
+
+## ✔️ Exception
+
+### Constructors
+
+|Modifier|Constructor|Description|Deail|
+|--|--|--|--|
+||Exception()|Constructs a new exception with null as its detail message.|X|
+||Exception(String message)|Constructs a new exception with the specified detail message.|X|
+||	Exception(String message, Throwable cause)|Constructs a new exception with the specified detail message and cause.|Since 1.4|
+|protected|Exception(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace)|Constructs a new exception with the specified detail message, cause, suppression enabled or disabled, and writable stack trace enabled or disabled.|Since 1.7|
+||Exception(Throwable cause)|Constructs a new exception with the specified cause and a detail message of (cause==null ? null : cause.toString()) (which typically contains the class and detail message of cause).|Since 1.4|
 
 ## ✔️ Class Class
 
@@ -234,9 +288,25 @@
 |---|---|---|---|
 |T|newInstance()|public T newInstance() throws InstantiationException, IllegalAccessException|Creates a new instance of the class represented by this Class object.|
 |Method[]|getDeclaredMethods()|public Method[] getDeclaredMethods() throws SecurityException|Returns an array containing Method objects reflecting all the declared methods of the class or interface represented by this Class object, including public, protected, default (package) access, and private methods, but excluding inherited methods.|
+|static Class<?>|forName(String className)|Returns the Class object associated with the class or interface with the given string name.|Parameters: className - the fully qualified name of the desired class.|
+|static Class<?>|	forName(String name, boolean initialize, ClassLoader loader)|Returns the Class object associated with the class or interface with the given string name, using the given class loader.|Since 1.2|
+|Class<?>[]|getClasses()|Returns an array containing Class objects representing all the public classes and interfaces that are members of the class represented by this Class object.|X|
+|Method[]|getMethods()|Returns an array containing Method objects reflecting all the public methods of the class or interface represented by this Class object, including those declared by the class or interface and those inherited from superclasses and superinterfaces.|X|
+|String|getName()|Returns the name of the entity (class, interface, array class, primitive type, or void) represented by this Class object, as a String.|X|
+|Package|getPackage()|Gets the package for this class.|X|
+|T|newInstance()|Creates a new instance of the class represented by this Class object.|X|
+|String|toString()|Converts the object to a string.|X|
 
 
 ## ✔️ Object Class(java 상속클래스의 시조)
+
+### Constructors
+
+|Constructor and Description|
+|--|
+|Object()|
+
+Class Object is the root of the class hierarchy. Every class has Object as a superclass. All objects, including arrays, implement the methods of this class.
 
 |Modifier and Type|Method|Description|Detail|
 |---|---|---|--|
@@ -244,6 +314,9 @@
 |Class<?>|getClass()|public final Class<?> getClass()|Returns the runtime class of this Object. The returned Class object is the object that is locked by static synchronized methods of the represented class.|
 |int|hashCode()|public int hashCode()|Returns a hash code value for the object.|
 |String|toString()|public String toString()|Returns a string representation of the object. +getClass().getName() + '@' + Integer.toHexString(hashCode())|
+|void|wait()|Causes the current thread to wait until another thread invokes the notify() method or the notifyAll() method for this object.|X|
+|void|wait(lnog timeout)|Causes the current thread to wait until either another thread invokes the notify() method or the notifyAll() method for this object, or a specified amount of time has elapsed.|X|
+|void|wait(long timeout, int nanos)|Causes the current thread to wait until another thread invokes the notify() method or the notifyAll() method for this object, or some other thread interrupts the current thread, or a certain amount of real time has elapsed.|X|
 
 ![](https://images.velog.io/images/yunyoseob/post/7fef7850-600f-4cbc-9f4e-eca9a0ffaa14/image.png)
 
