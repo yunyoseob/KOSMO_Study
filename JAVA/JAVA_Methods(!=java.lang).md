@@ -6,6 +6,19 @@
 
 - **Generic: Elements, including null**
 
+- Since : 1.2
+
+### Constructors
+
+|Constructor|Description|Detail|
+|---|---|---|
+|ArrayList()|Constructs an empty list with an initial capacity of ten.|X|
+|ArrayList(Collection<? extends E> c)|Constructs a list containing the elements of the specified collection, in the order they are returned by the collection's iterator.|Throws NullPointerException|
+|ArrayList(int initialCapacity)|Constructs an empty list with the specified initial capacity.|Throws IllegalArgumentException|
+
+
+
+
 |Modifier and Type|Method|Description|Detail|
 |---|---|---|---|
 |||||
