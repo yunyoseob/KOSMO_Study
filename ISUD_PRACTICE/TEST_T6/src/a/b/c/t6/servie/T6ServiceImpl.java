@@ -1,4 +1,4 @@
-package a.b.c.t6.servie;
+package a.b.c.t6.service;
 
 import java.util.ArrayList;
 
@@ -7,64 +7,62 @@ import a.b.c.t6.dao.T6DAOImpl;
 import a.b.c.t6.vo.T6VO;
 
 public class T6ServiceImpl implements T6Service {
-
 	@Override
-	public ArrayList<T6VO> t6SelectAll() {
-		// TODO Auto-generated method stub
-		System.out.println("T6ServiceImpl.t6SelectAll >>> :");
+	public ArrayList<T6VO> t6SelectAll(){
+		System.out.println("\n T6ServiceImpl :: t6SelectAll() :: 시작");
 		
-		T6DAO tdao = new T6DAOImpl();
-		return tdao.t6SelectAll();
+		T6DAO td=new T6DAOImpl();
+		
+		return td.t6SelectAll();
 	}
-
+	
 	@Override
 	public ArrayList<T6VO> t6SelectName(T6VO tvo) {
-		// TODO Auto-generated method stub
-		System.out.println("T6ServiceImpl.t6SelectAll >>> :");
+		System.out.println("\n T6ServiceImpl :: t6SelectAll() :: 시작");
 		
-		T6DAO tdao = new T6DAOImpl();
-		return tdao.t6SelectName(tvo);
+		T6DAO td=new T6DAOImpl();
+		ArrayList<T6VO> aList=td.t6SelectName(tvo);
+		
+		return aList;
 	}
-
+	
 	@Override
 	public ArrayList<T6VO> t6SelectDate(T6VO tvo) {
-		// TODO Auto-generated method stub
-		System.out.println("T6ServiceImpl.t6SelectAll >>> :");
 		
-		T6DAO tdao = new T6DAOImpl();
-		return tdao.t6SelectDate(tvo);
+		T6DAO td=new T6DAOImpl();
+		ArrayList<T6VO> aList=td.t6SelectDate(tvo);
+		
+		return aList;
 	}
-
-	// 입력하기 
+	
+	
 	@Override
 	public boolean t6Insert(T6VO tvo) {
-		// TODO Auto-generated method stub
-		System.out.println("T6ServiceImpl.t6Insert >>> : tvo " + tvo);
-		T6VO.printlnT6VO(tvo);
-		
-		T6DAO tdao = new T6DAOImpl();
-		return tdao.t6Insert(tvo);
-	}
+		T6DAO td=new T6DAOImpl();
+		boolean bool=false;
+		bool=td.t6Insert(tvo);
 
-	// 수정하기 
+		return bool;
+	}
+	
+	
 	@Override
 	public boolean t6Update(T6VO tvo) {
-		// TODO Auto-generated method stub
-		System.out.println("T6ServiceImpl.t6Update >>> : tvo " + tvo);
-		T6VO.printlnT6VO(tvo);
-		
-		T6DAO tdao = new T6DAOImpl();
-		return tdao.t6Update(tvo);
-	}
+		T6DAO td=new T6DAOImpl();
+		boolean bool=false;
+		bool=td.t6Update(tvo);
 
-	// 삭제하기 
+		return bool;
+	}
+	
+	
 	@Override
 	public boolean t6Delete(T6VO tvo) {
-		// TODO Auto-generated method stub
-		System.out.println("T6ServiceImpl.t6Delete >>> : tvo " + tvo);
-		T6VO.printlnT6VO(tvo);
+		T6DAO td=new T6DAOImpl();
+		boolean bool=false;
+		bool=td.t6Delete(tvo);
 		
-		T6DAO tdao = new T6DAOImpl();
-		return tdao.t6Delete(tvo);
+		return bool;
 	}
-}
+	
+} // T6ServiceImpl
