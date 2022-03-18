@@ -3,409 +3,330 @@ package a.b.c.t6.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
-import a.b.c.common.OracleConnProperty;
+import a.b.c.common.KosmoConnProperty;
 import a.b.c.t6.sql.T6QueryMap;
 import a.b.c.t6.vo.T6VO;
 
+public class T6DAOImpl implements T6DAO {
 
-public class T6DAOImpl implements T6DAO{
-	// Select
+	// 전체 조회
+	@Override
+	public ArrayList<T6VO> t6SelectAll() {
+		// TODO Auto-generated method stub
+		System.out.println("T6DAOImpl.t6SelectAll >>> : ");
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rsRs = null;
+		ArrayList<T6VO> aList = null;		
+		T6VO _tvo = null; 
+
+		try {
+			conn = KosmoConnProperty.getConnection();
+			String sql = T6QueryMap.getT6SelectAll();
+			pstmt = conn.prepareStatement(sql);
+			System.out.println("전체 조회 >>> : \n" + sql);
+			rsRs = pstmt.executeQuery();
+
+			if (rsRs !=null) { 
+				aList = new ArrayList<T6VO> ();
+
+				while (rsRs.next()) {
+					
+					_tvo = new T6VO();
+					_tvo.setT1(rsRs.getString(1));
+					_tvo.setT2(rsRs.getString(2));
+					_tvo.setT3(rsRs.getString(3));
+					_tvo.setT4(rsRs.getString(4));
+					_tvo.setT5(rsRs.getString(5));
+					_tvo.setT6(rsRs.getString(6));
+					 
+					aList.add(_tvo);					
+				}
+				
+			}else {
+				System.out.println("T6DAOImpl :: 전체조회 결과가 없넹 ㅋㅋㅋ >>> : " + rsRs);
+			}
+		}catch(Exception e) {
+			System.out.println("T6DAOImpl ::  전체조회중 에러가  >>> : " + e.getMessage());
+		}
+		
+		return aList;
+	}
+
+	// 이름 조회
+	@Override
+	public ArrayList<T6VO> t6SelectName(T6VO tvo) {
+		// TODO Auto-generated method stub
+		System.out.println("T6DAOImpl.t6SelectName >>> : ");
+		T6VO.printlnT6VO(tvo);
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rsRs = null;
+		ArrayList<T6VO> aList = null;		
+		T6VO _tvo = null; 
+
+		try {
+			conn = KosmoConnProperty.getConnection();
+			
+			String sql = T6QueryMap.getT6SelectName();
+			pstmt = conn.prepareStatement(sql);
+			System.out.println("이름 조회 >>> : \n" + sql);
+			
+			pstmt.clearParameters();
+			pstmt.setString(1, tvo.getT2());
+			
+			rsRs = pstmt.executeQuery();
+
+			if (rsRs !=null) { 
+				aList = new ArrayList<T6VO> ();
+				while (rsRs.next()) {					
+					_tvo = new T6VO();
+					_tvo.setT1(rsRs.getString(1));
+					_tvo.setT2(rsRs.getString(2));
+					_tvo.setT3(rsRs.getString(3));
+					_tvo.setT4(rsRs.getString(4));
+					_tvo.setT5(rsRs.getString(5));
+					_tvo.setT6(rsRs.getString(6));					 
+					aList.add(_tvo);					
+				}
+				
+			}else {
+				System.out.println("T6DAOImpl :: 이름조회 결과가 없넹 ㅋㅋㅋ >>> : " + rsRs);
+			}
+		}catch(Exception e) {
+			System.out.println("T6DAOImpl ::  이름조회중 에러가  >>> : " + e.getMessage());
+		}
+		
+		return aList;
+	}
+
+	// 날짜 검색
+	@Override
+	public ArrayList<T6VO> t6SelectDate(T6VO tvo) {
+		// TODO Auto-generated method stub
+		System.out.println("T6DAOImpl.t6SelectDate >>> : ");
+		T6VO.printlnT6VO(tvo);
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rsRs = null;
+		ArrayList<T6VO> aList = null;		
+		T6VO _tvo = null; 
+
+		try {
+			conn = KosmoConnProperty.getConnection();
+			
+			String sql = T6QueryMap.getT6SelectDate();
+			pstmt = conn.prepareStatement(sql);
+			System.out.println("날짜 조회 >>> : \n" + sql);
+			
+			pstmt.clearParameters();
+			pstmt.setString(1, tvo.getFromdate());
+			pstmt.setString(2, tvo.getTodate());
+			
+			rsRs = pstmt.executeQuery();
+
+			if (rsRs !=null) { 
+				aList = new ArrayList<T6VO> ();
+				while (rsRs.next()) {					
+					_tvo = new T6VO();
+					_tvo.setT1(rsRs.getString(1));
+					_tvo.setT2(rsRs.getString(2));
+					_tvo.setT3(rsRs.getString(3));
+					_tvo.setT4(rsRs.getString(4));
+					_tvo.setT5(rsRs.getString(5));
+					_tvo.setT6(rsRs.getString(6));					 
+					aList.add(_tvo);					
+				}
+				
+			}else {
+				System.out.println("T6DAOImpl :: 이름조회 결과가 없넹 ㅋㅋㅋ >>> : " + rsRs);
+			}
+		}catch(Exception e) {
+			System.out.println("T6DAOImpl ::  이름조회중 에러가  >>> : " + e.getMessage());
+		}
+		
+		return aList;
+	}
+
+	// 입력
 	/*
-	 * 1. 질의 결과가 있는지 확인
-	 * 2. 질의 결과가 있으면 ArrayList 인스턴스하기
-	 * 3. ResultSet에 있는 boolean 커서 next 함수로 레코드 가져오기
-	 * 4. 가져온 레코드 VO 담기
-	 * 5. VO를 ArrayList에 담기
-	 * 
-	 * */
+	JDBC 를 이용해서 데이터베이스에 입력,  수정, 삭제, 조회
 	
+	sqlplus
+	---------------
+	조회 : SELECT : DQL 
+	입력, 수정, 삭제 : INSERT, UPDATE, DELETE : DML : TRANSACTION : COMMIT, ROLLBACK
+		DML  문장으로 데이터를 테이블에 입력하면 
+		1. 메모리에 쓴다.
+		2. 메모리에 저장된 내용을 확인 하고 
+		   목적에 맞으면 COMMIT,  맞지않으면 ROLLBACK 
+		3. COMMIT 으로 파일에 쓴 이후에는 ROLLBACK 되지 않는다.
+	
+	splplus 에서 하는 것이 아니고 
+	jdbc 드라이버를 이용해서 자바 프로그램에서 구현하는 것 
+	
+	자바프로그램 - jdbc 드라이버 - 오라클 데이터베이스 
+	
+	1. Connection
+	2. PreparedStatement 쿼리문은 데이터베이스에 전달
+	3. ResultSet, int 데이베이스에서 수행된 결과를 프로그램으로 전달 받아야 한다.
+	
+	SELECT
+		테이블에서 조회된 ROW(파일)가 프로그램으로 전달 된다.
+		Connection 
+		PreparedStatement
+		ResultSet
+		executQuery() 
+	
+	INSERT, UPDATE, DELETE 
+		테이블에 반영된 결과를 건수로 전달된다. 
+		Connection 
+		PreparedStatement
+		int 
+		executUpdate()
+		
+		jdbc 드라이버에서 일을 해준다. (Oracle 에서 jdbc 만드는 개발자가 정해준다.)
+		jdbc 드라이버를 이용해서 
+		오라클 데이터베이스 테이블에 데이터를 입력하면 
+		최소 1건은 자동으로 커밋을 해준다. <-- 버전 별로 ???
+		
+		커밋을 어디서 콘트롤 하는가 : jdbc 드라이버에서 역활을 하고 : 오라클 엔진에게 요청을 한다. 
+		개발자가 할 수 있는 일은
+		Connection 인터페이스 setAutoCommit(), getAutCommit() 두가지 함수를 가지고 
+		jdbc 드라이버에게 요청을 하면 
+		jdbc 드라이버가 오라클 엔진(옵티마이저)에게 요청을 한다.
+		요청을 받은 오라클 엔지(옵티마이저)가 현재 그 테이블의 상태를 보고 
+		요청한 정보를 수행 한다. 
+		
+		Connection 인터페이스를 이용해서 
+			자바프로그램 - jdbc 드라이버 - 오라클 데이터베이스 가 연결되면
+		Connection.setAutoCommit() true 인 상태가 된다.
+		setAutoCommit 이 true 인 상태에서 최초 1건 만 자동으로 커밋을 한다. 		 
+	*/	
 	@Override
-	public ArrayList<T6VO> t6SelectAll(){
-		System.out.println("\n T6DAOImpl :: t6SelectAll() :: 시작");
+	public boolean t6Insert(T6VO tvo) {
+		// TODO Auto-generated method stub
+		System.out.println("T6DAOImpl.t6Insert >>> : tvo " + tvo);
+		T6VO.printlnT6VO(tvo);
 		
-		// 지역변수 초기화
-		Connection conn=null;
-		PreparedStatement pstmt=null;
-		ResultSet rsRs=null;
-		// ArrayList<T6VO> 초기화
-		ArrayList<T6VO> aList=null;
-		T6VO tvo=null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int nCnt = 0;
+		boolean bool = false;
 		
-		try{
-			// 커넥션 연결
-			conn=OracleConnProperty.getConnection();
-			// DB연결하기
+		try  {
+			// conn = KosmoConnProperty.getConnection(); 스테이트먼트 문장이 성립되면
+			// 이 상태에서 커넥션이 하나 오픈이 된다.
+			// 커네션이 오픈이 되면서 setAutoCommit() true 인 상태가 된다.
+			// 최초 1건이 자동 커밋이다. <-- 자동 커밋을 요청한다. 1. jdbc 드라이버, 2. 오라클 엔진 
+			conn = KosmoConnProperty.getConnection();			
 			
-			// 쿼리문 받아오기
-			String sql= T6QueryMap.getT6SelectAll();
-			// 쿼리문 입력
-			pstmt=conn.prepareStatement(sql);
-			// 쿼리문 출력
-			System.out.println("전체 검색 >>> : \n"+sql);
+			String sql = T6QueryMap.getT6Insert();
+			pstmt = conn.prepareStatement(sql);
+				System.out.println("입력하기 >>> : \n" + sql);
 			
-			
-			// 질의 결과 받기
-			rsRs=pstmt.executeQuery();
-			
-			// 1
-			if(rsRs!=null){
-				//2 ArrayList 인스턴스 하기
-				aList = new ArrayList<T6VO>();
-				//3
-				while(rsRs.next()){
-					// 4
-					tvo=new T6VO();
-					tvo.setT1(rsRs.getString(1));
-					tvo.setT2(rsRs.getString(2));
-					tvo.setT3(rsRs.getString(3));
-					tvo.setT4(rsRs.getString(4));
-					tvo.setT5(rsRs.getString(5));
-					tvo.setT6(rsRs.getString(6));
-					// T6VO setting 완료
-					
-					// 5
-					aList.add(tvo);
-				}		
-				OracleConnProperty.conClose(conn, pstmt, rsRs);
-			}else {
-				boolean rbool= rsRs == null;
-				System.out.println("rsRs == null >>> : "+rbool);
-				System.out.println("rsRs >>> : "+rsRs);
-			}		
-		}catch(Exception e){
-			System.out.println("T6DAOImpl :: t6SelectAll() :: error >>> : "+e.getMessage());
-		}
-		
-		// aList가 null이거나 aList.size()가 0인 경우 출력
-		if (aList==null || aList.size()==0){
-			System.out.println("T6DAOImpl :: t6SelectAll() :: Return 되는 aList >>> : "+aList);
-			System.out.println("T6DAOImpl :: t6SelectAll() :: Return 되는 aList.size() >>> : "+aList.size());
-		}
-		
-		if (conn!=null){
-			try{conn.close(); conn=null;}catch(Exception e1){}
-			// OracleConnProperty.conClose(conn, pstmt, rsRs);
-			}
-		if (pstmt!=null){
-			try{pstmt.close(); pstmt=null;}catch(Exception e2){}
-			}
-		if (rsRs!=null){
-			try{rsRs.close(); rsRs=null;}catch(Exception e3){}
-			}
-		// ArrayList 리턴하기
-		return aList;
-	}; // t6SelectAll()
-	
-	
-	@Override
-	public ArrayList<T6VO> t6SelectName(T6VO tvo){
-		System.out.println("\n T6DAOImpl :: t6SelectName(T6VO tvo) :: 시작");
-		System.out.println("tvo.getT2 :: (회원이름) >>> "+tvo.getT2());
-		
-		Connection conn=null;
-		PreparedStatement pstmt=null;
-		ResultSet rsRs=null;
-		ArrayList<T6VO> aList=null;
-		T6VO _tvo=null;
-		
-		try{
-			// 커넥션 연결
-			conn=OracleConnProperty.getConnection();
-			// DB연결하기
-			
-			// 쿼리문 받아오기
-			String sql= T6QueryMap.getT6SelectName();
-			
-			// 쿼리문 입력
-			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, tvo.getT2());  // place holder 1 :: 회원이름
-			System.out.println("전체 검색 >>> : \n"+sql);
-			// 쿼리문 출력
-			
-			// 질의 결과 받기
-			// System.out.println("에러체크1 통과");
-			rsRs=pstmt.executeQuery(); // error 나는지 확인해보기
-			// System.out.println("에러체크2 통과");
 			pstmt.clearParameters();
-			// System.out.println("에러체크3 통과");
+			pstmt.setString(1, tvo.getT1());
+			pstmt.setString(2, tvo.getT2());
+			pstmt.setString(3, tvo.getT3());
 			
-			// 1
-			if(rsRs!=null){
-				//2 ArrayList 인스턴스 하기
-				aList = new ArrayList<T6VO>();
-				//3
-				while(rsRs.next()){
-					// 4
-					_tvo=new T6VO();
-					_tvo.setT1(rsRs.getString(1));
-					_tvo.setT2(rsRs.getString(2));
-					_tvo.setT3(rsRs.getString(3));
-					_tvo.setT4(rsRs.getString(4));
-					_tvo.setT5(rsRs.getString(5));
-					_tvo.setT6(rsRs.getString(6));
-					// T6VO setting 완료
-					
-					// 5
-					aList.add(_tvo);
-				}
-				OracleConnProperty.conClose(conn, pstmt, rsRs);
-			}else {
-				boolean rbool= rsRs == null;
-				System.out.println("rsRs == null >>> : "+rbool);
-				System.out.println("rsRs >>> : "+rsRs);
-			}		
-		}catch(Exception e){
-			System.out.println("T6DAOImpl :: getT6SelectName() :: error >>> : "+e.getMessage());
-		}
-		
-		// aList가 null이거나 aList.size()가 0인 경우 출력
-		if (aList==null || aList.size()==0){
-			System.out.println("T6DAOImpl :: t6SelectName() :: Return 되는 aList >>> : "+aList);
-			System.out.println("T6DAOImpl :: t6SelectName() :: Return 되는 aList.size() >>> : "+aList.size());
-		}
-		
-		
-		if (conn!=null){
-			try{conn.close(); conn=null;}catch(Exception e1){}
-			}
-		if (pstmt!=null){
-			try{pstmt.close(); pstmt=null;}catch(Exception e2){}
-			}
-		if (rsRs!=null){
-			try{rsRs.close(); rsRs=null;}catch(Exception e3){}
-			}
-		
-		// ArrayList 리턴하기
-		return aList;
-	};
-	
-	
-	@Override
-	public ArrayList<T6VO> t6SelectDate(T6VO tvo){
-		System.out.println("\n T6DAOImpl :: t6SelectDate(T6VO tvo) :: 시작");
-		System.out.println("tvo.getFromdate() :: (입사일) >>> "+tvo.getFromdate());
-		System.out.println("tvo.getTodate() :: (입사일) >>> "+tvo.getTodate());
-
-		Connection conn=null;
-		PreparedStatement pstmt=null;
-		ResultSet rsRs=null;
-		ArrayList<T6VO> aList=null;
-		T6VO _tvo=null;
-		
-		try{
-			// 커넥션 연결
-			conn=OracleConnProperty.getConnection();
-			// DB연결하기
+			nCnt = pstmt.executeUpdate();
+//			boolean b = !conn.getAutoCommit();
+//			System.out.println("b >>> : " + b);
+//			if (b) conn.commit(); // <-- 이 상태가는 커밋을 한 것이 아니고 커밋을 요청을 했다. 1. jdbc 드라이버에게 
+			if (!conn.getAutoCommit()) conn.commit();
 			
-			// 쿼리문 받아오기
-			String sql= T6QueryMap.getT6SelectDate();
+			System.out.println("nCnt >>> : " + nCnt + " 건 등록 되었음 ");			
+			if (nCnt > 0) { bool = true;}
 			
-			// 쿼리문 입력
-			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, tvo.getFromdate()); // place holder 1 :: 입사일 :: fromdate
-			pstmt.setString(2, tvo.getTodate());  // place holder 2 :: 입사일  ::  todate
-			System.out.println("전체 검색 >>> : \n"+sql);
-			// 쿼리문 출력
-			
-			// 질의 결과 받기
-			// System.out.println("에러체크1 통과");
-			rsRs=pstmt.executeQuery(); // error 나는지 확인해보기
-			// System.out.println("에러체크2 통과");
-			pstmt.clearParameters();
-			// System.out.println("에러체크3 통과");
-			
-			// 1
-			if(rsRs!=null){
-				//2 ArrayList 인스턴스 하기
-				aList = new ArrayList<T6VO>();
-				//3
-				while(rsRs.next()){
-					// 4
-					_tvo=new T6VO();
-					_tvo.setT1(rsRs.getString(1));
-					_tvo.setT2(rsRs.getString(2));
-					_tvo.setT3(rsRs.getString(3));
-					_tvo.setT4(rsRs.getString(4));
-					_tvo.setT5(rsRs.getString(5));
-					_tvo.setT6(rsRs.getString(6));
-					// T6VO setting 완료
-					
-					// 5
-					aList.add(_tvo);
-				}
-				OracleConnProperty.conClose(conn, pstmt, rsRs);
-			}else {
-				boolean rbool= rsRs == null;
-				System.out.println("rsRs == null >>> : "+rbool);
-				System.out.println("rsRs >>> : "+rsRs);
-			}		
-		}catch(Exception e){
-			System.out.println("T6DAOImpl :: t6SelectDate(T6VO tvo) :: error >>> : "+e.getMessage());
-		}
-		
-		if (conn!=null){
-			try{conn.close(); conn=null;}catch(Exception e1){}
-			}
-		if (pstmt!=null){
-			try{pstmt.close(); pstmt=null;}catch(Exception e2){}
-			}
-		if (rsRs!=null){
-			try{rsRs.close(); rsRs=null;}catch(Exception e3){}
-			}
-		
-		return aList;
-	};
-	
-	
-	// Insert
-	@Override
-	public boolean t6Insert(T6VO tvo){
-		System.out.println("\n T6DAOImpl :: t6Insert(T6VO tvo) :: 시작");
-		System.out.println("tvo.getT1() >>> "+tvo.getT1());
-		System.out.println("tvo.getT2() >>> "+tvo.getT2());
-		System.out.println("tvo.getT3() >>> "+tvo.getT3());
-		
-		Connection conn=null;
-		PreparedStatement pstmt=null;
-		int nCnt=0;
-		boolean bool=false;
-		
-		try {
-			conn=OracleConnProperty.getConnection();
-			// 쿼리문 입력
-			String sql=T6QueryMap.getT6Insert();
-			pstmt=conn.prepareStatement(sql);
-			// pstmt.setString(1, ???); 회원번호가 쿼리로 날라가야 하는데
-			// T6 + YYYYMMDD + 0001 형식으로 INSERT가 되야 한다.
-			System.out.println("INSERT :: sql >>> \n"+sql);
-		
-			pstmt.setString(1, tvo.getT1()); // place holder :: 1 :: 회원번호
-			pstmt.setString(2, tvo.getT2()); // place holder :: 2 :: 회원이름
-			pstmt.setString(3, tvo.getT3()); // place holder :: 3 :: 회원나이
-			
-			nCnt=pstmt.executeUpdate();
-			
-			OracleConnProperty.conClose(conn, pstmt);
-		}catch(Exception e){
-			System.out.println("T6DAOImpl :: t6Insert(T6VO tvo) :: error >>> : "+e.getMessage());
-		}
-		
-		if(nCnt!=0){
-			bool=true;
-			}
-		else{
-			System.out.println("T6DAOImpl :: t6Insert(T6VO tvo) :: return 직전 nCnt >>> : "+nCnt);
-		}
-		
-		
-		if (conn!=null){
-			try{conn.close(); conn=null;}catch(Exception e1){}
-			}
-		if (pstmt!=null){
-			try{pstmt.close(); pstmt=null;}catch(Exception e2){}
-			}
-		
-		return bool;
-	};
-	
-	
-	// Update
-	@Override
-	public boolean t6Update(T6VO tvo){
-		System.out.println("\n T6DAOImpl :: t6Update(T6VO tvo) :: 시작");
-		System.out.println("tvo.getT1() >>> "+tvo.getT1());
-		System.out.println("tvo.getT2() >>> "+tvo.getT2());
-		System.out.println("tvo.getT3() >>> "+tvo.getT3());
-		
-		Connection conn=null;
-		PreparedStatement pstmt=null;
-		int nCnt=0;
-		boolean bool=false;
-
-		try {
-			conn=OracleConnProperty.getConnection();
-			// 쿼리문 입력
-			String sql=T6QueryMap.getT6Update();
-			pstmt=conn.prepareStatement(sql);
-			
-			System.out.println("UPDATE :: sql >>> \n"+sql);
-					
-			pstmt.setString(1, tvo.getT2()); // place holder :: 1 :: 회원이름
-			pstmt.setString(2, tvo.getT3()); // place holder :: 2 :: 회원나이
-			pstmt.setString(3, tvo.getT1()); // place holder :: 3 :: 회원번호
-			
-			// UPDATE TEST_T6 SET T2=?, T3=?, T6=SYSDATE WHERE T4='Y' AND T1=?
-			
-			nCnt=pstmt.executeUpdate();
-			OracleConnProperty.conClose(conn, pstmt);
-		}catch(Exception e){
-			System.out.println("T6DAOImpl :: t6Update(T6VO tvo) :: error >>> : "+e.getMessage());
-		}
-		
-		if(nCnt!=0){
-			bool=true;
-			}
-		else{
-			System.out.println("T6DAOImpl :: t6Update(T6VO tvo) :: return 직전 nCnt >>> : "+nCnt);
-		}
-		
-		if (conn!=null){
-			try{conn.close(); conn=null;}catch(Exception e1){}
-			}
-		if (pstmt!=null){
-			try{pstmt.close(); pstmt=null;}catch(Exception e2){}
+//			KosmoConnProperty.conClose(conn, pstmt);
+		}catch(Exception e) {
+			System.out.println("에러가 >>> : " + e.getMessage());
+		}finally {
+			KosmoConnProperty.conClose(conn, pstmt);
 		}
 		
 		return bool;
-	};
-	
+	}
 
-	// Delete
 	@Override
-	public boolean t6Delete(T6VO tvo){
-		System.out.println("\n T6DAOImpl :: t6Delete(T6VO tvo) :: 시작");
+	public boolean t6Update(T6VO tvo) {
+		// TODO Auto-generated method stub
+		System.out.println("T6DAOImpl.t6Update >>> : tvo " + tvo);
+		T6VO.printlnT6VO(tvo);
 		
-		Connection conn=null;
-		PreparedStatement pstmt=null;
-		int nCnt=0;
-		boolean bool=false;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int nCnt = 0;
+		boolean bool = false;
 		
-		try {
-			conn=OracleConnProperty.getConnection();
-			// 쿼리문 입력
-			String sql=T6QueryMap.getT6Delete();
-			pstmt=conn.prepareStatement(sql);
+		try  {
+			conn = KosmoConnProperty.getConnection();			
+			String sql = T6QueryMap.getT6Update();
+			pstmt = conn.prepareStatement(sql);
+			System.out.println("수정하기 >>> : \n" + sql);
 			
-			System.out.println("DELETE :: sql >>> \n"+sql);
-					
-			pstmt.setString(1, tvo.getT1()); // place holder :: 1 :: 회원이름		
+			pstmt.clearParameters();			
+			pstmt.setString(1, tvo.getT2()); // place holder 1 :: A.T2 = ?
+			pstmt.setString(2, tvo.getT3()); // place holder 2 :: A.T3 = ?
+			pstmt.setString(3, tvo.getT1()); // place holder 3 :: A.T1 = ?
 			
-			// UPDATE TEST_T6 SET T2=?, T3=?, T6=SYSDATE WHERE T4='Y' AND T1=?
+			nCnt = pstmt.executeUpdate();
+			if (!conn.getAutoCommit()) conn.commit();
 			
-			nCnt=pstmt.executeUpdate();
-			OracleConnProperty.conClose(conn, pstmt);
-		}catch(Exception e){
-			System.out.println("T6DAOImpl :: t6Delete(T6VO tvo) :: error >>> : "+e.getMessage());
+			System.out.println("nCnt >>> : " + nCnt + " 건 수정 되었음 ");			
+			if (nCnt > 0) { bool = true;}
+			
+			KosmoConnProperty.conClose(conn, pstmt);
+		}catch(Exception e) {
+			System.out.println("에러가 >>> : " + e.getMessage());
+		}finally {
+			KosmoConnProperty.conClose(conn, pstmt);
 		}
 		
-		if(nCnt!=0){
-			bool=true;
-			}
-		else{
-			System.out.println("T6DAOImpl :: t6Delete(T6VO tvo) :: return 직전 nCnt >>> : "+nCnt);
-		}
-		
-		if (conn!=null){
-			try{conn.close(); conn=null;}catch(Exception e){}
-			}
-		if (pstmt!=null){
-			try{pstmt.close(); pstmt=null;}catch(Exception e){}
-			}
-		
-		return bool;
-	};
+		return bool;	
+	}
 
-} // T6DAOImpl
+	// 삭제
+	@Override
+	public boolean t6Delete(T6VO tvo) {
+		// TODO Auto-generated method stub
+		System.out.println("T6DAOImpl.t6Delete >>> : tvo " + tvo);
+		T6VO.printlnT6VO(tvo);
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int nCnt = 0;
+		boolean bool = false;
+		
+		try  {
+			conn = KosmoConnProperty.getConnection();
+			
+			String sql = T6QueryMap.getT6Delete();
+			pstmt = conn.prepareStatement(sql);
+			System.out.println("삭제하기 >>> : \n" + sql);
+			
+			pstmt.clearParameters();						
+			pstmt.setString(1, tvo.getT1()); // place holder 1 :: A.T1 = ?
+			
+			nCnt = pstmt.executeUpdate();
+			if (!conn.getAutoCommit()) conn.commit();
+			
+			System.out.println("nCnt >>> : " + nCnt + " 건 삭제 되었음 ");			
+			if (nCnt > 0) { bool = true;}
+			
+			KosmoConnProperty.conClose(conn, pstmt);
+		}catch(Exception e) {
+			System.out.println("에러가 >>> : " + e.getMessage());
+		}finally {
+			KosmoConnProperty.conClose(conn, pstmt);
+		}
+		
+		return bool;	
+	}
+}
