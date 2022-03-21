@@ -21,7 +21,11 @@
 
 |Modifier and Type|Method|Description|Detail|
 |---|---|---|---|
-|||||
+|boolean|add(E e)|Appends the specified element to the end of this list.|Returns true|
+|void|add(int index, E element|Inserts the specified element at the specified position in this list.|Throws IndexOutOfBoundsException|
+|boolean|addAll(Collection<? extends E> c)|Appends all of the elements in the specified collection to the end of this list, in the order that they are returned by the specified collection's Iterator.|Returns true if list changed as a result of the call, Trhrows NullPointerException|
+
+
 
 ## ✔️ Calendar class
 
