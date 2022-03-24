@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP -->
+<html class="" lang="en" data-useragent="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style id="ace-tomorrow">.ace-tomorrow .ace_gutter {background: #f6f6f6;color: #4D4D4C}.ace-tomorrow .ace_print-margin {width: 1px;background: #f6f6f6}.ace-tomorrow {background-color: #FFFFFF;color: #4D4D4C}.ace-tomorrow .ace_cursor {color: #AEAFAD}.ace-tomorrow .ace_marker-layer .ace_selection {background: #D6D6D6}.ace-tomorrow.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px #FFFFFF;}.ace-tomorrow .ace_marker-layer .ace_step {background: rgb(255, 255, 0)}.ace-tomorrow .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid #D1D1D1}.ace-tomorrow .ace_marker-layer .ace_active-line {background: #EFEFEF}.ace-tomorrow .ace_gutter-active-line {background-color : #dcdcdc}.ace-tomorrow .ace_marker-layer .ace_selected-word {border: 1px solid #D6D6D6}.ace-tomorrow .ace_invisible {color: #D1D1D1}.ace-tomorrow .ace_keyword,.ace-tomorrow .ace_meta,.ace-tomorrow .ace_storage,.ace-tomorrow .ace_storage.ace_type,.ace-tomorrow .ace_support.ace_type {color: #8959A8}.ace-tomorrow .ace_keyword.ace_operator {color: #3E999F}.ace-tomorrow .ace_constant.ace_character,.ace-tomorrow .ace_constant.ace_language,.ace-tomorrow .ace_constant.ace_numeric,.ace-tomorrow .ace_keyword.ace_other.ace_unit,.ace-tomorrow .ace_support.ace_constant,.ace-tomorrow .ace_variable.ace_parameter {color: #F5871F}.ace-tomorrow .ace_constant.ace_other {color: #666969}.ace-tomorrow .ace_invalid {color: #FFFFFF;background-color: #C82829}.ace-tomorrow .ace_invalid.ace_deprecated {color: #FFFFFF;background-color: #8959A8}.ace-tomorrow .ace_fold {background-color: #4271AE;border-color: #4D4D4C}.ace-tomorrow .ace_entity.ace_name.ace_function,.ace-tomorrow .ace_support.ace_function,.ace-tomorrow .ace_variable {color: #4271AE}.ace-tomorrow .ace_support.ace_class,.ace-tomorrow .ace_support.ace_type {color: #C99E00}.ace-tomorrow .ace_heading,.ace-tomorrow .ace_markup.ace_heading,.ace-tomorrow .ace_string {color: #718C00}.ace-tomorrow .ace_entity.ace_name.ace_tag,.ace-tomorrow .ace_entity.ace_other.ace_attribute-name,.ace-tomorrow .ace_meta.ace_tag,.ace-tomorrow .ace_string.ace_regexp,.ace-tomorrow .ace_variable {color: #C82829}.ace-tomorrow .ace_comment {color: #8E908C}.ace-tomorrow .ace_indent-guide {background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bdu3f/BwAlfgctduB85QAAAABJRU5ErkJggg==) right repeat-y}
+/*# sourceURL=ace/css/ace-tomorrow */</style><style id="autocompletion.css">.ace_editor.ace_autocomplete .ace_marker-layer .ace_active-line {    background-color: #CAD6FA;    z-index: 1;}.ace_dark.ace_editor.ace_autocomplete .ace_marker-layer .ace_active-line {    background-color: #3a674e;}.ace_editor.ace_autocomplete .ace_line-hover {    border: 1px solid #abbffe;    margin-top: -1px;    background: rgba(233,233,253,0.4);    position: absolute;    z-index: 2;}.ace_dark.ace_editor.ace_autocomplete .ace_line-hover {    border: 1px solid rgba(109, 150, 13, 0.8);    background: rgba(58, 103, 78, 0.62);}.ace_completion-meta {    opacity: 0.5;    margin: 0.9em;}.ace_completion-message {    color: blue;}.ace_editor.ace_autocomplete .ace_completion-highlight{    color: #2d69c7;}.ace_dark.ace_editor.ace_autocomplete .ace_completion-highlight{    color: #93ca12;}.ace_editor.ace_autocomplete {    width: 300px;    z-index: 200000;    border: 1px lightgray solid;    position: fixed;    box-shadow: 2px 3px 5px rgba(0,0,0,.2);    line-height: 1.4;    background: #fefefe;    color: #111;}.ace_dark.ace_editor.ace_autocomplete {    border: 1px #484747 solid;    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.51);    line-height: 1.4;    background: #25282c;    color: #c1c1c1;}
+/*# sourceURL=ace/css/autocompletion.css */</style><style>.ace_snippet-marker {    -moz-box-sizing: border-box;    box-sizing: border-box;    background: rgba(194, 193, 208, 0.09);    border: 1px dotted rgba(211, 208, 235, 0.62);    position: absolute;}</style><style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style><style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: black;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}
+/*# sourceURL=ace/css/ace-tm */</style><style id="ace_editor.css">.ace_br1 {border-top-left-radius    : 3px;}.ace_br2 {border-top-right-radius   : 3px;}.ace_br3 {border-top-left-radius    : 3px; border-top-right-radius:    3px;}.ace_br4 {border-bottom-right-radius: 3px;}.ace_br5 {border-top-left-radius    : 3px; border-bottom-right-radius: 3px;}.ace_br6 {border-top-right-radius   : 3px; border-bottom-right-radius: 3px;}.ace_br7 {border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px;}.ace_br8 {border-bottom-left-radius : 3px;}.ace_br9 {border-top-left-radius    : 3px; border-bottom-left-radius:  3px;}.ace_br10{border-top-right-radius   : 3px; border-bottom-left-radius:  3px;}.ace_br11{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-left-radius:  3px;}.ace_br12{border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br13{border-top-left-radius    : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br14{border-top-right-radius   : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br15{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;}.ace_editor {position: relative;overflow: hidden;font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;direction: ltr;text-align: left;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;cursor: text;}.ace_content {position: absolute;box-sizing: border-box;min-width: 100%;contain: style size layout;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;contain: style size layout;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {position: absolute;top: 0;left: 0;right: 0;padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {contain: strict;position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;contain: strict;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;white-space: pre!important;}.ace_text-input.ace_composition {background: transparent;color: inherit;z-index: 1000;opacity: 1;}.ace_composition_placeholder { color: transparent }.ace_composition_marker { border-bottom: 1px solid;position: absolute;border-radius: 0;margin-top: 1px;}[ace_nocontext=true] {transform: none!important;filter: none!important;perspective: none!important;clip-path: none!important;mask : none!important;contain: none!important;perspective: none!important;mix-blend-mode: initial!important;z-index: auto;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;word-wrap: normal;white-space: pre;height: 100%;width: 100%;box-sizing: border-box;pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;height: 1000000px;contain: style size layout;}.ace_text-layer {font: inherit !important;position: absolute;height: 1000000px;width: 1000000px;contain: style size layout;}.ace_text-layer > .ace_line, .ace_text-layer > .ace_line_group {contain: style size layout;position: absolute;top: 0;left: 0;right: 0;}.ace_hidpi .ace_text-layer,.ace_hidpi .ace_gutter-layer,.ace_hidpi .ace_content,.ace_hidpi .ace_gutter {contain: strict;will-change: transform;}.ace_hidpi .ace_text-layer > .ace_line, .ace_hidpi .ace_text-layer > .ace_line_group {contain: strict;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;box-sizing: border-box;border-left: 2px solid;transform: translatez(0);}.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_smooth-blinking .ace_cursor {transition: opacity 0.18s;}.ace_animate-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: step-end;animation-name: blink-ace-animate;animation-iteration-count: infinite;}.ace_animate-blinking.ace_smooth-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: ease-in-out;animation-name: blink-ace-animate-smooth;}@keyframes blink-ace-animate {from, to { opacity: 1; }60% { opacity: 0; }}@keyframes blink-ace-animate-smooth {from, to { opacity: 1; }45% { opacity: 1; }60% { opacity: 0; }85% { opacity: 0; }}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;box-sizing: border-box;}.ace_line .ace_fold {box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(0, 0, 0, 0.05);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_inline_button {border: 1px solid lightgray;display: inline-block;margin: -1px 8px;padding: 0 5px;pointer-events: auto;cursor: pointer;}.ace_inline_button:hover {border-color: gray;background: rgba(200,200,200,0.2);display: inline-block;pointer-events: auto;}.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}
+/*# sourceURL=ace/css/ace_editor.css */</style>
+	<title>HTTP 프로토콜</title>
+	
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="HTTP 프로토콜 : ">
+	<meta name="google-site-verification" content="x_3_02sxiKKDpTo7b1K5qtTpt39BXF_BhZ3oYUO9qdg">
+	<meta property="fb:app_id" content="892313440881489">
+	<link rel="stylesheet" href="./HTTP 프로토콜_files/foundation.css">
+	<link rel="stylesheet" href="./HTTP 프로토콜_files/default.css">
+	<link rel="stylesheet" href="./HTTP 프로토콜_files/foundation-icons.css">
+	<link rel="shortcut icon" href="https://the-irf.com/favicon.ico">
+	<script src="./HTTP 프로토콜_files/sdk.js(2).다운로드" async="" crossorigin="anonymous"></script><script id="facebook-jssdk" src="./HTTP 프로토콜_files/sdk.js(3).다운로드"></script><script async="" src="./HTTP 프로토콜_files/analytics.js.다운로드"></script><script src="./HTTP 프로토콜_files/what-input.min.js.다운로드"></script>
+	<script src="./HTTP 프로토콜_files/jquery.min.js.다운로드"></script>
+	<script src="./HTTP 프로토콜_files/foundation.js.다운로드"></script>
+	<script src="./HTTP 프로토콜_files/vue@2.6.0"></script>
+	<script src="./HTTP 프로토콜_files/vue-router.js.다운로드"></script>
+	<script src="./HTTP 프로토콜_files/axios.min.js.다운로드"></script>
+	<script>Vue.options.delimiters = ['<%', '%>']</script>
+	<style type="text/css" media="screen">
+	</style>
+
+
+	<script async="" src="./HTTP 프로토콜_files/f.txt" crossorigin="anonymous"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-663176-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.0&appId=892313440881489&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<script src="./HTTP 프로토콜_files/theme-tomorrow.js.다운로드"></script><script src="./HTTP 프로토콜_files/embed.js.다운로드" data-timestamp="1648130109056"></script><meta class="foundation-mq"><link rel="prefetch" as="style" href="https://c.disquscdn.com/next/embed/styles/lounge.63860eb743c7d9d2adf0fa435788abe7.css"><link rel="prefetch" as="script" href="https://c.disquscdn.com/next/embed/common.bundle.9450cde9dd2c9d366781a8fc5ff6e933.js"><link rel="prefetch" as="script" href="https://c.disquscdn.com/next/embed/lounge.bundle.90614da243fa6052a038b5539f5086e5.js"><link rel="prefetch" as="script" href="https://disqus.com/next/config.js"><script async="" id="dsq_recs_scr" src="./HTTP 프로토콜_files/recommendations.js.다운로드"></script><link rel="prefetch" as="style" href="https://c.disquscdn.com/next/recommendations/styles/recommendations.10022a97346f1c6e3798931bbd8e4bb5.css"><link rel="prefetch" as="script" href="https://c.disquscdn.com/next/recommendations/common.bundle.e74fcfd3f6ed52bbcd40cf72972ae6c3.js"><link rel="prefetch" as="script" href="https://c.disquscdn.com/next/recommendations/recommendations.bundle.926bc472e4859a48daa346b4ba2ab4f4.js"><link rel="prefetch" as="script" href="https://disqus.com/next/config.js"><style type="text/css" data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget css:fb.css.customer_chat_plugin_iframe">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100%;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100%;position:absolute;right:0;top:0;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}
+.fb_mpn_mobile_landing_page_slide_out{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_out_from_left{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out_from_left;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_up{animation-duration:500ms;animation-name:fb_mpn_landing_page_slide_up;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_in{animation-duration:300ms;animation-name:fb_mpn_bounce_in;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out{animation-duration:300ms;animation-name:fb_mpn_bounce_out;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out_v2{animation-duration:300ms;animation-name:fb_mpn_fade_out;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_from_left{animation-duration:300ms;animation-name:fb_bounce_in_from_left;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_from_left{animation-duration:300ms;animation-name:fb_bounce_out_from_left;transition-timing-function:ease-in}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}@keyframes fb_mpn_landing_page_slide_out{0%{margin:0 12px;width:100% - 24px}60%{border-radius:18px}100%{border-radius:50%;margin:0 24px;width:60px}}@keyframes fb_mpn_landing_page_slide_out_from_left{0%{left:12px;width:100% - 24px}60%{border-radius:18px}100%{border-radius:50%;left:12px;width:60px}}@keyframes fb_mpn_landing_page_slide_up{0%{bottom:0;opacity:0}100%{bottom:24px;opacity:1}}@keyframes fb_mpn_bounce_in{0%{opacity:.5;top:100%}100%{opacity:1;top:0}}@keyframes fb_mpn_fade_out{0%{bottom:30px;opacity:1}100%{bottom:0;opacity:0}}@keyframes fb_mpn_bounce_out{0%{opacity:1;top:0}100%{opacity:.5;top:100%}}@keyframes fb_bounce_in_v2{0%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50%{transform:scale(1.03, 1.03);transform-origin:bottom right}100%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}@keyframes fb_bounce_in_from_left{0%{opacity:0;transform:scale(0, 0);transform-origin:bottom left}50%{transform:scale(1.03, 1.03);transform-origin:bottom left}100%{opacity:1;transform:scale(1, 1);transform-origin:bottom left}}@keyframes fb_bounce_out_v2{0%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}@keyframes fb_bounce_out_from_left{0%{opacity:1;transform:scale(1, 1);transform-origin:bottom left}100%{opacity:0;transform:scale(0, 0);transform-origin:bottom left}}@keyframes slideInFromBottom{0%{opacity:.1;transform:translateY(100%)}100%{opacity:1;transform:translateY(0)}}@keyframes slideInFromBottomDelay{0%{opacity:0;transform:translateY(100%)}97%{opacity:0;transform:translateY(100%)}100%{opacity:1;transform:translateY(0)}}</style><script src="./HTTP 프로토콜_files/alfie_v4.63f1ab6d6b9d5807dc0c94ef3fe0b851.js.다운로드" async="" charset="UTF-8"></script></head>
+
+<body>
+<div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium" style="display: none;">
+	<button class="menu-icon" type="button" data-toggle="main-menu"></button>
+	<div class="title-bar-title">메뉴</div>
+</div>
+
+<div class="top-bar" id="main-menu">
+	<div class="top-bar-left">
+		<ul class="dropdown menu" data-dropdown-menu="ytj71x-dropdown-menu" role="menubar">
+			<li class="menu-text" role="menuitem"><a href="https://www.joinc.co.kr/w/FrontPage" tabindex="0">Joinc</a></li>
+			<li class="menu-text" role="menuitem"><a href="https://www.joinc.co.kr/w/Education">Education</a></li>
+			<li class="menu-text" role="menuitem"><a href="https://www.joinc.co.kr/w/DevOps">DevOps</a></li>
+			<li class="menu-text" role="menuitem"><a href="https://www.joinc.co.kr/w/Architecture">Architecture</a></li>
+			<li class="menu-text" role="menuitem"><a href="https://www.joinc.co.kr/w/FrontBackend">Front/Backend</a></li>
+			<li class="menu-text" role="menuitem"><a href="https://www.joinc.co.kr/w/Fundamental">Fundamental</a></li>
+			<li class="menu-text" role="menuitem"><a href="https://www.joinc.co.kr/w/blog">Blog</a></li>
+			<li class="has-submenu" role="menuitem">
+			
+			</li>
+			
+			
+			
+			<li class="menu-text" role="menuitem"><div class="fb-share-button fb_iframe_widget" data-href="https://www.joinc.co.kr/doc/1177" data-layout="button_count" data-size="small" data-mobile-iframe="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=892313440881489&amp;container_width=64&amp;href=https%3A%2F%2Fwww.joinc.co.kr%2Fdoc%2F1177&amp;layout=button_count&amp;locale=ko_KR&amp;mobile_iframe=true&amp;sdk=joey&amp;size=small"><span style="vertical-align: bottom; width: 80px; height: 20px;"><iframe name="f2ab1e90ddc091" width="1000px" height="1000px" data-testid="fb:share_button Facebook Social Plugin" title="fb:share_button Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="./HTTP 프로토콜_files/share_button.html" style="border: none; visibility: visible; width: 80px; height: 20px;" class=""></iframe></span></div></li>
+		</ul>
+	</div>
+	<div class="top-bar-right">
+		<ul class="menu">
+		    <li class="menu-text"><a href="https://www.joinc.co.kr/w/About">About</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="row">
+	
+</div>
+
+
+
+<script>
+$(function() {
+	var pathname = window.location.pathname
+	var dirent = pathname.split("/")
+
+	var str = '<ul class="breadcrumbs">'
+	var currentdir=''
+	for (i = 2; i < dirent.length; i++) {
+		currentdir += '/'+dirent[i]
+		str += '<li><a href="/w'+currentdir+'">'+dirent[i]+'</a></li>'
+	}
+	str += '</ul>'
+	$("#jpath").html("<strong>"+str+"</strong>")
+})
+</script>
+
+
+<div class="row">
+    	<div class="large-12 column">   
+			<div id="jpath"><strong><ul class="breadcrumbs"><li><a href="https://www.joinc.co.kr/w/Site">Site</a></li><li><a href="https://www.joinc.co.kr/w/Site/Network_Programing">Network_Programing</a></li><li><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm">AdvancedComm</a></li><li><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP">HTTP</a></li></ul></strong></div>
+		</div>
+	</div>
+
+
+
+
+
+<div class="row">
+	    <div id="app_tagging"><div class="tag-list"><ul class="tag-ul"><li class="vlist"><a href="https://www.joinc.co.kr/w/taglist?name=HTTP" class="tag-cloud-individual-tag">HTTP · 13</a></li><li class="vlist"><a href="https://www.joinc.co.kr/w/taglist?name=www" class="tag-cloud-individual-tag">www · 17</a></li></ul></div></div>
+</div>
+
+<script>
+Vue.component('pagetag-list', {
+    template:`
+	<div class="tag-list">
+		<ul class="tag-ul">
+       			<li class="vlist" v-for="(item, key) in items">
+				<a class="tag-cloud-individual-tag" v-bind:href="'/w/taglist?name='+item.name"><% item.name %> &#183; <% item.count %></a>
+			</li>
+		</ul>
+	</div>
+`,
+    data: function() {
+        return {
+            items: [],
+        }
+    },
+    methods: {
+        getList: function(id) {
+        }
+    },
+    mounted() {
+        axios.get('/api/tagpagelist', {
+            params: {
+                id: "1177"
+            }
+        })
+        .then(response => {
+            this.items = response.data.Node
+        })
+    }
+})
+
+new Vue({
+    el:"#app_tagging"
+})
+</script>
+
+
+<div class="row">
+	
+	
+		<h1>HTTP 프로토콜</h1>
+		<span style="color:#757575"> 2016-01-16 15:44:51</span>
+		<br>
+	
+ 
+<script>
+Array.prototype.myjoin = function(delim, depth) {
+	var str = "";
+	depth++;
+	for(i = 0; (i < this.length ) && (i < depth); i++) {
+		str+=String(this[i])+delim;
+	}
+	return str;
+}
+
+Array.prototype.fill = function(value, from) {
+	for (i = from; i < this.length; i++) {
+		this[i] = value;
+	}
+}
+
+function StrRepeat(str, num) {
+	return Array(num+1).join(str)
+}
+$(document).ready(function() {
+	var isstart=true;
+	var offset = 0;
+	var depth=[0,0,0,0,0];
+	var prev_depth = 0;
+	var docIndex=[];
+	$.each($(".head"), function(index) {
+		var level = Number($(this).prop("tagName").substr(1));
+		if (isstart){
+			offset = -level
+				isstart = false;
+		}
+		idx = level + offset;
+		if ( idx != prev_depth) {
+			if (idx > prev_depth) {
+				depth.fill(0, idx);
+			}
+			prev_depth = idx;
+		}
+		depth[idx]++;
+		var idxstr= depth.myjoin(".",idx);
+		$(this).html("<a id='s-"+idxstr+"'></a>"+"<a href='#toc'>"+idxstr+"</a>"+$(this).text());
+
+		var indent = StrRepeat("&nbsp", (level-1)*4);
+		docIndex.push("<li>"+indent+"<a href='#s-"+idxstr+"'><b>"+$(this).text()+"</b></a></li>");
+	});
+	$("#docIndex").html("<ul class='no-bullet' id='toc_body'>\n"+docIndex.join("\n")+"</ul>\n")
+})
+</script>
+<a name="toc"></a>
+<h3>목차 <i class="fi-plus" id="index_toc"></i></h3>
+<div id="docIndex" style="display: none;"><ul class="no-bullet" id="toc_body">
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-1."><b>1. HTTP 프로토콜 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-1.1."><b>1.1. Tim Berners-Lee </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-1.2."><b>1.2. HTTP에 대하여 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-1.3."><b>1.3. 작동 방식 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-1.4."><b>1.4. Connectless &amp; Stateless </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-1.5."><b>1.5. URI </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-1.6."><b>1.6. Method(메서드) </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-1.7."><b>1.7. 요청 데이터 포멧 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-1.8."><b>1.8. 응답 헤더 포멧 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-1.9."><b>1.9. 응답코드 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-1.9.1."><b>1.9.1. 1xx 조건부 응답 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-1.9.2."><b>1.9.2. 2xx 성공 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-1.9.3."><b>1.9.3. 3xx 리다이렉션 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-1.9.4."><b>1.9.4. 4xx 요청 오류 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-1.10."><b>1.10. Keep Alive </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-1.10.1."><b>1.10.1. Keep alive 설정 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-1.11."><b>1.11. 세션 관리 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-1.11.1."><b>1.11.1. 쿠키 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-2."><b>2. 디버깅 및 성능 측정  </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-2.1."><b>2.1. 디버깅은 리눅스로 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-2.2."><b>2.2. telnet 으로 디버깅 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-2.3."><b>2.3. chrome 으로 디버깅 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-2.3.1."><b>2.3.1. Elements </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-2.3.2."><b>2.3.2. Resources </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-2.3.3."><b>2.3.3. Network </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-2.3.4."><b>2.3.4. Profiles </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-2.3.5."><b>2.3.5. Audits  </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-2.3.6."><b>2.3.6. Console </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-2.3.7."><b>2.3.7. curl 로 디버깅 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-2.3.8."><b>2.3.8. wget 으로 디버깅 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-2.3.9."><b>2.3.9. scapy를 이용한 디버깅 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-3."><b>3. HTTP 응용 소프트웨어 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-3.1."><b>3.1. 웹 서버들 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-3.2."><b>3.2. 웹 브라우저들 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-4."><b>4. HTTP 응용 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-4.1."><b>4.1. REST </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-5."><b>5. HTTPS </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-5.1.1."><b>5.1.1. HTTP와 다른 점 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-6."><b>6. HTTP 응답 헤더 예제 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-6.1."><b>6.1. 200 OK </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-6.2."><b>6.2. URL Redirect </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-7."><b>7. 보안 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-7.1."><b>7.1. 인증 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-7.1.1."><b>7.1.1. Basic access authentication </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-7.1.2."><b>7.1.2. Digest access authentication </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-8."><b>8. 웹 소켓 </b></a></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#s-9."><b>9. 참고 문서 </b></a></li></ul>
+</div>
+<script>
+$("#docIndex").hide()
+$("#index_toc").click(function() {
+	$("#docIndex").toggle(function() {
+		$("#index_toc").toggleClass("fi-plus fi-minus")
+	})
+});
+</script>
+
+<div class="row"><div class="small-12 columns"><h2 class="head"><a id="s-1."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">1.</a> HTTP 프로토콜 </h2></div></div>
+<div class="row"><div class="small-12 columns"><h3 class="head"><a id="s-1.1."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">1.1.</a> Tim Berners-Lee </h3></div></div>
+HTTP를 개발한 영국의 컴퓨터 엔지니어로 하이퍼텍스트를 개발했으며, URL, HTTP, HTML을 설계했다. HTTP와 HTML, 하이퍼텍스트의 영향이 워낙에 강력하고 광범위해서 <b>인터넷의 아버지</b>라고 부른다. 
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h3 class="head"><a id="s-1.2."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">1.2.</a> HTTP에 대하여 </h3></div></div>
+HTTP(Hypertext Transfer Protocol)는 인터넷상에서 데이터를 주고 받기 위한 <a href="https://www.joinc.co.kr/w/Site/Network_Programing/Documents/Programming_Model">서버/클라이언트 모델</a>을 따르는 프로토콜 이다. 애플리케이션 레벨의 프로토콜로 <a href="https://www.joinc.co.kr/w/man/12/TCP">TCP</a>/<a href="https://www.joinc.co.kr/w/man/12/IP">IP</a>위에서 작동한다.   
+<p></p>
+
+가장 성공적인 인터넷 프로토콜이다. HTTP가 없었다면 인터넷은 지금과는 전혀 다른 모습이였을거다.
+<p></p>
+
+HTTP는 어떤 종류의 데이터든지 전송할 수 있도록 설계돼 있다. 인터넷상에서 흔히 볼수 있는 HTML로 작성된 문서는 HTTP로 보낼 수 있는 데이터의 한 종류일 뿐이다. 이미지, 동영상, 오디오, 텍스트 문서들 아무튼 종류를 가리지 않는다. 
+<p></p>
+
+<b>Transfer</b>라는 해석 그대로 데이터를 전송하겠다라는 의미로 앞에 <b>Hypertext</b><script>
+if (footnum) {
+	footnum++;
+} else {
+	var footnum = 1;
+	$(document).ready(function() {
+		$("#footnote").append("<hr>");
+	})
+}
+$(document).ready(function() {
+	$("#footnote_item ol").append("<li><a href='#sid_"+footnum.toString()+"'>^</a><span class='target' id='fid_"+footnum.toString()+"'></span><a href=\"#test\"></a>하이퍼텍스트는 텍스트의 종류다. 일반텍스트와 다른 점이 있다면, "하이퍼"라는 특성에 있다. 이 특성으로 다른 데이터로 접근할 수 있다.</li>");
+})
+document.write("<span class='target' id='sid_"+footnum.toString()+"'></span><a href=\"#fid_"+footnum.toString()+"\">["+footnum.toString()+"]</a>")
+</script>
+가 붙은 이유는 하이퍼텍스트 기반으로 데이터를 전송하겠다는. 간단히 말해서 링크기반으로 데이터에 접속하겠다는 의미가 되겠다.
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h3 class="head"><a id="s-1.3."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">1.3.</a> 작동 방식 </h3></div></div>
+HTTP는 서버/클라이언트 모델을 따른다. 클라이언트에서 요청(request)를 보내면 서버는 요청을 처리해서 응답(response)한다.
+<p></p>
+
+
+<img src="./HTTP 프로토콜_files/HTTP 작동 방식.png">
+
+
+<ol class="item_list">
+<li>클라이언트 : 서버에 <b>요청하는 클라이언트 소프트웨어</b>가 설치된 컴퓨터. chrom, firefox, ie등의 클라이언트 소프트웨어를 이용한다. 클라이언트는 URI를 이용해서 서버에 접속하고, 데이터를 요청할 수 있다.
+</li>
+<li>서버 : 클라이언트의 요청을 받아서, 요청을 해석하고 응답을 하는 소프트웨어가 설치된 컴퓨터. Apache, nginx, IIS, lighttpd 등이 서버 소프트웨어다.
+</li></ol>
+웹서버는 보통 표준<a href="https://www.joinc.co.kr/w/man/12/%ED%8F%AC%ED%8A%B8%EB%B2%88%ED%98%B8">포트</a>인 80번 포트로 서비스한다.
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h3 class="head"><a id="s-1.4."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">1.4.</a> Connectless &amp; Stateless </h3></div></div>
+HTTP는 Connectless 방식으로 작동한다<script>
+if (footnum) {
+	footnum++;
+} else {
+	var footnum = 1;
+	$(document).ready(function() {
+		$("#footnote").append("<hr>");
+	})
+}
+$(document).ready(function() {
+	$("#footnote_item ol").append("<li><a href='#sid_"+footnum.toString()+"'>^</a><span class='target' id='fid_"+footnum.toString()+"'></span><a href=\"#test\"></a>꼭 Connectless이여야 하는건 아니지만, 일반적으로 이렇게 작동한다. Push 서비스등을 위해서 connect를 유지하는 경우도 있다.</li>");
+})
+document.write("<span class='target' id='sid_"+footnum.toString()+"'></span><a href=\"#fid_"+footnum.toString()+"\">["+footnum.toString()+"]</a>")
+</script><span class="target" id="sid_1"></span><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#fid_1">[1]</a>
+. 서버에 연결하고, 요청해서 응답을 받으면 연결을 끊어버린다. 기본적으로는 자원 하나에 대해서 하나의 연결을 만든다. 이런 작동방식은 각각 아래의 장점과 단점을 가진다. 
+<ul class="item_list">
+<li>장점 : 불특정 다수를 대상으로 하는 서비스에 적합한 방식이다. 수십만명이 웹 서비스를 사용하더라도 접속유지는 최소한으로 할 수 있기 때문에, 더 많은 유저의 요청을 처리할 수 있다.    
+</li>
+<li>단점 : 연결을 끊어버리기 때문에, 클라이언트의 이전 상태를 알 수가 없다. 이러한 HTTP의 특징을 <b>stateless</b>라고 하는데, Connectless로 부터 파생되는 특징이라고 할 수 있다. <b>클라이언트의 이전 상태</b> 정보를 알 수 없게 되면, 웹 서비스를 하는데 당장에 문제가 생긴다. 예컨데, 클라이언트가 과거에 로그인을 성공하더라도 로그 정보를 유지할 수가 없다. HTTP는 <b>cookie</b>를 이용해서 이 문제를 해결하고 있다.
+</li></ul>
+<b>Cookie</b>는 클라이언트와 서버의 상태 정보를 담고 있는 정보조각이다. 로그인을 예로 들자면, 클라이언트가 로그인에 성공하면, 서버는 로그인 정보를 자신의 데이터베이스에 저장하고 동일한 값을 <b>cookie</b>형태로 클라이언트에 보낸다. 클라이언트는 다음 번 요청때 cookie를 서버에 보내는데, 서버는 cookie 값으로 자신의 데이터베이스를 조회해서 로그인 여부를 확인할 수 있다. 자세한 내용은 아래 세션 관리에서 다룬다. 
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h3 class="head"><a id="s-1.5."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">1.5.</a> URI </h3></div></div>
+클라이언트 프로그램(이하 웹 브라우저)은 <b>URI</b>를 이용하여 자원의 위치를 찾는다. URI는 HTTP와는 독립된 다른 체계다. HTTP는 전송 프로토콜이고, URI는 자원의 위치를 알려주기 위한 프로토콜이다. Uniform Resource Identifiers 의 줄임로, World Wide Web 상에서 접근하고자 하는 자원의 위치를 나타내기 위해서 사용한다. 자원은 "문서", "이미지", "동영상", "프로그램", "이메일"등 모든 것이 될 수 있다. 메일을 받을 상대방의 위치를 나타내기 위해서 사용하는 email://yundream@joinc.co.kr, 웹페이지의 위치를 나타내기 위해서 사용하는 <a class="vglnk" href="http://www.joinc.co.kr/index.php" rel="nofollow"><span>http</span><span>://</span><span>www</span><span>.</span><span>joinc</span><span>.</span><span>co</span><span>.</span><span>kr</span><span>/</span><span>index</span><span>.</span><span>php</span></a> 등이 URI의 예다.
+<p></p>
+
+<a class="vglnk" href="http://www.joinc.co.kr/index.php" rel="nofollow"><span>http</span><span>://</span><span>www</span><span>.</span><span>joinc</span><span>.</span><span>co</span><span>.</span><span>kr</span><span>/</span><span>index</span><span>.</span><span>php</span></a> 를 분석해보자.
+<ol class="item_list">
+<li>http : 자원에 접근하기 위해서 http 프로토콜을 사용한다.
+</li>
+<li><a class="vglnk" href="http://www.joinc.co.kr/" rel="nofollow"><span>www</span><span>.</span><span>joinc</span><span>.</span><span>co</span><span>.</span><span>kr</span></a> : 자원의 인터넷 상에서의 위치는 <a class="vglnk" href="http://www.joinc.co.xn--kr-q35ig39d/" rel="nofollow"><span>www</span><span>.</span><span>joinc</span><span>.</span><span>co</span><span>.</span><span>kr</span><span>이다</span></a>. 도메인은 ip 주소로 변환되므로, ip 주소로 서버의 위치를 찾을 수 있다.
+</li>
+<li>index.php : 요청할 자원의 이름이다.
+</li></ol>
+이렇게  "프로토콜", "위치", "자원명"으로 (인터넷 상에서) 어디에 있던지 자원에 접근할 수 있다.
+<div class="row"><div class="small-12 columns"><h3 class="head"><a id="s-1.6."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">1.6.</a> Method(메서드) </h3></div></div>
+메서드는 요청의 종류를 서버에게 알려주기 위해서 사용한다. 다음은 요청에 사용할 수 있는 메서드들이다.
+<ul class="item_list">
+<li>GET : 정보를 요청하기 위해서 사용한다. (SELECT) 
+</li>
+<li>POST : 정보를 밀어넣기 위해서 사용한다. (INSERT)
+</li>
+<li>PUT : 정보를 업데이트하기 위해서 사용한다. (UPDATE)
+</li>
+<li>DELETE : 정보를 삭제하기 위해서 사용한다. (DELETE)
+</li>
+<li>HEAD : (HTTP)헤더 정보만 요청한다. 해당 자원이 존재하는지 혹은 서버에 문제가 없는지를 확인하기 위해서 사용한다. 
+</li>
+<li>OPTIONS : 웹서버가 지원하는 메서드의 종류를 요청한다.
+</li>
+<li>TRACE : 클라이언트의 요청을 그대로 반환한다. 예컨데 echo 서비스로 서버 상태를 확인하기 위한 목적으로 주로 사용한다.
+</li></ul>보통 웹 서비스들은 <b>GET</b>과 <b>POST</b>만을 이용해서 개발한다. DELETE나 PUT등이 필요한 요청에도 GET과 POST를 사용하는데, 예를들어 게시판에서 특정 레코드를 삭제 할때도 GET 으로 표현한다. 
+<ul class="item_list">
+<li><a class="vglnk" href="http://www.sample.com/bbs?id=1234&amp;action=delete" rel="nofollow"><span>http</span><span>://</span><span>www</span><span>.</span><span>sample</span><span>.</span><span>com</span><span>/</span><span>bbs</span><span>?</span><span>id</span><span>=</span><span>1234</span><span>&amp;</span><span>action</span><span>=</span><span>delete</span></a> 
+</li></ul>각 용도에 맞는 메서드가 준비돼 있음에도 이렇게 사용하는 이유는 
+<ol class="item_list">
+<li>GET과 POST만으로도 모든 종류의 요청을 표현할 수 있어서
+</li>
+<li>편하게 개발하고 싶어서 
+</li>
+<li>웹 브라우저로 DELETE, HEAD등을 보내는 form이 없어서 이다. 
+</li></ol>이렇게 명시적으로 메서드를 사용하지 않아도 웹 서비스 개발에 큰 문제는 없지만, 가능하면 CRUD<script>
+if (footnum) {
+	footnum++;
+} else {
+	var footnum = 1;
+	$(document).ready(function() {
+		$("#footnote").append("<hr>");
+	})
+}
+$(document).ready(function() {
+	$("#footnote_item ol").append("<li><a href='#sid_"+footnum.toString()+"'>^</a><span class='target' id='fid_"+footnum.toString()+"'></span><a href=\"#test\"></a>Create Read Update Delete의 줄임말이다.</li>");
+})
+document.write("<span class='target' id='sid_"+footnum.toString()+"'></span><a href=\"#fid_"+footnum.toString()+"\">["+footnum.toString()+"]</a>")
+</script><span class="target" id="sid_2"></span><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#fid_2">[2]</a>
+를 명시하는게 좋지 않을까 ?
+<p></p>
+
+그렇다. Restful API 서버의 경우에는 GET, POST, DELETE, PUT을 명시적으로 구분한다. 자원의 위치 뿐만 아니라 자원에 할 일 까지 명확히 명시할 수 있기 때문에, Open API 서버를 만들기 위해서 널리 사용한다. 아래는 사용 예다. 
+<ul class="item_list">
+<li>GET <a class="vglnk" href="http://api.joinc.co.kr/user/list" rel="nofollow"><span>api</span><span>.</span><span>joinc</span><span>.</span><span>co</span><span>.</span><span>kr</span><span>/</span><span>user</span><span>/</span><span>list</span></a>  : 유저 목록을 가져온다.
+</li>
+<li>POST <a class="vglnk" href="http://api.joinc.co.kr/user/create" rel="nofollow"><span>api</span><span>.</span><span>joinc</span><span>.</span><span>co</span><span>.</span><span>kr</span><span>/</span><span>user</span><span>/</span><span>create</span></a> : 유저를 생성한다. 생성에 필요한 유저 정보는 POST 데이터 형식으로 전달할 수 있다.
+</li>
+<li>PUT <a class="vglnk" href="http://api.joinc.co.kr/usr/123" rel="nofollow"><span>api</span><span>.</span><span>joinc</span><span>.</span><span>co</span><span>.</span><span>kr</span><span>/</span><span>usr</span><span>/</span><span>123</span></a> : 유저 ID가 123인 유저의 정보를 업데이트 한다.
+</li>
+<li>DELETE <a class="vglnk" href="http://api.joinc.co.kr/user/123" rel="nofollow"><span>api</span><span>.</span><span>joinc</span><span>.</span><span>co</span><span>.</span><span>kr</span><span>/</span><span>user</span><span>/</span><span>123</span></a> : 유저 ID가 123인 유저를 삭제한다.
+</li></ul>한 눈에 쏙 들어온다.
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h3 class="head"><a id="s-1.7."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">1.7.</a> 요청 데이터 포멧 </h3></div></div>
+웹 브라우저는 웹 서버에 데이터를 "요청"하는 "클라이언트 프로그램" 이다. 요청은 서버가 인식할 수 있는 약속된 형식(HTTP 형식)을 따라야 한다.
+<p></p>
+
+요청 데이터는 "HEADER"와 "BODY"로 구성된다. 
+<p></p>
+
+
+<img src="./HTTP 프로토콜_files/HTTP 구성.png">
+
+
+<p></p>
+
+헤더에는 요청과 요청 데이터에 대한 메타정보들이 들어있다. 다음은 헤더의 일반적인 모습이다. 
+<script src="./HTTP 프로토콜_files/ace.js.다운로드" type="text/javascript" charset="utf-8"></script>
+<script src="./HTTP 프로토콜_files/ext-language_tools.js.다운로드"></script>
+
+<div class="row">
+	<div class="large-12 columns">
+		<div style="border-style: solid;border-width:1px; padding:3px; border-color:#e0e0e0;">
+		<pre id="textviewer2040706" class=" ace_editor ace-tomorrow" style="font-size: 14px; height: 153px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; top: 17px; left: 45px;" readonly=""></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 41px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; top: 0px; left: 0px; width: 41px;"><div class="ace_gutter-cell ace_gutter-active-line " style="height: 17px; top: 0px;">1<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 17px;">2<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 34px;">3<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 51px;">4<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 68px;">5<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 85px;">6<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 102px;">7<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 119px;">8<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 136px;">9<span style="display: none;"></span></div></div></div><div class="ace_scroller" style="left: 41px; right: 0px; bottom: 0px;"><div class="ace_content" style="top: 0px; left: 0px; width: 892px; height: 187px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 620px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_text-layer" style="height: 1e+06px; margin: 0px 4px; top: 0px; left: 0px;"><div class="ace_line" style="height: 17px; top: 0px;">1 GET /cgi-bin/http_trace.pl HTTP/1.1\r\n</div><div class="ace_line" style="height: 17px; top: 17px;">2 ACCEPT_ENCODING: gzip,deflate,sdch\r\n</div><div class="ace_line" style="height: 17px; top: 34px;">3 CONNECTION: keep-alive\r\n</div><div class="ace_line" style="height: 17px; top: 51px;">4 ACCEPT: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n</div><div class="ace_line" style="height: 17px; top: 68px;">5 ACCEPT_CHARSET: windows-949,utf-8;q=0.7,*;q=0.3\r\n</div><div class="ace_line" style="height: 17px; top: 85px;">6 USER_AGENT: Mozilla/5.0 (X11; Linux i686) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.24\r\n </div><div class="ace_line" style="height: 17px; top: 102px;">7 ACCEPT_LANGUAGE: ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4\rn</div><div class="ace_line" style="height: 17px; top: 119px;">8 HOST: <a class="vglnk" href="http://www.joinc.co.kr/r/n" rel="nofollow"><span>www</span><span>.</span><span>joinc</span><span>.</span><span>co</span><span>.</span><span>kr</span><span>\</span><span>r</span><span>\</span><span>n</span></a></div><div class="ace_line" style="height: 17px; top: 136px;">9 \r\n</div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor" style="display: block; top: 0px; left: 4px; width: 8px; height: 17px;"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="width: 22px; bottom: 0px; display: none;"><div class="ace_scrollbar-inner" style="width: 22px; height: 153px;">&nbsp;</div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 22px; left: 41px; right: 0px;"><div class="ace_scrollbar-inner" style="height: 22px; width: 892px;">&nbsp;</div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">הההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההה</div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></pre>
+		</div>
+	</div>
+</div>
+
+<script>
+ace.require("ace/ext/language_tools");
+var textviewer = ace.edit("textviewer2040706");
+textviewer.session.setMode("ace/mode/text");
+textviewer.setTheme("ace/theme/tomorrow");
+textviewer.setFontSize(14);
+//textviewer.renderer.setShowGutter(false);
+textviewer.setReadOnly(true);
+textviewer.setShowPrintMargin(false);
+textviewer.setHighlightActiveLine(false);
+textviewer.setOptions({maxLines:30, enableBasicAutocompletion:true});
+</script>
+
+HTTP 헤더는 라인피드와 캐리지 리턴(/r/n)을 함께 사용한다. HTTP 헤더를 파싱할 때 주의해야 한다.
+<ol class="item_list">
+<li>필수 요소로 요청의 제일 처음에 와야 한다 3개의 필드로 이뤄져 있다.
+
+<ol class="item_list">
+<li>요청 메서드 : GET, PUT, POST, PUSH, OPTIONS 등의 요청 방식이 온다.
+</li>
+<li>요청 URI : 요청하는 자원의 위치를 명시한다.
+</li>
+<li>HTTP 프로토콜 버전 : 웹 브라우저가 사용하는 프로토콜 버전이다. (2013년 6월)현재 
+</li></ol></li></ol><div class="row"><div class="small-12 columns"><h3 class="head"><a id="s-1.8."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">1.8.</a> 응답 헤더 포멧 </h3></div></div>
+응답 헤더포멧이다. 응답 헤더는 서버의 여러 상태 정보를 포함하기 때문에, 꽤 복잡해질 수 있다. <a href="https://www.joinc.co.kr/w/man/1/wget">wget</a>을 이용하면 헤더 정보를 가져올 수 있다. 
+<script src="./HTTP 프로토콜_files/ace.js.다운로드" type="text/javascript" charset="utf-8"></script>
+<script src="./HTTP 프로토콜_files/ext-language_tools.js.다운로드"></script>
+
+<div class="row">
+	<div class="large-12 columns">
+		<div style="border-style: solid;border-width:1px; padding:3px; border-color:#e0e0e0;">
+		<pre id="textviewer2040707" class=" ace_editor ace-tomorrow" style="font-size: 14px; height: 221px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; top: 17px; left: 53px;" readonly=""></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 49px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; top: 0px; left: 0px; width: 49px;"><div class="ace_gutter-cell ace_gutter-active-line " style="height: 17px; top: 0px;">1<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 17px;">2<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 34px;">3<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 51px;">4<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 68px;">5<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 85px;">6<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 102px;">7<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 119px;">8<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 136px;">9<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 153px;">10<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 170px;">11<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 187px;">12<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 204px;">13<span style="display: none;"></span></div></div></div><div class="ace_scroller" style="left: 49px; right: 0px; bottom: 0px;"><div class="ace_content" style="top: 0px; left: 0px; width: 884px; height: 255px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 620px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_text-layer" style="height: 1e+06px; margin: 0px 4px; top: 0px; left: 0px;"><div class="ace_line" style="height: 17px; top: 0px;"># wget -S <a class="vglnk" href="http://www.test.co.krsdf/" rel="nofollow"><span>http</span><span>://</span><span>www</span><span>.</span><span>test</span><span>.</span><span>co</span><span>.</span><span>krsdf</span></a></div><div class="ace_line" style="height: 17px; top: 17px;">HTTP/1.1 200 OK\r\n</div><div class="ace_line" style="height: 17px; top: 34px;">Date: Fri, 08 Jul 2011 00:59:41 GMT\r\n</div><div class="ace_line" style="height: 17px; top: 51px;">Server: Apache/2.2.4 (Unix) PHP/5.2.0\r\n</div><div class="ace_line" style="height: 17px; top: 68px;">X-Powered-By: PHP/5.2.0\r\n</div><div class="ace_line" style="height: 17px; top: 85px;">Expires: Mon, 26 Jul 1997 05:00:00 GMT\r\n</div><div class="ace_line" style="height: 17px; top: 102px;">Last-Modified: Fri, 08 Jul 2011 00:59:41 GMT\r\n</div><div class="ace_line" style="height: 17px; top: 119px;">Cache-Control: no-store, no-cache, must-revalidate\r\n</div><div class="ace_line" style="height: 17px; top: 136px;">Content-Length: 102\r\n</div><div class="ace_line" style="height: 17px; top: 153px;">Keep-Alive: timeout=15, max=100\r\n</div><div class="ace_line" style="height: 17px; top: 170px;">Connection: Keep-Alive\r\n</div><div class="ace_line" style="height: 17px; top: 187px;">Content-Type: text/html\r\n</div><div class="ace_line" style="height: 17px; top: 204px;">\r\n</div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor" style="display: block; top: 0px; left: 4px; width: 8px; height: 17px;"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="width: 22px; bottom: 0px; display: none;"><div class="ace_scrollbar-inner" style="width: 22px; height: 221px;">&nbsp;</div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 22px; left: 49px; right: 0px;"><div class="ace_scrollbar-inner" style="height: 22px; width: 884px;">&nbsp;</div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">הההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההה</div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></pre>
+		</div>
+	</div>
+</div>
+
+<script>
+ace.require("ace/ext/language_tools");
+var textviewer = ace.edit("textviewer2040707");
+textviewer.session.setMode("ace/mode/text");
+textviewer.setTheme("ace/theme/tomorrow");
+textviewer.setFontSize(14);
+//textviewer.renderer.setShowGutter(false);
+textviewer.setReadOnly(true);
+textviewer.setShowPrintMargin(false);
+textviewer.setHighlightActiveLine(false);
+textviewer.setOptions({maxLines:30, enableBasicAutocompletion:true});
+</script>
+
+<ol class="item_list">
+<li>wget으로 헤더 정보를 출력했다.
+</li>
+<li>프로토콜과 응답코드 : 반드시 첫줄에 와야 한다. 3개의 필드로 구성돼 있다.
+
+<ol class="item_list">
+<li>HTTP/1.1 :  응답 프로토콜과 버전
+</li>
+<li>200 :  응답 코드
+</li>
+<li>OK : 응답 메시지. Not Found, Internal Server Error 등의 메시지다.
+</li></ol></li>
+<li>날짜
+</li>
+<li>서버 프로그램및 스크립트 정보.
+</li>
+<li>응답헤더에는 다양한 정보를 추가할 수가 있다. 어떤 정보를 추가할지는 사실 개발자 마음이다. HTTP 기반의 서버/클라이언트 제품을 만든다면, 헤더에 애플리케이션 정보를 추가해서 사용하면 된다.
+</li>
+<li>컨텐츠의 마지막 수정일 
+</li>
+<li>캐쉬 제어 방식.
+</li>
+<li>컨텐츠 길이.
+</li>
+<li>Keep Alive기능 설정이다. 
+</li></ol>     keep alive는 클라이언트측에 연결을 유지하라는 신호를 보내기 위해서 사용한다. 그러면 클라이언트는 최대 timeout에 지정된 시간동안 연결을 유지한다 . 이 시간동안 클라이언트는 이미 맺어진 연결로 요청을 계속 보낼 수 있다 . Keep Alive는 따로 자세히 설명한다.
+<ol class="item_list">
+<li>Content-Type. 응답에 실어 보내는 컨텐츠가 HTML 문서인지, 이미지인지, CSS, JavaScript인지 혹은 다른 애플리케이션 형태인지를 알려준다. 웹 애플리케이션들은 Content-Type에 따라서 Body의 데이터를 어떻게 읽을지를 결정한다. 따라서 전송 데이터에 맞는 content-type를 명시해야 한다. 
+</li></ol>
+<div class="row"><div class="small-12 columns"><h3 class="head"><a id="s-1.9."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">1.9.</a> 응답코드 </h3></div></div>
+서버는 응답코드로 서버의 상태를 알려준다. 3자리의 숫자로 이루어져 있다. 주요 응답코드를 정리했다. 응답코드는 응답헤더의 첫번째 줄에 위치하다. 
+<ul class="item_list">
+<li>HTTP/1.1 200 OK\r\n
+</li>
+<li>HTTP/1.1 404 Not Found\r\n
+</li>
+<li>HTTP/1.1 500 Internal error\r\n
+</li></ul><div class="row"><div class="small-12 columns"><h4 class="head"><a id="s-1.9.1."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">1.9.1.</a> 1xx 조건부 응답 </h4></div></div>
+이건 사용해 본적이 없다. 없을 뿐만 아니라 문서를 읽어도 도대체 무슨내용인지 알 수 없어서 공백으로 뒀다. 아시는 분은 코멘트 부탁.
+<p></p>
+
+HTTP 요청은 수신 됐고, 다음 처리를 계속해야함을 의미합니다.
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h4 class="head"><a id="s-1.9.2."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">1.9.2.</a> 2xx 성공 </h4></div></div>
+서버가 요청을 성공적으로 처리했음을 의미한다.
+<table><thead><tr><td align="left">코드번호   </td><td align="left">설명           </td><td align="left">비고                                          </td></tr></thead><tbody>
+<tr><td align="left">200        </td><td align="left">성공           </td><td align="left">서버가 요청을 제대로 처리했다.                </td></tr>
+<tr><td align="left">201        </td><td align="left">생성됨         </td><td align="left">요청이 성공했으며, 새로운 리소스를 만들었다.  </td></tr>
+<tr><td align="left">202        </td><td align="left">허용됨         </td><td align="left">요청을 받았으나, 아직 처리하지는 못했다.      </td></tr>
+<tr><td align="left">204        </td><td align="left">컨텐츠 없음    </td><td align="left">요청을 처리했지만, 컨텐츠를 제공하지 않는다.  </td></tr>
+<tr><td align="left">205        </td><td align="left">컨텐츠 재 설정 </td><td align="left">요청을 처리했지만, 컨텐츠를 표시하지 않는다. 그리고 문서를 재 설정할 것을 요구한다. </td></tr>
+<tr><td align="left">206        </td><td align="left">일부 성공      </td><td align="left">요청의 일부만 성공적으로 처리    </td></tr>
+<tr><td align="left">207        </td><td align="left">다중상태       </td><td align="center">                                 </td></tr>
+</tbody></table>
+
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h4 class="head"><a id="s-1.9.3."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">1.9.3.</a> 3xx 리다이렉션 </h4></div></div>
+때때로 요청을 완료하기 위해서, 다른 페이지로 보내야 할 때가 있다. 예컨데, 로그인을 성공하고 나서 대문 페이지로 보낸다거나, 다운로드 페이지로 보내는 등의 용도로 사용할 수 있다.
+<table><thead><tr><td align="center"> 코드번호   </td><td align="center"> 설명           </td><td align="left">비고                                          </td></tr></thead><tbody>
+<tr><td align="center"> 300        </td><td align="center"> 여러 선택 항목 </td><td align="center">                                               </td></tr>
+<tr><td align="center"> 301        </td><td align="center"> 영구이동       </td><td align="left">요청한 페이지가 다른 위치로 영구이동 했다.    </td></tr>
+<tr><td align="center"> 302        </td><td align="center"> 임시이동       </td><td align="left">요청한 페이지가 다른 위치로 임시이동 했다.  요청자는 여전히 현재 페이지를 요청해야 한다. </td></tr>
+<tr><td align="center"> 303        </td><td align="center"> 기타위치 보기  </td><td align="left">요청자가 다른 위치에 별도의 GET 요청을 하여 응답을 검색할 경우 </td></tr>
+<tr><td align="center"> 304        </td><td align="center"> 수정되지 않음  </td><td align="left">마지막 요청 이후 요청한 페이지가 수정되지 않았다. if-Modified-Sine 헤더에 지정된 날짜/시간 이래로 지정된 문서가 변경된 사실이 없는 경우 이 code로 응답한다. </td></tr>
+<tr><td align="center"> 305        </td><td align="center"> 프록시 사용    </td><td align="left">요청자는 프록시를 사용하여 요청한 페이지만 접근할 수 있다. </td></tr>
+</tbody></table>
+
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h4 class="head"><a id="s-1.9.4."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">1.9.4.</a> 4xx 요청 오류 </h4></div></div>
+클라이언트 요청에 오류가 있음을 의미한다.
+<table><thead><tr><td align="center"> 코드번호   </td><td align="center"> 설명           </td><td align="left">비고                                          </td></tr></thead><tbody>
+<tr><td align="center"> 400        </td><td align="center"> 잘못된 요청    </td><td align="left">주로 헤더 포멧이 HTTP 규약에 맞지 않을 경우   </td></tr>
+<tr><td align="center"> 401        </td><td align="center"> 권한 없음      </td><td align="left">인증을 필요로 하는 요청이다. Basic access authentication에 사용한다.                   </td></tr>
+<tr><td align="center"> 403        </td><td align="center"> 금지           </td><td align="left">서버가 요청을 거부하고 있다.                  </td></tr>
+<tr><td align="center"> 404        </td><td align="center"> 찾을 수 없음   </td><td align="left">요청한 자원이 서버에 존재하지 않는다.         </td></tr>
+<tr><td align="center"> 405        </td><td align="center"> 허용하지 않는 방법  </td><td align="left">요청에 지정한 방법을 사용할 수 없다.          </td></tr>
+<tr><td align="center"> 406        </td><td align="center"> 허용되지 않음  </td><td align="left">요청한 페이지를 콘텐츠 특성 때문에 응답할 수 없다. </td></tr>
+<tr><td align="center"> 408        </td><td align="center"> 요청시간 초과  </td><td align="left">서버의 요청대기가 시간을 초과                      </td></tr>
+<tr><td align="center"> 410        </td><td align="center"> 사라짐         </td><td align="left">요청한 자원이 삭제되었음. 404와 비슷하지만, 410은 과거에 있었으나 지금 없는 자원이다. 예컨데, 게시판에서 삭제한 포스트에 접근하는 경우  </td></tr>
+<tr><td align="center"> 411        </td><td align="center"> 길이필요       </td><td align="left">유효한 컨텐츠 길이를 명시해야 한다.      </td></tr>
+</tbody></table>
+
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h3 class="head"><a id="s-1.10."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">1.10.</a> Keep Alive </h3></div></div>
+HTTP 1.1 부터는 keep-alive 기능을 지원한다.
+<p></p>
+
+HTTP는 하나의 연결에 하나의 요청을 하는 것을 기준으로 설계가 됐다. 요즘 웹 서비스의 경우 간단한 페이지라고 해도 수십개의 데이터 - 이미지, 문서, css, javascript - 등이 있기 마련인데, HTTP의 원래 규격대로라면 웹페이지를 하나 표시하기 위해서 연결을 맺고 끝는 과정을 수십번을 반복해야 한다. 당연히 비효율적일 수 밖에 없다. 연결을 맺고 끝는 것은 TCP 통신 과정에서 가장 많은 비용이 소비되는 작업이기 때문이다. 
+<p></p>
+
+예를들어 HTML로 표현된 문서를 다운로드 받는다고 가정해 보자. 이 문서에는 20여개 정도의 이미지, css, javascript 파일이 있다. Keep alive를 지원하지 않을 경우 다음과 같은 과정을 거친다.  
+<ul class="item_list">
+<li>웹 서버에 연결한다.
+</li>
+<li>HTML 문서를 다운로드 한다. 
+</li>
+<li>웹 서버 연결을 끊는다.
+</li>
+<li>HTML 문서의 image, css, javascript 링크들을 읽어서 다운로드해야할 경로를 저장한다.
+</li>
+<li>웹 서버에 연결한다. 
+</li>
+<li>첫번째 이미지를 다운로드
+</li>
+<li>연결을 끊는다.
+</li>
+<li>웹 서버에 연결한다.
+</li>
+<li>두번째 이미지를 다운로드
+</li>
+<li>연결을 끊는다.
+</li>
+<li>모든 링크를 다운로드 할 때까지 반복한다.
+</li></ul>
+Keep-alive 설정을 하면, 지정된 시간동안 연결을 끊지 않고 요청을 계속해서 보낼 수 있다. 
+<ul class="item_list">
+<li>웹 서버에 연결한다.
+</li>
+<li>HTML 문서를 다운로드 한다.
+</li>
+<li>Image, css, javascript 들을 다운로드 한다.
+</li>
+<li>모든 문서를 다운로드 받았다면 연결을 끊는다.
+</li></ul>
+<div class="row"><div class="small-12 columns"><h4 class="head"><a id="s-1.10.1."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">1.10.1.</a> Keep alive 설정 </h4></div></div>
+Keep-alive는 HTTP/1.1 부터 사용할 수 있다. (2013년 6월 현재)모든 웹서버와 브라우저는 HTTP/1.1을 지원한다고 가정해도 무방하다. 아래와 같은 과정을 거쳐서 keep alive를 설정을 한다. 
+<p></p>
+
+웹 브라우저는 요청 헤더에 keep-alive 방식의 연결을 할 것을 명시한다. chrom웹 브라우저로 <a class="vglnk" href="http://www.joinc.co.xn--kr-qj9i480c/" rel="nofollow"><span>www</span><span>.</span><span>joinc</span><span>.</span><span>co</span><span>.</span><span>kr</span><span>로의</span></a> 연결 요청을 캡춰했다.
+<script src="./HTTP 프로토콜_files/ace.js.다운로드" type="text/javascript" charset="utf-8"></script>
+<script src="./HTTP 프로토콜_files/ext-language_tools.js.다운로드"></script>
+
+<div class="row">
+	<div class="large-12 columns">
+		<div style="border-style: solid;border-width:1px; padding:3px; border-color:#e0e0e0;">
+		<pre id="textviewer2040708" class=" ace_editor ace-tomorrow" style="font-size: 14px; height: 153px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; top: 17px; left: 45px;" readonly=""></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 41px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; top: 0px; left: 0px; width: 41px;"><div class="ace_gutter-cell ace_gutter-active-line " style="height: 17px; top: 0px;">1<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 17px;">2<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 34px;">3<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 51px;">4<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 68px;">5<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 85px;">6<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 102px;">7<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 119px;">8<span style="display: none;"></span></div></div></div><div class="ace_scroller" style="left: 40.6973px; right: 0px; bottom: 0px;"><div class="ace_content" style="top: 0px; left: 0px; width: 893px; height: 170px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 620px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_text-layer" style="height: 1e+06px; margin: 0px 4px; top: 0px; left: 0px;"><div class="ace_line" style="height: 17px; top: 0px;">Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</div><div class="ace_line" style="height: 17px; top: 17px;">Accept-Charset:windows-949,utf-8;q=0.7,*;q=0.3</div><div class="ace_line" style="height: 17px; top: 34px;">Accept-Encoding:gzip,deflate,sdch</div><div class="ace_line" style="height: 17px; top: 51px;">Accept-Language:ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4</div><div class="ace_line" style="height: 17px; top: 68px;">Connection:keep-alive</div><div class="ace_line" style="height: 17px; top: 85px;">Host:www.joinc.co.kr</div><div class="ace_line" style="height: 17px; top: 102px;">Referer:<a class="vglnk" href="http://www.joinc.co.kr/" rel="nofollow"><span>http</span><span>://</span><span>www</span><span>.</span><span>joinc</span><span>.</span><span>co</span><span>.</span><span>kr</span><span>/</span></a></div><div class="ace_line" style="height: 17px; top: 119px;">User-Agent:Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.63 Safari/537.31</div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor" style="display: block; top: 0px; left: 4px; width: 8px; height: 17px;"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="width: 22px; bottom: 17px; display: none;"><div class="ace_scrollbar-inner" style="width: 22px; height: 136px;">&nbsp;</div></div><div class="ace_scrollbar ace_scrollbar-h" style="height: 22px; left: 40.6973px; right: 0px;"><div class="ace_scrollbar-inner" style="height: 22px; width: 916px;">&nbsp;</div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">הההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההה</div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></pre>
+		</div>
+	</div>
+</div>
+
+<script>
+ace.require("ace/ext/language_tools");
+var textviewer = ace.edit("textviewer2040708");
+textviewer.session.setMode("ace/mode/text");
+textviewer.setTheme("ace/theme/tomorrow");
+textviewer.setFontSize(14);
+//textviewer.renderer.setShowGutter(false);
+textviewer.setReadOnly(true);
+textviewer.setShowPrintMargin(false);
+textviewer.setHighlightActiveLine(false);
+textviewer.setOptions({maxLines:30, enableBasicAutocompletion:true});
+</script>
+
+<p></p>
+
+웹 서버의 설정이 kepp-alive 방식을 지원하도록 설정돼 있다면, 응답 헤더에 keep-alive 정보를 실어 보낸다. <a class="vglnk" href="http://www.joinc.co.kr/" rel="nofollow"><span>www</span><span>.</span><span>joinc</span><span>.</span><span>co</span><span>.</span><span>kr</span></a> 서버의 응답 헤더의 일부분이다.
+<script src="./HTTP 프로토콜_files/ace.js.다운로드" type="text/javascript" charset="utf-8"></script>
+<script src="./HTTP 프로토콜_files/ext-language_tools.js.다운로드"></script>
+
+<div class="row">
+	<div class="large-12 columns">
+		<div style="border-style: solid;border-width:1px; padding:3px; border-color:#e0e0e0;">
+		<pre id="textviewer2040709" class=" ace_editor ace-tomorrow" style="font-size: 14px; height: 102px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; top: 17px; left: 45px;" readonly=""></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 41px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; top: 0px; left: 0px; width: 41px;"><div class="ace_gutter-cell ace_gutter-active-line " style="height: 17px; top: 0px;">1<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 17px;">2<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 34px;">3<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 51px;">4<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 68px;">5<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 85px;">6<span style="display: none;"></span></div></div></div><div class="ace_scroller" style="left: 40.6973px; right: 0px; bottom: 0px;"><div class="ace_content" style="top: 0px; left: 0px; width: 892.303px; height: 136px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 620px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_text-layer" style="height: 1e+06px; margin: 0px 4px; top: 0px; left: 0px;"><div class="ace_line" style="height: 17px; top: 0px;">Connection:Keep-Alive</div><div class="ace_line" style="height: 17px; top: 17px;">Keep-Alive:timeout=5, max=100</div><div class="ace_line" style="height: 17px; top: 34px;">Content-Encoding:gzip</div><div class="ace_line" style="height: 17px; top: 51px;">Content-Length:5933</div><div class="ace_line" style="height: 17px; top: 68px;">Content-Type:text/html</div><div class="ace_line" style="height: 17px; top: 85px;">Vary:Accept-Encoding</div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor" style="display: block; top: 0px; left: 4px; width: 8px; height: 17px;"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="width: 22px; bottom: 0px; display: none;"><div class="ace_scrollbar-inner" style="width: 22px; height: 102px;">&nbsp;</div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 22px; left: 40.6973px; right: 0px;"><div class="ace_scrollbar-inner" style="height: 22px; width: 892px;">&nbsp;</div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">הההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההה</div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></pre>
+		</div>
+	</div>
+</div>
+
+<script>
+ace.require("ace/ext/language_tools");
+var textviewer = ace.edit("textviewer2040709");
+textviewer.session.setMode("ace/mode/text");
+textviewer.setTheme("ace/theme/tomorrow");
+textviewer.setFontSize(14);
+//textviewer.renderer.setShowGutter(false);
+textviewer.setReadOnly(true);
+textviewer.setShowPrintMargin(false);
+textviewer.setHighlightActiveLine(false);
+textviewer.setOptions({maxLines:30, enableBasicAutocompletion:true});
+</script>
+
+<ul class="item_list">
+<li>connection:Keep-Alive : 연결을 keep-alive 상태로 유지한다. 
+</li>
+<li>Keep-Alive:timeout=5, max=100 : 하나의 연결당 5초동안 유지한다. Keep-alive 연결은 최대 100개까지 허용한다. keep-alive는 하나의 연결로 여러 요청을 처리하기 때문에 효율적이긴 하지만, 연결이 그만큼 길어지기 때문에 동시간대 연결이 늘어난다. 운영체제에 있어서 연결은 "유한한 자원"이다. 연결을 다 써버리면, 서버는 더 이상 연결을 받을 수 없게 된다. Max 값을 이용해서 keep-alive 연결을 제한하는 이유다.
+</li></ul>
+<div class="row"><div class="small-12 columns"><h3 class="head"><a id="s-1.11."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">1.11.</a> 세션 관리 </h3></div></div>
+HTTP를 기반으로 하는 웹 서비스는 <b>connectless</b>방식으로 이전의 상태정보를 유지할 수 없다. 결국 클라이언트의 상태정보를 정보조각 형태로 서버와 클라이언트(웹 브라우저)에 남기는 방식으로 문제를 해결한다. 이 정보조각을 <b>cookie(이하 쿠키)</b>라고 한다. 서버는 cookie를 이용해서 세션정보를 관리한다.
+<p></p>
+
+세션과 cookie 관계를 정리하자면
+<ul class="item_list">
+<li>서버는 클라이언트와 cookie를 주고 받는 것으로 상태를 확인할 수 있다.ex) 클라이언트가 로그인을 한 상태인지
+</li>
+<li>서버는 cookie를 키로하는 값을 데이터베이스에 저장하는 방식으로 "세션"을 유지한다. ex) 로그인한 클라이언트가 "물건 - A"를 구매했다면, 클라이언트의 cookie id를 key로 데이터베이스에 구매정보를 update 한다.
+</li></ul>
+<div class="row"><div class="small-12 columns"><h4 class="head"><a id="s-1.11.1."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">1.11.1.</a> 쿠키 </h4></div></div>
+쿠키 관련 내용은 <a href="https://www.joinc.co.kr/w/man/12/cookie">cookie</a>문서를 참고한다.
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h2 class="head"><a id="s-2."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">2.</a> 디버깅 및 성능 측정  </h2></div></div>
+HTTP를 기반으로 하는 웹 서버를 디버깅하는 방법에 대해서 알아본다. 모든 디버깅이 그렇듯이, 핵심은 헤더의 확인 특히 응답코드를 확인하는데 있다.  
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h3 class="head"><a id="s-2.1."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">2.1.</a> 디버깅은 리눅스로 </h3></div></div>
+설명할 대부분의 툴들은 공개소프트웨어로 리눅스에서 테스트했다. 아마도 윈도우에서도 비슷한 툴들을 사용할 수 있을 테지만, (거의 대부분의 툴이 기본설치되는)리눅스 환경 만큼 편하지는 않을 것이다.
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h3 class="head"><a id="s-2.2."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">2.2.</a> telnet 으로 디버깅 </h3></div></div>
+Telnet는 HTTP을 포함한 모든 네트워크 프로그램 테스트에 사용할 수 있는 도구다. Telnet는 원시도구인 만큼 복잡한 디버깅은 힘들지만, 초기에 빠르게 디버깅 정보를 획득할 때 유용하게 사용할 수 있다. Telnet으로 디버깅 할 수 있는 정보는 다음과 같다. 
+<p></p>
+
+웹 서버가 올라왔는지 확인한다. 웹 서버포트(보통 80번 포트)에 대해서 테스트해보자.
+<script src="./HTTP 프로토콜_files/ace.js.다운로드" type="text/javascript" charset="utf-8"></script>
+<script src="./HTTP 프로토콜_files/ext-language_tools.js.다운로드"></script>
+
+<div class="row">
+	<div class="large-12 columns">
+		<div style="border-style: solid;border-width:1px; padding:3px; border-color:#e0e0e0;">
+		<pre id="textviewer2040710" class=" ace_editor ace-tomorrow" style="font-size: 14px; height: 51px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; top: 17px; left: 45px;" readonly=""></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 41px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; top: 0px; left: 0px; width: 41px;"><div class="ace_gutter-cell ace_gutter-active-line " style="height: 17px; top: 0px;">1<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 17px;">2<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 34px;">3<span style="display: none;"></span></div></div></div><div class="ace_scroller" style="left: 40.6973px; right: 0px; bottom: 0px;"><div class="ace_content" style="top: 0px; left: 0px; width: 892.303px; height: 85px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 620px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_text-layer" style="height: 1e+06px; margin: 0px 4px; top: 0px; left: 0px;"><div class="ace_line" style="height: 17px; top: 0px;"># telnet <a class="vglnk" href="http://www.joinc.co.kr/" rel="nofollow"><span>www</span><span>.</span><span>joinc</span><span>.</span><span>co</span><span>.</span><span>kr</span></a> 80</div><div class="ace_line" style="height: 17px; top: 17px;">Trying xxx.xxx.xxx</div><div class="ace_line" style="height: 17px; top: 34px;">telnet: Unable to connect to remote host: Connection refused</div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor" style="display: block; top: 0px; left: 4px; width: 8px; height: 17px;"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="width: 22px; bottom: 0px; display: none;"><div class="ace_scrollbar-inner" style="width: 22px; height: 51px;">&nbsp;</div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 22px; left: 40.6973px; right: 0px;"><div class="ace_scrollbar-inner" style="height: 22px; width: 892px;">&nbsp;</div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">הההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההה</div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></pre>
+		</div>
+	</div>
+</div>
+
+<script>
+ace.require("ace/ext/language_tools");
+var textviewer = ace.edit("textviewer2040710");
+textviewer.session.setMode("ace/mode/text");
+textviewer.setTheme("ace/theme/tomorrow");
+textviewer.setFontSize(14);
+//textviewer.renderer.setShowGutter(false);
+textviewer.setReadOnly(true);
+textviewer.setShowPrintMargin(false);
+textviewer.setHighlightActiveLine(false);
+textviewer.setOptions({maxLines:30, enableBasicAutocompletion:true});
+</script>
+
+Connection refuse가 떨어지면, 서비스 포트가 열려있지 않다는 것을 의미한다. 
+<p></p>
+
+입력 프롬프트가 떨어지면, 연결이 됐다는 것을 의미한다. 
+<script src="./HTTP 프로토콜_files/ace.js.다운로드" type="text/javascript" charset="utf-8"></script>
+<script src="./HTTP 프로토콜_files/ext-language_tools.js.다운로드"></script>
+
+<div class="row">
+	<div class="large-12 columns">
+		<div style="border-style: solid;border-width:1px; padding:3px; border-color:#e0e0e0;">
+		<pre id="textviewer2040711" class=" ace_editor ace-tomorrow" style="font-size: 14px; height: 68px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; top: 17px; left: 45px;" readonly=""></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 41px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; top: 0px; left: 0px; width: 41px;"><div class="ace_gutter-cell ace_gutter-active-line " style="height: 17px; top: 0px;">1<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 17px;">2<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 34px;">3<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 51px;">4<span style="display: none;"></span></div></div></div><div class="ace_scroller" style="left: 40.6973px; right: 0px; bottom: 0px;"><div class="ace_content" style="top: 0px; left: 0px; width: 892.303px; height: 102px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 620px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_text-layer" style="height: 1e+06px; margin: 0px 4px; top: 0px; left: 0px;"><div class="ace_line" style="height: 17px; top: 0px;"># telnet <a class="vglnk" href="http://www.joinc.co.kr/" rel="nofollow"><span>www</span><span>.</span><span>joinc</span><span>.</span><span>co</span><span>.</span><span>kr</span></a> 80</div><div class="ace_line" style="height: 17px; top: 17px;">Trying 1.226.82.91...</div><div class="ace_line" style="height: 17px; top: 34px;">Connected to <a class="vglnk" href="http://www.joinc.co.kr/" rel="nofollow"><span>www</span><span>.</span><span>joinc</span><span>.</span><span>co</span><span>.</span><span>kr</span></a>.</div><div class="ace_line" style="height: 17px; top: 51px;">Escape character is '^]'.</div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor" style="display: block; top: 0px; left: 4px; width: 8px; height: 17px;"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="width: 22px; bottom: 0px; display: none;"><div class="ace_scrollbar-inner" style="width: 22px; height: 68px;">&nbsp;</div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 22px; left: 40.6973px; right: 0px;"><div class="ace_scrollbar-inner" style="height: 22px; width: 892px;">&nbsp;</div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">הההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההה</div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></pre>
+		</div>
+	</div>
+</div>
+
+<script>
+ace.require("ace/ext/language_tools");
+var textviewer = ace.edit("textviewer2040711");
+textviewer.session.setMode("ace/mode/text");
+textviewer.setTheme("ace/theme/tomorrow");
+textviewer.setFontSize(14);
+//textviewer.renderer.setShowGutter(false);
+textviewer.setReadOnly(true);
+textviewer.setShowPrintMargin(false);
+textviewer.setHighlightActiveLine(false);
+textviewer.setOptions({maxLines:30, enableBasicAutocompletion:true});
+</script>
+
+이 상태에서 HTTP 명세대로 요청을 보내면 응답을 받을 수 있다. <a class="vglnk" href="http://www.joinc.co.xn--kr-xy7j/" rel="nofollow"><span>www</span><span>.</span><span>joinc</span><span>.</span><span>co</span><span>.</span><span>kr</span><span>에</span></a> index.html을 요청한 예다.
+<script src="./HTTP 프로토콜_files/ace.js.다운로드" type="text/javascript" charset="utf-8"></script>
+<script src="./HTTP 프로토콜_files/ext-language_tools.js.다운로드"></script>
+
+<div class="row">
+	<div class="large-12 columns">
+		<div style="border-style: solid;border-width:1px; padding:3px; border-color:#e0e0e0;">
+		<pre id="textviewer2040712" class=" ace_editor ace-tomorrow" style="font-size: 14px; height: 357px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; top: 17px; left: 52px;" readonly=""></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 49px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; top: 0px; left: 0px; width: 49px;"><div class="ace_gutter-cell ace_gutter-active-line " style="height: 17px; top: 0px;">1<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 17px;">2<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 34px;">3<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 51px;">4<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 68px;">5<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 85px;">6<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 102px;">7<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 119px;">8<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 136px;">9<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 153px;">10<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 170px;">11<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 187px;">12<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 204px;">13<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 221px;">14<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 238px;">15<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 255px;">16<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 272px;">17<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 289px;">18<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 306px;">19<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 323px;">20<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 340px;">21<span style="display: none;"></span></div></div></div><div class="ace_scroller" style="left: 48.3945px; right: 0px; bottom: 0px;"><div class="ace_content" style="top: 0px; left: 0px; width: 884.605px; height: 391px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 620px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_text-layer" style="height: 1e+06px; margin: 0px 4px; top: 0px; left: 0px;"><div class="ace_line" style="height: 17px; top: 0px;">$ telnet <a class="vglnk" href="http://www.joinc.co.kr/" rel="nofollow"><span>www</span><span>.</span><span>joinc</span><span>.</span><span>co</span><span>.</span><span>kr</span></a> 80</div><div class="ace_line" style="height: 17px; top: 17px;">Trying 1.226.82.91...</div><div class="ace_line" style="height: 17px; top: 34px;">Connected to <a class="vglnk" href="http://www.joinc.co.kr/" rel="nofollow"><span>www</span><span>.</span><span>joinc</span><span>.</span><span>co</span><span>.</span><span>kr</span></a>.</div><div class="ace_line" style="height: 17px; top: 51px;">Escape character is '^]'.</div><div class="ace_line" style="height: 17px; top: 68px;">GET /index.html HTTP/1.1</div><div class="ace_line" style="height: 17px; top: 85px;">HOST: <a class="vglnk" href="http://www.joinc.co.kr/" rel="nofollow"><span>www</span><span>.</span><span>joinc</span><span>.</span><span>co</span><span>.</span><span>kr</span></a></div><div class="ace_line" style="height: 17px; top: 102px;"></div><div class="ace_line" style="height: 17px; top: 119px;">HTTP/1.1 200 OK</div><div class="ace_line" style="height: 17px; top: 136px;">Date: Sun, 16 Jun 2013 02:28:28 GMT</div><div class="ace_line" style="height: 17px; top: 153px;">Server: Apache/2.2.14 (Ubuntu)</div><div class="ace_line" style="height: 17px; top: 170px;">Last-Modified: Fri, 22 Jun 2012 06:58:22 GMT</div><div class="ace_line" style="height: 17px; top: 187px;">ETag: "c43e-76-4c30a286a7f80"</div><div class="ace_line" style="height: 17px; top: 204px;">Accept-Ranges: bytes</div><div class="ace_line" style="height: 17px; top: 221px;">Content-Length: 118</div><div class="ace_line" style="height: 17px; top: 238px;">Vary: Accept-Encoding</div><div class="ace_line" style="height: 17px; top: 255px;">Content-Type: text/html</div><div class="ace_line" style="height: 17px; top: 272px;"></div><div class="ace_line" style="height: 17px; top: 289px;">&lt;head&gt;</div><div class="ace_line" style="height: 17px; top: 306px;">&lt;meta http-equiv="refresh" content="0;URL=<a class="vglnk" href="http://www.joinc.co.kr/modules/moniwiki/wiki.php/FrontPage" rel="nofollow"><span>http</span><span>://</span><span>www</span><span>.</span><span>joinc</span><span>.</span><span>co</span><span>.</span><span>kr</span><span>/</span><span>modules</span><span>/</span><span>moniwiki</span><span>/</span><span>wiki</span><span>.</span><span>php</span><span>/</span><span>FrontPage</span></a>"&gt;</div><div class="ace_line" style="height: 17px; top: 323px;">&lt;/head&gt;</div><div class="ace_line" style="height: 17px; top: 340px;">Connection closed by foreign host.</div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor" style="display: block; top: 0px; left: 4px; width: 8px; height: 17px;"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="width: 22px; bottom: 0px; display: none;"><div class="ace_scrollbar-inner" style="width: 22px; height: 357px;">&nbsp;</div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 22px; left: 48.3945px; right: 0px;"><div class="ace_scrollbar-inner" style="height: 22px; width: 892px;">&nbsp;</div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">הההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההה</div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></pre>
+		</div>
+	</div>
+</div>
+
+<script>
+ace.require("ace/ext/language_tools");
+var textviewer = ace.edit("textviewer2040712");
+textviewer.session.setMode("ace/mode/text");
+textviewer.setTheme("ace/theme/tomorrow");
+textviewer.setFontSize(14);
+//textviewer.renderer.setShowGutter(false);
+textviewer.setReadOnly(true);
+textviewer.setShowPrintMargin(false);
+textviewer.setHighlightActiveLine(false);
+textviewer.setOptions({maxLines:30, enableBasicAutocompletion:true});
+</script>
+
+<p></p>
+
+telnet으로 연결 했는데, <b>timeout</b>이 떨어질 때가 있다. 문제의 원인은 보통 둘 중 하나다. 
+<ol class="item_list">
+<li>방화벽으로 막혀있거나
+</li>
+<li>서버에 문제가 생겼다.
+</li></ol>
+<div class="row"><div class="small-12 columns"><h3 class="head"><a id="s-2.3."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">2.3.</a> chrome 으로 디버깅 </h3></div></div>
+telnet를 이용해서 웹 서버 상태를 빠르게 파악한뒤에 더 자세한 정보가 필요하다면 chrome의 <b>개발자</b>도구를 이용하면 된다. chrome에서 F12를 누르면, 창 하단에 디버깅 창이 뜬다. Chrom의 개발자 도구<script>
+if (footnum) {
+	footnum++;
+} else {
+	var footnum = 1;
+	$(document).ready(function() {
+		$("#footnote").append("<hr>");
+	})
+}
+$(document).ready(function() {
+	$("#footnote_item ol").append("<li><a href='#sid_"+footnum.toString()+"'>^</a><span class='target' id='fid_"+footnum.toString()+"'></span><a href=\"#test\"></a>FireFox의 firebug와 비슷하다</li>");
+})
+document.write("<span class='target' id='sid_"+footnum.toString()+"'></span><a href=\"#fid_"+footnum.toString()+"\">["+footnum.toString()+"]</a>")
+</script><span class="target" id="sid_3"></span><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#fid_3">[3]</a>
+는 웹 프로그램 개발자라면 반드시 익혀야 할 툴 중 하나다.
+<p></p>
+
+<img src="./HTTP 프로토콜_files/chrom_01.png" alt=" Image">
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h4 class="head"><a id="s-2.3.1."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">2.3.1.</a> Elements </h4></div></div>
+<img src="./HTTP 프로토콜_files/chrom_02.png" alt=" Image">
+<p></p>
+
+HTML 문서의 DOM element를 보여준다. 보여줄 뿐만 아니라 element의 값을 수정하고, 그 결과를 브라우저 상에서 직접 확인할 수 있다. 예컨데, 웹 페이지의 디자인을 바꾸기 위해서 코드를 변경하고 브라우저로 확인하는 노가다를 할 필요가 없다. Element 창에서 실시간으로 수정하고 변화된 모습을 확인할 수 있다. 
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h4 class="head"><a id="s-2.3.2."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">2.3.2.</a> Resources </h4></div></div>
+Cookie, Local Storage 등의 정보를 확인할 수 있다. 개인적으로 Cookie 창을 주로 사용한다.  
+<p></p>
+
+<img src="./HTTP 프로토콜_files/chrom01.png" alt=" Image">
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h4 class="head"><a id="s-2.3.3."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">2.3.3.</a> Network </h4></div></div>
+요청과 응답에 걸린 시간을 측정할 수 있다. 이 정보를 토대로 대략적인 웹페이지 전송시간과 병목구간을 찾아낼 수 있다.
+<p></p>
+
+<img src="./HTTP 프로토콜_files/chrom_04.png" alt=" Image">
+<p></p>
+
+HTTP 프로토콜 수준에서 디버깅할 때 유용한 기능이다. HTTP 요청 헤더와 응답 헤더, Body 정보를 확인할 수 있다. 
+<p></p>
+
+<img src="./HTTP 프로토콜_files/chrom_03.png" alt=" Image">
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h4 class="head"><a id="s-2.3.4."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">2.3.4.</a> Profiles </h4></div></div>
+메모리 사용정보를 실시간으로 확인할 수 있다. 하단의 <b>Record</b>버튼을 누르면 메모리 정보를 수집하기 시작한다. 
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h4 class="head"><a id="s-2.3.5."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">2.3.5.</a> Audits  </h4></div></div>
+<img src="./HTTP 프로토콜_files/chrom03.png" alt=" Image">
+<p></p>
+
+페이지에 대한 감사를 수행한다. 페이지 최적화를 위한 정보를 얻기 위해서 사용한다. 위 스샷은 joinc.co.kr에 대한 감사 결과다. 음.. 최적화를 수행해야 할 것 같다.
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h4 class="head"><a id="s-2.3.6."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">2.3.6.</a> Console </h4></div></div>
+자바스크립트 개발자에게 반드시 있어야 하는 툴이지 싶다. 강력한 만큼 기능이 많다. 자세한 내용은 <a class="vglnk" href="http://ohgyun.com/334" rel="nofollow"><span>http</span><span>://</span><span>ohgyun</span><span>.</span><span>com</span><span>/</span><span>334</span></a> 를 참고하자. 
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h4 class="head"><a id="s-2.3.7."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">2.3.7.</a> curl 로 디버깅 </h4></div></div>
+curl은 서버로 데이터를 전송하기 위해서 사용하는 툴로 DICT, FILE, FTP, FTPS, GOPHER, HTTP, HTTPS, IMAP, LDAP, LDAPS, POP3, POP3S, RTMP, RTSP, SCP, SFTP, SMTP, SMTPS, TELNET, TFTP등 주요 인터넷 서비스 프로토콜들을 지원한다.  
+<p></p>
+
+curl의 장점은 상호작용없이 CLI를 통해서 작업을 할 수 있다는데 있다. 직접 웹 서버를 테스트하거나 웹 서버를 관리하는 스크립트를 작성하기 위해서 널리 사용한다. 
+<p></p>
+
+curl 사용방법은 <a href="https://www.joinc.co.kr/w/Site/Tip/curl">curl 사용 tip</a>문서를 참고하자.
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h4 class="head"><a id="s-2.3.8."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">2.3.8.</a> wget 으로 디버깅 </h4></div></div>
+또 하나의 강력한 툴이다. wget은 웹에 있는 문서나 파일을 다운로드 하기 위한 목적으로 주로 사용하는데, curl과 마찬가지로 CLI 기반이라서, 자동화 툴을 개발하기 위한 목적으로 널리 사용한다.  
+<p></p>
+
+wget과 관련된 자세한 내용은 <a href="https://www.joinc.co.kr/w/man/1/wget">wget man page</a>문서를 참고한다. wget으로 할 수 있는 일들은 다음과 같다.  
+-S 옵션을 이용해서 응답 헤더 정보를 읽을 수 있다. -d 옵션을 이용하면, 서버와 클라이언트 간에 일어나는 요청/응답 과정과 주고 받는 데이터를 확인할 수 있다.  
+<script src="./HTTP 프로토콜_files/ace.js.다운로드" type="text/javascript" charset="utf-8"></script>
+<script src="./HTTP 프로토콜_files/ext-language_tools.js.다운로드"></script>
+
+<div class="row">
+	<div class="large-12 columns">
+		<div style="border-style: solid;border-width:1px; padding:3px; border-color:#e0e0e0;">
+		<pre id="textviewer2040713" class=" ace_editor ace-tomorrow" style="font-size: 14px; height: 272px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; top: 17px; left: 52px;" readonly=""></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 49px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; top: 0px; left: 0px; width: 49px;"><div class="ace_gutter-cell ace_gutter-active-line " style="height: 17px; top: 0px;">1<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 17px;">2<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 34px;">3<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 51px;">4<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 68px;">5<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 85px;">6<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 102px;">7<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 119px;">8<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 136px;">9<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 153px;">10<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 170px;">11<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 187px;">12<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 204px;">13<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 221px;">14<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 238px;">15<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 255px;">16<span style="display: none;"></span></div></div></div><div class="ace_scroller" style="left: 48.3945px; right: 0px; bottom: 0px;"><div class="ace_content" style="top: 0px; left: 0px; width: 884.605px; height: 306px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 620px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_text-layer" style="height: 1e+06px; margin: 0px 4px; top: 0px; left: 0px;"><div class="ace_line" style="height: 17px; top: 0px;"># wget -S <a class="vglnk" href="http://www.joinc.co.kr/" rel="nofollow"><span>http</span><span>://</span><span>www</span><span>.</span><span>joinc</span><span>.</span><span>co</span><span>.</span><span>kr</span></a></div><div class="ace_line" style="height: 17px; top: 17px;">--2013-06-19 15:05:03--  <a class="vglnk" href="http://www.joinc.co.kr/" rel="nofollow"><span>http</span><span>://</span><span>www</span><span>.</span><span>joinc</span><span>.</span><span>co</span><span>.</span><span>kr</span><span>/</span></a></div><div class="ace_line" style="height: 17px; top: 34px;">Resolving <a class="vglnk" href="http://www.joinc.co.kr/" rel="nofollow"><span>www</span><span>.</span><span>joinc</span><span>.</span><span>co</span><span>.</span><span>kr</span></a> (<a class="vglnk" href="http://www.joinc.co.kr/" rel="nofollow"><span>www</span><span>.</span><span>joinc</span><span>.</span><span>co</span><span>.</span><span>kr</span></a>)... 1.226.82.91</div><div class="ace_line" style="height: 17px; top: 51px;">Connecting to <a class="vglnk" href="http://www.joinc.co.kr/" rel="nofollow"><span>www</span><span>.</span><span>joinc</span><span>.</span><span>co</span><span>.</span><span>kr</span></a> (<a class="vglnk" href="http://www.joinc.co.kr/" rel="nofollow"><span>www</span><span>.</span><span>joinc</span><span>.</span><span>co</span><span>.</span><span>kr</span></a>)|1.226.82.91|:80... connected.</div><div class="ace_line" style="height: 17px; top: 68px;">HTTP request sent, awaiting response... </div><div class="ace_line" style="height: 17px; top: 85px;">  HTTP/1.1 200 OK</div><div class="ace_line" style="height: 17px; top: 102px;">  Date: Wed, 19 Jun 2013 15:01:21 GMT</div><div class="ace_line" style="height: 17px; top: 119px;">  Server: Apache/2.2.14 (Ubuntu)</div><div class="ace_line" style="height: 17px; top: 136px;">  Last-Modified: Fri, 22 Jun 2012 06:58:22 GMT</div><div class="ace_line" style="height: 17px; top: 153px;">  ETag: "c43e-76-4c30a286a7f80"</div><div class="ace_line" style="height: 17px; top: 170px;">  Accept-Ranges: bytes</div><div class="ace_line" style="height: 17px; top: 187px;">  Content-Length: 118</div><div class="ace_line" style="height: 17px; top: 204px;">  Vary: Accept-Encoding</div><div class="ace_line" style="height: 17px; top: 221px;">  Keep-Alive: timeout=5, max=100</div><div class="ace_line" style="height: 17px; top: 238px;">  Connection: Keep-Alive</div><div class="ace_line" style="height: 17px; top: 255px;">  Content-Type: text/html</div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor" style="display: block; top: 0px; left: 4px; width: 8px; height: 17px;"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="width: 22px; bottom: 0px; display: none;"><div class="ace_scrollbar-inner" style="width: 22px; height: 272px;">&nbsp;</div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 22px; left: 48.3945px; right: 0px;"><div class="ace_scrollbar-inner" style="height: 22px; width: 916px;">&nbsp;</div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">הההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההה</div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></pre>
+		</div>
+	</div>
+</div>
+
+<script>
+ace.require("ace/ext/language_tools");
+var textviewer = ace.edit("textviewer2040713");
+textviewer.session.setMode("ace/mode/text");
+textviewer.setTheme("ace/theme/tomorrow");
+textviewer.setFontSize(14);
+//textviewer.renderer.setShowGutter(false);
+textviewer.setReadOnly(true);
+textviewer.setShowPrintMargin(false);
+textviewer.setHighlightActiveLine(false);
+textviewer.setOptions({maxLines:30, enableBasicAutocompletion:true});
+</script>
+
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h4 class="head"><a id="s-2.3.9."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">2.3.9.</a> scapy를 이용한 디버깅 </h4></div></div>
+<div class="row"><div class="small-12 columns"><h2 class="head"><a id="s-3."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">3.</a> HTTP 응용 소프트웨어 </h2></div></div>
+<div class="row"><div class="small-12 columns"><h3 class="head"><a id="s-3.1."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">3.1.</a> 웹 서버들 </h3></div></div>
+<table><thead><tr><td align="center"> 프로그램 이름 </td><td align="left">벤더       </td><td align="left">웹 사이트 호스트 수 </td><td align="center"> 점유율  </td></tr></thead><tbody>
+<tr><td align="center"> Apache        </td><td align="left">Apache     </td><td align="left">359,441,468         </td><td align="center"> 53.42 % </td></tr>
+<tr><td align="center"> IIS           </td><td align="left">Microsoft  </td><td align="left">112,303,412         </td><td align="center"> 16.69 % </td></tr>
+<tr><td align="center"> nginx         </td><td align="left">NGINX. Inc </td><td align="left">104,411,087         </td><td align="center"> 15.52 % </td></tr>
+<tr><td align="center"> GWS           </td><td align="left">Google     </td><td align="left">23,029,260          </td><td align="center"> 3.42 %  </td></tr>
+</tbody></table>
+
+자세한 정보는 <a href="http://news.netcraft.com/archives/2013/03/01/march-2013-web-server-survey.html" class="external"> march 2013 web server survery</a>를 참고하자. Apache가 짱이고, nginx가 떠오르는 형국이다.
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h3 class="head"><a id="s-3.2."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">3.2.</a> 웹 브라우저들 </h3></div></div>
+웹 브라우저의 대략 적인 발표시기.
+<ul class="item_list">
+<li>1990년 : Tim Berners-Lee가 첫번째 브라우저를 개발하다. 
+</li>
+<li>1993년 : <b>Mosaic</b> 웹브라우저 개발. 대중적으로 사용된 첫번째 웹브라우저다. Mosic은 나중에 Netscape가 된다. 
+</li>
+<li>1996년 : <b>인터넷 익스플로어</b> 개발. 시작은 미약했으나 MS 운영체제의 파워에 힘입어 1996년 82%의 시장점유율을 기록하기도 했다. 그후 계속 점유율이 떨어져 지금은 20%정도에 머무르고 있다.
+</li>
+<li>1996년 : <b>Opera</b>.
+</li>
+<li>2002년 : <b>Firefox</b>
+</li>
+<li>2004년 : <b>Safari</b> 
+</li>
+<li>2009년 : <b>Chrome</b>의 성장은 눈부시다고 할 수 있다. 약 4년이지난 2013년 현재, 32%의 점유율로 가장 많이 사용하는 브라우저가 됐다.  
+</li></ul>
+<img src="./HTTP 프로토콜_files/StatCounter-browser-ww-monthly-200807-201305.jpg" alt=" Image">
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h2 class="head"><a id="s-4."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">4.</a> HTTP 응용 </h2></div></div>
+<div class="row"><div class="small-12 columns"><h3 class="head"><a id="s-4.1."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">4.1.</a> REST </h3></div></div>
+HTTP의 메서드를 다시 한번 살펴보자.
+<ul class="item_list">
+<li>GET : 정보를 요청하기 위해서 사용한다. (SELECT) 
+</li>
+<li>POST : 정보를 밀어넣기 위해서 사용한다. (INSERT)
+</li>
+<li>PUT : 정보를 업데이트하기 위해서 사용한다. (UPDATE)
+</li>
+<li>DELETE : 정보를 삭제하기 위해서 사용한다. (DELETE)
+</li></ul>데이터를 처리하기 위한 CRUD 요소를 모두 가지고 있는 것을 알 수 있다.  
+<p></p>
+
+이렇게 HTTP가 CRUD 요소를 모두 가지고 있다는 것에 착안, 웹 상에서 데이터를 처기하기 위한 아키텍처를 제안한게 바로 <a href="https://www.joinc.co.kr/w/man/12/rest">REST</a>다. REST는 추가적인 레이어나 세션 관리등을 추가하지 않고도 HTTP 프로토콜만을 이용해서 데이터를 전송할 수 있다는 장점이 있다. 게다가 이미 전세계적으로 깔려있는 HTTP 기반의 소프트웨어 인프라를 그대로 활용할 수 있다는 장점도 가지고 있다. 
+<p></p>
+
+이렇게 REST 아키텍처를 개발하는 서비스를 RESTful 서비스라고 한다.  
+<p></p>
+
+REST의 특징은 다음과 같다. (HTTP 기반이라서 HTTP의 특징과 장점을 그대로 가진다.) 
+<ol class="item_list">
+<li>HTTP만으로 데이터를 전송하고 처리할 수 있다. 
+</li>
+<li>Stateless 
+</li>
+<li>URI를 이용해서 자원에 접근한다. URI의 가장 중요한 요소는 <b>자원(Resource)</b>다. 이러한 접근 방식의 특징으로 ROA(리소스 기반 아키텍처)라고 한다. ROA와 대비되는 개념으로 SOA(소프트웨어 기반 아키텍처)가 있다.  
+</li>
+<li>단순하며 사용하기 쉽다. REST는 HTTP외에 다른 프로토콜을 필요로 하지 않는다. HTTP를 이해하고 있다면, 몇 분만의 설명으로 아키텍처를 이해할 수 있다. 데이터를 주고 받는 모든 과정과 데이터 포멧 역시 사람이 해석할 수 있을 정도로 직관적이다. 
+</li></ol>
+REST의 이런 단순명로함 대문에 구글, 트위터, 야후등이 자신들의 서비스를 REST 방식으로 제공하고 있다. 개발자를 끌어들이기 위한 OpenAPI역시 REST을 기반으로 하면서, REST의 사용을 활성화 시켰다. REST 기반의 API를 일반적으로 RESTFul API라고 부른다. 
+<p></p>
+
+REST와 관련해서는 비슷한 목적의 SOAP도 살펴볼 필요가 있겠다. REST는 <a href="https://www.joinc.co.kr/w/man/12/rest">REST에 대해서</a>에서 따로 정리하고 있다.
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h2 class="head"><a id="s-5."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">5.</a> HTTPS </h2></div></div>
+<a href="https://www.joinc.co.kr/w/man/12/SSL">SSL</a>은 전자상거래에서의 데이터 보안을 위해서 개발한 통신 레이어다. SSL은 <a href="https://www.joinc.co.kr/w/man/12/OSI7">표현계층</a>의 프로토콜로 응용 계층 아래에 있기 때문에, 어떤 응용 계층의 데이터라도 암호화해서 보낼 수 있다.
+<p></p>
+
+HTTP는 기본적으로 평문 데이터 전송을 원칙으로 하기 때문에 개인의 프라이버시가 오가는 서비스들(전자상거래, 전자메일, 사내문서)에 사용하기 힘들다. HTTPS는 SSL 레이어위에 HTTP를 통과 시키는 방식이다. 즉 평문의 HTTP 문서는 SSL 레이어를 통과하면서 암호화 돼서 목적지에 도착하고, 목적지에서는 SSL 레이어를 통과하면서 복호화 돼서 웹 브라우저에 전달된다.     
+<p></p>
+
+
+<img src="./HTTP 프로토콜_files/HTTPS 전송 방식.png">
+
+
+<p></p>
+
+간혹 <b>HTTPS</b>를 하나의 프로토콜로 인식하기도 하는데, HTTP와 SSL은 전혀 다른 계층의 프로토콜콜의 조합이다. HTTPS over SSL로 보는게 좀더 정확한 시각이다. 거의 모든 웹 서버와 웹 브라우저와 HTTP 기반의 툴들 - wget, <a href="https://www.joinc.co.kr/w/Site/Tip/curl">curl</a>, <a href="https://www.joinc.co.kr/w/Site/System_management/PerformanceTuning/WebServerPerformance">ab</a> 기타등등 - 이 SSL을 지원한다. 
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h4 class="head"><a id="s-5.1.1."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">5.1.1.</a> HTTP와 다른 점 </h4></div></div>
+<ul class="item_list">
+<li>HTTPS URL은 "<a class="vglnk" href="https://xn--%22-ky7m/" rel="nofollow"><span>https</span><span>://"로</span></a> 시작한다. 기본 포트번호는 443이다. HTTP URL은 "<a class="vglnk" href="http://xn--%22-ky7m/" rel="nofollow"><span>http</span><span>://"로</span></a> 시작한다. 기본 포트번호는 80이다.
+</li>
+<li>HTTP는 평문 데이터를 기반으로 하기 때문에, 유저정보와 같은 민감한 정보가 인터넷 상에 그대로 노출된다. 이 정보는 수집되거나 변조될 수 있다. HTTPS는 이러한 공격을 견딜 수 있도록 설계돼 있다.
+</li>
+<li>HTTPS는 인증서를 이용해서, 접속 사이트를 신뢰할 수 있는지 평가할 수 있다. 
+</li>
+<li>일반적으로 HTTPS는 HTTP에 비해서 (매우 많이)느리다. 많은 양의 데이터를 처리할 경우 성능의 차이를 체감할 수 있다. 많은 웹 사이트들이 민감한 정보를 다루는 페이지(로그인 혹은 유저정보) 페이지를 HTTPS로 전송하고, 기타 페이지는 HTTP로 전송하는 방법을 사용한다. 하드웨어 SSL 가속기를 이용해서 암/복호화 성능을 높이는 방법을 사용하기도 한다.
+</li></ul>
+<div class="row"><div class="small-12 columns"><h2 class="head"><a id="s-6."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">6.</a> HTTP 응답 헤더 예제 </h2></div></div>
+HTTP 응답 헤더들을 정리한다. 테스트를 위해서 <a href="https://www.joinc.co.kr/w/Site/Ruby/sinatra">Sinatra</a>로 웹 서버 환경을 만들었다. <a href="https://www.joinc.co.kr/w/Site/Tip/curl">curl</a>을 이용해서 클라이언트 테스트를 진행했다. curl의 -D 옵션을 이용하면 헤더 정보를 파일로 저장할 수 있다.
+<p></p>
+
+테스트 예
+<script src="./HTTP 프로토콜_files/ace.js.다운로드" type="text/javascript" charset="utf-8"></script>
+<script src="./HTTP 프로토콜_files/ext-language_tools.js.다운로드"></script>
+
+<div class="row">
+	<div class="large-12 columns">
+		<div style="border-style: solid;border-width:1px; padding:3px; border-color:#e0e0e0;">
+		<pre id="textviewer2040714" class=" ace_editor ace-tomorrow" style="font-size: 14px; height: 17px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; top: 16px; left: 45px;" readonly=""></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 41px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; top: 0px; left: 0px; width: 41px;"><div class="ace_gutter-cell ace_gutter-active-line " style="height: 17px; top: 0px;">1<span style="display: none;"></span></div></div></div><div class="ace_scroller" style="left: 40.6973px; right: 0px; bottom: 0px;"><div class="ace_content" style="top: 0px; left: 0px; width: 892.303px; height: 51px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 620px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_text-layer" style="height: 1e+06px; margin: 0px 4px; top: 0px; left: 0px;"><div class="ace_line" style="height: 17px; top: 0px;"># curl -D dump.txt <a class="vglnk" href="http://www.example.com/" rel="nofollow"><span>http</span><span>://</span><span>www</span><span>.</span><span>example</span><span>.</span><span>com</span></a></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor" style="display: block; top: 0px; left: 4px; width: 8px; height: 17px;"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="display: none; width: 22px; bottom: 0px;"><div class="ace_scrollbar-inner" style="width: 22px; height: 17px;">&nbsp;</div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 22px; left: 40.6973px; right: 0px;"><div class="ace_scrollbar-inner" style="height: 22px; width: 892px;">&nbsp;</div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">הההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההה</div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></pre>
+		</div>
+	</div>
+</div>
+
+<script>
+ace.require("ace/ext/language_tools");
+var textviewer = ace.edit("textviewer2040714");
+textviewer.session.setMode("ace/mode/text");
+textviewer.setTheme("ace/theme/tomorrow");
+textviewer.setFontSize(14);
+//textviewer.renderer.setShowGutter(false);
+textviewer.setReadOnly(true);
+textviewer.setShowPrintMargin(false);
+textviewer.setHighlightActiveLine(false);
+textviewer.setOptions({maxLines:30, enableBasicAutocompletion:true});
+</script>
+
+<div class="row"><div class="small-12 columns"><h3 class="head"><a id="s-6.1."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">6.1.</a> 200 OK </h3></div></div>
+요청을 성공적으로 처리했을 때, 웹 서버는 200 코드를 반환한다.
+<script src="./HTTP 프로토콜_files/ace.js.다운로드" type="text/javascript" charset="utf-8"></script>
+<script src="./HTTP 프로토콜_files/ext-language_tools.js.다운로드"></script>
+
+<div class="row">
+	<div class="large-12 columns">
+		<div style="border-style: solid;border-width:1px; padding:3px; border-color:#e0e0e0;">
+		<pre id="textviewer2040715" class=" ace_editor ace-tomorrow" style="font-size: 14px; height: 153px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; top: 17px; left: 45px;" readonly=""></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 41px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; top: 0px; left: 0px; width: 41px;"><div class="ace_gutter-cell ace_gutter-active-line " style="height: 17px; top: 0px;">1<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 17px;">2<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 34px;">3<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 51px;">4<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 68px;">5<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 85px;">6<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 102px;">7<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 119px;">8<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 136px;">9<span style="display: none;"></span></div></div></div><div class="ace_scroller" style="left: 40.6973px; right: 0px; bottom: 0px;"><div class="ace_content" style="top: 0px; left: 0px; width: 892.303px; height: 187px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 620px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_text-layer" style="height: 1e+06px; margin: 0px 4px; top: 0px; left: 0px;"><div class="ace_line" style="height: 17px; top: 0px;">HTTP/1.1 200 OK</div><div class="ace_line" style="height: 17px; top: 17px;">Content-Type: text/html;charset=utf-8</div><div class="ace_line" style="height: 17px; top: 34px;">Content-Length: 0</div><div class="ace_line" style="height: 17px; top: 51px;">X-Xss-Protection: 1; mode=block</div><div class="ace_line" style="height: 17px; top: 68px;">X-Content-Type-Options: nosniff</div><div class="ace_line" style="height: 17px; top: 85px;">X-Frame-Options: SAMEORIGIN</div><div class="ace_line" style="height: 17px; top: 102px;">Server: WEBrick/1.3.1 (Ruby/1.9.3/2012-04-20)</div><div class="ace_line" style="height: 17px; top: 119px;">Date: Tue, 17 Sep 2013 12:46:12 GMT</div><div class="ace_line" style="height: 17px; top: 136px;">Connection: Keep-Alive</div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor" style="display: block; top: 0px; left: 4px; width: 8px; height: 17px;"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="width: 22px; bottom: 0px; display: none;"><div class="ace_scrollbar-inner" style="width: 22px; height: 153px;">&nbsp;</div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 22px; left: 40.6973px; right: 0px;"><div class="ace_scrollbar-inner" style="height: 22px; width: 916px;">&nbsp;</div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">הההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההה</div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></pre>
+		</div>
+	</div>
+</div>
+
+<script>
+ace.require("ace/ext/language_tools");
+var textviewer = ace.edit("textviewer2040715");
+textviewer.session.setMode("ace/mode/text");
+textviewer.setTheme("ace/theme/tomorrow");
+textviewer.setFontSize(14);
+//textviewer.renderer.setShowGutter(false);
+textviewer.setReadOnly(true);
+textviewer.setShowPrintMargin(false);
+textviewer.setHighlightActiveLine(false);
+textviewer.setOptions({maxLines:30, enableBasicAutocompletion:true});
+</script>
+
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h3 class="head"><a id="s-6.2."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">6.2.</a> URL Redirect </h3></div></div>
+URL Redirect를 위해서 서버는 301 코드를 반환한다. <b>Location</b>에 리다이렉트할 URL을 명시한다. 301 코드를 받은 클라이언트는 Location 주소로 접속을 시도한다.  
+<script src="./HTTP 프로토콜_files/ace.js.다운로드" type="text/javascript" charset="utf-8"></script>
+<script src="./HTTP 프로토콜_files/ext-language_tools.js.다운로드"></script>
+
+<div class="row">
+	<div class="large-12 columns">
+		<div style="border-style: solid;border-width:1px; padding:3px; border-color:#e0e0e0;">
+		<pre id="textviewer2040716" class=" ace_editor ace-tomorrow" style="font-size: 14px; height: 170px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; top: 17px; left: 52px;" readonly=""></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 49px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; top: 0px; left: 0px; width: 49px;"><div class="ace_gutter-cell ace_gutter-active-line " style="height: 17px; top: 0px;">1<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 17px;">2<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 34px;">3<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 51px;">4<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 68px;">5<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 85px;">6<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 102px;">7<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 119px;">8<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 136px;">9<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 153px;">10<span style="display: none;"></span></div></div></div><div class="ace_scroller" style="left: 48.3945px; right: 0px; bottom: 0px;"><div class="ace_content" style="top: 0px; left: 0px; width: 884.605px; height: 204px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 620px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_text-layer" style="height: 1e+06px; margin: 0px 4px; top: 0px; left: 0px;"><div class="ace_line" style="height: 17px; top: 0px;">HTTP/1.1 301 Moved Permanently</div><div class="ace_line" style="height: 17px; top: 17px;">Content-Type: text/html;charset=utf-8</div><div class="ace_line" style="height: 17px; top: 34px;">Location: <a class="vglnk" href="http://192.168.56.101/ok" rel="nofollow"><span>http</span><span>://</span><span>192</span><span>.</span><span>168</span><span>.</span><span>56</span><span>.</span><span>101</span><span>/</span><span>ok</span></a></div><div class="ace_line" style="height: 17px; top: 51px;">Content-Length: 0</div><div class="ace_line" style="height: 17px; top: 68px;">X-Xss-Protection: 1; mode=block</div><div class="ace_line" style="height: 17px; top: 85px;">X-Content-Type-Options: nosniff</div><div class="ace_line" style="height: 17px; top: 102px;">X-Frame-Options: SAMEORIGIN </div><div class="ace_line" style="height: 17px; top: 119px;">Server: WEBrick/1.3.1 (Ruby/1.9.3/2012-04-20)</div><div class="ace_line" style="height: 17px; top: 136px;">Date: Tue, 17 Sep 2013 12:36:01 GMT</div><div class="ace_line" style="height: 17px; top: 153px;">Connection: Keep-Alive</div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor" style="display: block; top: 0px; left: 4px; width: 8px; height: 17px;"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="width: 22px; bottom: 0px; display: none;"><div class="ace_scrollbar-inner" style="width: 22px; height: 170px;">&nbsp;</div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 22px; left: 48.3945px; right: 0px;"><div class="ace_scrollbar-inner" style="height: 22px; width: 916px;">&nbsp;</div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">הההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההה</div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></pre>
+		</div>
+	</div>
+</div>
+
+<script>
+ace.require("ace/ext/language_tools");
+var textviewer = ace.edit("textviewer2040716");
+textviewer.session.setMode("ace/mode/text");
+textviewer.setTheme("ace/theme/tomorrow");
+textviewer.setFontSize(14);
+//textviewer.renderer.setShowGutter(false);
+textviewer.setReadOnly(true);
+textviewer.setShowPrintMargin(false);
+textviewer.setHighlightActiveLine(false);
+textviewer.setOptions({maxLines:30, enableBasicAutocompletion:true});
+</script>
+
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h2 class="head"><a id="s-7."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">7.</a> 보안 </h2></div></div>
+<div class="row"><div class="small-12 columns"><h3 class="head"><a id="s-7.1."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">7.1.</a> 인증 </h3></div></div>
+<div class="row"><div class="small-12 columns"><h4 class="head"><a id="s-7.1.1."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">7.1.1.</a> Basic access authentication </h4></div></div>
+HTTP 영역에서 이루어지는 인증이다. HTTP 영역이기 때문에 인증은 웹 서버 차원에서 이루어진다. 매 요청마다 HTTP 헤더에 아이디와 패스워드를 실어 보내면, 서버에서 아이디와 패스워드를 확인한다.
+<p></p>
+
+인증 프로세스는 다음과 같다.
+<p></p>
+
+
+<img src="./HTTP 프로토콜_files/HTTP Basic access authentication.png">
+
+
+<ol class="item_list">
+<li>HTTP 요청을 보낸다. 
+</li>
+<li>웹 서버는 <b>401 Authorization Required</b>를 응답한다. 인증이 필요하니, 인증 정보를 보내란 이야기가 되겠다. 
+</li>
+<li>브라우저는 아이디 패스워드를 입력할 수 있는 인증 창을 띄운다. 
+</li>
+<li>입력한 아이디/패스워드는 HTTP 헤더에 담아서 웹 서버로 보낸다.
+</li>
+<li>웹 서버는 아이디와 패스워드를 확인한다. 일치하는 아이디/패스워드가 있으면 요청을 처리한다.  
+</li></ol>
+HTTP Basic authentication(이하 BA)는 웹 자원에 접근을 통제하기 위한 최소한의 수단만을 제공한다. cookie, session identifier 이나 로그인 페이지등의 준비 없이 간단하게 사용할 수 있다. 순수하게 HTTP 만을 이용해서 인증을 할 수 있다.  
+<p></p>
+
+간단한 만큼, 높은 보안성을 기대하지 않는게 좋다. BA는 아이디와 패스워드를 base64 인코딩해서 전송한다. 암호화 혹은 해쉬등의 기술을 사용하지 않는다. 따라서 아이디/패스워드를 보호해야 한다면 HTTPS를 이용해야만 한다.    
+<p></p>
+
+매 요청마다 아이디와 패스워드를 보내는 방식이기 때문에, 클라이언트 프로그램은 처음 입력한 아이디와 패스워드를 저장하기 캐쉬를 가지고 있어야 한다. 브라우저마다 캐쉬를 유지하는 시간에 차이가 있다. MS IE는 15분으로 설정돼 있다. 로그아웃기능이 없기 때문에 개인 PC가 아니라면 자리를 뜨기전에 브라우저 캐쉬를 비워줘야 한다.  
+<p></p>
+
+다음은 서버 사이드 프로토콜 형식이다.
+<script src="./HTTP 프로토콜_files/ace.js.다운로드" type="text/javascript" charset="utf-8"></script>
+<script src="./HTTP 프로토콜_files/ext-language_tools.js.다운로드"></script>
+
+<div class="row">
+	<div class="large-12 columns">
+		<div style="border-style: solid;border-width:1px; padding:3px; border-color:#e0e0e0;">
+		<pre id="textviewer2040717" class=" ace_editor ace-tomorrow" style="font-size: 14px; height: 119px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; top: 17px; left: 45px;" readonly=""></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 41px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; top: 0px; left: 0px; width: 41px;"><div class="ace_gutter-cell ace_gutter-active-line " style="height: 17px; top: 0px;">1<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 17px;">2<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 34px;">3<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 51px;">4<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 68px;">5<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 85px;">6<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 102px;">7<span style="display: none;"></span></div></div></div><div class="ace_scroller" style="left: 40.6973px; right: 0px; bottom: 0px;"><div class="ace_content" style="top: 0px; left: 0px; width: 892.303px; height: 153px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 620px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_text-layer" style="height: 1e+06px; margin: 0px 4px; top: 0px; left: 0px;"><div class="ace_line" style="height: 17px; top: 0px;">HTTP/1.1 401 Authorization Required</div><div class="ace_line" style="height: 17px; top: 17px;">Date: Wed, 02 Apr 2014 08:23:28 GMT</div><div class="ace_line" style="height: 17px; top: 34px;">Server: Apache/2.2.14 (Ubuntu)</div><div class="ace_line" style="height: 17px; top: 51px;">WWW-Authenticate: Basic realm="sample"</div><div class="ace_line" style="height: 17px; top: 68px;">Vary: Accept-Encoding</div><div class="ace_line" style="height: 17px; top: 85px;">Content-Length: 484</div><div class="ace_line" style="height: 17px; top: 102px;">Content-Type: text/html; charset=iso-8859-1</div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor" style="display: block; top: 0px; left: 4px; width: 8px; height: 17px;"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="width: 22px; bottom: 0px; display: none;"><div class="ace_scrollbar-inner" style="width: 22px; height: 119px;">&nbsp;</div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 22px; left: 40.6973px; right: 0px;"><div class="ace_scrollbar-inner" style="height: 22px; width: 916px;">&nbsp;</div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">הההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההה</div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></pre>
+		</div>
+	</div>
+</div>
+
+<script>
+ace.require("ace/ext/language_tools");
+var textviewer = ace.edit("textviewer2040717");
+textviewer.session.setMode("ace/mode/text");
+textviewer.setTheme("ace/theme/tomorrow");
+textviewer.setFontSize(14);
+//textviewer.renderer.setShowGutter(false);
+textviewer.setReadOnly(true);
+textviewer.setShowPrintMargin(false);
+textviewer.setHighlightActiveLine(false);
+textviewer.setOptions({maxLines:30, enableBasicAutocompletion:true});
+</script>
+
+<p></p>
+
+아래는 클라이언트측 프로토콜이다.
+<script src="./HTTP 프로토콜_files/ace.js.다운로드" type="text/javascript" charset="utf-8"></script>
+<script src="./HTTP 프로토콜_files/ext-language_tools.js.다운로드"></script>
+
+<div class="row">
+	<div class="large-12 columns">
+		<div style="border-style: solid;border-width:1px; padding:3px; border-color:#e0e0e0;">
+		<pre id="textviewer2040718" class=" ace_editor ace-tomorrow" style="font-size: 14px; height: 51px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; top: 17px; left: 45px;" readonly=""></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 41px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; top: 0px; left: 0px; width: 41px;"><div class="ace_gutter-cell ace_gutter-active-line " style="height: 17px; top: 0px;">1<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 17px;">2<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 34px;">3<span style="display: none;"></span></div></div></div><div class="ace_scroller" style="left: 40.6973px; right: 0px; bottom: 0px;"><div class="ace_content" style="top: 0px; left: 0px; width: 892.303px; height: 85px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 620px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_text-layer" style="height: 1e+06px; margin: 0px 4px; top: 0px; left: 0px;"><div class="ace_line" style="height: 17px; top: 0px;">GET / HTTP/1.1</div><div class="ace_line" style="height: 17px; top: 17px;">HOST: sample.joinc.co.kr</div><div class="ace_line" style="height: 17px; top: 34px;">Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ== </div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor" style="display: block; top: 0px; left: 4px; width: 8px; height: 17px;"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="width: 22px; bottom: 0px; display: none;"><div class="ace_scrollbar-inner" style="width: 22px; height: 51px;">&nbsp;</div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 22px; left: 40.6973px; right: 0px;"><div class="ace_scrollbar-inner" style="height: 22px; width: 916px;">&nbsp;</div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">הההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההה</div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></pre>
+		</div>
+	</div>
+</div>
+
+<script>
+ace.require("ace/ext/language_tools");
+var textviewer = ace.edit("textviewer2040718");
+textviewer.session.setMode("ace/mode/text");
+textviewer.setTheme("ace/theme/tomorrow");
+textviewer.setFontSize(14);
+//textviewer.renderer.setShowGutter(false);
+textviewer.setReadOnly(true);
+textviewer.setShowPrintMargin(false);
+textviewer.setHighlightActiveLine(false);
+textviewer.setOptions({maxLines:30, enableBasicAutocompletion:true});
+</script>
+
+<p></p>
+
+아이디와 패스워드는 "아이디:패스워드"로 base64 인코딩 된다. 아이디가 yundream, 패스워드가 1111 일 경우 아래와 같이 인코딩하면 된다.
+<script src="./HTTP 프로토콜_files/ace.js.다운로드" type="text/javascript" charset="utf-8"></script>
+<script src="./HTTP 프로토콜_files/ext-language_tools.js.다운로드"></script>
+
+<div class="row">
+	<div class="large-12 columns">
+		<div style="border-style: solid;border-width:1px; padding:3px; border-color:#e0e0e0;">
+		<pre id="textviewer2040719" class=" ace_editor ace-tomorrow" style="font-size: 14px; height: 68px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; top: 17px; left: 45px;" readonly=""></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 41px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; top: 0px; left: 0px; width: 41px;"><div class="ace_gutter-cell ace_gutter-active-line " style="height: 17px; top: 0px;">1<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 17px;">2<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 34px;">3<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 17px; top: 51px;">4<span style="display: none;"></span></div></div></div><div class="ace_scroller" style="left: 40.6973px; right: 0px; bottom: 0px;"><div class="ace_content" style="top: 0px; left: 0px; width: 892.303px; height: 102px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 620px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_text-layer" style="height: 1e+06px; margin: 0px 4px; top: 0px; left: 0px;"><div class="ace_line" style="height: 17px; top: 0px;"># echo -n "yundream:1111" | openssl base64</div><div class="ace_line" style="height: 17px; top: 17px;">eXVuZHJlYW06MTExMQ==</div><div class="ace_line" style="height: 17px; top: 34px;"># echo -n "yundream:1111" | python -m base64 -e</div><div class="ace_line" style="height: 17px; top: 51px;">eXVuZHJlYW06MTExMQ==</div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor" style="display: block; top: 0px; left: 4px; width: 8px; height: 17px;"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="width: 22px; bottom: 0px; display: none;"><div class="ace_scrollbar-inner" style="width: 22px; height: 68px;">&nbsp;</div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 22px; left: 40.6973px; right: 0px;"><div class="ace_scrollbar-inner" style="height: 22px; width: 916px;">&nbsp;</div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">הההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההה</div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></pre>
+		</div>
+	</div>
+</div>
+
+<script>
+ace.require("ace/ext/language_tools");
+var textviewer = ace.edit("textviewer2040719");
+textviewer.session.setMode("ace/mode/text");
+textviewer.setTheme("ace/theme/tomorrow");
+textviewer.setFontSize(14);
+//textviewer.renderer.setShowGutter(false);
+textviewer.setReadOnly(true);
+textviewer.setShowPrintMargin(false);
+textviewer.setHighlightActiveLine(false);
+textviewer.setOptions({maxLines:30, enableBasicAutocompletion:true});
+</script>
+
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h4 class="head"><a id="s-7.1.2."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">7.1.2.</a> Digest access authentication </h4></div></div>
+나중에 정리..
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h2 class="head"><a id="s-8."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">8.</a> 웹 소켓 </h2></div></div>
+<a href="https://www.joinc.co.kr/w/man/12/websocket">웹 소켓</a> 참고
+<p></p>
+
+<div class="row"><div class="small-12 columns"><h2 class="head"><a id="s-9."></a><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#toc">9.</a> 참고 문서 </h2></div></div>
+<ol class="item_list">
+<li><a href="http://ko.wikipedia.org/wiki/HTTP_%EC%83%81%ED%83%9C_%EC%BD%94%EB%93%9C" class="external"> wikipedia HTTP Protocol</a>
+</li>
+<li><a href="http://blog.naver.com/PostView.nhn?blogId=sjbae75&amp;logNo=40072576305" class="external"> HTTP Code</a>
+</li>
+<li><a href="http://en.wikipedia.org/wiki/HTTP_cookie" class="external"> wikipedia - HTTP Cookie</a>
+</li>
+<li><a href="https://www.google.co.kr/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;ved=0CDQQFjAA&amp;url=http%3A%2F%2Fettrends.etri.re.kr%2FPDFData%2F25-2_112_120.pdf&amp;ei=vibDUdKXNceFiQf16YCACA&amp;usg=AFQjCNGS9aFEpj4gU4BE-QVF83OU4_ktDQ&amp;sig2=Ai5sVvvsn8oEPk4ggB-eZw" class="external"> SOAP 기반 웹서비스와 RESTful 웹서비스 기술 비교</a> 
+</li>
+<li><a href="http://gs.statcounter.com/" class="external"> 웹 브라우저 점유율</a>
+</li>
+<li><a href="http://news.netcraft.com/archives/category/web-server-survey/" class="external">  웹 서버 시장 조사 자료</a>
+</li>
+<li><a href="http://en.wikipedia.org/wiki/HTTP_Secure" class="external"> HTTP Secure</a>
+</li>
+<li><a href="http://icecreamie.tistory.com/entry/HTTP-11-%EC%BA%90%EC%8B%9C-%EA%B4%80%EB%A0%A8-%ED%97%A4%EB%8D%94" class="external"> 캐쉬 관련 헤더</a>
+</li></ol>		
+		
+<p></p>
+
+
+	</div>
+ 
+
+
+<div class="row">
+	<div class="large-12 columns" id="footnote">
+	<hr></div>
+	<div class="large-12 columns">
+		<div id="footnote_item">
+			<ol>
+			<li><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#sid_3">^</a><span class="target" id="fid_3"></span><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#test"></a>꼭 Connectless이여야 하는건 아니지만, 일반적으로 이렇게 작동한다. Push 서비스등을 위해서 connect를 유지하는 경우도 있다.</li><li><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#sid_3">^</a><span class="target" id="fid_3"></span><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#test"></a>Create Read Update Delete의 줄임말이다.</li><li><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#sid_3">^</a><span class="target" id="fid_3"></span><a href="https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP#test"></a>FireFox의 firebug와 비슷하다</li></ol>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="row">
+	<div class="large-12 columns">
+	<div id="disqus_recommendations" style="margin-bottom: 12px;"><iframe id="dsq-app6236" name="dsq-app6236" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./HTTP 프로토콜_files/saved_resource.html" style="width: 100% !important; border: none !important; overflow: hidden !important; height: 271px !important; display: inline !important; box-sizing: border-box !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div><div id="disqus_thread"><iframe id="dsq-app4334" name="dsq-app4334" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./HTTP 프로토콜_files/saved_resource(1).html" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 660px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div>
+</div>
+
+</div> 
+ 
+
+<script>
+$(document).ready(function() {
+	$(document).foundation();
+});
+</script>
+
+<script>
+var disqus_config = function () {
+	this.page.url = "https://www.joinc.co.kr/doc/1177"; 
+	this.page.identifier = PAGE_IDENTIFIER;
+};
+(function() { 
+ var d = document, s = d.createElement('script');
+ s.src = '//www-joinc-co-kr.disqus.com/embed.js';
+ s.setAttribute('data-timestamp', +new Date());
+ (d.head || d.body).appendChild(s);
+ })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                                
+
+
+<iframe style="display: none;" src="./HTTP 프로토콜_files/saved_resource(2).html"></iframe><iframe style="display: none;" src="./HTTP 프로토콜_files/saved_resource(3).html"></iframe><div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div></div></div></div></body></html>
