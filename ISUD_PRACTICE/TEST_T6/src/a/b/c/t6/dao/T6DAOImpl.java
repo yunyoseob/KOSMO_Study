@@ -11,7 +11,7 @@ import a.b.c.t6.vo.T6VO;
 
 public class T6DAOImpl implements T6DAO {
 
-	// ÀüÃ¼ Á¶È¸
+	// ì „ì²´ ì¡°íšŒ
 	@Override
 	public ArrayList<T6VO> t6SelectAll() {
 		// TODO Auto-generated method stub
@@ -27,7 +27,7 @@ public class T6DAOImpl implements T6DAO {
 			conn = KosmoConnProperty.getConnection();
 			String sql = T6QueryMap.getT6SelectAll();
 			pstmt = conn.prepareStatement(sql);
-			System.out.println("ÀüÃ¼ Á¶È¸ >>> : \n" + sql);
+			System.out.println("ì „ì²´ ì¡°íšŒ >>> : \n" + sql);
 			rsRs = pstmt.executeQuery();
 
 			if (rsRs !=null) { 
@@ -47,16 +47,16 @@ public class T6DAOImpl implements T6DAO {
 				}
 				
 			}else {
-				System.out.println("T6DAOImpl :: ÀüÃ¼Á¶È¸ °á°ú°¡ ¾ø³ß ¤»¤»¤» >>> : " + rsRs);
+				System.out.println("T6DAOImpl :: ì „ì²´ì¡°íšŒ ê²°ê³¼ê°€ ì—†ë„¹ ã…‹ã…‹ã…‹ >>> : " + rsRs);
 			}
 		}catch(Exception e) {
-			System.out.println("T6DAOImpl ::  ÀüÃ¼Á¶È¸Áß ¿¡·¯°¡  >>> : " + e.getMessage());
+			System.out.println("T6DAOImpl ::  ì „ì²´ì¡°íšŒì¤‘ ì—ëŸ¬ê°€  >>> : " + e.getMessage());
 		}
 		
 		return aList;
 	}
 
-	// ÀÌ¸§ Á¶È¸
+	// ì´ë¦„ ì¡°íšŒ
 	@Override
 	public ArrayList<T6VO> t6SelectName(T6VO tvo) {
 		// TODO Auto-generated method stub
@@ -74,7 +74,7 @@ public class T6DAOImpl implements T6DAO {
 			
 			String sql = T6QueryMap.getT6SelectName();
 			pstmt = conn.prepareStatement(sql);
-			System.out.println("ÀÌ¸§ Á¶È¸ >>> : \n" + sql);
+			System.out.println("ì´ë¦„ ì¡°íšŒ >>> : \n" + sql);
 			
 			pstmt.clearParameters();
 			pstmt.setString(1, tvo.getT2());
@@ -95,16 +95,16 @@ public class T6DAOImpl implements T6DAO {
 				}
 				
 			}else {
-				System.out.println("T6DAOImpl :: ÀÌ¸§Á¶È¸ °á°ú°¡ ¾ø³ß ¤»¤»¤» >>> : " + rsRs);
+				System.out.println("T6DAOImpl :: ì´ë¦„ì¡°íšŒ ê²°ê³¼ê°€ ì—†ë„¹ ã…‹ã…‹ã…‹ >>> : " + rsRs);
 			}
 		}catch(Exception e) {
-			System.out.println("T6DAOImpl ::  ÀÌ¸§Á¶È¸Áß ¿¡·¯°¡  >>> : " + e.getMessage());
+			System.out.println("T6DAOImpl ::  ì´ë¦„ì¡°íšŒì¤‘ ì—ëŸ¬ê°€  >>> : " + e.getMessage());
 		}
 		
 		return aList;
 	}
 
-	// ³¯Â¥ °Ë»ö
+	// ë‚ ì§œ ê²€ìƒ‰
 	@Override
 	public ArrayList<T6VO> t6SelectDate(T6VO tvo) {
 		// TODO Auto-generated method stub
@@ -122,7 +122,7 @@ public class T6DAOImpl implements T6DAO {
 			
 			String sql = T6QueryMap.getT6SelectDate();
 			pstmt = conn.prepareStatement(sql);
-			System.out.println("³¯Â¥ Á¶È¸ >>> : \n" + sql);
+			System.out.println("ë‚ ì§œ ì¡°íšŒ >>> : \n" + sql);
 			
 			pstmt.clearParameters();
 			pstmt.setString(1, tvo.getFromdate());
@@ -144,69 +144,69 @@ public class T6DAOImpl implements T6DAO {
 				}
 				
 			}else {
-				System.out.println("T6DAOImpl :: ÀÌ¸§Á¶È¸ °á°ú°¡ ¾ø³ß ¤»¤»¤» >>> : " + rsRs);
+				System.out.println("T6DAOImpl :: ì´ë¦„ì¡°íšŒ ê²°ê³¼ê°€ ì—†ë„¹ ã…‹ã…‹ã…‹ >>> : " + rsRs);
 			}
 		}catch(Exception e) {
-			System.out.println("T6DAOImpl ::  ÀÌ¸§Á¶È¸Áß ¿¡·¯°¡  >>> : " + e.getMessage());
+			System.out.println("T6DAOImpl ::  ì´ë¦„ì¡°íšŒì¤‘ ì—ëŸ¬ê°€  >>> : " + e.getMessage());
 		}
 		
 		return aList;
 	}
 
-	// ÀÔ·Â
+	// ì…ë ¥
 	/*
-	JDBC ¸¦ ÀÌ¿ëÇØ¼­ µ¥ÀÌÅÍº£ÀÌ½º¿¡ ÀÔ·Â,  ¼öÁ¤, »èÁ¦, Á¶È¸
+	JDBC ë¥¼ ì´ìš©í•´ì„œ ë°ì´í„°ë² ì´ìŠ¤ì— ì…ë ¥,  ìˆ˜ì •, ì‚­ì œ, ì¡°íšŒ
 	
 	sqlplus
 	---------------
-	Á¶È¸ : SELECT : DQL 
-	ÀÔ·Â, ¼öÁ¤, »èÁ¦ : INSERT, UPDATE, DELETE : DML : TRANSACTION : COMMIT, ROLLBACK
-		DML  ¹®ÀåÀ¸·Î µ¥ÀÌÅÍ¸¦ Å×ÀÌºí¿¡ ÀÔ·ÂÇÏ¸é 
-		1. ¸Ş¸ğ¸®¿¡ ¾´´Ù.
-		2. ¸Ş¸ğ¸®¿¡ ÀúÀåµÈ ³»¿ëÀ» È®ÀÎ ÇÏ°í 
-		   ¸ñÀû¿¡ ¸ÂÀ¸¸é COMMIT,  ¸ÂÁö¾ÊÀ¸¸é ROLLBACK 
-		3. COMMIT À¸·Î ÆÄÀÏ¿¡ ¾´ ÀÌÈÄ¿¡´Â ROLLBACK µÇÁö ¾Ê´Â´Ù.
+	ì¡°íšŒ : SELECT : DQL 
+	ì…ë ¥, ìˆ˜ì •, ì‚­ì œ : INSERT, UPDATE, DELETE : DML : TRANSACTION : COMMIT, ROLLBACK
+		DML  ë¬¸ì¥ìœ¼ë¡œ ë°ì´í„°ë¥¼ í…Œì´ë¸”ì— ì…ë ¥í•˜ë©´ 
+		1. ë©”ëª¨ë¦¬ì— ì“´ë‹¤.
+		2. ë©”ëª¨ë¦¬ì— ì €ì¥ëœ ë‚´ìš©ì„ í™•ì¸ í•˜ê³  
+		   ëª©ì ì— ë§ìœ¼ë©´ COMMIT,  ë§ì§€ì•Šìœ¼ë©´ ROLLBACK 
+		3. COMMIT ìœ¼ë¡œ íŒŒì¼ì— ì“´ ì´í›„ì—ëŠ” ROLLBACK ë˜ì§€ ì•ŠëŠ”ë‹¤.
 	
-	splplus ¿¡¼­ ÇÏ´Â °ÍÀÌ ¾Æ´Ï°í 
-	jdbc µå¶óÀÌ¹ö¸¦ ÀÌ¿ëÇØ¼­ ÀÚ¹Ù ÇÁ·Î±×·¥¿¡¼­ ±¸ÇöÇÏ´Â °Í 
+	splplus ì—ì„œ í•˜ëŠ” ê²ƒì´ ì•„ë‹ˆê³  
+	jdbc ë“œë¼ì´ë²„ë¥¼ ì´ìš©í•´ì„œ ìë°” í”„ë¡œê·¸ë¨ì—ì„œ êµ¬í˜„í•˜ëŠ” ê²ƒ 
 	
-	ÀÚ¹ÙÇÁ·Î±×·¥ - jdbc µå¶óÀÌ¹ö - ¿À¶óÅ¬ µ¥ÀÌÅÍº£ÀÌ½º 
+	ìë°”í”„ë¡œê·¸ë¨ - jdbc ë“œë¼ì´ë²„ - ì˜¤ë¼í´ ë°ì´í„°ë² ì´ìŠ¤ 
 	
 	1. Connection
-	2. PreparedStatement Äõ¸®¹®Àº µ¥ÀÌÅÍº£ÀÌ½º¿¡ Àü´Ş
-	3. ResultSet, int µ¥ÀÌº£ÀÌ½º¿¡¼­ ¼öÇàµÈ °á°ú¸¦ ÇÁ·Î±×·¥À¸·Î Àü´Ş ¹Ş¾Æ¾ß ÇÑ´Ù.
+	2. PreparedStatement ì¿¼ë¦¬ë¬¸ì€ ë°ì´í„°ë² ì´ìŠ¤ì— ì „ë‹¬
+	3. ResultSet, int ë°ì´ë² ì´ìŠ¤ì—ì„œ ìˆ˜í–‰ëœ ê²°ê³¼ë¥¼ í”„ë¡œê·¸ë¨ìœ¼ë¡œ ì „ë‹¬ ë°›ì•„ì•¼ í•œë‹¤.
 	
 	SELECT
-		Å×ÀÌºí¿¡¼­ Á¶È¸µÈ ROW(ÆÄÀÏ)°¡ ÇÁ·Î±×·¥À¸·Î Àü´Ş µÈ´Ù.
+		í…Œì´ë¸”ì—ì„œ ì¡°íšŒëœ ROW(íŒŒì¼)ê°€ í”„ë¡œê·¸ë¨ìœ¼ë¡œ ì „ë‹¬ ëœë‹¤.
 		Connection 
 		PreparedStatement
 		ResultSet
 		executQuery() 
 	
 	INSERT, UPDATE, DELETE 
-		Å×ÀÌºí¿¡ ¹İ¿µµÈ °á°ú¸¦ °Ç¼ö·Î Àü´ŞµÈ´Ù. 
+		í…Œì´ë¸”ì— ë°˜ì˜ëœ ê²°ê³¼ë¥¼ ê±´ìˆ˜ë¡œ ì „ë‹¬ëœë‹¤. 
 		Connection 
 		PreparedStatement
 		int 
 		executUpdate()
 		
-		jdbc µå¶óÀÌ¹ö¿¡¼­ ÀÏÀ» ÇØÁØ´Ù. (Oracle ¿¡¼­ jdbc ¸¸µå´Â °³¹ßÀÚ°¡ Á¤ÇØÁØ´Ù.)
-		jdbc µå¶óÀÌ¹ö¸¦ ÀÌ¿ëÇØ¼­ 
-		¿À¶óÅ¬ µ¥ÀÌÅÍº£ÀÌ½º Å×ÀÌºí¿¡ µ¥ÀÌÅÍ¸¦ ÀÔ·ÂÇÏ¸é 
-		ÃÖ¼Ò 1°ÇÀº ÀÚµ¿À¸·Î Ä¿¹ÔÀ» ÇØÁØ´Ù. <-- ¹öÀü º°·Î ???
+		jdbc ë“œë¼ì´ë²„ì—ì„œ ì¼ì„ í•´ì¤€ë‹¤. (Oracle ì—ì„œ jdbc ë§Œë“œëŠ” ê°œë°œìê°€ ì •í•´ì¤€ë‹¤.)
+		jdbc ë“œë¼ì´ë²„ë¥¼ ì´ìš©í•´ì„œ 
+		ì˜¤ë¼í´ ë°ì´í„°ë² ì´ìŠ¤ í…Œì´ë¸”ì— ë°ì´í„°ë¥¼ ì…ë ¥í•˜ë©´ 
+		ìµœì†Œ 1ê±´ì€ ìë™ìœ¼ë¡œ ì»¤ë°‹ì„ í•´ì¤€ë‹¤. <-- ë²„ì „ ë³„ë¡œ ???
 		
-		Ä¿¹ÔÀ» ¾îµğ¼­ ÄÜÆ®·Ñ ÇÏ´Â°¡ : jdbc µå¶óÀÌ¹ö¿¡¼­ ¿ªÈ°À» ÇÏ°í : ¿À¶óÅ¬ ¿£Áø¿¡°Ô ¿äÃ»À» ÇÑ´Ù. 
-		°³¹ßÀÚ°¡ ÇÒ ¼ö ÀÖ´Â ÀÏÀº
-		Connection ÀÎÅÍÆäÀÌ½º setAutoCommit(), getAutCommit() µÎ°¡Áö ÇÔ¼ö¸¦ °¡Áö°í 
-		jdbc µå¶óÀÌ¹ö¿¡°Ô ¿äÃ»À» ÇÏ¸é 
-		jdbc µå¶óÀÌ¹ö°¡ ¿À¶óÅ¬ ¿£Áø(¿ÉÆ¼¸¶ÀÌÀú)¿¡°Ô ¿äÃ»À» ÇÑ´Ù.
-		¿äÃ»À» ¹ŞÀº ¿À¶óÅ¬ ¿£Áö(¿ÉÆ¼¸¶ÀÌÀú)°¡ ÇöÀç ±× Å×ÀÌºíÀÇ »óÅÂ¸¦ º¸°í 
-		¿äÃ»ÇÑ Á¤º¸¸¦ ¼öÇà ÇÑ´Ù. 
+		ì»¤ë°‹ì„ ì–´ë””ì„œ ì½˜íŠ¸ë¡¤ í•˜ëŠ”ê°€ : jdbc ë“œë¼ì´ë²„ì—ì„œ ì—­í™œì„ í•˜ê³  : ì˜¤ë¼í´ ì—”ì§„ì—ê²Œ ìš”ì²­ì„ í•œë‹¤. 
+		ê°œë°œìê°€ í•  ìˆ˜ ìˆëŠ” ì¼ì€
+		Connection ì¸í„°í˜ì´ìŠ¤ setAutoCommit(), getAutCommit() ë‘ê°€ì§€ í•¨ìˆ˜ë¥¼ ê°€ì§€ê³  
+		jdbc ë“œë¼ì´ë²„ì—ê²Œ ìš”ì²­ì„ í•˜ë©´ 
+		jdbc ë“œë¼ì´ë²„ê°€ ì˜¤ë¼í´ ì—”ì§„(ì˜µí‹°ë§ˆì´ì €)ì—ê²Œ ìš”ì²­ì„ í•œë‹¤.
+		ìš”ì²­ì„ ë°›ì€ ì˜¤ë¼í´ ì—”ì§€(ì˜µí‹°ë§ˆì´ì €)ê°€ í˜„ì¬ ê·¸ í…Œì´ë¸”ì˜ ìƒíƒœë¥¼ ë³´ê³  
+		ìš”ì²­í•œ ì •ë³´ë¥¼ ìˆ˜í–‰ í•œë‹¤. 
 		
-		Connection ÀÎÅÍÆäÀÌ½º¸¦ ÀÌ¿ëÇØ¼­ 
-			ÀÚ¹ÙÇÁ·Î±×·¥ - jdbc µå¶óÀÌ¹ö - ¿À¶óÅ¬ µ¥ÀÌÅÍº£ÀÌ½º °¡ ¿¬°áµÇ¸é
-		Connection.setAutoCommit() true ÀÎ »óÅÂ°¡ µÈ´Ù.
-		setAutoCommit ÀÌ true ÀÎ »óÅÂ¿¡¼­ ÃÖÃÊ 1°Ç ¸¸ ÀÚµ¿À¸·Î Ä¿¹ÔÀ» ÇÑ´Ù. 		 
+		Connection ì¸í„°í˜ì´ìŠ¤ë¥¼ ì´ìš©í•´ì„œ 
+			ìë°”í”„ë¡œê·¸ë¨ - jdbc ë“œë¼ì´ë²„ - ì˜¤ë¼í´ ë°ì´í„°ë² ì´ìŠ¤ ê°€ ì—°ê²°ë˜ë©´
+		Connection.setAutoCommit() true ì¸ ìƒíƒœê°€ ëœë‹¤.
+		setAutoCommit ì´ true ì¸ ìƒíƒœì—ì„œ ìµœì´ˆ 1ê±´ ë§Œ ìë™ìœ¼ë¡œ ì»¤ë°‹ì„ í•œë‹¤. 		 
 	*/	
 	@Override
 	public boolean t6Insert(T6VO tvo) {
@@ -220,15 +220,15 @@ public class T6DAOImpl implements T6DAO {
 		boolean bool = false;
 		
 		try  {
-			// conn = KosmoConnProperty.getConnection(); ½ºÅ×ÀÌÆ®¸ÕÆ® ¹®ÀåÀÌ ¼º¸³µÇ¸é
-			// ÀÌ »óÅÂ¿¡¼­ Ä¿³Ø¼ÇÀÌ ÇÏ³ª ¿ÀÇÂÀÌ µÈ´Ù.
-			// Ä¿³×¼ÇÀÌ ¿ÀÇÂÀÌ µÇ¸é¼­ setAutoCommit() true ÀÎ »óÅÂ°¡ µÈ´Ù.
-			// ÃÖÃÊ 1°ÇÀÌ ÀÚµ¿ Ä¿¹ÔÀÌ´Ù. <-- ÀÚµ¿ Ä¿¹ÔÀ» ¿äÃ»ÇÑ´Ù. 1. jdbc µå¶óÀÌ¹ö, 2. ¿À¶óÅ¬ ¿£Áø 
+			// conn = KosmoConnProperty.getConnection(); ìŠ¤í…Œì´íŠ¸ë¨¼íŠ¸ ë¬¸ì¥ì´ ì„±ë¦½ë˜ë©´
+			// ì´ ìƒíƒœì—ì„œ ì»¤ë„¥ì…˜ì´ í•˜ë‚˜ ì˜¤í”ˆì´ ëœë‹¤.
+			// ì»¤ë„¤ì…˜ì´ ì˜¤í”ˆì´ ë˜ë©´ì„œ setAutoCommit() true ì¸ ìƒíƒœê°€ ëœë‹¤.
+			// ìµœì´ˆ 1ê±´ì´ ìë™ ì»¤ë°‹ì´ë‹¤. <-- ìë™ ì»¤ë°‹ì„ ìš”ì²­í•œë‹¤. 1. jdbc ë“œë¼ì´ë²„, 2. ì˜¤ë¼í´ ì—”ì§„ 
 			conn = KosmoConnProperty.getConnection();			
 			
 			String sql = T6QueryMap.getT6Insert();
 			pstmt = conn.prepareStatement(sql);
-				System.out.println("ÀÔ·ÂÇÏ±â >>> : \n" + sql);
+				System.out.println("ì…ë ¥í•˜ê¸° >>> : \n" + sql);
 			
 			pstmt.clearParameters();
 			pstmt.setString(1, tvo.getT1());
@@ -238,15 +238,15 @@ public class T6DAOImpl implements T6DAO {
 			nCnt = pstmt.executeUpdate();
 //			boolean b = !conn.getAutoCommit();
 //			System.out.println("b >>> : " + b);
-//			if (b) conn.commit(); // <-- ÀÌ »óÅÂ°¡´Â Ä¿¹ÔÀ» ÇÑ °ÍÀÌ ¾Æ´Ï°í Ä¿¹ÔÀ» ¿äÃ»À» Çß´Ù. 1. jdbc µå¶óÀÌ¹ö¿¡°Ô 
+//			if (b) conn.commit(); // <-- ì´ ìƒíƒœê°€ëŠ” ì»¤ë°‹ì„ í•œ ê²ƒì´ ì•„ë‹ˆê³  ì»¤ë°‹ì„ ìš”ì²­ì„ í–ˆë‹¤. 1. jdbc ë“œë¼ì´ë²„ì—ê²Œ 
 			if (!conn.getAutoCommit()) conn.commit();
 			
-			System.out.println("nCnt >>> : " + nCnt + " °Ç µî·Ï µÇ¾úÀ½ ");			
+			System.out.println("nCnt >>> : " + nCnt + " ê±´ ë“±ë¡ ë˜ì—ˆìŒ ");			
 			if (nCnt > 0) { bool = true;}
 			
 //			KosmoConnProperty.conClose(conn, pstmt);
 		}catch(Exception e) {
-			System.out.println("¿¡·¯°¡ >>> : " + e.getMessage());
+			System.out.println("ì—ëŸ¬ê°€ >>> : " + e.getMessage());
 		}finally {
 			KosmoConnProperty.conClose(conn, pstmt);
 		}
@@ -269,7 +269,7 @@ public class T6DAOImpl implements T6DAO {
 			conn = KosmoConnProperty.getConnection();			
 			String sql = T6QueryMap.getT6Update();
 			pstmt = conn.prepareStatement(sql);
-			System.out.println("¼öÁ¤ÇÏ±â >>> : \n" + sql);
+			System.out.println("ìˆ˜ì •í•˜ê¸° >>> : \n" + sql);
 			
 			pstmt.clearParameters();			
 			pstmt.setString(1, tvo.getT2()); // place holder 1 :: A.T2 = ?
@@ -279,12 +279,12 @@ public class T6DAOImpl implements T6DAO {
 			nCnt = pstmt.executeUpdate();
 			if (!conn.getAutoCommit()) conn.commit();
 			
-			System.out.println("nCnt >>> : " + nCnt + " °Ç ¼öÁ¤ µÇ¾úÀ½ ");			
+			System.out.println("nCnt >>> : " + nCnt + " ê±´ ìˆ˜ì • ë˜ì—ˆìŒ ");			
 			if (nCnt > 0) { bool = true;}
 			
 			KosmoConnProperty.conClose(conn, pstmt);
 		}catch(Exception e) {
-			System.out.println("¿¡·¯°¡ >>> : " + e.getMessage());
+			System.out.println("ì—ëŸ¬ê°€ >>> : " + e.getMessage());
 		}finally {
 			KosmoConnProperty.conClose(conn, pstmt);
 		}
@@ -292,7 +292,7 @@ public class T6DAOImpl implements T6DAO {
 		return bool;	
 	}
 
-	// »èÁ¦
+	// ì‚­ì œ
 	@Override
 	public boolean t6Delete(T6VO tvo) {
 		// TODO Auto-generated method stub
@@ -309,7 +309,7 @@ public class T6DAOImpl implements T6DAO {
 			
 			String sql = T6QueryMap.getT6Delete();
 			pstmt = conn.prepareStatement(sql);
-			System.out.println("»èÁ¦ÇÏ±â >>> : \n" + sql);
+			System.out.println("ì‚­ì œí•˜ê¸° >>> : \n" + sql);
 			
 			pstmt.clearParameters();						
 			pstmt.setString(1, tvo.getT1()); // place holder 1 :: A.T1 = ?
@@ -317,16 +317,64 @@ public class T6DAOImpl implements T6DAO {
 			nCnt = pstmt.executeUpdate();
 			if (!conn.getAutoCommit()) conn.commit();
 			
-			System.out.println("nCnt >>> : " + nCnt + " °Ç »èÁ¦ µÇ¾úÀ½ ");			
+			System.out.println("nCnt >>> : " + nCnt + " ê±´ ì‚­ì œ ë˜ì—ˆìŒ ");			
 			if (nCnt > 0) { bool = true;}
 			
 			KosmoConnProperty.conClose(conn, pstmt);
 		}catch(Exception e) {
-			System.out.println("¿¡·¯°¡ >>> : " + e.getMessage());
+			System.out.println("ì—ëŸ¬ê°€ >>> : " + e.getMessage());
 		}finally {
 			KosmoConnProperty.conClose(conn, pstmt);
 		}
 		
 		return bool;	
+	}
+
+	// íšŒì›ë²ˆí˜¸ ê²€ìƒ‰ ì¶”ê°€ 
+	@Override
+	public ArrayList<T6VO> t6SelectNum(T6VO tvo) {
+		// TODO Auto-generated method stub
+		System.out.println("T6DAOImpl.t6SelectNum >>> : ");
+		T6VO.printlnT6VO(tvo);
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rsRs = null;
+		ArrayList<T6VO> aList = null;		
+		T6VO _tvo = null; 
+
+		try {
+			conn = KosmoConnProperty.getConnection();
+			
+			String sql = T6QueryMap.getT6SelectNum();
+			pstmt = conn.prepareStatement(sql);
+			System.out.println("íšŒì›ë²ˆí˜¸ ê²€ìƒ‰ >>> : \n" + sql);
+			
+			pstmt.clearParameters();
+			pstmt.setString(1, tvo.getT1());
+			
+			rsRs = pstmt.executeQuery();
+
+			if (rsRs !=null) { 
+				aList = new ArrayList<T6VO> ();
+				while (rsRs.next()) {					
+					_tvo = new T6VO();
+					_tvo.setT1(rsRs.getString(1));
+					_tvo.setT2(rsRs.getString(2));
+					_tvo.setT3(rsRs.getString(3));
+					_tvo.setT4(rsRs.getString(4));
+					_tvo.setT5(rsRs.getString(5));
+					_tvo.setT6(rsRs.getString(6));					 
+					aList.add(_tvo);					
+				}
+				
+			}else {
+				System.out.println("T6DAOImpl :: íšŒì›ë²ˆí˜¸ ì¡°íšŒ ê²°ê³¼ê°€ ì—†ë„¹ ã…‹ã…‹ã…‹ >>> : " + rsRs);
+			}
+		}catch(Exception e) {
+			System.out.println("T6DAOImpl ::  íšŒì›ë²ˆí˜¸ ì¡°íšŒì¤‘ ì—ëŸ¬ê°€  >>> : " + e.getMessage());
+		}
+		
+		return aList;
 	}
 }

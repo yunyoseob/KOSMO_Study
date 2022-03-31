@@ -13,4 +13,7 @@ public interface T6DAO {
 	public boolean t6Insert(T6VO tvo);
 	public boolean t6Update(T6VO tvo);
 	public boolean t6Delete(T6VO tvo);
+	
+	// 회원번호 검색 추가 
+	public ArrayList<T6VO> t6SelectNum(T6VO tvo);
 }

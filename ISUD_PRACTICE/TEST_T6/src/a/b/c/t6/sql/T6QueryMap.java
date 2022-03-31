@@ -1,8 +1,8 @@
 package a.b.c.t6.sql;
 
 public abstract class T6QueryMap {
-
-	// ¿¸√º ¡∂»∏
+	
+	// Ï†ÑÏ≤¥ Ï°∞Ìöå
 	public static String getT6SelectAll() {
 		
 		StringBuffer sb = new StringBuffer();
@@ -17,11 +17,10 @@ public abstract class T6QueryMap {
 		sb.append("	WHERE    A.T4 = 'Y'   			\n");
 		sb.append(" ORDER BY 1 DESC					\n");
 		
-		return sb.toString();
-		
+		return sb.toString();		
 	}
 	
-	// ¿Ã∏ß ∞Àªˆ
+	// Ïù¥Î¶Ñ Í≤ÄÏÉâ
 	public static String getT6SelectName() {
 		
 		StringBuffer sb = new StringBuffer();
@@ -39,7 +38,7 @@ public abstract class T6QueryMap {
 		return sb.toString();
 	}
 	
-	// ≥Ø¬• ∞Àªˆ
+	// ÎÇ†Ïßú Í≤ÄÏÉâ
 	public static String getT6SelectDate() {
 		
 		StringBuffer sb = new StringBuffer();
@@ -58,14 +57,14 @@ public abstract class T6QueryMap {
 		return sb.toString();
 	}
 
-	// ¿‘∑¬ 
+	// ÏûÖÎ†• 
 	public static String getT6Insert() {
 		System.out.println("T6QueryMap.getT6Insert >>> :");
 		
 		StringBuffer sb = new StringBuffer();
 		sb.append("	INSERT INTO  					\n");
 		sb.append("		TEST_T6  					\n");
-		sb.append("				(  					\n");
+		sb.append("				(  					\n");		
 		sb.append("			 		 T1         	\n"); // place holder 1 
 		sb.append("			 	  	,T2         	\n"); // place holder 2 
 		sb.append("			 	  	,T3         	\n"); // place holder 3 
@@ -86,7 +85,7 @@ public abstract class T6QueryMap {
 		return sb.toString();
 	}
 	
-	// ºˆ¡§
+	// ÏàòÏ†ï
 	public static String getT6Update() {
 		
 		StringBuffer sb = new StringBuffer();
@@ -101,7 +100,7 @@ public abstract class T6QueryMap {
 		return sb.toString();
 	}
 	
-	// ªË¡¶
+	// ÏÇ≠Ï†ú
 	public static String getT6Delete() {
 		
 		StringBuffer sb = new StringBuffer();
@@ -111,6 +110,24 @@ public abstract class T6QueryMap {
 		sb.append("			,T6 = SYSDATE       	\n");		 
 		sb.append("	WHERE    T4 = 'Y'   			\n");
 		sb.append(" AND      T1 = ?					\n"); // place holder 3 :: T1
+		
+		return sb.toString();
+	}
+	
+	// ÌöåÏõêÎ≤àÌò∏ Í≤ÄÏÉâ Ï∂îÍ∞Ä
+	public static String getT6SelectNum() {
+		
+		StringBuffer sb = new StringBuffer();
+		sb.append("	SELECT  						\n"); 
+		sb.append("			 A.T1         	AS T1   \n");
+		sb.append("			,A.T2         	AS T2 	\n");  
+		sb.append("			,A.T3        	AS T3  	\n");
+		sb.append("			,A.T4           AS T4  	\n");		 
+		sb.append("			,TO_CHAR(A.T5, 'YYYY-MM-DD') 	AS T5  \n");
+		sb.append("			,TO_CHAR(A.T6, 'YYYY-MM-DD')  	AS T6  \n");		
+		sb.append("	FROM     TEST_T6 A 				\n");
+		sb.append("	WHERE    A.T4 = 'Y'   			\n");
+		sb.append(" AND      A.T1 = ?				\n"); // place holder 1 
 		
 		return sb.toString();
 	}

@@ -20,7 +20,7 @@ public class T6ServiceImpl implements T6Service {
 	@Override
 	public ArrayList<T6VO> t6SelectName(T6VO tvo) {
 		// TODO Auto-generated method stub
-		System.out.println("T6ServiceImpl.t6SelectAll >>> :");
+		System.out.println("T6ServiceImpl.t6SelectName >>> :");
 		
 		T6DAO tdao = new T6DAOImpl();
 		return tdao.t6SelectName(tvo);
@@ -35,7 +35,7 @@ public class T6ServiceImpl implements T6Service {
 		return tdao.t6SelectDate(tvo);
 	}
 
-	// ÀÔ·ÂÇÏ±â 
+	// ì…ë ¥í•˜ê¸° 
 	@Override
 	public boolean t6Insert(T6VO tvo) {
 		// TODO Auto-generated method stub
@@ -46,7 +46,7 @@ public class T6ServiceImpl implements T6Service {
 		return tdao.t6Insert(tvo);
 	}
 
-	// ¼öÁ¤ÇÏ±â 
+	// ìˆ˜ì •í•˜ê¸° 
 	@Override
 	public boolean t6Update(T6VO tvo) {
 		// TODO Auto-generated method stub
@@ -57,7 +57,7 @@ public class T6ServiceImpl implements T6Service {
 		return tdao.t6Update(tvo);
 	}
 
-	// »èÁ¦ÇÏ±â 
+	// ì‚­ì œí•˜ê¸° 
 	@Override
 	public boolean t6Delete(T6VO tvo) {
 		// TODO Auto-generated method stub
@@ -66,5 +66,15 @@ public class T6ServiceImpl implements T6Service {
 		
 		T6DAO tdao = new T6DAOImpl();
 		return tdao.t6Delete(tvo);
+	}
+
+	// íšŒì›ë²ˆí˜¸ ê²€ìƒ‰ ì¶”ê°€ 
+	@Override
+	public ArrayList<T6VO> t6SelectNum(T6VO tvo) {
+		// TODO Auto-generated method stub
+		System.out.println("T6ServiceImpl.t6SelectNum >>> :");
+		
+		T6DAO tdao = new T6DAOImpl();
+		return tdao.t6SelectNum(tvo);
 	}
 }

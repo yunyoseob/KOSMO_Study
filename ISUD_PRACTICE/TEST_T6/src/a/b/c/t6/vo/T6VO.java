@@ -9,7 +9,7 @@ public class T6VO {
 	private String t5;
 	private String t6;
 	
-	// ³¯Â¥ °Ë»ö ÇÁ·ÎÆÛÆ¼ Ãß°¡ 
+	// ë‚ ì§œ ê²€ìƒ‰ í”„ë¡œí¼í‹° ì¶”ê°€ 
 	private String fromdate;
 	private String todate;
 	
@@ -67,7 +67,7 @@ public class T6VO {
 		this.t6 = t6;
 	}
 	
-	// ³¯Â¥ µ¥ÀÌÅÍ getter/setter
+	// ë‚ ì§œ ë°ì´í„° getter/setter
 	public String getFromdate() {
 		return fromdate;
 	}
@@ -84,7 +84,7 @@ public class T6VO {
 		this.todate = todate;
 	}
 
-	// ÇÁ¸°Æ® ÇÔ¼ö 
+	// í”„ë¦°íŠ¸ í•¨ìˆ˜ 
 	public static void printT6VO(T6VO tvo) {
 		System.out.print(tvo.getT1() + ", ");
 		System.out.print(tvo.getT2() + ", ");

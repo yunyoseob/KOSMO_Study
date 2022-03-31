@@ -11,7 +11,7 @@ import a.b.c.t6.vo.T6VO;
 
 public class T6Scr {
 
-	// ÀüÃ¼ Á¶È¸
+	// ì „ì²´ ì¡°íšŒ
 	public ArrayList<T6VO> t6SelectAll(){
 		System.out.println("T6Scr.t6SelectAll >>> :");
 		
@@ -19,7 +19,7 @@ public class T6Scr {
 		return ts.t6SelectAll();
 	}
 	
-	// ÀÌ¸§ Á¶È¸
+	// ì´ë¦„ ì¡°íšŒ
 	public ArrayList<T6VO> t6SelectName(String t2){
 		System.out.println("T6Scr.t6SelectName >>> :");
 		
@@ -31,7 +31,7 @@ public class T6Scr {
 		return ts.t6SelectName(tvo);
 	}
 	
-	// ³¯Â¥ Á¶È¸
+	// ë‚ ì§œ ì¡°íšŒ
 	public ArrayList<T6VO> t6SelectDate(String fromdate, String todate){
 		System.out.println("T6Scr.t6SelectDate >>> :");
 		
@@ -44,7 +44,7 @@ public class T6Scr {
 		return ts.t6SelectDate(tvo);
 	}
 
-	// ÀÔ·Â 
+	// ì…ë ¥ 
 	public boolean t6Insert(String t1, String t2, String t3){
 		System.out.println("T6Scr.t6Insert >>> :");
 		
@@ -62,7 +62,7 @@ public class T6Scr {
 		return bool;
 	}
 	
-	// ¼öÁ¤
+	// ìˆ˜ì •
 	public boolean t6Update(String t1, String t2, String t3){
 		System.out.println("T6Scr.t6Update >>> :");
 		
@@ -80,7 +80,7 @@ public class T6Scr {
 		return bool;
 	}
 	
-	// »èÁ¦
+	// ì‚­ì œ
 	public boolean t6Delete(String t1){
 		System.out.println("T6Scr.t6Delete >>> :");
 		
@@ -98,7 +98,7 @@ public class T6Scr {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println("T6Scr.main ½ÃÀÛ  >>> :");
+		System.out.println("T6Scr.main ì‹œì‘  >>> :");
 		
 		String t1 = "";
 		String t2 = "";
@@ -106,22 +106,22 @@ public class T6Scr {
 		String fromdate = "";
 		String todate = "";
 		
-		System.out.println("È¸¿ø ISUD, CRUD Á¤º¸¸¦ ÀÔ·ÂÇÏ½Ã¿À >>> : ");
-		System.out.println(   "È¸¿ø Á¤º¸ ÀüÃ¼ Á¶È¸ 			: SA 	\n"
-				            + "È¸¿ø Á¤º¸ ÀÌ¸§À¸·Î Á¶È¸ 		: SN 	\n"
-				            + "È¸¿ø Á¤º¸ ³¯Â¥·Î Á¶È¸		: SD 	\n"
-				            + "È¸¿ø Á¤º¸ ÀÔ·Â			 	: I 	\n"
-				            + "È¸¿ø Á¤º¸ ¼öÁ¤ 			: U 	\n"
-				            + "È¸¿ø Á¤º¸ »èÁ¦ 			: D 	\n");
+		System.out.println("íšŒì› ISUD, CRUD ì •ë³´ë¥¼ ì…ë ¥í•˜ì‹œì˜¤ >>> : ");
+		System.out.println(   "íšŒì› ì •ë³´ ì „ì²´ ì¡°íšŒ 			: SA 	\n"
+				            + "íšŒì› ì •ë³´ ì´ë¦„ìœ¼ë¡œ ì¡°íšŒ 		: SN 	\n"
+				            + "íšŒì› ì •ë³´ ë‚ ì§œë¡œ ì¡°íšŒ		: SD 	\n"
+				            + "íšŒì› ì •ë³´ ì…ë ¥			 	: I 	\n"
+				            + "íšŒì› ì •ë³´ ìˆ˜ì • 			: U 	\n"
+				            + "íšŒì› ì •ë³´ ì‚­ì œ 			: D 	\n");
 		
 		Scanner sc0 = new Scanner(System.in);
 		
 		String isudtype = sc0.next();
 		if (isudtype !=null) isudtype = isudtype.toUpperCase(); 
 		
-		// ÀüÃ¼ Á¶È¸
+		// ì „ì²´ ì¡°íšŒ
 		if ("SA".equals(isudtype)) {
-			System.out.println("È¸¿ø Á¤º¸¸¦ Á¶È¸ÇÕ´Ï´Ù. >>> : ");
+			System.out.println("íšŒì› ì •ë³´ë¥¼ ì¡°íšŒí•©ë‹ˆë‹¤. >>> : ");
 			
 			T6Scr  t6 = new T6Scr();
 			ArrayList<T6VO> aList = t6.t6SelectAll();
@@ -134,14 +134,14 @@ public class T6Scr {
 			}
 		}
 		
-		// ÀÌ¸§ Á¶È¸
+		// ì´ë¦„ ì¡°íšŒ
 		if ("SN".equals(isudtype)) {
-			System.out.println("È¸¿ø Á¶È¸ÇÒ ÀÌ¸§À» ÀÔ·ÂÇÏ½Ã¿À >>> : ");
+			System.out.println("íšŒì› ì¡°íšŒí•  ì´ë¦„ì„ ì…ë ¥í•˜ì‹œì˜¤ >>> : ");
 			Scanner sc = new Scanner(System.in);
 			
-			System.out.println("ÀÌ¸§ ÀÔ·ÂÇÏ±â >>> : ");
+			System.out.println("ì´ë¦„ ì…ë ¥í•˜ê¸° >>> : ");
 			t2 = sc.next();
-			System.out.println("ÀÔ·ÂÇÑ ÀÌ¸§  >>> : " + t2);
+			System.out.println("ì…ë ¥í•œ ì´ë¦„  >>> : " + t2);
 			
 			T6Scr  t6 = new T6Scr();
 			ArrayList<T6VO> aList = t6.t6SelectName(t2);
@@ -154,20 +154,20 @@ public class T6Scr {
 			}			
 		}
 		
-		// ³¯Â¥ Á¶È¸
+		// ë‚ ì§œ ì¡°íšŒ
 		if ("SD".equals(isudtype)) {
 			
-			System.out.println("³¯Â¦ °Ë»ö Á¤º¸¸¦ ÀÔ·ÂÇÏ½Ã¿À >>> : ");
-			System.out.println("³¯Â¦Çü½ÄÀº YYYYMMDD ÀÔ´Ï´Ù. >>> : ");
+			System.out.println("ë‚ ì§ ê²€ìƒ‰ ì •ë³´ë¥¼ ì…ë ¥í•˜ì‹œì˜¤ >>> : ");
+			System.out.println("ë‚ ì§í˜•ì‹ì€ YYYYMMDD ì…ë‹ˆë‹¤. >>> : ");
 			Scanner sc = new Scanner(System.in);
 			
-			System.out.println("from ³¯Â¥ ÀÔ·ÂÇÏ±â >>> : ");
+			System.out.println("from ë‚ ì§œ ì…ë ¥í•˜ê¸° >>> : ");
 			fromdate = sc.next();
-			System.out.println("ÀÔ·ÂÇÑ from ³¯Â¥  >>> : " + fromdate);
+			System.out.println("ì…ë ¥í•œ from ë‚ ì§œ  >>> : " + fromdate);
 			
-			System.out.println("to ³¯Â¥ ÀÔ·ÂÇÏ±â >>> : ");
+			System.out.println("to ë‚ ì§œ ì…ë ¥í•˜ê¸° >>> : ");
 			todate = sc.next();
-			System.out.println("ÀÔ·ÂÇÑ to ³¯Â¥  >>> : " + todate);
+			System.out.println("ì…ë ¥í•œ to ë‚ ì§œ  >>> : " + todate);
 			
 			if (DateUtil.fromtoDate(fromdate, todate)) return;
 			
@@ -183,41 +183,41 @@ public class T6Scr {
 			
 		}
 		
-		// ÀÔ·Â
+		// ì…ë ¥
 		if ("I".equals(isudtype)) {
 			
-			System.out.println("È¸¿ø °¡ÀÔÇÒ µ¥ÀÌÅÍ¸¦ ÀÔ·ÂÇÏ½Ã¿À >>> : ");
+			System.out.println("íšŒì› ê°€ì…í•  ë°ì´í„°ë¥¼ ì…ë ¥í•˜ì‹œì˜¤ >>> : ");
 			Scanner sc = new Scanner(System.in);
-			// ÀÎ¼­Æ®ÇÒ ¶§ 
-			// Ã¤¹ø·ÎÁ÷ ÇÔ¼ö¸¦ È£ÃâÇØ¼­ Ã¤¹øÀ» ÇÑ´Ù. 
-			// ÇöÀç´Â main() ÇÔ¼ö¿¡¼­ ÇÏ´Â µ¥ 
-			// ½ÇÁ¦·Î´Â ÄÜÆ®·Ñ·¯, ¼­¹ö½º, ´Ù¿À¿¡¼­ ÇÑ´Ù. <-- Ã¤¹øÇÔ¼ö¸¦ È£ÃâÇÏ´Â ½ÃÁ¡Àº ÇÁ·Î±×·¥ ¸¶´Ù ´Ù ´Ù¸£´Ù. 
+			// ì¸ì„œíŠ¸í•  ë•Œ 
+			// ì±„ë²ˆë¡œì§ í•¨ìˆ˜ë¥¼ í˜¸ì¶œí•´ì„œ ì±„ë²ˆì„ í•œë‹¤. 
+			// í˜„ì¬ëŠ” main() í•¨ìˆ˜ì—ì„œ í•˜ëŠ” ë° 
+			// ì‹¤ì œë¡œëŠ” ì½˜íŠ¸ë¡¤ëŸ¬, ì„œë²„ìŠ¤, ë‹¤ì˜¤ì—ì„œ í•œë‹¤. <-- ì±„ë²ˆí•¨ìˆ˜ë¥¼ í˜¸ì¶œí•˜ëŠ” ì‹œì ì€ í”„ë¡œê·¸ë¨ ë§ˆë‹¤ ë‹¤ ë‹¤ë¥´ë‹¤. 
 			
-			// ÇöÀç ¸¸µç Ã¤¹ø·ÎÁ÷¿¡¼­´Â getT6Chabun ÇÔ¼ö¸¦ È£Ãâ ÇÒ ¶§  ¸Æ½º°ªÀ» Á¦¿ÜÇÑ Ã¤¹ø Çü½ÄÀ» Á¤ÇÑ´Ù. 
-			// ¸Å°³º¯¼ö d : YYYYMMDD, m : YYYYMM, y : YYYY, n : 
+			// í˜„ì¬ ë§Œë“  ì±„ë²ˆë¡œì§ì—ì„œëŠ” getT6Chabun í•¨ìˆ˜ë¥¼ í˜¸ì¶œ í•  ë•Œ  ë§¥ìŠ¤ê°’ì„ ì œì™¸í•œ ì±„ë²ˆ í˜•ì‹ì„ ì •í•œë‹¤. 
+			// ë§¤ê°œë³€ìˆ˜ d : YYYYMMDD, m : YYYYMM, y : YYYY, n : 
 			
 			// ChabunUtil.getT6Chabun("d");
-			// ChabunUtil Å¬·¡½º¸¦ Ãß»ó Å¬·¡½º (abstract class) ·Î ¸¸µå´Â ÀÌÀ¯
-			// °³¹ßÀÚ°¡ new ÇÏ´Â °ÍÀ» ¸·À¸·Á°í 
-			// getT6Chabun() ÇÔ¼ö´Â static ÇÔ¼öÀÌ´Ù. ÀÌ ÇÔ¼ö´Â new ¸¦ ÇÏ¸é ¾ÊµÈ´Ù. Å¬·¡½ºÀÌ¸§À¸·Î ºÒ·¯¼­ »ç¿ëÇÑ´Ù.
+			// ChabunUtil í´ë˜ìŠ¤ë¥¼ ì¶”ìƒ í´ë˜ìŠ¤ (abstract class) ë¡œ ë§Œë“œëŠ” ì´ìœ 
+			// ê°œë°œìê°€ new í•˜ëŠ” ê²ƒì„ ë§‰ìœ¼ë ¤ê³  
+			// getT6Chabun() í•¨ìˆ˜ëŠ” static í•¨ìˆ˜ì´ë‹¤. ì´ í•¨ìˆ˜ëŠ” new ë¥¼ í•˜ë©´ ì•Šëœë‹¤. í´ë˜ìŠ¤ì´ë¦„ìœ¼ë¡œ ë¶ˆëŸ¬ì„œ ì‚¬ìš©í•œë‹¤.
 			
 			// t1 = T202203180005;
 			t1 = ChabunUtil.getT6Chabun("d");
 			
-			System.out.println("ÀÌ¸§ ÀÔ·ÂÇÏ±â >>> : ");
+			System.out.println("ì´ë¦„ ì…ë ¥í•˜ê¸° >>> : ");
 			t2 = sc.next();
-			System.out.println("ÀÔ·ÂÇÑ ÀÌ¸§  >>> : " + t2);
+			System.out.println("ì…ë ¥í•œ ì´ë¦„  >>> : " + t2);
 			
-			System.out.println("³ªÀÌ ÀÔ·ÂÇÏ±â >>> : ");
+			System.out.println("ë‚˜ì´ ì…ë ¥í•˜ê¸° >>> : ");
 			t3 = sc.next();
-			System.out.println("ÀÔ·ÂÇÑ ³ªÀÌ  >>> : " + t3);
+			System.out.println("ì…ë ¥í•œ ë‚˜ì´  >>> : " + t3);
 			
 			
 			T6Scr  t6 = new T6Scr();		
 			boolean bool = t6.t6Insert(t1, t2, t3);
 			
 			if (bool) {
-				System.out.println("ÀÔ·Â ¼º°ø >>> : " + bool);
+				System.out.println("ì…ë ¥ ì„±ê³µ >>> : " + bool);
 				ArrayList<T6VO> aList = t6.t6SelectAll();
 				
 				if (aList !=null && aList.size() > 0) {
@@ -228,54 +228,54 @@ public class T6Scr {
 				}
 				
 			}else {
-				System.out.println("ÀÔ·Â ½ÇÆĞ >>> : " + bool);
+				System.out.println("ì…ë ¥ ì‹¤íŒ¨ >>> : " + bool);
 			}
 		}
 		
-		// ¼öÁ¤ 
+		// ìˆ˜ì • 
 		if ("U".equals(isudtype)) {
-			System.out.println("È¸¿ø ¼öÁ¤ÇÒ µ¥ÀÌÅÍ¸¦ ÀÔ·ÂÇÏ½Ã¿À >>> : ");
+			System.out.println("íšŒì› ìˆ˜ì •í•  ë°ì´í„°ë¥¼ ì…ë ¥í•˜ì‹œì˜¤ >>> : ");
 			Scanner sc = new Scanner(System.in);
 			
-			System.out.println("È¸¿ø ¹øÈ£ ÀÔ·ÂÇÏ±â >>> : ");
+			System.out.println("íšŒì› ë²ˆí˜¸ ì…ë ¥í•˜ê¸° >>> : ");
 			t1 = sc.next();
-			System.out.println("ÀÔ·ÂÇÑ È¸¿ø¹øÈ£  >>> : " + t1);
+			System.out.println("ì…ë ¥í•œ íšŒì›ë²ˆí˜¸  >>> : " + t1);
 			
-			System.out.println("ÀÌ¸§ ÀÔ·ÂÇÏ±â >>> : ");
+			System.out.println("ì´ë¦„ ì…ë ¥í•˜ê¸° >>> : ");
 			t2 = sc.next();
-			System.out.println("ÀÔ·ÂÇÑ ÀÌ¸§  >>> : " + t2);
+			System.out.println("ì…ë ¥í•œ ì´ë¦„  >>> : " + t2);
 			
-			System.out.println("³ªÀÌ ÀÔ·ÂÇÏ±â >>> : ");
+			System.out.println("ë‚˜ì´ ì…ë ¥í•˜ê¸° >>> : ");
 			t3 = sc.next();
-			System.out.println("ÀÔ·ÂÇÑ ³ªÀÌ  >>> : " + t3);
+			System.out.println("ì…ë ¥í•œ ë‚˜ì´  >>> : " + t3);
 
 			T6Scr  t6 = new T6Scr();		
 			boolean bool = t6.t6Update(t1, t2, t3);
 			
 			if (bool) {
-				System.out.println("¼öÁ¤ ¼º°ø >>> : " + bool);
+				System.out.println("ìˆ˜ì • ì„±ê³µ >>> : " + bool);
 			}else {
-				System.out.println("¼öÁ¤ ½ÇÆĞ >>> : " + bool);
+				System.out.println("ìˆ˜ì • ì‹¤íŒ¨ >>> : " + bool);
 			}
 		}
 		
-		// »èÁ¦ 
+		// ì‚­ì œ 
 		if ("D".equals(isudtype)) {
-			System.out.println("È¸¿ø »èÁ¦ÇÒ µ¥ÀÌÅÍ¸¦ ÀÔ·ÂÇÏ½Ã¿À >>> : ");
+			System.out.println("íšŒì› ì‚­ì œí•  ë°ì´í„°ë¥¼ ì…ë ¥í•˜ì‹œì˜¤ >>> : ");
 			Scanner sc = new Scanner(System.in);
 			
-			System.out.println("È¸¿ø ¹øÈ£ ÀÔ·ÂÇÏ±â >>> : ");
+			System.out.println("íšŒì› ë²ˆí˜¸ ì…ë ¥í•˜ê¸° >>> : ");
 			t1 = sc.next();
-			System.out.println("ÀÔ·ÂÇÑ È¸¿ø¹øÈ£  >>> : " + t1);
+			System.out.println("ì…ë ¥í•œ íšŒì›ë²ˆí˜¸  >>> : " + t1);
 			
 			
 			T6Scr  t6 = new T6Scr();		
 			boolean bool = t6.t6Delete(t1);
 			
 			if (bool) {
-				System.out.println("»èÁ¦ ¼º°ø >>> : " + bool);
+				System.out.println("ì‚­ì œ ì„±ê³µ >>> : " + bool);
 			}else {
-				System.out.println("»èÁ¦ ½ÇÆĞ >>> : " + bool);
+				System.out.println("ì‚­ì œ ì‹¤íŒ¨ >>> : " + bool);
 			}
 		}		
 	}
