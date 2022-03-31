@@ -2,7 +2,7 @@ package a.b.c.common;
 
 public abstract class ChabunUtil {
 
-	public static final String BIZ_GUBUN_T6 	= "T"; 
+	public static final String BIZ_GUBUN_T6 	= "T6"; 
 	
 	// type : 
 	// D : YYYYMMDD 
@@ -14,15 +14,19 @@ public abstract class ChabunUtil {
 		System.out.println("4444 :: ChabunUtil.numPad() >>> :  t, c " + t + ", " + c);
 	
 		// c.length : 5 : 1 -> 4 : 0005
+		// a : 1글자
+		// 5: 1글자
+		// 1 2 3
+		// 5 -> 05 -> 005 ->0005
 		for (int i = c.length(); i < 4; i++) {
 			c = "0" + c;
 		}
 		                                       // d
 		String ymd = DateFormatUtil.ymdFormats(t);
-		// ymd = YYYYMMDD : 20220318
+		// ymd = YYYYMMDD : 20220329
 		System.out.println("6666 :: DateFormatUtil.numPad() >>> :  ymd " + ymd);
 		
-		// ymd.concat(c) : 203303180005
+		// ymd.concat(c) : 202203290005
 		return ymd.concat(c);
 	}
 	
@@ -40,7 +44,7 @@ public abstract class ChabunUtil {
 		// T202203180005
 													// d   // 5
 		return BIZ_GUBUN_T6.concat(ChabunUtil.numPad(type, commNum));
-									
+		// T6202203290005 
 	}
 
 	public static void main(String[] args) {

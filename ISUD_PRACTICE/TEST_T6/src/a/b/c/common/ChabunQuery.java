@@ -13,7 +13,7 @@ public abstract class ChabunQuery {
  		SELECT SUBSTR(A.T1, -4) AS COMM_NUM FROM TEST_T6 A;
  		SELECT MAX(SUBSTR(A.T1, -4)) AS COMM_NUM FROM TEST_T6 A;
 	 */
-	// COMM_NUM ´Â NVL(MAX(SUBSTR(A.T1, -4)), 0) + 1 ÀÇ ¾Ù¸®¾î½º ÀÌ´Ù. 
+	// COMM_NUM ëŠ” NVL(MAX(SUBSTR(A.T1, -4)), 0) + 1 ì˜ ì•¨ë¦¬ì–´ìŠ¤ ì´ë‹¤. 
 	public static String chabun_query[] = { 
 		"SELECT NVL(MAX(SUBSTR(A.T1, -4)), 0) + 1 AS COMM_NUM FROM TEST_T6 A"		
 	};
@@ -32,20 +32,20 @@ public abstract class ChabunQuery {
 //			String sql = ChabunQuery.chabun_query[ChabunQuery.CHABUN_QUERY_T6];
 			String sql = ChabunQuery.chabun_query[0];
 			pstmt = conn.prepareStatement(sql);
-			System.out.println("Ã¤¹ø Äõ¸® >>> : \n" + sql);
+			System.out.println("ì±„ë²ˆ ì¿¼ë¦¬ >>> : \n" + sql);
 	
 			rsRs = pstmt.executeQuery();
 
 			if (rsRs !=null) { 
 				while (rsRs.next()) {
-					commNum = rsRs.getString("COMM_NUM");					
+					commNum = rsRs.getString("COMM_NUM");	// 5				
 				}
 				
 			}else {
-				System.out.println("ChabunQuery :: Ã¤¹ø °Ë»ö °á°ú°¡ ¾ø³ß ¤»¤»¤» >>> : " + rsRs);
+				System.out.println("ChabunQuery :: ì±„ë²ˆ ê²€ìƒ‰ ê²°ê³¼ê°€ ì—†ë„¹ ã…‹ã…‹ã…‹ >>> : " + rsRs);
 			}
 		}catch(Exception e) {
-			System.out.println("ChabunQuery :: Ã¤¹ø °Ë»öÁß ¿¡·¯°¡  >>> : " + e.getMessage());
+			System.out.println("ChabunQuery :: ì±„ë²ˆ ê²€ìƒ‰ì¤‘ ì—ëŸ¬ê°€  >>> : " + e.getMessage());
 		}
 		return commNum;
 	}

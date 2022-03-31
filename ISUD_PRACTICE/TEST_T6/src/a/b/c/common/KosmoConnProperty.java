@@ -7,13 +7,13 @@ import java.sql.ResultSet;
 
 public abstract class KosmoConnProperty {
 	
-	// DataSource Á¤º¸ : µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á Á¤º¸
+	// DataSource ì •ë³´ : ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²° ì •ë³´
 	public static final String JDBC_DRIVER 		= "oracle.jdbc.driver.OracleDriver";
-	public static final String JDBC_URL 		= "jdbc:oracle:thin:@localhost:1521:orclHBE00";
+	public static final String JDBC_URL 		= "jdbc:oracle:thin:@localhost:1521:orclYYS00";
 	public static final String JDBC_USER 		= "scott";
 	public static final String JDBC_PASSWORD 	= "tiger";
 
-	// Connection ¿¬°áÇÏ´Â ÇÔ¼ö ¸¸µé±â 
+	// Connection ì—°ê²°í•˜ëŠ” í•¨ìˆ˜ ë§Œë“¤ê¸° 
 	public static Connection getConnection() {
 		
 		Connection conn = null;
@@ -23,7 +23,7 @@ public abstract class KosmoConnProperty {
 			conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);	
 			
 		}catch(Exception e) {
-			System.out.println("µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á¿¡ ¹®Á¦°¡ ÀÖ¼­¿ä >>> : " + e.getMessage());
+			System.out.println("ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²°ì— ë¬¸ì œê°€ ìˆì„œìš” >>> : " + e.getMessage());
 		}
 				
 		return conn;		

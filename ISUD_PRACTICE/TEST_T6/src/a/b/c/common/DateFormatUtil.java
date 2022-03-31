@@ -5,8 +5,10 @@ import java.util.Date;
 
 public abstract class DateFormatUtil {
 
+						// YYYYMMDD : 20220318
 	public static String ymdFormat(){
 		return new SimpleDateFormat("yyyyMMdd").format(new Date());
+		// 20220329
 	}
 	
 	public static String ymFormat(){
@@ -16,7 +18,7 @@ public abstract class DateFormatUtil {
 	public static String yFormat(){
 		return new SimpleDateFormat("yyyy").format(new Date());
 	}
-	
+	                                        // d
 	public static String ymdFormats(String ymdFlag){
 		System.out.println("5555 :: DateFormatUtil.ymdFormats() >>> :  ymdFlag " + ymdFlag);
 	

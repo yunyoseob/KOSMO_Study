@@ -35,11 +35,11 @@ public abstract class DateUtil {
 			bool = f > t;
 			
 			if (bool) {
-				System.out.println("FROM ³¯Â¥°¡ TO ³¯Â¥º¸´Ù Å©¸é ¾ÊµË´Ï´Ù. >>> : " + bool);
-				System.out.println("ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù. ´Ù½Ã ½ÇÇàÇØ¼­ »ç¿ëÇÏ½Ã¿À >>> : ");				
+				System.out.println("FROM ë‚ ì§œê°€ TO ë‚ ì§œë³´ë‹¤ í¬ë©´ ì•Šë©ë‹ˆë‹¤. >>> : " + bool);
+				System.out.println("í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤. ë‹¤ì‹œ ì‹¤í–‰í•´ì„œ ì‚¬ìš©í•˜ì‹œì˜¤ >>> : ");				
 			}
 		} catch (Exception e) {
-			System.out.println("FROM TO ºñ±³Áß ¿¡·¯°¡ >>> : " + e.getMessage());
+			System.out.println("FROM TO ë¹„êµì¤‘ ì—ëŸ¬ê°€ >>> : " + e.getMessage());
 		}
 		
 		return bool;
