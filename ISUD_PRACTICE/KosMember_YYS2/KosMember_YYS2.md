@@ -1,5 +1,6 @@
 
-1. 테이블
+## 1. 테이블
+
 
 ```sql
 DROP TABLE KOS_MEMBER;
@@ -31,7 +32,7 @@ WHERE   A.TABLE_NAME IN ('KOS_MEMBER');
 SELECT * FROM KOS_MEMBER;
 ```
 
-2. log4j 사용법
+## 2. log4j 사용법
 
 ```java
 System.out.println() --> 대신 사용할 것 
@@ -53,7 +54,7 @@ kosMember/Java Resources/src/log4j.xml <-- 카피 (복사) 할 것
 C:\00.KOSMO108\30.Web\eclipse_web_work\kosMember\WebContent\WEB-INF\classes\log4j.xml
 ```
 
-memSelectAll.jsp
+### memSelectAll.jsp
 
 -----------------------------------------------------------------
 
@@ -63,7 +64,7 @@ memSelectAll.jsp
 	logger.info("memSelectAll.jsp 페이지 >>> : ");
 ```
 
-MemSerivceImpl.java
+### MemSerivceImpl.java
 
 -----------------------------------------------------------------
 
@@ -75,7 +76,7 @@ public class MemSerivceImpl implements MemSerivce {
 ```
 
 
-MemDAOImpl.java
+### MemDAOImpl.java
 
 -----------------------------------------------------------------
 
@@ -86,7 +87,7 @@ public class MemDAOImpl implements MemDAO {
 	logger.info("MemDAOImpl memSelectAll() 함수 진입 >>> : ");
 ```
 
-3. 다음 주소록 : OPEN Api
+## 3. 다음 주소록 : OPEN Api
 
 ```java
 <!-- 다음 주소록 OPEN API CDN 불러오기  -->
@@ -114,9 +115,9 @@ $("#mzone_btn").click(function(){
 https://postcode.map.daum.net/guide
 ```
 
-4. CodeUtil 사용법
+## 4. CodeUtil 사용법
 
-memInsert.jsp
+### memInsert.jsp
 
 ---------------------------
 
@@ -132,7 +133,7 @@ for (int i=0; i < hobby.length; i++){
 }		
 ```
 
-KOS_MEMBER 테이블 
+### KOS_MEMBER 테이블 
 
 ---------------------------
 
@@ -143,7 +144,7 @@ KOS_MEMBER 테이블
 운동 음악감상
 01,02,
 
-memSelectAll.jsp
+### memSelectAll.jsp
 
 ---------------------------
 
@@ -206,9 +207,9 @@ public static String hobby(String s) {
 ```
 
 
-5. 다이나믹 쿼리 Dynamic Sql 
+## 5. 다이나믹 쿼리 Dynamic Sql 
 
-MemVO.java
+### MemVO.java
 
 ----------------------------
 
@@ -219,7 +220,7 @@ private String fromdate;		// 검색기간 시작일
 private String todate;			// 검색기간 종료일
 ```
 
-mem.html
+### mem.html
 
 ----------------------------
 
@@ -252,7 +253,8 @@ mem.html
 </form>
 ```
 
-memSelectAll.html
+### memSelectAll.html
+
 ----------------------------
 
 ```java
@@ -274,7 +276,7 @@ MemSerivce ms = new MemSerivceImpl();
 ArrayList<MemVO> aList = ms.memSelectAll(mvo);
 ```
 
-MemDAOImpl.java
+### MemDAOImpl.java
 
 ----------------------------
 
@@ -297,7 +299,7 @@ public ArrayList<MemVO> memSelectAll(MemVO mvo) {
 ```
 
 
-MemQueryMap.java
+### MemQueryMap.java
 
 ----------------------------
 
@@ -351,7 +353,7 @@ public static String getMmemSelectAllQuery(MemVO mvo){
 }
 ```
 
-6. 수정 항목  
+## 6. 수정 항목  
 
 ```html
 jsp --> html --> javaScript
