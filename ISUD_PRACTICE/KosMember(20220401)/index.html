@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원 관리 연습</title>
+<!-- CDN -->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<!-- date picker -->
+<link rel="stylesheet" href="/kosMember/calendar_datepicker/jquery-ui-1.12.1/jquery-ui.min.css">
+<script src="/kosMember/calendar_datepicker/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+<script src="/kosMember/calendar_datepicker/jquery-ui-1.12.1/datepicker-ko.js"></script>
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+		
+		// 날짜 검색 from date $("#fromdate").datepicker(value);
+		$("#fromdate").datepicker(
+			{
+				showOn: "button",
+		        buttonImage: "/kosMember/calendar_datepicker/images/calendar.gif",
+			    buttonImageOnly: false,
+				buttonText: "Select date",				
+				onClose: function( selectedDate ) {    
+					// 시작일(fromdate) datepicker가 닫힐때
+					// 종료일(todate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
+					$("#todate").datepicker( "option", "minDate", selectedDate );
+				}       
+			}
+		);
+		// 날짜 검색 to date
+		$("#todate").datepicker(
+			{
+				showOn: "button",
+		        buttonImage: "/kosMember/calendar_datepicker/images/calendar.gif",
+			    buttonImageOnly: false,
+				buttonText: "Select date",
+				onClose: function( selectedDate ) {
+					// 종료일(todate) datepicker가 닫힐때
+					// 시작일(fromdate)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정 
+					$("#fromdate").datepicker( "option", "maxDate", selectedDate );
+				}     				
+			}
+		);
+		
+		$("#search_btn").click(function(){
+			console.log('검색버튼 클릭! >>> 전체조회 조건검색 컨트롤러로 이동');
+			alert('검색버튼 클릭! >>> 전체조회 조건검색 컨트롤러로 이동');
+			
+			$("#searchForm").attr({				
+				"action":"/kosMember/kosmem/memSelectAll.jsp",
+				"method":"GET"
+			}).submit();
+		});
+		
+		$("#mnumSearch_btn").click(function(){
+			$("#mnumSearch_form").attr({
+				"action":"/kosMember/kosmem/memSelect.jsp",
+			    "method":"GET",
+			    "enctype":"application/x-www-form-urlencoded"
+			}).submit();
+		});
+	});
+	
+
+</script>
+</head>
+<body>
+<h3>JSP MODEL I ARCHITECTURE</h3>
+<hr>
+<a href="http://192.168.219.106:8088/kosMember/kosmem/mem.html">회원가입</a><br>
+<a href="#">회원 검색</a>
+<form name="searchForm" id="searchForm">
+<table>
+<tr>
+<td>
+<select id="searchFilter" name="searchFilter" style="width:100px;height:21px;">
+	<option value="01" selected>전체</option>
+	<option value="02">회원번호</option>
+	<option value="03">이름</option>
+	<option value="04">아이디</option>
+</select>
+<input type="text" id="keyword" name="keyword" placeholder="검색어 입력">		
+</td>
+</tr>
+<tr>
+<td>		
+<input type="text" id="fromdate" name="fromdate" placeholder="시작일 " style="width:100px;height:20px;">
+~
+<input type="text" id="todate" name="todate" placeholder="종료일" style="width:100px;height:20px;">
+</td>
+<td>
+	<input type="button" id="search_btn" name="search_btn" value="검색">
+	<input type="reset" value="다시">							
+</td>
+</tr>
+</table>
+</form>
+<br>
+<a href="#">회원정보 수정 삭제</a>
+<form name="mnumSearch_form" id="mnumSearch_form">
+회원번호 <input type="text" name="mnum" id="mnum" />
+	  <input type="button" id="mnumSearch_btn" value="검색" />
+</form>
+<br>
+</body>
+</html>
