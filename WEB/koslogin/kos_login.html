@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>KOS_LONG HTML</title>
+</head>
+<!-- 
+
+	id : mid
+	pw : mpw
+	버튼 : login_btn
+	
+	action : kos_login.jsp
+	method : GET
+	
+	jQuery CDN 이용
+	버튼 클릭 이벤트 할 때 kos_login.jsp 보내기
+	kos_login.jsp ->  화면에 id, pw 출력하기 
+ -->
+<!-- jQuery CDN 불러오기  -------------------------------------------->
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<script type="text/javascript">
+	alert("스크립트 블럭 ");
+	
+	// jQuery 블럭을 만든다 : ready() 함수로 만든다.
+	$(document).ready(function(){
+		alert("jQuery 블럭 ");
+	
+		$('#login_btn').click(function(){
+			alert("login_btn 블럭 ");
+			
+			$('#loginForm').attr({
+				"action":"/kosMember/koslogin/kos_login.jsp",
+				"method":"GET"
+			}).submit();
+		});
+	});
+	
+</script>
+
+</head>
+<body>
+
+<h3>KOS_LOING_OK JSP</h3>
+<hr>
+<form	name="loginForm" id="loginForm">
+<input type="text" class="mid" name="mid" id="mid" /><br>
+<input type="text" class="mpw" name="mpw" id="mpw" /><br>
+<button type="button" id="login_btn">login_btn</button>
+</form>
+
+</body>
+</html>
