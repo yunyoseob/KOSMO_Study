@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>FileUpload</title>
+</head>
+<!-- 
+	파일 업로드
+	1. 	method : POST 
+		enctype : multipart/form-data	 
+	2.	파일업로드 컴포넌트 포팅 
+		Context/WebContent/WEB-INF/lib/cos.jar 
+	3. 	MultipartRequest mr = new MultipartRequest(  request  
+									                ,saveDirectory
+									                ,maxPostSize
+									                ,encoding
+									                ,new DefaultFileRenamePolicy()); 
+	4. 	upload 파일 저장 디렉토리
+		탐캣서버 + 이클립스 + 다이나믹웹프로젝트 를 사용할 때는 .metadate 경로를 이용한다. 
+		was, 환경이 변경되면 같이 변경을 해야한다. 	
+	5. 	cos.jar 다운로드 	
+		http://servlets.com/	
+			왼쪽 링크 : COS File Upload Library 링크 클릭 	
+			아래쪽 Download 에서 
+			cos-20.08.zip 다운로드 하기 		                	 
+ -->
+<body>
+
+<h3>FILE UPLOAD </h3>
+<hr>
+<form 	name="fileUploadForm"
+		action="/kosMember/kos_fileupload/fileupload.jsp"
+	 	method="POST"
+	 	enctype="multipart/form-data">
+
+이름 : <input type="text" name="name"/><br>
+파일1 : <input type="file" name="fileName1"/><br>
+파일2 : <input type="file" name="fileName2"/><br>
+<input type="submit" value="전송">
+</form>
+</body>
+</html>

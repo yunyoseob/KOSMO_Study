@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>>FILE UPLOAD</title>
+<!-- jQuery CDN 불러오기  -------------------------------------------->
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		
+		$(document).on('click', '#getBtn', function(){
+		
+			$('#fileForm').attr({
+				"action":"/kosMember/kos_fileupload/filecontent.jsp",
+				"method":"GET",
+				"enctype":"application/x-www-form-urlencoded"
+			}).submit();
+		});
+		
+		$(document).on('click', '#postBtn', function(){
+			
+			$('#fileForm').attr({
+				"action":"/kosMember/kos_fileupload/filecontent.jsp",
+				"method":"POST",
+				"enctype":"multipart/form-data"
+			}).submit();
+		});
+	});
+</script>
+<style type="text/css">
+
+	.wrap {
+		border: 1px solid red;
+		width: 300px;
+		height: 200px;
+		margin: 100px auto;
+	}
+	
+	table {
+		width: 80%;
+		height: 50%;
+		margin: auto;
+	}
+	
+	h3, hr {
+		text-align: center;
+	}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h3>FILE UPLOAD</h3>
+<hr>
+<form name="fileForm" id="fileForm">
+<table>
+	<tr>
+		<td>
+			<input type="text" name="name"/>
+		</td>
+	</tr>	
+	<tr>
+		<td>
+			<input type="file" name="fileupload"/>
+		</td>
+	</tr>	
+	<tr>
+		<td>
+			<input type="button" id="getBtn" value="GET"/>
+			<input type="button" id="postBtn" value="POST"/>
+		</td>
+	</tr>	
+</table>
+</form>
+</div>
+</body>
+</html>
