@@ -32,7 +32,7 @@
 			System.out.println("파일 업로드 시작 루틴");
 			out.println("파일 업로드 시작 루틴");
 			
-			String saveDirectory = pageContext.getServletContext().getRealPath("/test/testdir/");
+			String saveDirectory  pageContext.getServletContext().getRealPath("/test/testdir/");
 			System.out.println("saveDirectory >>> : " + saveDirectory);
 			out.println("saveDirectory >>> : " + saveDirectory + "<br>");
 			
