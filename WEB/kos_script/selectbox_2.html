@@ -1,0 +1,158 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<title>Insert title here</title>
+<script type="text/javascript">
+
+
+	$(document).ready(function(){
+		
+		$('#select_1').change(function(){
+			
+			var v = [0, 1, 2];
+			v[0] = ["양천구","강서구","금천구"];
+			v[1] = ["안양시","부천시","성남시","구리시"];
+			v[2] = ["부평구","연수구","강화군","계양구"];
+		 
+			alert("select_1 >>> : ");
+			var changeItem;
+			
+			var slen = $(".select_1 option").length;
+			//alert("slen >>> : " + slen);
+			console.log("slen >>> : "+slen);
+			
+			for (m=0; m < slen; m++){
+				
+				var sval = $(".select_1 option:selected").val();
+				//alert("sval >>> : " + sval);
+				console.log("m :: "+m+" sval :: "+sval);
+				
+				if (m == sval) {
+					changeItem = v[m];
+					console.log("changeItem >>> : "+changeItem);
+				}
+			}
+			
+			alert("changeItem >>> : "+ changeItem);
+			
+			$('#select_2').empty();
+			var sel2_len=$("#select_2").length;
+			console.log("sel2_len >>> : "+sel2_len);
+			
+			for(c=0; c < changeItem.length; c++){      
+				var option = $("<option value=" + "'" + c + "'" + ">"+changeItem[c]+"</option>");
+				$('#select_2').append(option);
+				var sel2_opt_len=$("#select_2 option").length;
+				console.log("sel2_opt_len >>> : "+sel2_opt_len);
+			}	
+		});
+		
+		$('#select_2').change(function(){
+			
+			var v0 = [0, 1, 2];
+			v0[0] = ["목동","신정동","신월동"];
+			v0[1] = ["염창동","화곡본동","발산동","공항동"];
+			v0[2] = ["가산동","독산동","시흥동"];
+		 
+			var v1 = [0, 1, 2, 3]
+			v1[0] = ["만안구","동안구"];
+			v1[1] = ["부천동","중동","상동","소사본동"];
+			v1[2] = ["수정구","중원구","분당구"];
+			v1[3] = ["갈매동","동구동","인창동"];
+			
+			var v2 = [0, 1, 2, 3]
+			v2[0] = ["부평동","산곡동", "갈산동"];
+			v2[1] = ["부천동","중동","상동","소사본동"];
+			v2[2] = ["옥련동","연수동","송도동"];
+			v2[3] = ["효성동","계산동","작전동"];
+			
+			alert("select_2 >>> : ");
+			var changeItem;
+			
+			var sval = $(".select_2 option:selected").text();		
+			console.log("sval >>> : "+sval);
+			
+			if ('양천구' == sval || '강서구' == sval || '금천구' == sval){
+				alert("sval text >>> : " + sval);
+				
+				var slen = $(".select_2 option").length;
+				alert("slen >>> : " + slen);
+				console.log("slen >>> : "+slen);
+				
+				for (m=0; m < slen; m++){
+					
+					var sval = $(".select_2 option:selected").val();
+					alert("sval option:selected >>> : " + sval);
+					console.log("sval >>> : "+sval);
+					
+					if (m == sval) {
+						changeItem = v0[m];
+						console.log("changeItem >>> : "+changeItem);
+					}
+				}
+			}
+			
+			if ('안양시' == sval || '부천시' == sval || '성남시' == sval || '구리시' == sval) {
+				alert("sval text  >>> : " + sval);	
+				console.log("sval text >>> : "+sval);
+				
+				var slen = $(".select_2 option").length;
+				alert("slen >>> : " + slen);
+				
+				for (m=0; m < slen; m++){
+					
+					var sval = $(".select_2 option:selected").val();
+					alert("sval option:selected >>> : " + sval);
+					
+					if (m == sval) {
+						changeItem = v1[m];
+					}
+				}
+			}
+			
+			if ('부평구' == sval || '연수구' == sval || '강화군' == sval || '계양구' == sval) {
+				alert("sval text  >>> : " + sval);
+				
+				var slen = $(".select_2 option").length;
+				alert("slen >>> : " + slen);
+				
+				for (m=0; m < slen; m++){
+					
+					var sval = $(".select_2 option:selected").val();
+					alert("sval option:selected >>> : " + sval);
+					
+					if (m == sval) {
+						changeItem = v2[m];
+					}
+				}
+			}
+		
+			alert("changeItem >>> : "+ changeItem);
+			
+			$('#select_3').empty();
+			
+			for(c=0; c < changeItem.length; c++){      
+				var option = $("<option value=" + "'" + c + "'" + ">" + changeItem[c] + "</option>");
+				$('#select_3').append(option);
+			}	
+		});
+	});
+
+</script>
+</head>
+<body>
+<select class="select_1" name="select_1" id="select_1" style="width:150px">
+	<option value="0">서울</option>
+	<option value="1">경기도</option>
+	<option value="2">인천</option>
+</select>
+ 
+<select class="select_2" name="select_2" id="select_2" style="width:150px">
+</select>
+
+<select class="select_3" name="select_3" id="select_3" style="width:150px">
+</select>
+</body>
+</html>

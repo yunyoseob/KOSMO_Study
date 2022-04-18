@@ -1,0 +1,46 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<title>Insert title here</title>
+<script type="text/javascript">
+
+
+	$(document).ready(function(){
+		
+		$('#select_1').change(function(){
+			
+			var v = [0, 1, 2];
+			v[0] = ["양천구","강서구","금천구"];
+			v[1] = ["안양시","부천시","성남시","구리시"];
+			v[2] = ["부평구","연수구","강화군","계양구"];
+		 
+			alert("select_1 >>> : ");
+			var changeItem;
+			
+			var slen = $(".select_1 option").length;
+			var slen_Val = $(".select_1 option:selected").val();
+			alert("slen >>> : " + slen + " : " + slen_val);
+			
+		});
+		
+		
+	});
+
+</script>
+</head>
+<body>
+<select class="select_1" name="select_1" id="select_1" style="width:150px">
+	<option value="0">서울</option>
+	<option value="1">경기도</option>
+	<option value="2">인천</option>
+</select>
+ 
+<select class="select_2" name="select_2" id="select_2" style="width:150px">
+</select>
+
+<select class="select_3" name="select_3" id="select_3" style="width:150px">
+</select>
+</body>
+</html>
