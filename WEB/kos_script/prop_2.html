@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+	
+	$(document).ready(function(){	
+		
+		// 성별
+		var gen = '02'
+		console.log("gen >>> : "  + gen);
+		$(".mgender").each(function(){
+			if ($(this).val() == gen){
+				$(this).prop('checked', true);
+			}	
+		});
+		/*
+		if ('01' == gen){
+			$(".mgender:input[value='01']").prop('checked', true);
+		}
+		if ('02' == gen){
+			$(".mgender:input[value='02']").prop('checked', true);
+		}
+		*/
+		
+		// 이메일 
+		var email = 'abc@gmail.com';	
+		var emails = email.split('@');
+		$("#memail").val(emails[0]);
+		$("#memail1").val(emails[1]);
+		
+		// 취미
+		var hobs = '01';
+		console.log("hobs >>> : "  + hobs);
+		var hob = hobs.split(',');
+		
+		for (m=0; m < hob.length; m++){
+			
+			$(".mhobby").each(function(){
+			
+				if ($(this).val() == hob[m]){
+					$(this).prop('checked', true);
+				}	
+				
+			});
+		}
+		
+		/*
+		$(".mhobby").each(function(index){
+			var hobValue = hob[index];
+			if ('01' == hobValue){
+				$(".mhobby:input[value='01']").prop('checked', true);
+			}
+			if ('02' == hobValue){
+				$(".mhobby:input[value='02']").prop('checked', true);
+			}
+			if ('03' == hobValue){
+				$(".mhobby:input[value='03']").prop('checked', true);
+			}
+			if ('04' == hobValue){
+				$(".mhobby:input[value='04']").prop('checked', true);
+			}
+			if ('05' == hobValue){
+				$(".mhobby:input[value='05']").prop('checked', true);
+			}				
+		});
+		*/
+		/*
+		for (var m=0; m < hob.length; m++){
+			var hobValue = hob[m];
+			console.log("hobValue >>> : " + hobValue);
+			if ('01' == hobValue){
+				$(".mhobby:input[value='01']").prop('checked', true);
+			}
+			if ('02' == hobValue){
+				$(".mhobby:input[value='02']").prop('checked', true);
+			}
+			if ('03' == hobValue){
+				$(".mhobby:input[value='03']").prop('checked', true);
+			}
+			if ('04' == hobValue){
+				$(".mhobby:input[value='04']").prop('checked', true);
+			}
+			if ('05' == hobValue){
+				$(".mhobby:input[value='05']").prop('checked', true);
+			}		
+		}
+		*/
+		// 이메일 선택
+		$('#memail2').change(function(){	
+			$("#memail2 option:selected").each(function () {
+				if($(this).val()== '1'){ //직접입력일 경우 
+						var aa = $("#memail1").val();
+						//alert("aa >>> : " + aa);
+						$("#memail1").val(''); //값 초기화 
+						$("#memail1").prop("readonly",false); //활성화 				
+				}else{ //직접입력이 아닐경우 
+						$("#memail1").val($(this).text()); //선택값 입력 
+						$("#memail1").prop("readonly",true); //비활성화 
+				}
+			}); 
+		}); 	
+	});
+</script>
+</head>
+<body>
+<hr>
+<div>
+<form name="memUpdateForm" id="memUpdateForm">
+<table border="1">
+<script>
+function compCheck(){
+	console.log("compCheck >>> 진입 >>> : ");
+
+	// 성별
+	var gen = '01';
+	console.log("gen >>> : "  + gen);
+	if ('01' == gen){
+		document.getElementsByName("mgender")[0].checked = true;
+	}
+	if ('02' == gen){
+		document.getElementsByName("mgender")[1].checked = true;
+	}
+	
+	// 이메일 
+	var email = 'abc@gmail.com';	
+	var emails = email.split('@');
+	document.getElementById("memail").value = emails[0];
+	document.getElementById("memail1").value = emails[1];
+	
+	// 취미
+	var hobs = '<%= mhobby %>';
+	console.log("hobs >>> : "  + hobs);
+	var hob = hobs.split(',');
+	for (m=0; m < hob.length; m++){
+		var hobValue = hob[m];
+		console.log("hobValue >>> : " + hobValue);
+		if ('01' == hobValue){
+			document.getElementsByName("mhobby")[0].checked = true;
+		}
+		if ('02' == hobValue){
+			document.getElementsByName("mhobby")[1].checked = true;
+		}
+		if ('03' == hobValue){
+			document.getElementsByName("mhobby")[2].checked = true;
+		}
+		if ('04' == hobValue){
+			document.getElementsByName("mhobby")[3].checked = true;
+		}
+		if ('05' == hobValue){
+			document.getElementsByName("mhobby")[4].checked = true;
+		}		
+	}
+	
+	
+}
+</script>
+<tr>	
+	<td colspan="3" align="center">						
+		<font size="4" style="color:blue;">회원정보 수정 && 삭제</font> 	
+	</td>				
+</tr>
+<tr>
+	<td>성별</td>
+	<td> 
+		<input type="radio" class="mgender" name="mgender" id="mgender" value="01" checked /> 여자
+      	<input type="radio" class="mgender" name="mgender" id="mgender" value="02" /> 남자
+    </td>
+</tr>
+<tr>
+	<td>이메일</td>
+	<td  colspan="2">		
+		<input type="text" name="memail"  id="memail" style="width:100px"  />
+		@ <input type="text" name="memail1" id="memail1" style="width:100px" 
+			placeholder="직접입력" />
+		<select name="memail2" id="memail2">
+        	 <option value="1" selected>직접입력</option>
+       		 <option value="naver.com">naver.com</option>	       	   
+      		 <option value="gmail.com">gmail.com</option>
+      		 <option value="daum.net">daum.net</option>	       	   
+         </select>
+	</td>
+</tr>
+<tr>
+	<td>취미</td>
+	<td   colspan="2"> 
+		<input type="checkbox" class="mhobby" name="mhobby" id="mhobby" value="01" />알고리즘		      
+        <input type="checkbox" class="mhobby" name="mhobby" id="mhobby" value="02" />코딩
+        <input type="checkbox" class="mhobby" name="mhobby" id="mhobby" value="03" />분석설계<br>
+        <input type="checkbox" class="mhobby" name="mhobby" id="mhobby" value="04" />데이터베이스
+        <input type="checkbox" class="mhobby" name="mhobby" id="mhobby" value="05" />스크립트
+    </td>
+</tr>	 
+<tr>
+	<td colspan="3" align="center">		
+	<input type="button" value="수정" id='U' />
+	<input type="button" value="삭제"  id='D' />
+    <input type="reset" value="취소" />
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="button" value="입력"  id='I' />
+	<input type="button" value="목록"  id='SALL' />
+</td>	
+<tr>			
+</table>
+</form>
+</div>
+</body>
+</html>
