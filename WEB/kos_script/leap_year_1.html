@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+
+	
+	
+	$(document).ready(function(){	
+	
+		//윤달 		
+		function leapYear(year){
+			if ((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0)){
+				return 1;
+			}else{
+				return 0;
+			}
+		} 
+		
+		// 년, 달을 입력해서 한달 일 수 구하기 
+		function dayofMonth(year, month) {
+			
+			var day;
+			
+			if (1 == month || 3 == month || 5 == month || 7 == month || 8 == month || 10 == month || 12 == month) {
+				day = 31;
+			}
+			
+			if (2 == month || 4 == month || 6 == month || 9 == month || 11 == month) {
+				day = 30;
+			}
+			
+			if (2 == month) {
+				
+				var y = leapYear(year);
+				alert("y >>> : " + y);
+				day = 28 + y;
+			}
+			
+			return day;
+		}	
+
+			
+		$("#mbirth").on("input", function(){
+			
+			var m = $("#mbirth");
+			if (m.val().length > m.maxlength){
+				m.value = m.value.slice(0, m.maxlength);
+			}		
+		});
+        
+        $("#mbirth").change(function(){
+        	// alert(">>");
+        	
+			$('#mbirth1').empty();
+			
+			for(c=1; c <= 12; c++){      
+				var option = $("<option value=" + "'" + c + "'" + ">"+ c +"</option>");
+				$('#mbirth1').append(option);
+			}
+        });
+        
+		$('#mbirth1').change(function(){
+						
+			var y = $("#mbirth").val();
+			alert("y >>> : " + y);
+			var m = $("#mbirth1").val();
+			alert("m >>> : " + m);
+			
+			var d = dayofMonth(y, m);
+			
+			alert("d >>> : " + d);
+			
+			$('#mbirth2').empty();
+			
+			for(c=1; c <= d; c++){      
+				var option = $("<option value=" + "'" + c + "'" + ">" + c + "</option>");
+				$('#mbirth2').append(option);
+			}	
+		});
+	});
+</script>
+</head>
+<body>
+<form name="memForm" id="memForm">
+
+<input type="text" class="mbirth" name="mbirth" id=mbirth placeholder="년(4자)" maxlength="4" style="width:100px"/>
+<select class="mbirth1" name="mbirth1" id="mbirth1" style="width:100px;"></select>
+<select class="mbirth2" name="mbirth2" id="mbirth2" style="width:100px;"></select><br>
+<input type="button" id="btn" value="보내기" />
+</form>
+</body>
+</html>
