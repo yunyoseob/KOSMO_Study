@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+
+
+	$(document).ready(function(){
+				
+		var year = new Date().getFullYear();
+		alert(year);
+	
+		$('#mbirth').change(function(){
+
+			$('#mbirth_1').empty();
+			
+			for(c=0; c < 12; c++){      
+				var option = $("<option value=" + "'" + c + "'" + ">"+ c +"</option>");
+				$('#mbirth_1').append(option);
+			}	
+		});
+		
+		$('#mbirth_1').change(function(){
+			
+			var y = $("#mbirth").val();
+			var m = $("#mbirth_1").val();
+			
+			var d = new Date(y, m, 0).getDate();
+			
+			$('#mbirth_2').empty();
+			
+			for(c=0; c < d; c++){      
+				var option = $("<option value=" + "'" + c + "'" + ">" + c + "</option>");
+				$('#mbirth_2').append(option);
+			}	
+		});
+	});
+
+</script>
+</head>
+<body>
+<select class="mbirth" name="mbirth" id="mbirth" style="width:100px">
+	<option value="2022">2022</option>
+	<option value="2021">2021</option>
+	<option value="2020">2020</option>
+	<option value="2019">2019</option>
+	<option value="2018">2018</option>
+</select>
+ 
+<select class="mbirth_1" name="mbirth_1" id="mbirth_1" style="width:100px">
+</select>
+
+<select class="mbirth_2" name="mbirth_2" id="mbirth_2" style="width:100px">
+</select>
+</body>
+</html>

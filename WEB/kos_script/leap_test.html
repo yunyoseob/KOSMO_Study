@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	var year = new Date().getFullYear();
+	console.log("year >>> : " + year);
+	alert("year >>> : " + year);
+	
+	
+	var month = new Date().getMonth();
+	console.log("month >>> : " + month);
+	alert("month >>> : " + month);
+	month = month + 1;
+	console.log("month >>> : " + month);
+	alert("month >>> : " + month);
+		
+	var day = new Date(year, month, 0).getDate();	
+	console.log("day >>> : " + day);
+	alert("day >>> : " + day);
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>
