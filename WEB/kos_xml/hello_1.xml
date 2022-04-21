@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- xml 문서에서는 항상 루트 태그가 1개만 존재 해야 한다.  -->
+<kosmo108>
+	<title>빅데이터기반 인공지능 융합 서비스 개발자양성과정</title>
+	<delivery>2022년01월24일 ~2022년07월20일</delivery>
+	<total>23</total>
+	<user>
+		<name>신익현</name>
+		<gender>남자</gender>
+		<age>267</age>		
+	</user>
+	<user>
+		<name>강민</name>
+		<gender>남자</gender>
+		<age>32</age>		
+	</user>
+	<user>
+		<name>손준성</name>
+		<gender>남자</gender>
+		<age>27</age>		
+	</user>
+	<user>
+		<name>박건원</name>
+		<gender>남자</gender>
+		<age>30</age>		
+	</user>
+	<user>
+		<name>김별</name>
+		<gender>여자</gender>
+		<age>22</age>		
+	</user>
+	<user>
+		<name>성연재</name>
+		<gender>남자</gender>
+		<age>26</age>		
+	</user>	
+</kosmo108>
+<!-- 
+RESTful API 사용 : 
+HTTP 프로토콜의 GET 방식
+http://www.weather.go.kr/weather/forecast/mid-term-rss3.jsp?stnId=108
+
+data.go.kr 회원가입 
+
+국가에서 민간에게 
+국가에서 보유하고 있는 공공정보를 민간에게 제공하는 행위 
+전세계 73개국에서 공공기간정보를 민간에게 제공한다. 
+
+민간정보를 사용할 수 있다. 
+-->
