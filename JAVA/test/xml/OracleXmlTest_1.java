@@ -44,12 +44,14 @@ System.out.println(tableName + " 테이블 컬럼 카운드 >>> : " + colCount);
 			strBuffer.append("\n");	
 	
 			while (rsRs.next()){
+				strBuffer.append("<" +  "ROW" + ">");
 				for ( int i=0; i < colCount; i++){
 					strBuffer.append("<"+resultMeta.getColumnName(i+1)+ ">");
 					strBuffer.append(rsRs.getString(i+1));
 					strBuffer.append("</"+resultMeta.getColumnName(i+1)+ ">");
 					strBuffer.append("\n");
-				}				
+				}	
+				strBuffer.append("</" +  "ROW" + ">");
 			}		
 			strBuffer.append("</" +  tableName.toUpperCase()  + ">");		
 			strBuffer.append("\n");				
