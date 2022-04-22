@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	//아이디 체크 
+	function idCheck(){
+
+		console.log("idCheck 함수 진입");
+		alert(" idCheck 함수 진입");
+		var idVal = document.getElementById("kid").value
+	
+		window.open("/kosMember/kos_script/popup_idChek.jsp?kid="+idVal, 
+					"_blank" 
+				    ,"left=500,top=400,width=300,height=300", 
+				    false);
+	}
+	
+</script>
+</head>
+<body>
+<div>
+<form name="kmemForm" id="kmemForm"
+	  action="#"
+	  method="POST">
+	
+<table border="1">
+<tr>
+	<td colspan="2" align="center">					
+		<font size="4" style="color:Blue;">KOSMO 108기</font>					
+		<img src="/kosMember/img/img_mando/naruhodo.gif" width="25" height="25" alt="image">
+	</td>
+</tr>
+<tr>
+	<td class="mem">아이디</td>
+	<td>
+		<input type="text" name="kid" id="kid" placeholder="아이디중복 체크 " />
+		<input type="button" name="kidbtn" id="kidbtn" 
+							 value="popup_아이디중복확인" onclick="idCheck()" />
+	</td>
+ </tr>
+ <tr>
+	<td class="mem">아이디</td>
+	<td>
+		<input type="text" name="kid_1" id="kid_1" placeholder="Ajax로 해보기" />
+		<input type="button" name="kidbtn_1" id="kidbtn_1" value="Ajax_아이디중복확인"" />
+	</td>
+ </tr>
+ <tr>
+	<td class="mem">패스워드</td>
+	<td>
+		<input type="text" name="kpw" id="kpw" placeholder="Ajax로 해보기"/>
+		<input type="button" value="Ajax_비밀번호확인" id="pwCheck"/>
+	</td>
+ </tr>
+ 
+ <tr id="id9">
+	<td colspan="2"> 
+		<input type="button" value="보내기" onclick="kmemConfirm()"/>
+	    <input type="reset" value="취소" />
+	</td>				
+ </tr>
+ </table>				 		        		     
+</form>	
+</div>		
+</body>
+</html>
