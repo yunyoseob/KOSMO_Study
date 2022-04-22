@@ -55,7 +55,10 @@
 			
 			var empno, ename, job, mar, hiredate, sal, comm, deptno			
 			
-			var nlist = xmlDoc.getElementsByTagName("EMPNO").length;
+			x = xmlDoc.documentElement.childNodes.length;
+			console.log("x >>> : " + x );
+			
+			var nlist = xmlDoc.getElementsByTagName("ROW").length;
 			
 			for(i=0; i < nlist; i++){
 
@@ -80,10 +83,10 @@
 		});
 		
 		$("#parseFind").click(function(){
-			$(xmlText).each(function(){
+			$(xmlText).find("ROW").each(function(){
 				var empno = $(this).find("EMPNO").text();
 				var ename = $(this).find("ENAME").text();
-				$("#text").append(empno).append(ename);
+				console.log(empno +","+ename);
 			});
 			
 		});
