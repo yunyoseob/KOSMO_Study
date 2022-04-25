@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- jQuery CDN 불러오기  -------------------------------------------->
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		
+		$('#servletBtn').on('click', function(){
+			alert('servletBtn >>> : ');
+			
+			// http://localhost:8088/kosMember/psh
+			$("#formServlet").attr({
+				"action":"/kosMember/psh",
+				"mehtod":"GET"
+			}).submit();
+		});
+		
+		
+		// jsp_보내기 이벤트 처리  : /kos_jsp/hellServlet_jsp.jsp
+		$('#jspBtn').on('click', function(){
+			alert('jspBtn >>> : ');
+			
+			// http://localhost:8088/kosMember/kos_jsp/hellServlet_jsp.jsp
+			// http://localhost:8088/kosMember//kos_jsp/hellServlet_jsp.jsp
+			$("#formServlet").attr({
+				"action":"/kosMember/kos_jsp/hellServlet_jsp.jsp",
+				"mehtod":"GET"
+			}).submit();
+		});
+		
+		// locationServletBtn 이벤트 시 LocationServlet 으로 보내기 
+		$('#locationServletBtn').on('click', function(){
+			
+			// http://localhost:8088/kosMember/location
+			$('#formServlet').attr({
+				"action":"/kosMember/location",
+				"method":"GET"
+			}).submit();
+		});
+	});
+	
+</script>
+</head>
+<body>
+<form name="formServlet" id="formServlet">
+	아이디 : <input type="text" class="mid" name="mid" id="mid" /><br>
+	패스워드 : <input type="text" class="mpw" name="mpw" id="mpw" /><br>
+	<input type="button" id="servletBtn" value="servlet_보내기" />
+	<input type="button" id="jspBtn" value="jsp_보내기" />
+	<input type="button" id="locationServletBtn" value="location_보내기" />
+</form>
+</body>
+</html>
