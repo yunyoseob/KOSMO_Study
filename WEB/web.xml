@@ -6,7 +6,7 @@
 								http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" 
 			id="WebApp_ID" version="3.1">
 	
-	<display-name>kosMember</display-name>
+	<display-name>kosMember_YYS2</display-name>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
@@ -18,7 +18,7 @@
 	
 	<servlet-mapping>
 		<servlet-name>Web_xmlServlet</servlet-name>
-		<url-pattern>*.hbe</url-pattern>
+		<url-pattern>*.yys</url-pattern>
 	</servlet-mapping>
 	
 	<!-- log4j setting -->
