@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+	alert("자바스크립트 블럭 시작 >>> : ");
+
+	$(document).ready(function(){
+		alert("jQuery ready 블럭 >>> : ");
+		
+		$('#btn').on('click', function(){
+			/*
+			var jq_h_sel_class = $('.h_sel');
+			// alert("jq_h_sel_class >>> : " + jq_h_sel_class);
+			alert("jq_h_sel_class.length >>> : " + jq_h_sel_class.length);
+			// alert("jq_h_sel_class >>> : " + JSON.stringify(jq_h_sel_class));
+			var jq_h_sel_class_1 = $('.h_sel option').length;
+			alert("jq_h_sel_class_1 >>> : " + jq_h_sel_class_1);
+			
+			var jq_h_sel_name = $("select[name='h_sel']");
+			// alert("jq_h_sel_name >>> : " + jq_h_sel_name);
+			alert("jq_h_sel_name.length >>> : " + jq_h_sel_name.length);
+			// alert("jq_h_sel_name >>> : " + JSON.stringify(jq_h_sel_name));
+			var jq_h_sel_name_1 = $("select[name='h_sel'] option").length;
+			alert("jq_h_sel_name_1 >>> : " + jq_h_sel_name_1);
+			
+			var h_sel_id = $('#h_sel');
+			// alert("h_sel_id >>> : " + h_sel_id);
+			alert("h_sel_id.length >>> : " + h_sel_id.length);
+			//alert("h_sel_id >>> : " + JSON.stringify(h_sel_id));
+			var h_sel_id_1 = $('#h_sel option').length;
+			alert("h_sel_id_1 >>> : " + h_sel_id_1);
+			*/
+			
+			var js_h_sel_id_1 = document.getElementById('h_sel_id').length;
+			alert("js_h_sel_id_1 >>> : " + js_h_sel_id_1);
+			// js_h_sel_id_1 >>> : 4
+			
+			var js_h_sel_id = document.getElementById('h_sel_id').options.length;
+			alert("js_h_sel_id >>> : " + js_h_sel_id);
+			// alert("js_h_sel_id.length >>> : " + js_h_sel_id.length);
+			// js_h_sel_id >>> : 4
+						
+			var js_h_sel_class = document.getElementsByClassName('h_sel_class')[0];
+			alert("js_h_sel_class.length >>> : " + js_h_sel_class.length);
+			// js_h_sel_class.length >>> : 4
+			
+			var js_h_sel_name_1 = document.getElementsByName('h_sel_name')[1];
+			alert("js_h_sel_name_1.length >>> : " + js_h_sel_name_1.length);
+			// js_h_sel_name_1.length >>> : 2
+			
+			var js_h_sel_name = document.formTest.h_sel_name;			
+			alert("js_h_sel_name.length >>> : " + js_h_sel_name.length);
+			// js_h_sel_name.length >>> : 2
+		});
+	});
+</script>
+</head>
+<body>
+<form name="formTest" id="formTest">
+	<select class="h_sel_class" name="h_sel_name" id="h_sel_id">
+		<option value="01">서울</option>
+		<option value="02">경기도</option>
+		<option value="03">인천시</option>
+		<option value="04">부산시</option>
+	</select>
+	<select class="h_sel_class" name="h_sel_name" id="h_sel_id">
+		<option value="01">서울</option>
+		<option value="02">경기도</option>		
+	</select>
+<input type="button" id="btn" value="나버튼" />
+</form>
+</body>
+</html>
