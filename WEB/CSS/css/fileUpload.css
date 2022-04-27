@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+body{
+		background-image:url("https://cdn.notefolio.net/img/48/e9/48e977af6bd5bd41f2fc18e2bbea6a3bf8875bd4b2c99a558a2c41338edc9d00_v1.jpg");
+		background-repeat:no-repeat;
+		background-size:cover;
+		position: relative; width: 100%;height: 100%;
+	}
+
+
+	html{
+		height: 100%;
+	}
+
+	.wrap{
+		position: absolute;
+		top: 50%;
+		left: 50%; 
+		height:0px;
+		width:50%;
+		align:center;
+		margin:-100px 0 0 -100px
+	}
+	
+	.fileUploadForm{
+		align:center;
+	}
+	
+	.btn{
+	margin-top: 15px;
+	width: 150px;
+	border:0;
+	background-color: #2ECC71;
+	color: #fff;
+	padding: 10px 25px 10px 25px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	}
+
+	.btn:hover{
+		font-size: 15px;
+		font-weight: bold;
+		box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
+		background-color: #239B56;
+	}
+	
+		/*
+	#i1, #i2, #i3{
+	margin-top: 15px;
+	height: 30px;
+	width: 300px;
+	border:0;
+	background-color: #e6f7ff;
+	color: #fff;
+	padding: 10px 25px 10px 25px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+	#i3:hover{
+	font-size: 15px;
+	font-weight: bold;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
+	background-color: #239B56;
+}
+*/

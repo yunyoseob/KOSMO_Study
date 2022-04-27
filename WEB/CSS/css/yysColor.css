@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+<style type="text/css">
+h3, form{
+	height:100px;
+	margin:10px auto;
+	text-align:center;
+	font-size:25px;
+}
+
+input{
+	height:20px;
+	width:150px;
+	margin:5px;
+}
+
+body{
+	text-align:center;
+	background-color:#ffffcc;
+	box-sizing:border-box;
+	margin:50px 15px 15px 15px;
+}
+
+table{
+	height:250px;
+	weight:800px;
+	margin:50px;
+}
