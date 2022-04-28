@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script> 
+<script type="text/javascript">
+
+	// var(전역변수, 지역변수) : ECMAScript 3 
+	// const(상수 : 변경하면 않되는 리터럴), let(지역변수) : ECMAScript 5,6 
+	$(document).ready(function(){
+		
+		$('#midBtn').click(function(){
+			
+			const expId = /^a-zA-Z+$/;
+			const midV = $('#mid').val();
+			let midL = midV.length;
+			alert("midL >>> : " + midL);
+			
+			if (midL < 6 || midL > 8){
+				alert("id는 영문자 6 ~ 8 ");
+				$('#mid').val('');
+				$('#mid').focus();
+				return false;
+			}else if (!expId.test(midV)){
+				alert("id는 영문자 ");
+				$('#mid').val('');
+				$('#mid').focus();
+				return false;
+			}
+		});
+	
+		$('#mpwBtn').click(function(){
+			/*			
+				적어도 하나의 대문자 영어 편지 ,(?=.*?[A-Z])
+				영문 소문자 1 자 이상 (?=.*?[a-z])
+				적어도 하나의 숫자 (?=.*?[0-9])
+				하나 이상의 특수 문자 (?=.*?[#?!@$%^&*-])
+			*/
+			const expPw = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+			const mpwV = $('#mpw').val();
+			let mpwL = mpwV.length;
+			alert("mpwL >>> : " + mpwL);
+			
+			if (mpwL < 8 || mpwL > 20){
+				alert("pw는 8 ~ 20 ");
+				$('#mpw').val('');
+				$('#mpw').focus();
+				return false;
+			}else if (!expPw.test(mpwV)){
+				alert("pw는 하나의 대문자 영문소문자 1자이상 하나의 숫자 특수문자 하나 이상");
+				$('#mpw').val('');
+				$('#mpw').focus();
+				return false;
+			}
+		});
+		
+		$('#mbirthBtn').click(function(){
+			
+			const expBirth = /^(19[0-9][0-9]|20\d{2})-(0[0-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/;
+			const mbirthV = $('#mbirth').val();			
+			alert("mbirthV >>> : " + mbirthV);
+			
+			if (!expBirth.test(mbirthV)){
+				alert("생일 오류 0000-00-00");
+				$('#mbirth').val('');
+				$('#mbirth').focus();
+				return false;
+			}		
+		});
+		
+		$('#memailBtn').click(function(){
+			
+			const expEmail = /^[a-zA-Z0-9_-]+\@[a-zA-Z]+\.[a-zA-Z]+$/;
+			const memailV = $('#memail').val();			
+			alert("memailV >>> : " + memailV);
+			
+			if (!expEmail.test(memailV)){
+				alert("이메일  오류");
+				$('#memail').val('');
+				$('#memail').focus();
+				return false;
+			}		
+		});
+		
+		$('#mhpBtn').click(function(){
+			
+			const expHp = /^\d{3}\-\d{4}\-\d{4}$/;
+			const mhpV = $('#mhp').val();			
+			alert("mhpV >>> : " + mhpV);
+			
+			if (!expHp.test(mhpV)){
+				alert("핸드폰 오류 000-0000-0000");
+				$('#mhp').val('');
+				$('#mhp').focus();
+				return false;
+			}		
+		});
+	});
+
+</script>
+	
+
+</head>
+<body>
+<h3>정규표현식</h3>
+<hr>
+<form>
+<input type="text" name="mid" id="mid" />
+<input type="button" id="midBtn" value="id_val"><br>
+<input type="text" name="mpw" id="mpw" />
+<input type="button" id="mpwBtn" value="pw_val"><br>
+<input type="text" name="mbirth" id="mbirth" />
+<input type="button" id="mbirthBtn" value="birth_val"><br>
+<input type="text" name="memail" id="memail" />
+<input type="button" id="memailBtn" value="email_val"><br>
+<input type="text" name="mhp" id="mhp" />
+<input type="button" id="mhpBtn" value="hp_val"><br>
+
+</form>
+</body>
+</html>
