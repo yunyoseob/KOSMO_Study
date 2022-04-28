@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<!-- 디바이스에 최적화된 크기로 출력됨 ------------------------------------->
+<meta name="viweport" content="width=device-width, iitail-scale=1">
+
+<!-- jQuery CDN 불러오기  -------------------------------------------->
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+		
+		$("#bpw").on("input", function(){
+			
+			var m = $("#bpw");
+			if (m.val().length > m.maxlength){
+				m.value = m.value.slice(0, m.maxlength);
+			}		
+		});
+		
+		$('#insertBtn').on('click', function(){
+			
+			$('#insertForm').attr({
+				"action":"/kosServlet/board",
+				"method":"GET",
+				"enctype":"application/x-www-form-urlencoded"
+			}).submit();
+		});
+	});
+</script>
+<body>
+<h3>board.html</h3>
+<hr>
+<form name="insertForm" id="insertForm">
+<table>
+	<tr>
+		<td>글번호</td>
+		<td>
+			<input type="text" class="bnum" name="bnum" id="bnum" 
+				placeholder="글번호" style="width:250px;" readonly/>
+		</td>
+	</tr>
+	<tr>
+		<td>글제목</td>
+		<td>
+			<input type="text" class="bsubject" name="bsubject" id="bsubject" 
+				placeholder="글제목" style="width:250px;"/>
+		</td>
+	</tr>
+	<tr>
+		<td>글쓴이</td>
+		<td>
+			<input type="text" class="bwriter" name="bwriter" id="bwriter" 
+				placeholder="글쓴이" style="width:250px;"/>
+		</td>
+	</tr>
+	<tr>
+		<td>비밀번호</td>
+		<td>
+			<input type="text" class="bpw" name="bpw" id="bpw" 
+				placeholder="비밀번호는 8자리로" maxlength="8" 
+				style="width:250px; background-color:#e6e6e6;"/>
+		</td>
+	</tr>
+	<tr>
+		<td>글내용</td>
+		<td>
+			<textarea class="bmemo" name="bmemo" id="bmemo" cols="32" rows="5"></textarea>
+		</td>
+	</tr>
+	<tr>		
+		<td colspan="2">
+			<!-- hidden flag : 히든 플래그 -->
+			<input type="hidden" name="isudType" id="isudType" value="I" />
+			
+			<input type="image" id="insertBtn" 
+					src="/kosServlet/img/img_mando/ase.gif" width="50" height="50" value="글쓰기"/>
+			<botton type="reset">
+				<img src="/kosServlet/img/img_mando/b-baa.gif" width="50" height="50"/>				
+			</botton>					
+		</td>
+	</tr>
+</table>
+</form>
+</body>
+</html>
