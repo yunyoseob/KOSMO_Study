@@ -1,0 +1,359 @@
+
+게시판 만들기 : Model 2 + Web MVC 패턴
+=========================================
+
+모델 2 : jsp + Servlet 
+
+Model : java
+View : jsp 
+Controller : Servlet
+
+요구사항 : 일반 게시판 만들어 주세요 
+	회원제 게시판	: 회원 아이디 O
+	일반 게시판 	: 회원 아이디 X
+
+	
+글번호	B0000 : B 접두어 + XXXX 숫자 4개
+글제목	길이 100
+글쓴사람	길이 50
+글쓸 때 사용한 패스워드	길이 300 8자리 이상 : 단방향 암호화 
+글내용	길이 2천자
+
+삭제여부	삭제여부 : Y : N
+등록일	YYYY-MM-DD
+수정일 	YYYY-MM-DD
+
+1. 데이터 베이스 설계 
+
+데이터 베이스, JDBC 드라이버
+Oracle 11g 2 Release
+jdbc 드라이버 : ojdbc6.jar 
+
+데이터 소스 
+DataSource 정보 : 데이터베이스 연결 정보
+드라이버 : oracle.jdbc.driver.OracleDriver
+URL : jdbc:oracle:thin:@localhost:1521:orclHBE00
+사용자 계정 : scott
+사용자 계정 패스워드 : tiger
+
+오라클 SID : Service Name 확인하기 
+---------------------------------
+DB_UNIQUE_NAME 이름 사용하기 
+
+콘솔에서 
+sqlplus / as sysdba 또는 sqlplus "/as sysdba"
+
+SQL> SELECT NAME, DB_UNIQUE_NAME FROM V$DATABASE;
+
+NAME               DB_UNIQUE_NAME
+------------------ ------------------------------------------------------------
+ORCLHBE0           orclHBE00
+
+SQL> SELECT INSTANCE FROM V$THREAD;
+
+INSTANCE
+--------------------------------------------------------------------------------
+orclhbe00
+
+
+테이블 이름 : MVC_BOARD
+컬럼
+
+BNUM	VARCHAR2(20)
+BSUBJECT	VARCHAR2(100)
+BWRITER		VARCHAR2(30)
+BPW			VARCHAR2(300)
+BMEMO		VARCHAR2(2000)
+DELETEYN	VARCHAR2(1)
+INSERTDATE	DATE
+UPDATEDATE 	DATE
+
+CREATE TABLE MVC_BOARD(
+	 BNUM		VARCHAR2(20) PRIMARY KEY 
+	,BSUBJECT	VARCHAR2(100)	NOT NULL
+	,BWRITER	VARCHAR2(30)
+	,BPW		VARCHAR2(300)
+	,BMEMO		VARCHAR2(2000)
+	,DELETEYN	VARCHAR2(1)		NOT NULL
+	,INSERTDATE	DATE
+	,UPDATEDATE DATE
+);
+
+인덱스 확인
+
+
+채번 확인
+
+
+
+
+
+2. 클래스 설계
+Context : kosServlet
+package : a.b.c.com.kosmo.board
+
+사용할 라이브러리 포팅하기 
+---------------------------------------
+Context/WebContent/WEB-INF/lib/
+
+디비연결하는 jdbc 드라이버
+ojdbc6.jar
+
+로그찍기 
+log4j-1.2.17.jar
+commons-logging-1.1.2.jar
+
+커넥션풀 라이브러리 
+tomcat-dbcp.jar 
+
+
+
+공통 클래스
+----------------------------
+a.b.c.com.common
+커넥션클래스
+KosConnectivity
+
+채번클래스유틸
+ChabunQuery.java
+ChabunUtil.java
+DateFormatUtil.java
+
+암호화
+EncryptSHA.java
+
+
+
+Controller
+----------------------------
+a.b.c.com.kosmo.board.controller
+BoardController : Servlet 
+
+Service : Java 
+----------------------------
+a.b.c.com.kosmo.board.service
+BoardService
+	public ArrayList<BoardVO> boardSelectAll();
+	public ArrayList<BoardVO> boardSelect(BoardVO bvo);
+	public boolean boardInsert(BoardVO bvo);
+	public boolean boardUpdate(BoardVO bvo);
+	public boolean boardDelete(BoardVO bvo);
+BoardServiceImpl
+
+
+DAO : Java
+----------------------------
+a.b.c.com.kosmo.board.dao
+BoardDAO
+	public ArrayList<BoardVO> boardSelectAll();
+	public ArrayList<BoardVO> boardSelect(BoardVO bvo);
+	public boolean boardInsert(BoardVO bvo);
+	public boolean boardUpdate(BoardVO bvo);
+	public boolean boardDelete(BoardVO bvo);
+BoardDAOImpl
+
+
+SQL
+----------------------------
+a.b.c.com.kosmo.board.sql
+BoardSqlMap
+	public static String getBoardSelectAll(){ return null;}
+	public static String getBoardSelect(){ return null;}
+	public static String getBoardInsert(){ return null;}
+	public static String getBoardUpdate(){ return null;}
+	public static String getBoardDelete(){ return null;}
+
+VO
+----------------------------
+a.b.c.com.kosmo.board.vo
+BoardVO
+		private String bnum;
+		private String bsubject;
+		private String bwriter;
+		private String bpw;
+		private String bmemo;		
+		private String deleteyn;
+		private String insertdate;
+		private String updatedate;
+
+
+view : jsp
+----------------------------
+/kosServlet/WebContent/kosmo/board
+board.html
+boardSelectAll.jsp
+boardSelect.jsp
+boardInsert.jsp
+boardUpdate.jsp
+boardDelete.jsp
+
+개발순서
+=======================================
+1. 라이브러리 포팅, 공통 클래스 포팅 
+2. 테이블 만들고 
+	인텍스 확인, 채번 쿼리 만들고 
+3. 클래스 만들기 
+3.1 VO 패키지 및 클래스 만들기 
+3.2 Service 만들기 함수 까지 다 만들기
+3.3 DAO 만들기 함수 까지 다 만들기
+3.4 SQL 만들기 함수 까지 다 만들기
+%%--------------------------------
+	로그포제이 사용할 수 있게 포팅하기 
+	1. 	kosServlet/WebContent/WEB-INF/lib/log4j-1.2.17.jar 
+	2. 	Java Resources/src/log4j.xml 포팅하기 
+	3. 	kosServlet/WebContent/WEB-INF/web.xml log4j.xml 경로 세팅하기 
+		<!-- log4j setting -->
+		<context-param>
+			<param-name>log4jConfigLocation</param-name>
+			<param-value>/WEB-INF/classes/log4j.xml</param-value>
+		</context-param> 
+		Logger logger = LogManager.getLogger(사용할 클래스이름.class);
+		logger.info("로그 메시지");
+%%--------------------------------
+3.5 Controller 만들기 
+3.5 insert 구문 만들기 <-- SQLDeveloper
+3.6 DAOImpl 에서 함수 만들기 
+3.7 Service 하고 DAO 연결 
+3.8 Controller 코드해서 백단 테스트 하기 
+
+
+프론트 만드기 
+1. 게시판 글 입력 
+
+
+board.html				BoardController											BoardDAO 		BoardSqlMap
+name="bnum"				String bnum = request.getParameter("bnum")								BNUM
+name="bsubject"			String bsubject = request.getParameter("bsubject")						BSUBJECT
+name="bwriter"			String bwriter = request.getParameter("bwriter")						BWRITER
+name="bpw"				String bpw = request.getParameter("bpw")								BPW
+name="bmemo"			String bmemo = request.getParameter("bmemo")							BMEMO
+
+						private String bnum;
+						private String bsubject;
+						private String bwriter;
+						private String bpw;
+						private String bmemo;		
+						private String deleteyn;
+						private String insertdate;
+						private String updatedate;
+
+
+
+프로퍼티 			컬럼
+--------------------------
+bnum			BNUM
+bsubject		BSUBJECT
+bwriter			BWRITER
+bpw				BPW
+bmemo			BMEMO
+deleteyn		DELETEYN
+insertdate		INSERTDATE
+updatedate		UPDATEDATE
+
+
+
+=============================================================================================
+board.html 		
+<form>
+isudType="I"	
+bsubject        
+bwriter
+bpw
+bmemo		
+
+- BoardController - BoardService - BoardServicdImple - BoardDAO - BoardDAOImp - BoardSqlMap
+
+if("I").equals(isudType){
+
+isudType="I"	
+bsubject        
+bwriter
+bpw
+bmemo	
+
+BoardVO bvo;
+
+BoardService
+BoardServicdImple().boardInsert(bvo)
+
+
+}
+
+
+- BoardService 
+
+boardInsert(bvo)
+
+- BoardServicdImple 
+
+boardInsert(bvo){
+
+BoardDAO
+BoardDAOImp().boardInsert(bvo)
+
+}
+
+- BoardDAO 
+
+boardInsert(bvo)
+
+- BoardDAOImp 
+
+boardInsert(bvo){
+
+	Connection conn = null;
+	BoardSqlMap.getBoardInsert()
+
+}
+
+- BoardSqlMap
+
+
+BoardSqlMpa - BoardDAOImpl - BoardDAO - BoardSerivceImpl - BoardService 
+
+
+
+- BoardController
+성공
+	- boardInsert.jsp 		- BoardController
+		isudType="SALL"	
+실패
+	- board.html
+=============================================================================================
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
