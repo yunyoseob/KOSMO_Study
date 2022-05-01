@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 디바이스에 최적화된 크기로 출력됨 ------------------------------------->
+<meta name="viweport" content="width=device-width, iitail-scale=1">
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		console.log("jQuery ready  함수 진입 >>> : ");
+		$("#btn").on("click", function(){
+			console.log("버튼 클릭 하셨습니다. >>> : ");
+			$("#f1").attr({
+				"action":"/kosServlet_YYS/board",
+				"method":"GET",
+				"enctype":"application/x-www-form-urlencoded"
+			}).submit();
+		});
+	});
+</script>
+<style type="text/css">	
+	#btn{
+		border:1px solid #4d4dff;
+	}
+</style>
+</head>
+<body>
+<h1>board.html 페이지입니다.</h1>
+<form class="f1" id="f1" name="f1">
+		<table>
+			<tr>
+				<td><input type="hidden" style="width:170%;"  class="isudType" id="isudType" name="isudType" maxlength="1" value="I"></td>
+			</tr>
+			<tr>
+			<td><input style="width:170%;" type="text" class="bsubject" id="bsubject" name="bsubject" required maxlength="100" placeholder="글 제목을 입력하세요."></td>
+			</tr>		
+			<tr>
+			<td><input style="width:170%;" type="text" class="bwriter" id="bwriter" name="bwriter" maxlength="30" placeholder="글쓴이를 입력하세요."></td>
+			</tr>	
+			<tr>
+			<td><input style="width:170%;" type="text" class="bpw" id="bpw" name="bpw" maxlength="8" placeholder="비밀번호를 입력하세요."></td>
+			</tr>		
+			<tr>
+			<td><textarea style="width:170%; height:200%; background-color:#e6e6e6;" class="bmemo" id="bmemo" name="bmemo" maxlength="2000" width="500px" height="500px" placeholder="글내용을 입력하세요."></textarea></td>
+			</tr>
+			<hr>
+			<tr>
+			<td><input style="width:170%; background-color:#e6f2ff;" type="button" id="btn" value="글쓰기"></td>
+			</tr>
+			<tr>
+			<td><input style="width:170%; background-color:#e6f2ff;" type="reset"  value="취소"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
