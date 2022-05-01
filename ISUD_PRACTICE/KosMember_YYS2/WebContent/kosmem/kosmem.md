@@ -1,1 +1,0 @@
-kosmem.md
