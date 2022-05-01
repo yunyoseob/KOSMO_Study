@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		console.log("jQuery readyfunction >>> : ");
+		$("#i_btn").on("click", function(){
+			console.log("i_btn 버튼 클릭 >>> : ");
+			location.href="/kosServlet_YYS/kosmo/board/board.html";
+			});
+		
+		$("#s_btn").on("click", function(){
+			console.log("s_btn 버튼 클릭 >>> : ");
+			location.href="/kosServlet_YYS/board?isudType=SALL";
+		});	
+	});
+</script>
+<style type="text/css">
+	body{
+	 text-align:center;
+	}
+</style>
+</head>
+<body>
+<h3>게시판 만들기 : Model 2 + Web MVC 패턴</h3>
+<hr>
+<form class="formTag" id="formTag" name="formTag">
+	<input type="button" id="i_btn" value="INSERT" /> 
+	<input type="button" id="s_btn" value="SELECT" />
+</form>
+</body>
+</html>
