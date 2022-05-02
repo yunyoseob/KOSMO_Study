@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<ol id="ol">
+  <li>0</li>
+  <li>1</li>
+  <li>2</li>
+</ol>
+
+<script>
+	ol.before('before'); // <ol> 앞에 문자열 'before'를 삽입함
+	ol.after('after'); // <ol> 뒤에 문자열 'after를 삽입함
+	
+	let liFirst = document.createElement('li');
+	liFirst.innerHTML = 'prepend';
+	ol.prepend(liFirst); // <ol>의 첫 항목으로 liFirst를 삽입함
+	
+	let liLast = document.createElement('li');
+	liLast.innerHTML = 'append';
+	ol.append(liLast); // <ol>의 마지막 항목으로 liLast를 삽입함
+</script>
+</body>
+</html>

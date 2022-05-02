@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+
+</script>
+</head>
+<body>
+<p>일 초 후, 이 페이지의 내용은 전부 교체됩니다.</p>
+<script>
+// 일초 후 document.write 호출
+// 페이지 로드가 끝난 후이므로 기존 내용이 사라집니다.
+setTimeout(() => document.write('<b>...사라졌습니다.</b>'), 1000);
+</script>
+</body>
+</html>

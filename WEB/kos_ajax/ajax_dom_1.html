@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 
+node.append(노드나 문자열) – 노드나 문자열을 node 끝에 삽입합니다.
+node.prepend(노드나 문자열) – 노드나 문자열을 node 맨 앞에 삽입합니다.
+node.before(노드나 문자열) –- 노드나 문자열을 node 이전에 삽입합니다.
+node.after(노드나 문자열) –- 노드나 문자열을 node 다음에 삽입합니다.
+node.replaceWith(노드나 문자열) –- node를 새로운 노드나 문자열로 대체합니다.
+ -->
+<style>
+.alert {
+  padding: 15px;
+  border: 1px solid #d6e9c6;
+  border-radius: 4px;
+  color: #3c763d;
+  background-color: #dff0d8;
+}
+</style>
+
+<script>
+  let div = document.createElement('div');
+  div.className = "alert";
+  div.innerHTML = "<strong>안녕하세요!</strong> 중요 메시지를 확인하셨습니다.";
+
+  document.body.append(div);
+</script>
+</body>
+<!-- 
+<div class="alert" ><strong>안녕하세요!</strong>중요 메시지를 확인하셨습니다.</div>
+ -->
+</html>
+
+
+
