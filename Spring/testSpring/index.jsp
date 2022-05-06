@@ -45,5 +45,9 @@ $(document).ready(function(){
 	<button type="button" id="getbtn">GET</button>
 	<button type="button" id="postbtn">POST</button>
 </form>
+<hr>
+<a href="viewJsp_1_stringTest_find.hbe">viewJsp_1_stringTest_find.hbe 실행</a><br>
+<a href="viewJsp_2_modelandview_find.hbe">viewJsp_2_modelandview_find.hbe 실행</a><br>
+<a href="viewJsp_3_voidTest_find.hbe">viewJsp_3_voidTest_find.hbe 실행</a><br>
 </body>
 </html>
