@@ -50,7 +50,8 @@ $(document).ready(function(){
 <a href="viewJsp_2_modelandview_find.hbe">viewJsp_2_modelandview_find.hbe 실행</a><br>
 <a href="viewJsp_3_voidTest_find.hbe">viewJsp_3_voidTest_find.hbe 실행</a><br>
 <hr>
-<a href="formdata_find.hbe">FORM DATA 실행</a>
+<a href="formdata_find.hbe">FORM DATA 실행</a><br>
+<button onclick='location.href="formdata_get_servlet.hbe?datanum=11&dataid=11&datapw=11&dataname=11"'>formdata_get_servlet.hbe :: url전송</button>
 <hr>
 <a href="autowired_test.hbe">오토와이어드(의존성 주입 : DI) 생성자 실행</a><br>
 <a href="autowired_test_filed.hbe">오토와이어드(의존성 주입 : DI) 필드 실행</a><br>
