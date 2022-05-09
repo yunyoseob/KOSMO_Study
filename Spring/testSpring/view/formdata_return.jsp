@@ -73,7 +73,7 @@
 	<table border="1" align="center">
 		<tr>
 			<td>회원번호 : </td>
-			<td><input type="text" name="datanum" id="datanum"></td>
+			<td><input type="text" name="datanum" id="datanum"></td>			
 		</tr>
 		<tr>
 			<td>아이디 : </td>
