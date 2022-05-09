@@ -76,3 +76,20 @@ public void setViewName(String viewName)
 Set a view name for this ModelAndView, to be resolved by the DispatcherPortlet via a ViewResolver. 
 Will override any pre-existing view name or View.
 ```
+
+### org.springframework.beans.factory.annotation.Annotation Type Autowired
+
+```
+@Target(value={CONSTRUCTOR,FIELD,METHOD,ANNOTATION_TYPE})
+@Retention(value=RUNTIME)
+@Documented
+public @interface Autowired
+```
+
+## Spring 하면서 중요한 개념 3가지
+
+```
+IOC
+DI
+AOP
+```
