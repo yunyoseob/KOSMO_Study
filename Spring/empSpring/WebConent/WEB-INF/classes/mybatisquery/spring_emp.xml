@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="a.b.c.com.emp.dao.SpringEmpDAO">
+
+<insert id="springEmpInsert" parameterType="springempvo" >
+
+	INSERT INTO EMP_SPRING (EMPNO, ENAME, HIREDATE) 
+					VALUES ( #{empno, jdbcType=VARCHAR}
+					        ,#{ename, jdbcType=VARCHAR}
+					        ,#{hiredate, jdbcType=VARCHAR})
+</insert>
+
+<select id="springEmpSelectAll" resultType="springempvo">
+
+	SELECT   A.EMPNO     EMPNO
+       		,A.ENAME     ENAME
+       		,TO_CHAR(TO_DATE(A.HIREDATE), 'YYYY-MM-DD') HIREDATE
+	FROM    EMP_SPRING A
+
+</select>
+
+<select id="springEmpSelect" parameterType="springempvo" resultType="springempvo">
+	SELECT 
+					 A.EMPNO        	 EMPNO
+					,A.ENAME        	ENAME
+					,TO_CHAR(TO_DATE(A.HIREDATE), 'YYYY-MM-DD')  	HIREDATE
+	FROM   EMP_SPRING A	
+	WHERE  1=1	
+  	<if test="searchFilter=='key_01'">
+		<![CDATA[ AND A.EMPNO LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%']]>				
+	</if>
+	<if test="searchFilter=='key_02'">
+		<![CDATA[ AND A.ENAME LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%']]>
+	</if>
+	<if test="startDate!=null and startDate!='' and endDate!=null and endDate!='' ">
+		<![CDATA[ AND TO_CHAR(TO_DATE(A.HIREDATE), 'YYYY-MM-DD') 
+					>= TO_CHAR(TO_DATE(#{startDate, jdbcType=VARCHAR}), 'YYYY-MM-DD')]]>
+		<![CDATA[ AND TO_CHAR(TO_DATE(A.HIREDATE), 'YYYY-MM-DD') 
+					<= TO_CHAR(TO_DATE(#{endDate, jdbcType=VARCHAR}), 'YYYY-MM-DD')]]>
+	</if>	
+</select>
+
+<update id="springEmpUpdate" parameterType="springempvo">
+
+	UPDATE EMP_SPRING SET ENAME=#{ename, jdbcType=VARCHAR}, HIREDATE=#{hiredate, jdbcType=VARCHAR}
+	WHERE EMPNO = #{empno, jdbcType=VARCHAR}
+</update>
+</mapper>         	  
