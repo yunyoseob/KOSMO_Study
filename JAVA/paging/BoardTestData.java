@@ -10,13 +10,36 @@ CREATE TABLE BOARD_PAGING(
 	bhits		NUMBER(8)			NULL
 );
 
-CREATE SEQUENCE B_SEQ INCREMENT BY 1 START WITH 1;
 
 SELECT COUNT(BNUM)FROM BOARD_PAGING;
 SELECT * FROM USER_SEQUENCES;
 
 SELECT B_SEQ.CURRVAL FROM DUAL;
 SELECT B_SEQ.NEXTVAL FROM DUAL;
+
+컴파일
+C:\00.KOSMO108\10.JExam\paging>javac -d . -encoding utf-8 B*.java C*.java
+실행
+C:\00.KOSMO108\10.JExam\paging>java a.b.c.test.paging.BoardTestData
+
+
+SELECT  *                                           
+FROM (                                           
+        SELECT                                      
+            A.bnum,				-- 글번호                          	
+            A.btitle,			-- 제목                             	
+            A.bname,			-- 작성자                          				
+            A.barea,			-- 글내용                          	
+            A.bpass,			-- 비밀번호                       	
+            TO_CHAR(A.bwriteday, 'YYYY-MM-DD') bwriteday,  -- 작성일   				
+            A.bhits,			-- 조회수                          	
+            CEIL(ROW_NUMBER() OVER(ORDER BY A.bnum) / 10) pageSize, 	
+            COUNT(bnum) OVER() AS totalCount        
+        FROM                                        
+             BOARD_PAGING A                             
+    )                                           
+WHERE                                            
+    pageSize = 2 ; 
 
 */
 
