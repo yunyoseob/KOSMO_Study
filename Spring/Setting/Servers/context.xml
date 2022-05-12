@@ -20,7 +20,20 @@
     <!-- web application will be reloaded.                                   -->
     <WatchedResource>WEB-INF/web.xml</WatchedResource>
     <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
-
+	
+	<Resource    auth="Container"              
+            	type="javax.sql.DataSource" 
+            
+            name="jdbc/jndi_spring_orclYYS00"
+            driverClassName="oracle.jdbc.driver.OracleDriver"
+            url="jdbc:oracle:thin:@127.0.0.1:1521:orclYYS00"
+            username="scott" 
+            password="tiger"
+            maxActive="100" 
+            maxIdle="30" 
+            maxWait="10000"  
+             />
+	
     <!-- Uncomment this to disable session persistence across Tomcat restarts -->
     <!--
     <Manager pathname="" />
