@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+          
+<mapper namespace="a.b.c.com.kosmo.product.dao.KosmoProductDAO">
+
+<insert id="kosmoProductInset" parameterType="kosmoproductvo" >
+	
+	INSERT INTO KOSMO_PRODUCT (	KPNUM, KPID, KPNAME, 
+								KPCOMPANY, KPFILE, KPCNT, 
+								KPPRICE, KPDESC, DELETEYN, 
+								INSERTDATE, UPDATEDATE)
+            			VALUES( #{kpnum}, 
+            					#{kpid}, 
+            					#{kpname}, 
+            					#{kpcompany}, 
+            					#{kpfile}, 
+            					#{kpcnt}, 
+            					#{kpprice}, 
+            					#{kpdesc}, 
+            					'Y', 
+            					SYSDATE, 
+            					SYSDATE)
+</insert>
+
+</mapper>      
