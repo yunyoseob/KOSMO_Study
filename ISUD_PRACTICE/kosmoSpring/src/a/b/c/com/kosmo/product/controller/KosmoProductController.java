@@ -1,11 +1,14 @@
 package a.b.c.com.kosmo.product.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -78,6 +81,45 @@ public class KosmoProductController {
 		if (nCnt > 0) { return "product/kosmoProductInsert";}
 		return "product/kosmoProductInsertForm";
 	}	
+	
+	
+	// 상품 목록 페이징 조회
+	@RequestMapping(value="kosmoProductSelectAll", method=RequestMethod.GET)
+	public String kosmoProductSelectAll(KosmoProductVO kpvo, Model model) {
+		logger.info("KosmoProductController kosmoProductSelectAll 함수 진입 >>> : ");
+		
+		// 페이징 처리 ====================================================================
+		int pageSize = CommonUtils.PRODUCT_PAGE_SIZE;
+		int groupSize = CommonUtils.PRODUCT_GROUP_SIZE;
+		int curPage = CommonUtils.PRODUCT_CUR_PAGE;
+		int totalCount = CommonUtils.PRODUCT_TOTAL_COUNT;
+		
+		if (kpvo.getCurPage() !=null){
+			curPage = Integer.parseInt(kpvo.getCurPage());
+		}
+		
+		kpvo.setPageSize(String.valueOf(pageSize));
+		kpvo.setGroupSize(String.valueOf(groupSize));
+		kpvo.setCurPage(String.valueOf(curPage));
+		kpvo.setTotalCount(String.valueOf(totalCount));
+		
+		logger.info("KosmoProductController kosmoProductSelectAll kpvo.getPageSize() >>> : " + kpvo.getPageSize());
+		logger.info("KosmoProductController kosmoProductSelectAll kpvo.getGroupSize() >>> : " + kpvo.getGroupSize());
+		logger.info("KosmoProductController kosmoProductSelectAll kpvo.getCurPage() >>> : " + kpvo.getCurPage());
+		logger.info("KosmoProductController kosmoProductSelectAll kpvo.getTotalCount() >>> : " + kpvo.getTotalCount());
+		// 페이징 처리 ====================================================================
+		
+		// 서비스 호출
+		List<KosmoProductVO> listAll = kosmoProductService.kosmoProductSelectAll(kpvo);		
+		if (listAll.size() > 0) { 
+			logger.info("KosmoProductController kosmoProductSelectAll listAll.size() >>> : " + listAll.size());
+			
+			model.addAttribute("pagingKPVO", kpvo);
+			model.addAttribute("listAll", listAll);
+			return "product/kosmoProductSelectAll";
+		}		
+		return "product/kosmoProductInsertForm";
+	}
 }
 
 

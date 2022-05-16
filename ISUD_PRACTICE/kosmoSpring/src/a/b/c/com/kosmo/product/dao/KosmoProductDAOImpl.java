@@ -1,5 +1,7 @@
 package a.b.c.com.kosmo.product.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -17,11 +19,17 @@ public class KosmoProductDAOImpl implements KosmoProductDAO {
 
 	@Override
 	public int kosmoProductInset(KosmoProductVO kpvo) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub		
 		logger.info("KosmoProductDAOImpl kosmoProductInset 함수 진입 >>> : ");	
 		
 		return (Integer)sqlSession.insert("kosmoProductInset", kpvo);
+	}
+
+	@Override
+	public List<KosmoProductVO> kosmoProductSelectAll(KosmoProductVO kpvo) {
+		// TODO Auto-generated method stub
+		logger.info("KosmoProductDAOImpl kosmoProductSelectAll 함수 진입 >>> : ");			
+		return sqlSession.selectList("kosmoProductSelectAll", kpvo);
 	}
 
 }

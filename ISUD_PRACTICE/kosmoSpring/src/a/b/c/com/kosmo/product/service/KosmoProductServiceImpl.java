@@ -1,5 +1,7 @@
 package a.b.c.com.kosmo.product.service;
 
+import java.util.List;
+
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,13 @@ public class KosmoProductServiceImpl implements KosmoProductService {
 		logger.info("KosmoProductServiceImpl kosmoProductInset 함수 진입 >>> : ");	
 		
 		return kosmoProductDAO.kosmoProductInset(kpvo);
+	}
+
+	@Override
+	public List<KosmoProductVO> kosmoProductSelectAll(KosmoProductVO kpvo) {
+		// TODO Auto-generated method stub
+		logger.info("KosmoProductServiceImpl kosmoProductSelectAll 함수 진입 >>> : ");	
+		return kosmoProductDAO.kosmoProductSelectAll(kpvo);
 	}
 
 }

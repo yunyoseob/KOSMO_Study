@@ -14,6 +14,12 @@ public class KosmoProductVO {
 	private String insertdate;
 	private String updatedate;
 	
+	// 페이징 이동 필드
+	private String pageSize;
+	private String groupSize;
+	private String curPage;
+	private String totalCount;
+	
 	// 생성자 
 	public KosmoProductVO() {
 	
@@ -34,6 +40,28 @@ public class KosmoProductVO {
 		this.insertdate = insertdate;
 		this.updatedate = updatedate;
 	}
+	
+	public KosmoProductVO(String kpnum, String kpid, String kpname, String kpcompany, String kpfile, String kpcnt,
+			String kpprice, String kpdesc, String deleteyn, String insertdate, String updatedate, String pageSize,
+			String groupSize, String curPage, String totalCount) {
+		
+		this.kpnum = kpnum;
+		this.kpid = kpid;
+		this.kpname = kpname;
+		this.kpcompany = kpcompany;
+		this.kpfile = kpfile;
+		this.kpcnt = kpcnt;
+		this.kpprice = kpprice;
+		this.kpdesc = kpdesc;
+		this.deleteyn = deleteyn;
+		this.insertdate = insertdate;
+		this.updatedate = updatedate;
+		this.pageSize = pageSize;
+		this.groupSize = groupSize;
+		this.curPage = curPage;
+		this.totalCount = totalCount;
+	}
+
 	// setter/getter
 	public String getKpnum() {
 		return kpnum;
@@ -101,7 +129,38 @@ public class KosmoProductVO {
 	public void setUpdatedate(String updatedate) {
 		this.updatedate = updatedate;
 	}
-	
-	
-	
+
+	// 페이징 setter/getter
+	public String getPageSize() {
+		return pageSize;
+	}
+
+	public void setPageSize(String pageSize) {
+		this.pageSize = pageSize;
+	}
+
+	public String getGroupSize() {
+		return groupSize;
+	}
+
+	public void setGroupSize(String groupSize) {
+		this.groupSize = groupSize;
+	}
+
+	public String getCurPage() {
+		return curPage;
+	}
+
+	public void setCurPage(String curPage) {
+		this.curPage = curPage;
+	}
+
+	public String getTotalCount() {
+		return totalCount;
+	}
+
+	public void setTotalCount(String totalCount) {
+		this.totalCount = totalCount;
+	}
+
 }
