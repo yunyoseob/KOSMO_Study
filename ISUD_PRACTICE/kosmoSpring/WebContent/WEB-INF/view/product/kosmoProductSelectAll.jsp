@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+    
 <%@ page import="a.b.c.com.kosmo.product.vo.KosmoProductVO" %> 
 <%@ page import="java.util.List" %>  
 
@@ -70,7 +70,7 @@ for(int i=0; i<nCnt; i++){
 	kpprice = NumUtil.comma(kpprice);
 	
 	// 페이징 세팅
-	pageSize = Integer.parseInt(pagingKPVO.getPageSize() );
+	pageSize = Integer.parseInt(pagingKPVO.getPageSize());
 	groupSize = Integer.parseInt(pagingKPVO.getGroupSize());
 	curPage = Integer.parseInt(pagingKPVO.getCurPage());
 	totalCount = Integer.parseInt(_kpvo.getTotalCount());
