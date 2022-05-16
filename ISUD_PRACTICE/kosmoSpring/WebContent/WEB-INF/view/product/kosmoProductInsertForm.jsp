@@ -4,14 +4,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상품 등록</title>
+<title>상품 등록11</title>
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
-
+	alert(">>");
 	$(document).ready(function(){
+		alert(">>11");
+		
 		$(document).on("click", "#kpbtn", function(){
+			
 			console.log("kpbtn >>> : ");								
-			$('#boardForm').attr({
+			
+			$('#productForm').attr({
 				'action':'kosmoProductInsert.h',
 				'method':'POST',
 				'enctype':'multipart/form-data'

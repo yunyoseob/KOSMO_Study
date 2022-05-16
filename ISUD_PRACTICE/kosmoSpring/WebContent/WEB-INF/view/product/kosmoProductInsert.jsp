@@ -9,5 +9,8 @@
 <body>
 <h3>kosmoProductInsert.jsp</h3>
 <hr>
+<script>
+	location.href="/kosmoSpring/kosmoProductSelectAll.h";
+</script>
 </body>
 </html>
