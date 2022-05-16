@@ -5,5 +5,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="a.b.c.com.kosmo.product.vo.KosmoProductVO" alias="kosmoproductvo"/>
+		<typeAlias type="a.b.c.com.kosmo.cart.vo.KosmoCartVO" alias="kosmocartvo"/>
+		<typeAlias type="a.b.c.com.kosmo.mem.vo.KosmoMemberVO" alias="kosmomembervo"/>			
 	</typeAliases>
-</configuration>    		  
+</configuration>

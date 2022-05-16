@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+          
+<mapper namespace="a.b.c.com.kosmo.cart.dao.KosmoCartDAO">
+
+<insert id="kosmoCartInsert" parameterType="kosmocartvo" >
+	
+	INSERT INTO KOSMO_CART (	KCNUM, KPID, KPNAME, 
+								KPFILE, KPCNT, KPPRICE, 
+								KPPRICESUM, KPNUM, KMNUM, 
+								DELETEYN, INSERTDATE, UPDATEDATE)
+            			VALUES( #{kcnum}, 
+            					#{kpid}, 
+            					#{kpname},
+								#{kpfile},            					             					
+            					#{kpcnt}, 
+            					#{kpprice},
+            					#{kppricesum}, 
+            					#{kpnum}, 
+            					#{kmnum},
+            					'Y', 
+            					SYSDATE, 
+            					SYSDATE)
+</insert>
+
+<select id="kosmoCartSelectAll" parameterType="kosmocartvo" resultType="kosmocartvo">	
+	
+		SELECT 	A.KCNUM 		KPNUM
+		       ,A.KPID 			KPID
+		       ,A.KPNAME 		KPNAME
+		       ,A.KPCNT 		KPCNT
+		       ,A.KPFILE 		KPFILE
+		       ,A.KPPRICE 		KPPRICE
+		       ,A.KPPRICESUM 	KPPRICESUM
+		       ,A.KPNUM 		KPNUM
+		       ,A.KMNUM 		KMNUM
+		       ,A.DELETEYN 	DELETEYN
+		       ,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD') INSERTDATE
+		       ,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD') UPDATEDATE	  
+		FROM 	KOSMO_CART A
+		WHERE 	A.DELETEYN = 'Y'
+		AND 	A.KMNUM = #{kmnum} 	
+		ORDER BY 1 DESC  
+	
+</select>
+
+</mapper>      
