@@ -4,11 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>LOGOUT</title>
+<style type="text/css">
+	h3 {
+		 text-align: center;
+	}	
+</style>
 </head>
 <body>
-<h3>kosmoProductInsert.jsp</h3>
-<script>
-	location.href="/kosmoSpring/kosmoProductSelectAll.h";
-</script>
+<h3>Login Session Testing :: LOGOUT SUCCESS</h3>
+<hr>
+</body>
 </html>

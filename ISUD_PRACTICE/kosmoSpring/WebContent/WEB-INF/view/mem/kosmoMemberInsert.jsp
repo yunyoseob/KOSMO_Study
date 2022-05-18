@@ -7,8 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>kosmoProductInsert.jsp</h3>
+<h3>kosmoMemberInsert.jsp</h3>
+<hr>
 <script>
-	location.href="/kosmoSpring/kosmoProductSelectAll.h";
+	location.href="/kosmoSpring/kosmoMemberSelectAll.h";
 </script>
+</body>
 </html>

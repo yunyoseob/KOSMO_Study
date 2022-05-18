@@ -29,6 +29,37 @@
 
 	$(document).ready(function(){
 
+		
+		$(function(){
+			
+			// 경매 끝나는 시간 
+			const action_end_time = 2000;
+			// 현재 시간 
+			const current_time = 1100;
+			// 경매 남은 시간
+			var time = action_end_time - current_time;			
+			var min = "";
+			var sec = "";
+			
+			// setInterval('', 천분에일초);
+			// setInterval(function(), 1000); // 1초에 한번씩 invoke(호출) 하시오
+			var x = setInterval(function(){
+				min = parseInt(time / 60);
+				hour = parseInt(min / 60);				
+				sec = time % 60;
+				min = min % 60;
+
+				document.getElementById("time").innerHTML = hour + "시" + min + "분" + sec + "초"; 
+				time--;
+				
+				if (time < 0){
+					clearInterval(x)
+					document.getElementById("time").innerHTML = "시간초과";
+				}
+				
+			}, 1000);
+		});
+		
 		let kpprice = '<%= kpprice %>';
 		kpprice = comma(kpprice);
 		console.log(kpprice);
@@ -54,6 +85,10 @@
 				alert("상품을 수량을 선택하시오 !!!");
 				return;
 			}
+			
+			alert("카트 테이블을 조회해서 수량을 추가하세요");
+			
+			
 			
 			$('#productSelectForm').attr({"action":"kosmoCartInsert.h", "method":"GET"}).submit();
 		});
@@ -118,6 +153,12 @@
 <td align="right">
 <input 	type="text" name="kppricesum" id="kppricesum" value="0" 
 		style="width:170px;text-align:right;" readonly />&nbsp;원
+</td>
+</tr>
+<tr>
+<td><label align="left">시간 : </label></td>
+<td align="right">
+<font size="5" style="color:red;"><span id="time"></span></font>
 </td>
 </tr>
 <tr>
