@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+          
+<mapper namespace="a.b.c.com.kosmo.mem.dao.KosmoMemberDAO">
+
+<insert id="kosmoMemberInsert" parameterType="kosmomembervo" >
+	
+	INSERT INTO KOSMO_MEMBER (	KMNUM, KMID, KMPW, 
+								KMNAME, KMHP, KMEMAIL,
+								KMZONE, KMROAD, KMROAD2,
+								KMJIBUN, KMIMAGE, DELETEYN, 
+								INSERTDATE, UPDATEDATE)
+            			VALUES( #{kmnum}, 
+            					#{kmid}, 
+            					#{kmpw}, 
+            					#{kmname}, 
+            					#{kmhp}, 
+            					#{kmemail},             					
+            					#{kmzone}, 
+            					#{kmroad},
+            					#{kmroad2},
+            					#{kmjibun},
+            					#{kmimage}, 
+            					'Y', 
+            					SYSDATE, 
+            					SYSDATE)
+</insert>
+
+<select id="kosmoMemberSelectAll" parameterType="kosmomembervo" resultType="kosmomembervo">	
+	
+		SELECT 	A.KMNUM 	KMNUM
+		       ,A.KMID 		KMID
+		       ,A.KMPW 		KMPW
+		       ,A.KMNAME 	KMNAME
+		       ,A.KMHP 		KMHP
+		       ,A.KMEMAIL 	KMEMAIL
+		       ,A.KMZONE 	KMZONE
+		       ,A.KMROAD 	KMROAD
+		       ,A.KMROAD2 	KMROAD2
+		       ,A.KMJIBUN 	KMJIBUN
+		       ,A.KMIMAGE 	KMIMAGE		     
+		       ,A.DELETEYN 	DELETEYN
+		       ,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD') INSERTDATE
+		       ,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD') UPDATEDATE	 		      
+		FROM 	KOSMO_MEMBER A
+		WHERE 	A.DELETEYN = 'Y' 	
+		ORDER BY 1 DESC  
+	
+</select>
+
+<select id="kosmoMemberSelect" parameterType="kosmomembervo" resultType="kosmomembervo">	
+	
+		SELECT 	A.KMNUM 	KMNUM
+		       ,A.KMID 		KMID
+		       ,A.KMPW 		KMPW
+		       ,A.KMNAME 	KMNAME
+		       ,A.KMHP 		KMHP
+		       ,A.KMEMAIL 	KMEMAIL
+		       ,A.KMZONE 	KMZONE
+		       ,A.KMROAD 	KMROAD
+		       ,A.KMROAD2 	KMROAD2
+		       ,A.KMJIBUN 	KMJIBUN
+		       ,A.KMIMAGE 	KMIMAGE		     
+		       ,A.DELETEYN 	DELETEYN
+		       ,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD') INSERTDATE
+		       ,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD') UPDATEDATE	 		      
+		FROM 	KOSMO_MEMBER A
+		WHERE 	A.DELETEYN = 'Y' 	
+		AND    A.KMNUM = #{kmnum} 
+	
+</select>
+
+<select id="kosmoIdCheck" parameterType="kosmomembervo" resultType="kosmomembervo">	
+	
+		SELECT 
+		        A.KMID 		KMID
+		FROM 	KOSMO_MEMBER A
+		WHERE 	A.DELETEYN = 'Y' 	
+		AND     A.KMID = #{kmid} 
+	
+</select>
+
+</mapper>      
