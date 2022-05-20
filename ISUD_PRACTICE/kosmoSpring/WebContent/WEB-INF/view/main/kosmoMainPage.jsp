@@ -3,6 +3,31 @@
     
 <%@page import="a.b.c.com.kosmo.mem.vo.KosmoMemberVO"%>  
 <%@page import="java.util.List"%> 
+
+<%@ page import="org.apache.log4j.LogManager" %>
+<%@ page import="org.apache.log4j.Logger" %>
+    
+<% request.setCharacterEncoding("UTF-8"); %>
+<%
+	Logger logger = LogManager.getLogger(this.getClass());
+	logger.info("kosmoMainPage.jsp 진입 >>> : ");
+		
+	boolean popState = true;
+
+	Cookie[] ck = request.getCookies();
+	if (ck !=null){
+		logger.info("ck >>> : " + ck);
+		for (Cookie c : ck){
+			String ckName = c.getName();
+			String ckValue = c.getValue();
+			logger.info("ckName >>> : " + ckName);
+			logger.info("ckValue >>> : " + ckValue);
+			if (ckName.equals("onedayPopup") && ckValue.equals("off")){
+				popState = false;
+			}
+		}				
+	}
+%> 
     
 <!DOCTYPE html>
 <html>
@@ -16,8 +41,12 @@
 <script type="text/javascript">
 
 	$(document).ready(function(){
-				
-		$(function(){
+			
+		var popB = eval("<%= popState %>");
+		//alert("popB >>> : " + popB);
+		// popB = true;
+		
+		if (popB){
 			
 			// 팝업
 			var win = window.open(	"kosmoPopup.h", 
@@ -28,8 +57,11 @@
 				// alert('3초 후 팝업 자동으로 닫기.');	
 				win.close();
 			}
-			setTimeout(popup_close, 30000);
+			// setTimeout(popup_close, 30000);
 			
+		}
+			
+		$(function(){
 			// 현재 시간 
 			function printTime(){
 				let days = ["일", "월", "화", "수", "목", "금", "토"];
@@ -103,11 +135,23 @@
 		/*   text-decoration-line: overline; */
 		/*   text-decoration-line: line-through; */
 		/*   text-decoration-line: underline line-through overline; */
-	}		
+	}	
+	
+	/*
+	#map {
+		width:500px;
+		height: 400px;
+		margin: 100px auto;
+		border: 1px solid red;
+	}
+	*/	
+	#map {		
+		margin: 10px auto;
+		border: 1px solid red;
+	}
 </style>
 </head>
 <body>
-<% request.setCharacterEncoding("UTF-8"); %>
 <%
 	String kmid = "";
 	Object obj = request.getAttribute("listLogin");
@@ -144,6 +188,7 @@
     <li><a href="kosmoProductSelectAll.h">상품조회</a></li>
     <li><a href="javascript:alert('준비중입니다.');" onfocus="this.blur()">게시판</a></li>
     <li><a href="kosmoMemberInsertForm.h">회원가입</a></li>
+     <li><a href="#">매장정보</a></li>
   </ul>
 </nav>  
 </div>
@@ -177,6 +222,46 @@
 </tr>
 </table>
 </div>
+<!-- 지도를 표시할 div 입니다 -->
+<div id="map" style="width:5	0%;height:350px;"></div>
+<!-- // : http, https 둘다 허용  -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7ba50d45d025f6f02a5ac1b2483828c8"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        // center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+      	center: new kakao.maps.LatLng(37.478853, 126.879367), // 가산 월드메르디앙
+        level: 3 // 지도의 확대 레벨
+    };
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+// 지도를 클릭한 위치에 표출할 마커입니다
+var marker = new kakao.maps.Marker({ 
+    // 지도 중심좌표에 마커를 생성합니다 
+    position: map.getCenter() 
+}); 
+// 지도에 마커를 표시합니다
+marker.setMap(map);
+
+// 지도에 클릭 이벤트를 등록합니다
+// 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
+kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
+    
+    // 클릭한 위도, 경도 정보를 가져옵니다 
+    var latlng = mouseEvent.latLng; 
+    
+    // 마커 위치를 클릭한 위치로 옮깁니다
+    marker.setPosition(latlng);
+    
+    var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
+    message += '경도는 ' + latlng.getLng() + ' 입니다';
+    
+    var resultDiv = document.getElementById('clickLatlng'); 
+    resultDiv.innerHTML = message;
+    
+});
+</script>
 <hr>
 <div>
 	<h2>footer</h2>

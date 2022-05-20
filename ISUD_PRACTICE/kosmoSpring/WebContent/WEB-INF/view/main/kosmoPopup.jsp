@@ -15,11 +15,12 @@
 		
 		$('#popBtn').on('click', function(){
 		
+			window.self.close();
 			let chkVal = $("#chkpop").is(":checked");	
 			
 			if (chkVal){			
 				// Ajax 처리 루틴
-				let urlV = "#/kosMember/kos_script/popup_cookie.jsp";
+				let urlV = "kosmoPopupCookie.h";
 				let typeV = 'GET';
 				let dataV = $("#chkpop").val();
 				
@@ -34,8 +35,7 @@
 				}
 				
 				function whenSuccess(resData){
-					var bool = $(resData).find('result').text();
-					console.log("bool >>> : " + bool);
+					alert(resData);
 				}				
 				function whenError(){
 					console.log("에러가 >>> : ");
@@ -47,14 +47,8 @@
 </script>
 </head>
 <body>
-<%
-	boolean popState = true;
-%> 
 <h2>NOTICE POPUP</h2>
 <hr>
-<%
-	if (popState){
-%>
 	<div id="noticePop">
 		<form name="noticePopForm" id="noticePopForm">
 			<img class="img_1" src="/kosmoSpring/img/img_kakaofriends/08.png"><br>										
@@ -63,13 +57,6 @@
 			<input type="button" id="popBtn" value="닫기" />
 		</form>	
 	</div>		
-<%		
-	}else{
-%>
-		<%= "공지사항 팝업 없음" %>
-<%		
-	}
-%>
 
 </body>
 </html>

@@ -35,6 +35,32 @@
 			}
 		});
 		
+		$(document).on('click', '.delBtn', function(){
+			alert("delBtn >>> : ");
+			let kcnumV = $(this).val();
+			alert("kcnumV >>> : " + kcnumV);
+			
+			location.href="kosmoCartDelete.h?kcnumV="+kcnumV;
+			location.reload;
+		});
+		
+		$(document).on('click', '#delsBtn', function(){
+					
+			if ($('.kcnum:checked').length == 0){
+				alert("삭제할 상품 하나 이상을  선택하세요!!");
+				return;
+			}
+			
+		 	var kcnum = []; 
+		  	$("input:checkbox[name='kcnum']:checked").each(function() {
+		  		kcnum.push($(this).val());     // 체크된 것만 값을 뽑아서 배열에 push
+			  	console.log(kcnum);
+		  	});
+		  	
+		  	$('#productList').attr({"action":"kosmoCartDeleteArray.h", "method":"GET"}).submit();
+			
+		});
+		
 	});	
 
 </script>
@@ -83,7 +109,7 @@ for(int i=0; i<nCnt; i++){
 	<td class="tt">배송비</td>
 	<td class="tt" align="center">		
 		<input type="button" value="관심상품" /><br>
-		<input type="button" value="삭제" /><br>
+		<button type="button" class="delBtn" name="delBtn" id="delBtn" value=<%= _kcvo.getKcnum() %> >삭제</button><br>
 	</td>	
 </tr>	
 <%
@@ -99,7 +125,7 @@ for(int i=0; i<nCnt; i++){
 </tr>
 <tr>
 	<td colspan="8" align="left">		
-		<input type="button" value="선택삭제" id='delBtn'>	
+		<input type="button" value="선택삭제" id='delsBtn'>	
 		<input type="button" value="장바구니 비우기" id='delAllBtn'>
 		 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 		<input type="button" value="쇼핑하기" id='shopingBtn'>							

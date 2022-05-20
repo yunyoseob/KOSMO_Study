@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>kosmoCartInsert.jsp</h3>
+<h3>kosmoCartDelete.jsp</h3>
 <hr>
 <script>
 	location.href="/kosmoSpring/kosmoCartSelectAll.h";
