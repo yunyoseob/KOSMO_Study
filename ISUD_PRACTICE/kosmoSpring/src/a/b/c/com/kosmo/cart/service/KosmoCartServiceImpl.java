@@ -1,5 +1,6 @@
 package a.b.c.com.kosmo.cart.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.LogManager;
@@ -35,6 +36,20 @@ public class KosmoCartServiceImpl implements KosmoCartService {
 		// TODO Auto-generated method stub
 		logger.info("KosmoCartServiceImpls kosmoCartSelectAll 함수 진입 >>> : ");		
 		return kosmoCartDAO.kosmoCartSelectAll(kcvo);
+	}
+
+	@Override
+	public int kosmoCartDelete(KosmoCartVO kcvo) {
+		// TODO Auto-generated method stub
+		logger.info("KosmoCartServiceImpls kosmoCartDelete 함수 진입 >>> : ");		
+		return kosmoCartDAO.kosmoCartDelete(kcvo);
+	}
+
+	@Override
+	public int kosmoCartDeleteArray(ArrayList<KosmoCartVO> aList) {
+		// TODO Auto-generated method stub
+		logger.info("KosmoCartServiceImpls kosmoCartDeleteArray 함수 진입 >>> : ");		
+		return kosmoCartDAO.kosmoCartDeleteArray(aList);
 	}
 
 }

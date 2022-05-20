@@ -15,6 +15,8 @@ public class KosmoCartVO {
 	private String insertdate;
 	private String updatedate;
 	
+	private String kcnumarr[];
+	
 	// 생성자 
 	public KosmoCartVO() {
 		
@@ -35,6 +37,25 @@ public class KosmoCartVO {
 		this.deleteyn = deleteyn;
 		this.insertdate = insertdate;
 		this.updatedate = updatedate;
+	}
+
+	public KosmoCartVO(String kcnum, String kpid, String kpname, String kpfile, String kpcnt, String kpprice,
+			String kppricesum, String kpnum, String kmnum, String deleteyn, String insertdate, String updatedate,
+			String[] kcnumarr) {
+		
+		this.kcnum = kcnum;
+		this.kpid = kpid;
+		this.kpname = kpname;
+		this.kpfile = kpfile;
+		this.kpcnt = kpcnt;
+		this.kpprice = kpprice;
+		this.kppricesum = kppricesum;
+		this.kpnum = kpnum;
+		this.kmnum = kmnum;
+		this.deleteyn = deleteyn;
+		this.insertdate = insertdate;
+		this.updatedate = updatedate;
+		this.kcnumarr = kcnumarr;
 	}
 
 	// setter/getter
@@ -132,6 +153,16 @@ public class KosmoCartVO {
 
 	public void setUpdatedate(String updatedate) {
 		this.updatedate = updatedate;
+	}
+
+	public String[] getKcnumarr() {
+		return kcnumarr;
+	}
+
+	
+	// 다건 삭제 stter/getter;
+	public void setKcnumarr(String[] kcnumarr) {
+		this.kcnumarr = kcnumarr;
 	}
 
 	

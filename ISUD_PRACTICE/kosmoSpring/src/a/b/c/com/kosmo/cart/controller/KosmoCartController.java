@@ -1,6 +1,9 @@
 package a.b.c.com.kosmo.cart.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -15,7 +18,6 @@ import a.b.c.com.kosmo.cart.vo.KosmoCartVO;
 import a.b.c.com.kosmo.common.ChabunUtil;
 import a.b.c.com.kosmo.common.NulUtil;
 import a.b.c.com.kosmo.common.service.SpringChabunService;
-import a.b.c.com.kosmo.product.vo.KosmoProductVO;
 
 @Controller
 public class KosmoCartController {
@@ -78,5 +80,45 @@ public class KosmoCartController {
 			return "cart/kosmoCartSelectAll";
 		}		
 		return "product/kosmoProductSelectAll";
+	}
+	
+	@RequestMapping(value="kosmoCartDelete", method=RequestMethod.GET)
+	public String kosmoCartDelete(HttpServletRequest req, KosmoCartVO kcvo, Model model) {
+		logger.info("KosmoCartController kosmoCartDelete 함수 진입 >>> : ");
+	
+		kcvo.setKcnum(req.getParameter("kcnumV"));
+		logger.info("KosmoCartController kosmoCartDelete 함수 진입  kcvo.getKcnum() >>> : " + kcvo.getKcnum());
+		
+		int nCnt = kosmoCartService.kosmoCartDelete(kcvo);		
+		if (nCnt > 0) {
+			logger.info("KosmoCartController kosmoCartDelete 함수 진입 nCnt >>> : " + nCnt);
+			return "cart/kosmoCartDelete";
+		}
+		logger.info("KosmoCartController kosmoCartDelete 함수 진입 nCnt >>> : " + nCnt);
+	
+		return "#cart/kosmoCartSelectAll";
+	}
+	
+	// 아직 만드는 중 
+	@RequestMapping(value="kosmoCartDeleteArray", method=RequestMethod.GET)
+	public String kosmoCartDeleteArray(HttpServletRequest req, KosmoCartVO kcvo, Model model) {
+		logger.info("KosmoCartController kosmoCartDeleteArray 함수 진입 >>> : ");
+	
+		String kcnumV[] = req.getParameterValues("kcnum");
+		ArrayList<KosmoCartVO> aList = new ArrayList<KosmoCartVO>();
+		for (int i=0; i < kcnumV.length; i++) {
+			KosmoCartVO _kcvo = new KosmoCartVO();
+			_kcvo.setKcnum(kcnumV[i]);
+			aList.add(_kcvo);
+		}
+		
+		int nCnt = kosmoCartService.kosmoCartDeleteArray(aList);		
+		if (nCnt > 0) {
+			logger.info("KosmoCartController kosmoCartDeleteArray 함수 진입 nCnt >>> : " + nCnt);
+			return "cart/kosmoCartDelete";
+		}
+		logger.info("KosmoCartController kosmoCartDelete 함수 진입 nCnt >>> : " + nCnt);
+	
+		return "#cart/kosmoCartSelectAll";
 	}
 }

@@ -1,5 +1,6 @@
 package a.b.c.com.kosmo.cart.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -30,5 +31,19 @@ public class KosmoCartDAOImpl implements KosmoCartDAO {
 		// TODO Auto-generated method stub
 		logger.info("KosmoCartDAOImpl kosmoCartInsert 함수 진입 >>> : ");	
 		return sqlSession.selectList("kosmoCartSelectAll", kcvo);
+	}
+	
+	@Override
+	public int kosmoCartDelete(KosmoCartVO kcvo) {
+		// TODO Auto-generated method stub
+		logger.info("KosmoCartDAOImpl kosmoCartDelete 함수 진입 >>> : ");			
+		return (Integer)sqlSession.insert("kosmoCartDelete", kcvo);
+	}
+
+	@Override
+	public int kosmoCartDeleteArray(ArrayList<KosmoCartVO> aList) {
+		// TODO Auto-generated method stub
+		logger.info("KosmoCartDAOImpl kosmoCartDeleteArray 함수 진입 >>> : ");			
+		return (Integer)sqlSession.update("kosmoCartDeleteArray", aList);
 	}
 }

@@ -26,7 +26,7 @@
 
 <select id="kosmoCartSelectAll" parameterType="kosmocartvo" resultType="kosmocartvo">	
 	
-		SELECT 	A.KCNUM 		KPNUM
+		SELECT 	A.KCNUM 		KCNUM
 		       ,A.KPID 			KPID
 		       ,A.KPNAME 		KPNAME
 		       ,A.KPCNT 		KPCNT
@@ -44,5 +44,20 @@
 		ORDER BY 1 DESC  
 	
 </select>
+
+<update id="kosmoCartDelete" parameterType="kosmocartvo" >	
+		UPDATE 	KOSMO_CART 
+		SET 	DELETEYN = 'N', 
+				UPDATEDATE = SYSDATE 			
+		WHERE KCNUM = #{kcnum} 	
+</update>
+
+<update id="kosmoCartDeleteArray" parameterType="kosmocartvo" >	
+	<!-- foreach 적용 예정 -->
+		UPDATE 	KOSMO_CART 
+		SET 	DELETEYN = 'N', 
+				UPDATEDATE = SYSDATE 			
+		WHERE KCNUM = #{kcnum} 	
+</update>
 
 </mapper>      
