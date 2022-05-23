@@ -109,7 +109,9 @@ for(int i=0; i<nCnt; i++){
 	<td class="tt">배송비</td>
 	<td class="tt" align="center">		
 		<input type="button" value="관심상품" /><br>
-		<button type="button" class="delBtn" name="delBtn" id="delBtn" value=<%= _kcvo.getKcnum() %> >삭제</button><br>
+		<button type="button" 	class="delBtn" 
+								name="delBtn" 
+								id="delBtn" value=<%= _kcvo.getKcnum() %> >삭제</button><br>
 	</td>	
 </tr>	
 <%
