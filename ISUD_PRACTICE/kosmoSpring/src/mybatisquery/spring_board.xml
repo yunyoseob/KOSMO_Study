@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+          
+<mapper namespace="a.b.c.com.kosmo.board.dao.KosmoBoardDAO">
+
+<insert id="kosmoBoardInsert" parameterType="kosmoboardvo" >
+ 
+	INSERT INTO KOSMO_BOARD (	KBNUM, KBSUBJECT, KBNAME, 
+								KBCONTENT, KBFILE, KBPW,
+								DELETEYN, INSERTDATE, UPDATEDATE)
+            			VALUES( #{kbnum}, 
+            					#{kbsubject}, 
+            					#{kbname}, 
+            					#{kbcontent}, 
+            					#{kbfile}, 
+            					#{kbpw},             					
+            					'Y', 
+            					SYSDATE, 
+            					SYSDATE)
+</insert>
+
+<select id="kosmoBoardSelectAll" parameterType="kosmoboardvo" resultType="kosmoboardvo">	
+	
+		SELECT 	A.KBNUM 		KBNUM
+		       ,A.KBSUBJECT 	KBSUBJECT
+		       ,A.KBNAME 		KBNAME
+		       ,A.KBCONTENT 	KBCONTENT
+		       ,A.KBFILE 		KBFILE
+		       ,A.KBPW 			KBPW		   
+		       ,A.DELETEYN 	DELETEYN
+		       ,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD') INSERTDATE
+		       ,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD') UPDATEDATE	 		      
+		FROM 	KOSMO_BOARD A
+		WHERE 	A.DELETEYN = 'Y' 	
+		ORDER BY 1 DESC  
+	
+</select>
+
+<select id="kosmoBoardSelect" parameterType="kosmoboardvo" resultType="kosmoboardvo">	
+	
+		SELECT 	A.KBNUM 		KBNUM
+		       ,A.KBSUBJECT 	KBSUBJECT
+		       ,A.KBNAME 		KBNAME
+		       ,A.KBCONTENT 	KBCONTENT
+		       ,A.KBFILE 		KBFILE
+		       ,A.KBPW 			KBPW		   
+		       ,A.DELETEYN 		DELETEYN
+		       ,A.INSERTDATE 	INSERTDATE
+		       ,A.UPDATEDATE	UPDATEDATE	 		      
+		FROM 	KOSMO_BOARD A
+		WHERE 	A.DELETEYN = 'Y' 
+		AND     A.KBNUM = #{kbnum}	
+
+</select>
+
+<select id="kosmoBoardPwCheck" parameterType="kosmoboardvo" resultType="kosmoboardvo">	
+	
+		SELECT 	A.KBNUM 		KBNUM		    
+		       ,A.KBPW 			KBPW		   		     
+		FROM 	KOSMO_BOARD A
+		WHERE 	A.DELETEYN = 'Y' 
+		AND     A.KBNUM = #{kbnum}	
+		AND     A.KBPW = #{kbpw}
+		
+</select>
+</mapper>      

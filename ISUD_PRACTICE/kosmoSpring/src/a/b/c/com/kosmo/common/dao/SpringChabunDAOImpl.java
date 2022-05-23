@@ -6,9 +6,11 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import a.b.c.com.kosmo.board.vo.KosmoBoardVO;
 import a.b.c.com.kosmo.cart.vo.KosmoCartVO;
 import a.b.c.com.kosmo.mem.vo.KosmoMemberVO;
 import a.b.c.com.kosmo.product.vo.KosmoProductVO;
+import a.b.c.com.kosmo.rboard.vo.KosmoRboardVO;
 
 @Repository
 public class SpringChabunDAOImpl implements SpringChabunDAO {
@@ -36,5 +38,19 @@ public class SpringChabunDAOImpl implements SpringChabunDAO {
 		// TODO Auto-generated method stub
 		logger.info("SpringChabunDAOImpl getMemberChabun >>> : ");
 		return sqlSession.selectOne("getMemberChabun"); // getMemberChabun
+	}
+
+	@Override
+	public KosmoBoardVO getBoardChabun() {
+		// TODO Auto-generated method stub
+		logger.info("SpringChabunDAOImpl getBoardChabun >>> : ");
+		return sqlSession.selectOne("getBoardChabun"); // getBoardChabun
+	}
+
+	@Override
+	public KosmoRboardVO getRboardChabun() {
+		// TODO Auto-generated method stub
+		logger.info("SpringChabunDAOImpl getRboardChabun >>> : ");
+		return sqlSession.selectOne("getRboardChabun"); // getRboardChabun
 	}
 }

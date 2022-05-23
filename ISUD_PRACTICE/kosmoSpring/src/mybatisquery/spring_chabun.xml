@@ -16,4 +16,12 @@
 	SELECT /*+ INDEX_DESC(A SYS_C0011102) */ NVL(MAX(SUBSTR(A.KMNUM, -4)), 0) + 1  KMNUM FROM KOSMO_MEMBER A
 </select>
 
+<select id="getBoardChabun" resultType="kosmoboardvo">
+	SELECT /*+ INDEX_DESC(A SYS_C0012694) */ NVL(MAX(SUBSTR(A.KBNUM, -4)), 0) + 1  KBNUM FROM KOSMO_BOARD A
+</select>
+
+<select id="getRboardChabun" resultType="kosmorboardvo">
+	SELECT /*+ INDEX_DESC(A SYS_C0012770) */ NVL(MAX(SUBSTR(A.RKBNUM, -4)), 0) + 1  RKBNUM FROM KOSMO_RBOARD A
+</select>
+
 </mapper>      
