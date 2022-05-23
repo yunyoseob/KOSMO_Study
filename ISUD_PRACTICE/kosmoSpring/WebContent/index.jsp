@@ -18,5 +18,10 @@
 <a href="kosmoLoginForm.h">코스모 로그인</a><br>
 <p>
 <a href="kosmoMainPage.h">코스모 메인</a><br>
+<p>
+<a href="kosmoBoardInsertForm.h">코스모 게시판 글쓰기</a><br>
+<a href="kosmoBoardSelectAll.h">코스모 게시판 전체조회</a><br>
+<p>
+<a href="kosmoRboardForm.h">코스모 댓글 쓰기 </a><br>
 </body>
 </html>
