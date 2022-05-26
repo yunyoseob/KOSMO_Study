@@ -23,5 +23,9 @@
 <a href="kosmoBoardSelectAll.h">코스모 게시판 전체조회</a><br>
 <p>
 <a href="kosmoRboardForm.h">코스모 댓글 쓰기 </a><br>
+<p>
+<a href="kosmoBoardLikeForm.h">코스모 게시판 좋아요 </a><br>
+<p>
+<a href="empSelect.h">코스모 vo 테스트 </a><br>
 </body>
 </html>

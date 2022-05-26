@@ -13,11 +13,9 @@ function comma_replace(s){
 	return result;
 }
 
-
-function numpad(s){	
+function numpad(s) {
 	if (s.length == 1){
 		s = '0' + s;
-	}	
+	}
 	return s;
 }
-
