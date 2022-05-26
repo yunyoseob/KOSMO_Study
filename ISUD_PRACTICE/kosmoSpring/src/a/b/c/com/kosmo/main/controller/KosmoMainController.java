@@ -1,5 +1,7 @@
 package a.b.c.com.kosmo.main.controller;
 
+import java.util.List;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,7 +35,7 @@ public class KosmoMainController {
 		
 		return "main/kosmoPopup";
 	}
-	
+
 	@RequestMapping(value="kosmoPopupCookie", method=RequestMethod.GET)
 	@ResponseBody
 	public String kosmoPopupCookie(HttpServletRequest req, HttpServletResponse res, KosmoMainVO kmainvo) {
@@ -53,5 +55,4 @@ public class KosmoMainController {
 		
 		return chkpop;
 	}
-
 }

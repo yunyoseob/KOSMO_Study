@@ -8,6 +8,13 @@
 		<typeAlias type="a.b.c.com.kosmo.cart.vo.KosmoCartVO" alias="kosmocartvo"/>
 		<typeAlias type="a.b.c.com.kosmo.mem.vo.KosmoMemberVO" alias="kosmomembervo"/>	
 		<typeAlias type="a.b.c.com.kosmo.board.vo.KosmoBoardVO" alias="kosmoboardvo"/>	
-		<typeAlias type="a.b.c.com.kosmo.rboard.vo.KosmoRboardVO" alias="kosmorboardvo"/>		
+		<typeAlias type="a.b.c.com.kosmo.rboard.vo.KosmoRboardVO" alias="kosmorboardvo"/>
+		<typeAlias type="a.b.c.com.kosmo.like.vo.KosmoBoardLikeVO" alias="kosmoboardlikevo"/>
+		<typeAlias type="a.b.c.com.kosmo.order.vo.KosmoOrderVO" alias="kosmoordervo"/>	
+		
+		<!-- 
+			<typeAlias type="a.b.c.test.emp.vo.EmpVO" alias="evo"/>	
+			<typeAlias type="a.b.c.test.dept.vo.DeptVO" alias="dvo"/>
+		-->			
 	</typeAliases>
 </configuration>

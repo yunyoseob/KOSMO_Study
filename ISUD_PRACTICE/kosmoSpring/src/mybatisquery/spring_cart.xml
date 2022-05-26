@@ -45,19 +45,22 @@
 	
 </select>
 
-<update id="kosmoCartDelete" parameterType="kosmocartvo" >	
+<update id="kosmoCartDelete" parameterType="kosmocartvo" >
+ 
 		UPDATE 	KOSMO_CART 
 		SET 	DELETEYN = 'N', 
 				UPDATEDATE = SYSDATE 			
-		WHERE KCNUM = #{kcnum} 	
+		WHERE KCNUM = #{kcnum} 
+	
 </update>
 
-<update id="kosmoCartDeleteArray" parameterType="kosmocartvo" >	
-	<!-- foreach 적용 예정 -->
+<update id="kosmoCartDeleteArray" parameterType="kosmocartvo" >
+	<foreach collection="list" item="item" index="index" separator=";" open="DECLARE BEGIN" close="; END;"> 
 		UPDATE 	KOSMO_CART 
 		SET 	DELETEYN = 'N', 
 				UPDATEDATE = SYSDATE 			
-		WHERE KCNUM = #{kcnum} 	
+		WHERE KCNUM = #{item.kcnum} 
+	</foreach>
 </update>
 
 </mapper>      

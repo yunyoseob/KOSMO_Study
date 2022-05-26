@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import a.b.c.com.kosmo.board.vo.KosmoBoardVO;
 import a.b.c.com.kosmo.cart.vo.KosmoCartVO;
 import a.b.c.com.kosmo.mem.vo.KosmoMemberVO;
+import a.b.c.com.kosmo.order.vo.KosmoOrderVO;
 import a.b.c.com.kosmo.product.vo.KosmoProductVO;
 import a.b.c.com.kosmo.rboard.vo.KosmoRboardVO;
 
@@ -52,5 +53,12 @@ public class SpringChabunDAOImpl implements SpringChabunDAO {
 		// TODO Auto-generated method stub
 		logger.info("SpringChabunDAOImpl getRboardChabun >>> : ");
 		return sqlSession.selectOne("getRboardChabun"); // getRboardChabun
+	}
+
+	@Override
+	public KosmoOrderVO getOrderChabun() {
+		// TODO Auto-generated method stub
+		logger.info("SpringChabunDAOImpl getOrderChabun >>> : ");
+		return sqlSession.selectOne("getOrderChabun"); // getOrderChabun
 	}
 }

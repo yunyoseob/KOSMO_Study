@@ -37,7 +37,7 @@ public class KosmoCartDAOImpl implements KosmoCartDAO {
 	public int kosmoCartDelete(KosmoCartVO kcvo) {
 		// TODO Auto-generated method stub
 		logger.info("KosmoCartDAOImpl kosmoCartDelete 함수 진입 >>> : ");			
-		return (Integer)sqlSession.insert("kosmoCartDelete", kcvo);
+		return (Integer)sqlSession.update("kosmoCartDelete", kcvo);
 	}
 
 	@Override

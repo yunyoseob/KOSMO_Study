@@ -14,13 +14,12 @@ public class KosmoProductVO {
 	private String insertdate;
 	private String updatedate;
 	
-
 	// 페이징 이동 필드
 	private String pageSize;
 	private String groupSize;
 	private String curPage;
 	private String totalCount;
-
+	
 	// 생성자 
 	public KosmoProductVO() {
 	

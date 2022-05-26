@@ -115,7 +115,7 @@ public class KosmoProductController {
 		if (listAll.size() > 0) { 
 			logger.info("KosmoProductController kosmoProductSelectAll listAll.size() >>> : " + listAll.size());
 			
-			model.addAttribute("pagingKPVO", kpvo);			
+			model.addAttribute("pagingKPVO", kpvo);
 			model.addAttribute("listAll", listAll);
 			return "product/kosmoProductSelectAll";
 		}		

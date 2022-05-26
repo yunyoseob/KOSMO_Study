@@ -40,7 +40,8 @@
 		       ,CEIL(ROW_NUMBER() OVER(ORDER BY A.KPNUM)/ #{pageSize} ) pageSize		
 			   ,COUNT(A.KPNUM) OVER() AS totalCount 
 		FROM 	KOSMO_PRODUCT A
-		WHERE 	A.DELETEYN = 'Y' 			
+		WHERE 	A.DELETEYN = 'Y' 	
+		ORDER BY 1 DESC  
 		<!--  ? : 현재 페이지 : curPage -->
 	) WHERE pageSize = #{curPage}
 </select>

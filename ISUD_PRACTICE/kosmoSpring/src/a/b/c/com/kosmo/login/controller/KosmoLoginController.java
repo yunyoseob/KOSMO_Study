@@ -45,7 +45,7 @@ public class KosmoLoginController {
 			String kID = ks.getSession(req);
 			
 			if (kID !=null && kID.equals(listLogin.get(0).getKmid())){				
-				logger.info("KosmoLoginController login >>> : 로그인 중 >>> : 다른 페이지로 이동 하기 >>> : " + kID);
+				logger.info("KosmoLoginController login >>> : 로그인 중 >>> : 메인 페이지로 이동 하기 >>> : " + kID);
 				model.addAttribute("listLogin", listLogin);
 				return "main/kosmoMainPage";
 			}else {
@@ -55,7 +55,7 @@ public class KosmoLoginController {
 				model.addAttribute("listLogin", listLogin);
 				return "main/kosmoMainPage";
 			}
-		}		
+		}
 		return "login/kosmoLoginForm";
 	}
 	

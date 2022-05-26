@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import a.b.c.com.kosmo.cart.service.KosmoCartService;
 import a.b.c.com.kosmo.cart.vo.KosmoCartVO;
 import a.b.c.com.kosmo.common.ChabunUtil;
-import a.b.c.com.kosmo.common.NulUtil;
+import a.b.c.com.kosmo.common.NumUtil;
 import a.b.c.com.kosmo.common.service.SpringChabunService;
 
 @Controller
@@ -44,9 +44,9 @@ public class KosmoCartController {
 		logger.info("kcvo.getKpid() >>> : " + kcvo.getKpid());
 		logger.info("kcvo.getKpname() >>> : " + kcvo.getKpname());
 		logger.info("kcvo.getKpfile() >>> : " + kcvo.getKpfile());
-		kcvo.setKpprice(NulUtil.comma_replace(kcvo.getKpprice()));
+		kcvo.setKpprice(NumUtil.comma_replace(kcvo.getKpprice()));
 		logger.info("kcvo.getKpprice() >>> : " + kcvo.getKpprice());
-		kcvo.setKppricesum(NulUtil.comma_replace(kcvo.getKppricesum()));
+		kcvo.setKppricesum(NumUtil.comma_replace(kcvo.getKppricesum()));
 		logger.info("kcvo.getKppricesum() >>> : " + kcvo.getKppricesum());
 		logger.info("kcvo.getKpnum() >>> : " + kcvo.getKpnum());
 		logger.info("kcvo.getKmnum() >>> : " + kcvo.getKmnum());
@@ -59,7 +59,7 @@ public class KosmoCartController {
 			return "cart/kosmoCartInsert";
 		}
 					
-		return "prodcut/kosmoProductSelectAll";
+		return "prodcut/kosmoProductInsert";
 	}
 	
 	// 카트 목록 
@@ -73,15 +73,16 @@ public class KosmoCartController {
 		// 페이징 처리
 		
 		// 서비스 호출
-		List<KosmoCartVO> listAll = kosmoCartService.kosmoCartSelectAll(kcvo);		
-		if (listAll.size() > 0) { 
-			logger.info("KosmoCartController KosmoCartController listAll.size() >>> : " + listAll.size());		
-			model.addAttribute("listAll", listAll);
+		List<KosmoCartVO> cartListAll = kosmoCartService.kosmoCartSelectAll(kcvo);		
+		if (cartListAll.size() > 0) { 
+			logger.info("KosmoCartController KosmoCartController listAll.size() >>> : " + cartListAll.size());		
+			model.addAttribute("cartListAll", cartListAll);
 			return "cart/kosmoCartSelectAll";
 		}		
-		return "product/kosmoProductSelectAll";
+		return "cart/kosmoCartSelectAll";
 	}
 	
+	// 한건 삭제 
 	@RequestMapping(value="kosmoCartDelete", method=RequestMethod.GET)
 	public String kosmoCartDelete(HttpServletRequest req, KosmoCartVO kcvo, Model model) {
 		logger.info("KosmoCartController kosmoCartDelete 함수 진입 >>> : ");
@@ -91,15 +92,12 @@ public class KosmoCartController {
 		
 		int nCnt = kosmoCartService.kosmoCartDelete(kcvo);		
 		if (nCnt > 0) {
-			logger.info("KosmoCartController kosmoCartDelete 함수 진입 nCnt >>> : " + nCnt);
-			return "cart/kosmoCartDelete";
-		}
-		logger.info("KosmoCartController kosmoCartDelete 함수 진입 nCnt >>> : " + nCnt);
-	
-		return "#cart/kosmoCartSelectAll";
+			logger.info("KosmoCartController kosmoCartDelete 함수 진입 nCnt >>> : " + nCnt);		
+		}		
+		return "cart/kosmoCartDelete";
 	}
 	
-	// 아직 만드는 중 
+	// 선택 삭제, 전체 삭제  
 	@RequestMapping(value="kosmoCartDeleteArray", method=RequestMethod.GET)
 	public String kosmoCartDeleteArray(HttpServletRequest req, KosmoCartVO kcvo, Model model) {
 		logger.info("KosmoCartController kosmoCartDeleteArray 함수 진입 >>> : ");
@@ -113,12 +111,9 @@ public class KosmoCartController {
 		}
 		
 		int nCnt = kosmoCartService.kosmoCartDeleteArray(aList);		
-		if (nCnt > 0) {
+		if (nCnt == -1) {
 			logger.info("KosmoCartController kosmoCartDeleteArray 함수 진입 nCnt >>> : " + nCnt);
-			return "cart/kosmoCartDelete";
-		}
-		logger.info("KosmoCartController kosmoCartDelete 함수 진입 nCnt >>> : " + nCnt);
-	
-		return "#cart/kosmoCartSelectAll";
+		}	
+		return "cart/kosmoCartDelete";
 	}
 }

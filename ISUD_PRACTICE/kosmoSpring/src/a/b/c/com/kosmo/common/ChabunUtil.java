@@ -7,6 +7,7 @@ public abstract class ChabunUtil {
 	public static final String BIZ_GUBUN_M 	= "M"; // 회원
 	public static final String BIZ_GUBUN_B 	= "B"; // 게시판
 	public static final String BIZ_GUBUN_R 	= "RB"; // 게시판 댓글
+	public static final String BIZ_GUBUN_O 	= "O"; // 주문
 	
 	
 	// type : D : 20210001, M : YYYYMM, Y : YYYY, N : 
@@ -41,6 +42,9 @@ public abstract class ChabunUtil {
 		return BIZ_GUBUN_R.concat(ChabunUtil.numPad(type, memNum));
 	}
 	
+	public static String getOrderChabun(String type, String memNum) {		
+		return BIZ_GUBUN_O.concat(ChabunUtil.numPad(type, memNum));
+	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

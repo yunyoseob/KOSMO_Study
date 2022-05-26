@@ -10,6 +10,7 @@ import a.b.c.com.kosmo.board.vo.KosmoBoardVO;
 import a.b.c.com.kosmo.cart.vo.KosmoCartVO;
 import a.b.c.com.kosmo.common.dao.SpringChabunDAO;
 import a.b.c.com.kosmo.mem.vo.KosmoMemberVO;
+import a.b.c.com.kosmo.order.vo.KosmoOrderVO;
 import a.b.c.com.kosmo.product.vo.KosmoProductVO;
 import a.b.c.com.kosmo.rboard.vo.KosmoRboardVO;
 
@@ -54,5 +55,12 @@ public class SpringChabunServiceImpl implements SpringChabunService {
 		// TODO Auto-generated method stub
 		logger.info("SpringChabunServiceImpl getRboardChabun >>> : ");
 		return springChabunDAO.getRboardChabun();
+	}
+
+	@Override
+	public KosmoOrderVO getOrderChabun() {
+		// TODO Auto-generated method stub
+		logger.info("SpringChabunServiceImpl getOrderChabun >>> : ");
+		return springChabunDAO.getOrderChabun();
 	}
 }

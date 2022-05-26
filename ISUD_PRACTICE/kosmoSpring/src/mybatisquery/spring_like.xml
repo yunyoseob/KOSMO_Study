@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+          
+<mapper namespace="a.b.c.com.kosmo.like.dao.KosmoLikeDAO">
+
+
+<select id="kosmoLikeSelect" parameterType="kosmoboardlikevo" resultType="kosmoboardlikevo">	
+	
+		SELECT 	A.KBLNUM 	KBLNUM	
+		FROM 	KOSMO_BOARD_LIKE A
+		WHERE 	A.DELETEYN = 'Y' 
+		AND     A.KMNUM = #{kmnum}	
+		AND     A.KBNUM = #{kbnum}
+		
+</select>
+
+<select id="kosmoLikeSelectAll" parameterType="kosmoboardlikevo" resultType="kosmoboardlikevo">	
+	
+		SELECT 	*
+		FROM 	KOSMO_BOARD_LIKE A
+		WHERE 	A.DELETEYN = 'Y' 
+		AND     A.KMNUM = #{kmnum}	
+		AND     A.KBNUM = #{kbnum}
+		
+</select>
+
+
+<insert id="kosmoLikeInsert" parameterType="kosmoboardlikevo" >
+    
+	INSERT INTO KOSMO_BOARD_LIKE (	KBLNUM, KMNUM, KBNUM, 									
+									DELETEYN, INSERTDATE, UPDATEDATE)
+            				VALUES(	(SELECT NVL(MAX(KBLNUM), 0) + 1 AS KBLNUM FROM KOSMO_BOARD_LIKE), 
+	            					#{kmnum}, 
+	            					#{kbnum},  	            				 				
+	            					'Y', 
+	            					SYSDATE, 
+	            					SYSDATE)
+</insert>
+
+<update id="kosmoLikeUpdate_1" parameterType="kosmoboardlikevo" >
+    
+	UPDATE 	KOSMO_BOARD_LIKE 
+	   SET  KBLIKE_CNT_1 = KBLIKE_CNT_1 + 1
+		   ,UPDATEDATE = SYSDATE
+	 WHERE  KMNUM = #{kmnum}
+	 AND    KBNUM = #{kbnum}
+	 
+</update>
+
+<update id="kosmoLikeUpdate_2" parameterType="kosmoboardlikevo" >
+    
+	UPDATE 	KOSMO_BOARD_LIKE 
+	   SET  KBLIKE_CNT_2 = KBLIKE_CNT_2 + 1
+		   ,UPDATEDATE = SYSDATE
+	 WHERE  KMNUM = #{kmnum}
+	 AND    KBNUM = #{kbnum}
+	 
+</update>
+
+<update id="kosmoLikeUpdate_3" parameterType="kosmoboardlikevo" >
+    
+	UPDATE 	KOSMO_BOARD_LIKE 
+	   SET  KBLIKE_CNT_3 = KBLIKE_CNT_3 + 1
+		   ,UPDATEDATE = SYSDATE
+	 WHERE  KMNUM = #{kmnum}
+	 AND    KBNUM = #{kbnum}
+	 
+</update>
+
+<update id="kosmoLikeUpdate_4" parameterType="kosmoboardlikevo" >
+    
+	UPDATE 	KOSMO_BOARD_LIKE 
+	   SET  KBLIKE_CNT_4 = KBLIKE_CNT_4 + 1
+		   ,UPDATEDATE = SYSDATE
+	 WHERE  KMNUM = #{kmnum}
+	 AND    KBNUM = #{kbnum}
+	 
+</update>
+
+<update id="kosmoLikeUpdate_5" parameterType="kosmoboardlikevo" >
+    
+	UPDATE 	KOSMO_BOARD_LIKE 
+	   SET  KBLIKE_CNT_5 = KBLIKE_CNT_5 + 1
+		   ,UPDATEDATE = SYSDATE
+	 WHERE  KMNUM = #{kmnum}
+	 AND    KBNUM = #{kbnum}
+	 
+</update>
+
+<update id="kosmoLikeUpdate_6" parameterType="kosmoboardlikevo" >
+    
+	UPDATE 	KOSMO_BOARD_LIKE 
+	   SET  KBLIKE_CNT_6 = KBLIKE_CNT_6 + 1
+		   ,UPDATEDATE = SYSDATE
+	 WHERE  KMNUM = #{kmnum}
+	 AND    KBNUM = #{kbnum}
+	 
+</update>
+
+</mapper>      

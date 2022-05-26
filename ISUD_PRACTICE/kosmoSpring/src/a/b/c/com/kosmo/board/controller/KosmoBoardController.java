@@ -48,7 +48,7 @@ public class KosmoBoardController {
 		// 채번 구하기
 		String kbnum = ChabunUtil.getBoardChabun("N", springChabunService.getBoardChabun().getKbnum());
 		logger.info("KosmoBoardController kosmoBoardInsert kbnum >>> : " + kbnum);
-		
+			
 		// 이미지 업로드 
 		FileUploadUtil fu = new FileUploadUtil(	 CommonUtils.BOARD_IMG_UPLOAD_PATH
 								                ,CommonUtils.BOARD_IMG_FILE_SIZE

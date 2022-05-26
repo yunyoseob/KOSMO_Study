@@ -5,15 +5,15 @@
 <mapper namespace="a.b.c.com.kosmo.common.dao.SpringChabunDAO">
 
 <select id="getProductChabun" resultType="kosmoproductvo">
-	SELECT /*+ INDEX_DESC(A SYS_C0011100) */ NVL(MAX(SUBSTR(A.KPNUM, -4)), 0) + 1  KPNUM FROM KOSMO_PRODUCT A
+	SELECT /*+ INDEX_DESC(A SYS_C0012636) */ NVL(MAX(SUBSTR(A.KPNUM, -4)), 0) + 1  KPNUM FROM KOSMO_PRODUCT A
 </select>
 
 <select id="getCartChabun" resultType="kosmocartvo">
-	SELECT /*+ INDEX_DESC(A SYS_C0011101) */ NVL(MAX(SUBSTR(A.KCNUM, -4)), 0) + 1  KCNUM FROM KOSMO_CART A
+	SELECT /*+ INDEX_DESC(A SYS_C0012662) */ NVL(MAX(SUBSTR(A.KCNUM, -4)), 0) + 1  KCNUM FROM KOSMO_CART A
 </select>
 
 <select id="getMemberChabun" resultType="kosmomembervo">
-	SELECT /*+ INDEX_DESC(A SYS_C0011102) */ NVL(MAX(SUBSTR(A.KMNUM, -4)), 0) + 1  KMNUM FROM KOSMO_MEMBER A
+	SELECT /*+ INDEX_DESC(A SYS_C0012664) */ NVL(MAX(SUBSTR(A.KMNUM, -4)), 0) + 1  KMNUM FROM KOSMO_MEMBER A
 </select>
 
 <select id="getBoardChabun" resultType="kosmoboardvo">
@@ -22,6 +22,10 @@
 
 <select id="getRboardChabun" resultType="kosmorboardvo">
 	SELECT /*+ INDEX_DESC(A SYS_C0012770) */ NVL(MAX(SUBSTR(A.RKBNUM, -4)), 0) + 1  RKBNUM FROM KOSMO_RBOARD A
+</select>
+
+<select id="getOrderChabun" resultType="kosmoordervo">
+	SELECT /*+ INDEX_DESC(A SYS_C0012826) */ NVL(MAX(SUBSTR(A.KONUM, -4)), 0) + 1  KONUM FROM KOSMO_ORDER A
 </select>
 
 </mapper>      

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+          
+<mapper namespace="a.b.c.com.kosmo.order.dao.KosmoOrderDAO">
+
+<insert id="kosmoOrderInsert" parameterType="kosmoordervo" >
+
+	INSERT INTO KOSMO_ORDER (	
+								KONUM, 
+								KPNUM, KPID, KPNAME, 
+								KPCNT, KPPRICE, KPPRICESUM 
+								KMNUM, KMID, KMNAME,
+								KMHP, KMEMAIL, 
+								KODEIVARY,
+								KOZONE, KOROAD, KOROAD2, KOJIBUN
+								DELETEYN, INSERTDATE, UPDATEDATE
+							)
+            			VALUES
+            				(   #{konum}, 
+            					#{kpnum}, #{kpid}, #{kpname},
+            					#{kpcnt}, #{kpprice}, #{kppricesum},
+            					#{kmnum}, #{kmid}, #{kmname},
+            					#{kmhp}, #{kmemail},
+            					#{kodelivery},
+            					'Y', SYSDATE, SYSDATE
+            				 )
+</insert>
+
+
+</mapper>      
