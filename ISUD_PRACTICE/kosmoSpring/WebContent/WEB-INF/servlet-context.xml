@@ -10,16 +10,16 @@
 							http://www.springframework.org/schema/tx 
 							http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-		<!-- 데이터 소스 연결하기 context.xml jdbc/jndi_spring_orclHBE00 -->
+
 	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
 		<property name="jndiName" value="java:comp/env/jdbc/jndi_spring_orclHBE00"></property>
-	</bean>							
-
+	</bean>
+	
 	<!-- 마이바티스 쿼리문 찾아서 연결하기  -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<!-- 
-			classpath: == springEmp/Java Resources/src : /WEB-INF/classes/ 
+			classpath: == springEmp/Java Resources/src 
 			mybatisconfig 폴더 만들기 
 			springEmp/Java Resources/src 에서 우클릭 New -> Other -> Select a wizard -> folder 검색
 		 -->	 	
@@ -35,6 +35,6 @@
 	
 	<!-- DAO 또는 Mapper 찾기  -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage"><value>a.b.c.com.**.dao</value></property>
-	</bean>	
+		<property name="basePackage"><value>a.b.c.**.dao</value></property>
+	</bean>
 </beans>

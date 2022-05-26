@@ -135,7 +135,6 @@
 		<input type="button" name="kmidbtn" id="kmidbtn" value="아이디중복확인"  />
 	</td>
 </tr>
-</div>
 <tr>
 	<td>패스워드</td>
 	<td>

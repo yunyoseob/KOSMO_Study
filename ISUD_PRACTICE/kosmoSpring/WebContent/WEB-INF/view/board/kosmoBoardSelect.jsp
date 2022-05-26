@@ -174,6 +174,11 @@
 </table>
 </form>
 </div>
+<!-- 좋아요 처리 하는 루틴  --> 
+<jsp:include page="/kosmoBoardLikeForm.h">
+	<jsp:param value="B0001" name="kbnum"/>
+	<jsp:param value="M202205140001" name="kmnum"/>
+</jsp:include>	
 <p>
 <!-- 댓글 처리 하는 루틴  --> 
 <jsp:include page="/kosmoRboardForm.h">

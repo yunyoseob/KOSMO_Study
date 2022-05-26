@@ -6,14 +6,13 @@
 
 <%@ page import="a.b.c.com.kosmo.common.NumUtil" %>
 
+<%@ page import=" org.apache.log4j.LogManager" %>
+<%@ page import="org.apache.log4j.Logger" %>
+
 <% request.setCharacterEncoding("UTF-8");%> 
 <%
-
-	Object obj = request.getAttribute("listAll");
-	List<KosmoCartVO> list = (List<KosmoCartVO>)obj;
-	
-	int nCnt = list.size();
-	System.out.println("nCnt >>> : " + nCnt);	
+	Logger logger = LogManager.getLogger(this.getClass());
+	logger.info("kosmoCartSelectAll.jsp 페이지 >>> : ");
 %>
     
 <!DOCTYPE html>
@@ -40,12 +39,21 @@
 			let kcnumV = $(this).val();
 			alert("kcnumV >>> : " + kcnumV);
 			
-			location.href="kosmoCartDelete.h?kcnumV="+kcnumV;
-			location.reload;
+			location.href="kosmoCartDelete.h?kcnumV="+kcnumV;			
 		});
 		
+		// 선택 삭제
 		$(document).on('click', '#delsBtn', function(){
-					
+			cart_delete();		
+		});
+		
+		// 장바구니 비우기
+		$(document).on('click', '#delAllBtn', function(){
+			cart_delete();		
+		});
+		
+		function cart_delete(){
+			
 			if ($('.kcnum:checked').length == 0){
 				alert("삭제할 상품 하나 이상을  선택하세요!!");
 				return;
@@ -58,7 +66,11 @@
 		  	});
 		  	
 		  	$('#productList').attr({"action":"kosmoCartDeleteArray.h", "method":"GET"}).submit();
-			
+		}
+		
+		$(document).on('click', '#shopingBtn', function(){
+			alert("shopingBtn >>> : ");		
+			location.href="kosmoProductSelectAll.h";			
 		});
 		
 	});	
@@ -84,16 +96,35 @@
 	<td align="center">관심상품/삭제</td>		
 </tr>
 </thead>
+<tbody>
 <%
 String kpnum = "";
 String kpprice = "";
 String kppricesum = "";
-for(int i=0; i<nCnt; i++){		
-	KosmoCartVO _kcvo = list.get(i);
-	kpprice = NumUtil.comma(_kcvo.getKpprice());
-	kppricesum = NumUtil.comma(_kcvo.getKppricesum());
+int sum = 0;
+String sumV = "";
+
+Object obj = request.getAttribute("cartListAll");
+if (obj == null){	
 %>
-<tbody>
+<tr>
+<td colspan="8" align="center">
+	<h2>장바구니에 상품을 담으세요</h2> 
+</td>
+</tr>
+<%	
+}else{
+	List<KosmoCartVO> list = (List<KosmoCartVO>)obj;
+	int nCnt = list.size();
+
+	logger.info("list.size() >>> : " + list.size());	
+	
+	for(int i=0; i < nCnt; i++){		
+		KosmoCartVO _kcvo = list.get(i);
+		kpprice = NumUtil.comma(_kcvo.getKpprice());
+		kppricesum = NumUtil.comma(_kcvo.getKppricesum());
+		sum += Integer.parseInt(_kcvo.getKppricesum());
+%>
 <tr>
 	<td align="center">
 		<input type="checkbox" name="kcnum" id="kcnum" class="kcnum" value=<%= _kcvo.getKcnum() %> >
@@ -109,20 +140,20 @@ for(int i=0; i<nCnt; i++){
 	<td class="tt">배송비</td>
 	<td class="tt" align="center">		
 		<input type="button" value="관심상품" /><br>
-		<button type="button" 	class="delBtn" 
-								name="delBtn" 
-								id="delBtn" value=<%= _kcvo.getKcnum() %> >삭제</button><br>
+		<button type="button" class="delBtn" name="delBtn" id="delBtn" value=<%= _kcvo.getKcnum() %> >삭제</button><br>
 	</td>	
 </tr>	
 <%
-}//end of for
+	} // end of for
+} // end of else	
+	
 %>	
 <tr>
-<td colspan="8" align="right">총 구매 금액 000,000원</td>
+<td colspan="8" align="right">총 구매 금액  <%= NumUtil.comma(String.valueOf(sum)) %>원</td>
 </tr>
 <tr>
 <td colspan="8" align="right">
-	결제 예정금액 <font size="5" style="color:red;">000,000</font>원
+	결제 예정금액 <font size="5" style="color:red;"> <%= NumUtil.comma(String.valueOf(sum)) %></font>원
 </td>
 </tr>
 <tr>

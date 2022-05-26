@@ -54,14 +54,15 @@
 				if ("GOOD" == resData){
 					// 입력데이터 초기화 함수호출 
 					rboardFormData();
-					location.reload();
+					// location.reload();
+					selectAll();
 				}
 			}
 			function whenError(e){
 				alert("e >>> : " + e.responseText);
 			}
 			
-			selectAll();
+			// selectAll();
 		});
 		
 		// 댓글 삭제		
@@ -131,6 +132,7 @@
 			if(isEmpty(resData)){
 				return false;
 			}
+			
 			
 			let v = resData.split("&");
 			for(let i=0; i < v.length; i++){

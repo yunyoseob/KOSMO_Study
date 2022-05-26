@@ -89,15 +89,15 @@
 <td colspan="9" ><%= nCntS %></td>
 </tr>
 <tr>
-	<th><input type="checkbox" name="chkAll" id="chkAll"></td>
-	<th>순번</td>
-	<th>회원번호</td>
-	<th>아이디</td>
-	<th>이름</td>
-	<th>핸드폰</td>
-	<th>이메일</td>
-	<th>주소</td>	
-	<th>사진</td>		
+	<th><input type="checkbox" name="chkAll" id="chkAll"></th>
+	<th>순번</th>
+	<th>회원번호</th>
+	<th>아이디</th>
+	<th>이름</th>
+	<th>핸드폰</th>
+	<th>이메일</th>
+	<th>주소</th>	
+	<th>사진</th>		
 </tr>
 </thead>
 <%

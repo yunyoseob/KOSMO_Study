@@ -5,7 +5,7 @@
 <%@ page import="a.b.c.com.kosmo.common.CodeUtil" %> 
 <%@ page import="java.util.List" %>
 
- <% request.setCharacterEncoding("UTF-8");%> 
+<% request.setCharacterEncoding("UTF-8");%> 
 <%	
 	Object obj = request.getAttribute("listS");
 	if (obj == null) return;

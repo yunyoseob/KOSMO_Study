@@ -6,8 +6,13 @@
 
 <%@ page import="a.b.c.com.kosmo.common.NumUtil" %>
 
+<%@ page import=" org.apache.log4j.LogManager" %>
+<%@ page import="org.apache.log4j.Logger" %>
+
 <% request.setCharacterEncoding("UTF-8");%> 
 <%
+	Logger logger = LogManager.getLogger(this.getClass());
+	logger.info("kosmoProductSelectAll.jsp 페이지 >>> : ");
 
 	//페이징 변수 세팅
 	int pageSize = 0;
@@ -18,11 +23,11 @@
 	Object objPaging = request.getAttribute("pagingKPVO");
 	KosmoProductVO pagingKPVO = (KosmoProductVO)objPaging;
 	
-	Object obj = request.getAttribute("listAll");
-	List<KosmoProductVO> list = (List<KosmoProductVO>)obj;
+	Object obj = request.getAttribute("listAll");	
 	
+	List<KosmoProductVO> list = (List<KosmoProductVO>)obj;		
 	int nCnt = list.size();
-	System.out.println("nCnt >>> : " + nCnt);	
+		
 %>
 
 
@@ -35,12 +40,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script type="text/javascript">
 
-	function imgBtnClick(){
-		alert(">>");
-	}
-
 	$(document).ready(function(){
-		
 		
 		
 	});	
@@ -83,22 +83,16 @@ for(int i=0; i<nCnt; i++){
 <tbody>
 <tr>
 	<td rowspan="4" align="center" style="width:100px;">
-		<img src="/kosmoSpring/fileupload/product/<%= _kpvo.getKpfile() %>" width="50" height="50" 
-			onclick="location.href='kosmoProductSelect.h?kpnum=<%= kpnum %>'"><br>
+		<img src="/kosmoSpring/fileupload/product/<%= _kpvo.getKpfile() %>" width="50" height="50"><br>
 		<%= _kpvo.getKpid() %>
 	</td>
 	<td align="left" style="width:300px;">상품번호 : <%= kpnum %></td>
-	
 	<td rowspan="4" align="center" vertical-align="middle" style="width:150px;">
-	
 		<%= kpprice %>&nbsp;&nbsp;
-	
 		<a href="kosmoProductSelect.h?kpnum=<%= kpnum %>">
 			<img src="/kosmoSpring/img/img_mandu/ase.gif" width="25" height="25" alt="image">
 		</a>
 	</td>
-	
-	
 </tr>
 <tr><td><%= _kpvo.getKpdesc() %></td></tr>
 <tr><td><%= _kpvo.getKpcompany() %></td></tr>

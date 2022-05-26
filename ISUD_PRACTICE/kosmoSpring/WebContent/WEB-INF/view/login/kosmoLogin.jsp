@@ -28,7 +28,7 @@
 			alert("<%= kmid %> 님 로그인 성공");
 		</script>
 		<div>
-  			<a href="logout.h?kmid=<%= kmid %>">로그아웃 하기</a>
+  			<a href="kosmoLogout.h?kmid=<%= kmid %>">로그아웃 하기</a>
 		</div>
 <% 		
 	}
