@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- jQuery CDN 불러오기  -------------------------------------------->
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		
+		var ju = '{"name":"신익현", "age":26, "gender":"남자", "visual":"멋짐"}';
+		alert("ju >>> : " + ju);
+		alert("typeof(ju) >>> : " + typeof(ju));
+		document.write("ju.name >>> : " + ju.name + "<br>");
+		alert("JSON.stringify(ju) >>> : " + JSON.stringify(ju));
+		document.write("ju.name >>> : " + ju.name + "<br>");
+		
+		var ju_1 = JSON.parse(ju);
+		alert("ju_1 >>> : " + ju_1);
+		alert("ju_1 >>> : " + typeof(ju_1));
+		document.write("ju_1.name >>> : " + ju_1.name + "<br>");		
+		
+		var aaa = document.getElementById('aaa');
+		alert(aaa);
+		aaa.innerHTML = ju.name;		
+	});
+</script>
+</head>
+<body>
+<p id="aaa"></p>
+</body>
+</html>

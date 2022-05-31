@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+
+	/*
+		escape
+		문자열을 네트워크를 통하여 누구나 ASCII 글자로 접속할 수 있도록 엔코딩한다.
+		사용방법 : escape("문자열"); 
+		 - 문자열의 각 문자들을 '%16진수코드값' 형태로 변환
+		 - 1바이트 문자는 '%XX' 형태로 표시
+		 - 영문 알파벳(대문자, 소문자)과, 숫자, 일부 특수문자(@, *, -, _, +, ., /)를 제외
+		      문자만  인코딩
+		 - 한글이 깨지는 것을 방지하기 위하여 사용
+		 - 한글, 한자등(2바이트)은 '%u16진수4자리'로 표시
+		
+		unescape
+		사용방법 : unescape("%16진수코드값");
+		 - 코드값에 맞는 문자로 변환 (escape 로 변환된 코드값만 문자로 변환)
+		
+		encodeURI
+		사용방법 : encodeURI(uri);
+		 - 인터넷 주소에 사용되는 일부 특수문자(:, ;, /, =, ?, & 등)를 제외 문자만 인코딩
+		 - 보통 인터넷 주소의 파라미터 전체를 인코딩할 때 사용
+		
+		decodeURI
+		사용방법 : decodeURI(encodeURI로 인코딩 한 문자열);
+		 - encodeURI 로 인코딩한 값을 다시 원래대로 디코딩
+		
+		encodeURIComponent
+		사용방법 : encodeURIComponent(url 전체);
+		 - encodeURI이 제외한 일부 특수문자까지도 인코딩
+		 - url 전체(인터넷 주소 전체)가 파라미터로 전송될 경우 사용가능
+		
+		decodeURIComponent
+		사용방법 : decodeURIComponent(decodeURIComponent로 인코딩 한 문자열);
+		 - encodeURIComponent 로 인코딩한 값을 다시 원래대로 디코딩
+	*/
+	$(document).ready(function () {
+		alert('escape 문자 >>> : ');
+		
+		console.log(" ㅎ  >>> : "  + escape('ㅎ'));
+		console.log(" ㅕ  >>> : "  + escape('ㅕ'));
+		console.log(" ㄴ  >>> : "  + escape('ㄴ'));
+		console.log(" 현  >>> : "  + escape('현'));
+		console.log(" ' '  >>> : "  + escape(' '));
+		console.log(" h  >>> : "  + escape('h'));
+		console.log(" y  >>> : "  + escape('y'));
+		console.log(" u  >>> : "  + escape('u'));
+		console.log(" n  >>> : "  + escape('n'));
+		
+		console.log(" hyun  >>> : "  + escape('hyun'));	
+		var str2='%u314E%u3155%u3134%uD604';
+		alert(unescape(str2))
+		
+		console.log("ㄱ  >>> : "  + escape('ㄱ'));
+		console.log("ㄴ  >>> : "  + escape('ㄴ'));
+		console.log("ㄷ  >>> : "  + escape('ㄷ'));
+		console.log("ㄹ  >>> : "  + escape('ㄹ'));
+		console.log("ㅁ  >>> : "  + escape('ㅁ'));
+		console.log("ㅂ  >>> : "  + escape('ㅂ'));
+		console.log("ㅅ  >>> : "  + escape('ㅅ'));
+		console.log("ㅇ >>> : "   + escape('ㅇ'));
+		console.log("ㅈ  >>> : "  + escape('ㅈ'));
+		console.log("ㅊ  >>> : "  + escape('ㅊ'));
+		console.log("ㅋ  >>> : "  + escape('ㅋ'));
+		console.log("ㅌ >>> : "   + escape('ㅌ'));
+		console.log("ㅍ  >>> : "  + escape('ㅍ'));
+		console.log("ㅎ  >>> : "  + escape('ㅎ'));
+		console.log("ㄲ  >>> : "  + escape('ㄲ'));
+		console.log("ㄸ  >>> : "  + escape('ㄸ'));
+		console.log("ㅃ >>> : "   + escape('ㅃ'));
+		console.log("ㅆ  >>> : "  + escape('ㅆ'));
+		console.log("ㅉ  >>> : "  + escape('ㅉ'));	    	
+		console.log("ㅏ  >>> : "  + escape('ㅏ'));
+		console.log("ㅑ  >>> : "  + escape('ㅑ'));
+		console.log("ㅓ  >>> : "  + escape('ㅓ'));
+		console.log("ㅕ  >>> : "  + escape('ㅕ'));
+		console.log("ㅗ  >>> : "  + escape('ㅗ'));
+		console.log("ㅛ  >>> : "  + escape('ㅛ'));
+		console.log("ㅜ  >>> : "  + escape('ㅜ'));
+		console.log("ㅠ >>> : "  + escape('ㅠ'));
+		console.log("ㅡ  >>> : "  + escape('ㅡ'));
+		console.log("ㅣ  >>> : "  + escape('ㅣ'));
+		console.log("ㅔ  >>> : "  + escape('ㅜ'));
+		console.log("ㅖ >>> : "  + escape('ㅠ'));
+		console.log("ㅐ  >>> : "  + escape('ㅡ'));
+		console.log("ㅒ  >>> : "  + escape('ㅣ'));	    	
+		console.log("ㅝ  >>> : "  + escape('ㅝ'));
+		console.log("ㅙ >>> : "  + escape('ㅙ'));
+		console.log("ㅞ  >>> : "  + escape('ㅞ'));
+		console.log("ㅞ  >>> : "  + escape('ㅞ'));
+		console.log("ㅞ  >>> : "  + escape('ㅞ'));
+		console.log("ㅞ  >>> : "  + escape('ㅞ'));
+	});
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

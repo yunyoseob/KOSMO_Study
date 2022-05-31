@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- jQuery CDN 불러오기  -------------------------------------------->
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+
+
+	$(document).ready(function(){
+
+		var a = 'abc';
+		document.write(a);
+		var b = document.getElementById("aaa");
+		alert(b);
+		b.innerHTML = a;
+		$('#bbb').html(a);
+		
+		$('#ccc').text(a);
+		
+		//document.write(a);
+		//document.write(b);
+	});
+
+</script>
+</head>
+<body>
+<p id="aaa"></p>
+<p id="bbb"></p>
+<p id="ccc"></p>
+</body>
+</html>
