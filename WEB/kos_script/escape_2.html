@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>문자 80바이트 이하로 끊기</title>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+	
+	$(document).ready(function () {
+	 	
+	    $('.js-sms-content').keyup(function(){
+	        cut_80(this);
+	    });
+	
+	    $('.js-send-sms').click(function(){
+	        if(getTextLength($('.js-sms-content').val()) > 80){
+	            alert("문자는 80바이트 이하로 적어 주세요.");
+	            return false;
+	        }else{
+	            alert("문자가 80바이트 이하입니다.");
+	        }
+	    });
+	});
+
+	/**
+	 * 한글포함 문자열 길이를 구한다
+	 */
+	function getTextLength(str) {
+	    var len = 0;
+	    for (var i = 0; i < str.length; i++) {
+	        if (escape(str.charAt(i)).length == 6) {
+	            len++;
+	        }
+	        len++;
+	    }
+	    return len;
+	}
+	
+	function cut_80(obj){
+	    var text = $(obj).val();
+	    var leng = text.length;
+	    while(getTextLength(text) > 80){
+	        leng--;
+	        text = text.substring(0, leng);
+	    }
+	    $(obj).val(text);
+	    $('.bytes').text(getTextLength(text));
+	}
+</script>
+</head>
+<body>
+<textarea name="" id="" cols="30" rows="10" class="js-sms-content"></textarea>
+<div class="bytes-wrapper">
+    <span class="bytes">0</span>bytes
+</div>
+<button class="js-send-sms">확인</button>
+</body>
+</html>
