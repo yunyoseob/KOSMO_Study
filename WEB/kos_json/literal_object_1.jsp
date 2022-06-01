@@ -44,7 +44,7 @@
 			document.getElementById('div_1').innerHTML = ju.name;
 			document.getElementById('div_1').innerHTML = ju.age;
 			document.getElementById('div_1').innerHTML = ju.gender;
-			document.getElementById('div_1').innerHTML = ju.visual;
+			//document.getElementById('div_1').innerHTML = ju.visual;
 		});
 		
 		$('#div_2_btn').on('click', function(){
@@ -62,13 +62,20 @@
 		$(document).on('click', '#div_3_btn', function(){
 			
 			var t_ju =  $("<table border='1' />");
-			var row = 	$('<tr />').append(
+			var row;
+			
+			for (var i=0; i < 3; i++){
+				row = 	$('<tr />').append(
 						$('<td />').text(ju.name),
 						$('<td />').text(ju.age),
 						$('<td />').text(ju.gender),
 						$('<td />').text(ju.visual)
-			);
-			$('#div_3').append(t_ju).append(row);
+					);
+				t_ju.append(row);
+			}
+			
+			$('#div_3').append(t_ju);
+			//$('#div_3').append(t_ju).append(row);
 		});
 	});
 

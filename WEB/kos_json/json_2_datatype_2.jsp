@@ -13,7 +13,9 @@
 		alert(">>");
 		$.ajax({
 			url: "/kosmoSpring/kos_json/ju.json",
+			
 			dataType: "text",
+			
 			success: function(resData){
 				alert("resData >>> : " + resData);
 				

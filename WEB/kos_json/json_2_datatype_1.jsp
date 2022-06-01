@@ -13,9 +13,12 @@
 		alert(">>");
 		$.ajax({
 			url: "/kosmoSpring/kos_json/ju.json",
+			
 			dataType: "json",
+			
 			success: function(resData){
 				alert(resData);	
+				
 				var t_ju =  $("<table border='1' />");
 				var row = 	$('<tr />').append(
 							$('<td />').text(resData.name),
@@ -23,6 +26,7 @@
 							$('<td />').text(resData.gender),
 							$('<td />').text(resData.visual)
 				);
+				
 				t_ju.append(row);
 				$('#div_3').append(t_ju);					
 			}

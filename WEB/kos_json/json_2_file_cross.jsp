@@ -12,26 +12,19 @@
 	$(document).ready(function(){
 		alert(">>");
 		$.ajax({
-			url: "/kosmoSpring/kos_json/ju.json",
-			
-			dataType: "text",
-			
+			url: "/kosmoSpring/kos_json/ju_json.json",
+			dataType: "json",
 			success: function(resData){
-				alert("resData >>> : " + resData);
-				
-				var v = JSON.stringify(resData);
-				alert("v >>> : "+ v);
-				document.getElementById("div_3").innerHTML = v;
-				
+				alert(resData);
 				var t_ju =  $("<table border='1' />");
 				var row = 	$('<tr />').append(
-							$('<td />').text(v.name),
-							$('<td />').text(v.age),
-							$('<td />').text(v.gender),
-							$('<td />').text(v.visual)
+							$('<td />').text(resData.name),
+							$('<td />').text(resData.age),
+							$('<td />').text(resData.gender),
+							$('<td />').text(resData.visual)
 				);
 				t_ju.append(row);
-				$('#div_3').append(t_ju);				
+				$('#div_3').append(t_ju);
 			}
 		})
 	});
